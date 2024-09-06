@@ -8,7 +8,6 @@ import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
-import '../../model/menu.dart';
 
 class EntryPage extends StatefulWidget {
   const EntryPage({super.key});
@@ -21,18 +20,18 @@ class _EntryPageState extends State<EntryPage>
     with SingleTickerProviderStateMixin {
   bool isSideBarOpen = false;
 
-  Menu selectedBottonNav = bottomNavItems.first;
-  Menu selectedSideMenu = sidebarMenus.first;
+  // Menu selectedBottonNav = bottomNavItems.first;
+  // Menu selectedSideMenu = sidebarMenus.first;
 
   late SMIBool isMenuOpenInput;
 
-  void updateSelectedBtmNav(Menu menu) {
-    if (selectedBottonNav != menu) {
-      setState(() {
-        selectedBottonNav = menu;
-      });
-    }
-  }
+  // void updateSelectedBtmNav(Menu menu) {
+  //   if (selectedBottonNav != menu) {
+  //     setState(() {
+  //       selectedBottonNav = menu;
+  //     });
+  //   }
+  // }
 
   late AnimationController _animationController;
   late Animation<double> scalAnimation;
