@@ -30,10 +30,6 @@ class _SideBarState extends State<SideBar> {
                   padding: EdgeInsets.only(left: 24, top: 16, bottom: 2),
                   child: HomeMenu(),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.only(left: 24, top: 5, bottom: 2),
-                //   child: OperatorsMenu(),
-                // ),
                 Padding(
                   padding: EdgeInsets.only(left: 24, top: 5, bottom: 2),
                   child: Workloads(),
@@ -41,6 +37,10 @@ class _SideBarState extends State<SideBar> {
                 Padding(
                   padding: EdgeInsets.only(left: 24, top: 5, bottom: 2),
                   child: Networking(),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 24, top: 5, bottom: 2),
+                  child: UserManagement(),
                 ),
               ],
             )),

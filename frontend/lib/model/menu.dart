@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeMenu extends StatelessWidget {
+class HomeMenu extends StatefulWidget {
   const HomeMenu({super.key});
 
+  @override
+  State<HomeMenu> createState() => _HomeMenuState();
+}
+
+class _HomeMenuState extends State<HomeMenu> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
@@ -14,13 +19,6 @@ class HomeMenu extends StatelessWidget {
       showTrailingIcon: false,
       children: [
         ListTile(
-          title: Text("Dashboards",
-              style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 14.0)),
-        ),
-        ListTile(
           title: Text("Search",
               style: GoogleFonts.robotoMono(
                   color: Theme.of(context).colorScheme.surface,
@@ -28,7 +26,7 @@ class HomeMenu extends StatelessWidget {
                   fontSize: 14.0)),
         ),
         ListTile(
-          title: Text("Explore",
+          title: Text("API Explore",
               style: GoogleFonts.robotoMono(
                   color: Theme.of(context).colorScheme.surface,
                   fontWeight: FontWeight.normal,
@@ -97,13 +95,6 @@ class Workloads extends StatelessWidget {
                   fontSize: 14.0)),
         ),
         ListTile(
-          title: Text("Virtual Machines",
-              style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 14.0)),
-        ),
-        ListTile(
           title: Text("Deployments",
               style: GoogleFonts.robotoMono(
                   color: Theme.of(context).colorScheme.surface,
@@ -111,7 +102,7 @@ class Workloads extends StatelessWidget {
                   fontSize: 14.0)),
         ),
         ListTile(
-          title: Text("Stateful Sets",
+          title: Text("StatefulSets",
               style: GoogleFonts.robotoMono(
                   color: Theme.of(context).colorScheme.surface,
                   fontWeight: FontWeight.normal,
@@ -149,14 +140,59 @@ class Networking extends StatelessWidget {
       showTrailingIcon: false,
       children: [
         ListTile(
-          title: Text("OperatorHub",
+          title: Text("Services",
               style: GoogleFonts.robotoMono(
                   color: Theme.of(context).colorScheme.surface,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
-          title: Text("Installed Operators",
+          title: Text("Ingresses",
+              style: GoogleFonts.robotoMono(
+                  color: Theme.of(context).colorScheme.surface,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14.0)),
+        ),
+        ListTile(
+          title: Text("NetworkPolicies",
+              style: GoogleFonts.robotoMono(
+                  color: Theme.of(context).colorScheme.surface,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14.0)),
+        ),
+      ],
+    );
+  }
+}
+
+class UserManagement extends StatelessWidget {
+  const UserManagement({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      title: Text("User Management".toUpperCase(),
+          style: GoogleFonts.robotoMono(
+              color: Theme.of(context).colorScheme.surface,
+              fontWeight: FontWeight.bold)),
+      showTrailingIcon: false,
+      children: [
+        ListTile(
+          title: Text("ServiceAccounts",
+              style: GoogleFonts.robotoMono(
+                  color: Theme.of(context).colorScheme.surface,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14.0)),
+        ),
+        ListTile(
+          title: Text("Roles",
+              style: GoogleFonts.robotoMono(
+                  color: Theme.of(context).colorScheme.surface,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14.0)),
+        ),
+        ListTile(
+          title: Text("RoleBindings",
               style: GoogleFonts.robotoMono(
                   color: Theme.of(context).colorScheme.surface,
                   fontWeight: FontWeight.normal,
