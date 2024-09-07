@@ -15,6 +15,7 @@ class ThemeClass {
             primary: _themeClass.lightPrimaryColor,
             secondary: _themeClass.darkButtonColor),
         useMaterial3: true,
+        dividerColor: Colors.transparent,
       );
 
   static ThemeData get darkTheme => ThemeData(
@@ -23,6 +24,7 @@ class ThemeClass {
           primary: _themeClass.darkPrimaryColor,
           secondary: _themeClass.lightButtonColor,
         ),
+        dividerColor: Colors.transparent,
         useMaterial3: true,
       );
 }

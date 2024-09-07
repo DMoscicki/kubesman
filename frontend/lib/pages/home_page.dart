@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
-                  "Courses",
+                  "Home",
                   style: GoogleFonts.robotoMono(
                     color: Theme.of(context).colorScheme.secondary,
                     fontWeight: FontWeight.bold,
