@@ -5,7 +5,7 @@ package pod;
 
 message Pod {
     string name = 1;
-    bool active = 2;
+    string namespace = 2;
     reserved 3 to max;
 }
 
