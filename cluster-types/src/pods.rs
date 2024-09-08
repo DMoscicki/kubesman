@@ -3,9 +3,18 @@ pub mod pod {
 }
 
 use pod::Pod;
+use prost::Message;
 
 impl Pod {
-    fn build() -> Self {
-        Pod::default()
+    pub fn fill_struct(data: Vec<u8>) -> Self {
+        let pod = Pod::decode(&data[..]).unwrap();
+        pod
     }
+
+    pub fn encode_struct(pod: Pod) -> Vec<u8> {
+        let mut buf: Vec<u8> = Vec::new();
+        pod.encode(&mut buf).unwrap();
+        buf
+    }
+
 }

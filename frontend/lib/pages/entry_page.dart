@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:frontend/components/menu_btn.dart';
 import 'package:frontend/components/sidebar.dart';
-import 'package:frontend/pages/home_page.dart';
+import 'package:frontend/pages/workloads/pods.dart';
 import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
@@ -20,18 +20,7 @@ class _EntryPageState extends State<EntryPage>
     with SingleTickerProviderStateMixin {
   bool isSideBarOpen = false;
 
-  // Menu selectedBottonNav = bottomNavItems.first;
-  // Menu selectedSideMenu = sidebarMenus.first;
-
   late SMIBool isMenuOpenInput;
-
-  // void updateSelectedBtmNav(Menu menu) {
-  //   if (selectedBottonNav != menu) {
-  //     setState(() {
-  //       selectedBottonNav = menu;
-  //     });
-  //   }
-  // }
 
   late AnimationController _animationController;
   late Animation<double> scalAnimation;
@@ -100,7 +89,7 @@ class _EntryPageState extends State<EntryPage>
                   borderRadius: BorderRadius.all(
                     Radius.circular(24),
                   ),
-                  child: HomePage(),
+                  child: PodsPage(),
                 ),
               ),
             ),
