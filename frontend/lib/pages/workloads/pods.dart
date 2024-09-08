@@ -46,7 +46,8 @@ class PodsPage extends StatelessWidget {
                       items: dropDownOptions
                           .map<DropdownMenuItem<String>>((String mascot) {
                         return DropdownMenuItem<String>(
-                            child: Text(mascot), value: mascot);
+                            value: mascot,
+                            child: Text(mascot));
                       }).toList(),
                       onChanged: (_) => {}),
                 ],

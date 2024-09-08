@@ -12,10 +12,7 @@ front-wasm:
 clean-proto:
 	rm -rf frontend/lib/protos/*.dart && rm -rf blog/src/protos/*.ts
 
-gen-proto:
-	protoc --dart_out=frontend/lib/protos --proto_path=cluster-types/protos  cluster-types/protos/pod.proto
-
-list: $(PROTO_DIR)/*
+gen-proto: $(PROTO_DIR)/*
 	for file in $^ ; do \
 			protoc --dart_out=frontend/lib/protos --proto_path=cluster-types/protos $${file} ; \
 	done
