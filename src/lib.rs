@@ -7,7 +7,6 @@ use log::info;
 use kube::{config::KubeConfigOptions, Client, Config, Error};
 
 mod handlers;
-mod models;
 
 pub async fn kube_client() -> Result<Client, Error> {
 
