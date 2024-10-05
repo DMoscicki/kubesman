@@ -1,6 +1,6 @@
 use std::env;
 
-use actix_web::{middleware::Logger, web::{self, service}, App, HttpServer};
+use actix_web::{middleware::Logger, web::{self}, App, HttpServer};
 use actix_files as fs;
 use handlers::pods;
 use log::info;
@@ -40,7 +40,9 @@ pub async fn run_backend(client: Client) -> std::io::Result<()> {
 
 // TODO: make more readable
 async fn serve_dev(client: Client) -> std::io::Result<()> {
-    HttpServer::new(move || App::new().service(pods::get_pods)
+    HttpServer::new(move || App::new()
+    .service(pods::get_pods)
+    .service(pods::get_pods_by_ns)
     .app_data(web::Data::new(client.clone()))
     .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/web/").index_file("index.html")))
     .bind(("127.0.0.1", 9000))?
@@ -50,6 +52,8 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
 
 async fn serve_build(client: Client) -> std::io::Result<()> {
     HttpServer::new(move || App::new()
+    .service(pods::get_pods)
+    .service(pods::get_pods_by_ns)
     .app_data(web::Data::new(client.clone()))
     .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/build/web/").index_file("index.html")))
     .bind(("127.0.0.1", 9000))?
@@ -64,6 +68,8 @@ async fn production_mod(client: Client) -> std::io::Result<()> {
     };
 
     HttpServer::new(move || App::new()
+    .service(pods::get_pods_by_ns)
+    .service(pods::get_pods_by_ns)
     .app_data(web::Data::new(client.clone()))
     .wrap(Logger::default()))
     .bind(("0.0.0.0", port))?

@@ -24,3 +24,4 @@ Cargo.lock
 
 # frontend ignore
 frontend/lib/protos
+k8s-pb-dart/*
