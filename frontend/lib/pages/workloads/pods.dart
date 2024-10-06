@@ -11,14 +11,6 @@ class PodsPage extends StatelessWidget {
     "Clippy",
   ];
 
-  // void dropdownCallback(String? selectedValue) {
-  //   if (selectedValue is String) {
-  //     setState(() {
-  //       _dropdownValue = selectedValue;
-  //     });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +26,7 @@ class PodsPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      "Home",
+                      "Pods",
                       style: GoogleFonts.robotoMono(
                         color: Theme.of(context).colorScheme.secondary,
                         fontWeight: FontWeight.bold,
@@ -46,8 +38,7 @@ class PodsPage extends StatelessWidget {
                       items: dropDownOptions
                           .map<DropdownMenuItem<String>>((String mascot) {
                         return DropdownMenuItem<String>(
-                            value: mascot,
-                            child: Text(mascot));
+                            value: mascot, child: Text(mascot));
                       }).toList(),
                       onChanged: (_) => {}),
                 ],
