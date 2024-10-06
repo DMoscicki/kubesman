@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/model/k8s/pods.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 class PodsPage extends StatelessWidget {
   const PodsPage({super.key});
@@ -10,14 +12,6 @@ class PodsPage extends StatelessWidget {
     "Snoo",
     "Clippy",
   ];
-
-  // void dropdownCallback(String? selectedValue) {
-  //   if (selectedValue is String) {
-  //     setState(() {
-  //       _dropdownValue = selectedValue;
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +28,7 @@ class PodsPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      "Home",
+                      "Pods",
                       style: GoogleFonts.robotoMono(
                         color: Theme.of(context).colorScheme.secondary,
                         fontWeight: FontWeight.bold,
@@ -46,8 +40,7 @@ class PodsPage extends StatelessWidget {
                       items: dropDownOptions
                           .map<DropdownMenuItem<String>>((String mascot) {
                         return DropdownMenuItem<String>(
-                            value: mascot,
-                            child: Text(mascot));
+                            value: mascot, child: Text(mascot));
                       }).toList(),
                       onChanged: (_) => {}),
                 ],
@@ -85,4 +78,10 @@ class PodsPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<List<PodList>> fetchResults() async {
+  Uri url = Uri.parse("");
+  var response = await http.get(url);
+  
 }
