@@ -18,7 +18,7 @@ async fn create_namespace(kube_state: web::Data<Client>, param: web::Path<String
     let client = kube_state.get_ref();
     let name = param.into_inner();
 
-    match create_ns(client, name).await {
+    match create_ns(client, &name).await {
         true => HttpResponse::Ok().status(StatusCode::OK).finish(),
         false => HttpResponse::BadRequest().status(StatusCode::BAD_REQUEST).finish(),
     }
