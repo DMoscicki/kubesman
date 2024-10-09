@@ -1,0 +1,357 @@
+// Generated from generated.proto
+
+namespace apimachinery.pkg.runtime;
+
+table RawExtension {
+  raw:[ubyte] (id: 0);
+}
+
+table TypeMeta {
+  apiVersion:string (id: 0);
+  kind:string (id: 1);
+}
+
+table Unknown {
+  typeMeta:apimachinery.pkg.runtime.TypeMeta (id: 0);
+  raw:[ubyte] (id: 1);
+  contentEncoding:string (id: 2);
+  contentType:string (id: 3);
+}
+
+namespace apimachinery.pkg.apis.meta.v1;
+
+table APIGroup {
+  name:string (id: 0);
+  versions:[apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery] (id: 1);
+  preferredVersion:apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery (id: 2);
+  serverAddressByClientCIDRs:[apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR] (id: 3);
+}
+
+table APIGroupList {
+  groups:[apimachinery.pkg.apis.meta.v1.APIGroup] (id: 0);
+}
+
+table APIResource {
+  name:string (id: 0);
+  singularName:string (id: 5);
+  namespaced:bool (id: 1);
+  group:string (id: 7);
+  version:string (id: 8);
+  kind:string (id: 2);
+  verbs:apimachinery.pkg.apis.meta.v1.Verbs (id: 3);
+  shortNames:[string] (id: 4);
+  categories:[string] (id: 6);
+  storageVersionHash:string (id: 9);
+}
+
+table APIResourceList {
+  groupVersion:string (id: 0);
+  resources:[apimachinery.pkg.apis.meta.v1.APIResource] (id: 1);
+}
+
+table APIVersions {
+  versions:[string] (id: 0);
+  serverAddressByClientCIDRs:[apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR] (id: 1);
+}
+
+table ApplyOptions {
+  dryRun:[string] (id: 0);
+  force:bool (id: 1);
+  fieldManager:string (id: 2);
+}
+
+table Condition {
+  type:string (id: 0);
+  status:string (id: 1);
+  observedGeneration:long (id: 2);
+  lastTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+  reason:string (id: 4);
+  message:string (id: 5);
+}
+
+table CreateOptions {
+  dryRun:[string] (id: 0);
+  fieldManager:string (id: 1);
+  fieldValidation:string (id: 2);
+}
+
+table DeleteOptions {
+  gracePeriodSeconds:long (id: 0);
+  preconditions:apimachinery.pkg.apis.meta.v1.Preconditions (id: 1);
+  orphanDependents:bool (id: 2);
+  propagationPolicy:string (id: 3);
+  dryRun:[string] (id: 4);
+}
+
+table Duration {
+  duration:long (id: 0);
+}
+
+table FieldsV1 {
+  Raw:[ubyte] (id: 0);
+}
+
+table GetOptions {
+  resourceVersion:string (id: 0);
+}
+
+table GroupKind {
+  group:string (id: 0);
+  kind:string (id: 1);
+}
+
+table GroupResource {
+  group:string (id: 0);
+  resource:string (id: 1);
+}
+
+table GroupVersion {
+  group:string (id: 0);
+  version:string (id: 1);
+}
+
+table GroupVersionForDiscovery {
+  groupVersion:string (id: 0);
+  version:string (id: 1);
+}
+
+table GroupVersionKind {
+  group:string (id: 0);
+  version:string (id: 1);
+  kind:string (id: 2);
+}
+
+table GroupVersionResource {
+  group:string (id: 0);
+  version:string (id: 1);
+  resource:string (id: 2);
+}
+
+table LabelSelector {
+  matchLabels:[apimachinery.pkg.apis.meta.v1.LabelSelector_.MatchLabelsEntry] (id: 0);
+  matchExpressions:[apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement] (id: 1);
+}
+
+namespace apimachinery.pkg.apis.meta.v1.LabelSelector_;
+
+table MatchLabelsEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace apimachinery.pkg.apis.meta.v1;
+
+table LabelSelectorRequirement {
+  key:string (id: 0);
+  operator:string (id: 1);
+  values:[string] (id: 2);
+}
+
+table List {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[apimachinery.pkg.runtime.RawExtension] (id: 1);
+}
+
+table ListMeta {
+  selfLink:string (id: 0);
+  resourceVersion:string (id: 1);
+  continue:string (id: 2);
+  remainingItemCount:long (id: 3);
+}
+
+table ListOptions {
+  labelSelector:string (id: 0);
+  fieldSelector:string (id: 1);
+  watch:bool (id: 2);
+  allowWatchBookmarks:bool (id: 7);
+  resourceVersion:string (id: 3);
+  resourceVersionMatch:string (id: 8);
+  timeoutSeconds:long (id: 4);
+  limit:long (id: 5);
+  continue:string (id: 6);
+  sendInitialEvents:bool (id: 9);
+}
+
+table ManagedFieldsEntry {
+  manager:string (id: 0);
+  operation:string (id: 1);
+  apiVersion:string (id: 2);
+  time:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+  fieldsType:string (id: 4);
+  fieldsV1:apimachinery.pkg.apis.meta.v1.FieldsV1 (id: 5);
+  subresource:string (id: 6);
+}
+
+table MicroTime {
+  seconds:long (id: 0);
+  nanos:int (id: 1);
+}
+
+table ObjectMeta {
+  name:string (id: 0);
+  generateName:string (id: 1);
+  namespace:string (id: 2);
+  selfLink:string (id: 3);
+  uid:string (id: 4);
+  resourceVersion:string (id: 5);
+  generation:long (id: 6);
+  creationTimestamp:apimachinery.pkg.apis.meta.v1.Time (id: 7);
+  deletionTimestamp:apimachinery.pkg.apis.meta.v1.Time (id: 8);
+  deletionGracePeriodSeconds:long (id: 9);
+  labels:[apimachinery.pkg.apis.meta.v1.ObjectMeta_.LabelsEntry] (id: 10);
+  annotations:[apimachinery.pkg.apis.meta.v1.ObjectMeta_.AnnotationsEntry] (id: 11);
+  ownerReferences:[apimachinery.pkg.apis.meta.v1.OwnerReference] (id: 12);
+  finalizers:[string] (id: 13);
+  managedFields:[apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry] (id: 14);
+}
+
+namespace apimachinery.pkg.apis.meta.v1.ObjectMeta_;
+
+table LabelsEntry {
+  key:string (key);
+  value:string;
+}
+
+table AnnotationsEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace apimachinery.pkg.apis.meta.v1;
+
+table OwnerReference {
+  apiVersion:string (id: 3);
+  kind:string (id: 0);
+  name:string (id: 1);
+  uid:string (id: 2);
+  controller:bool (id: 4);
+  blockOwnerDeletion:bool (id: 5);
+}
+
+table PartialObjectMetadata {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+}
+
+table PartialObjectMetadataList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[apimachinery.pkg.apis.meta.v1.PartialObjectMetadata] (id: 1);
+}
+
+table Patch {
+}
+
+table PatchOptions {
+  dryRun:[string] (id: 0);
+  force:bool (id: 1);
+  fieldManager:string (id: 2);
+  fieldValidation:string (id: 3);
+}
+
+table Preconditions {
+  uid:string (id: 0);
+  resourceVersion:string (id: 1);
+}
+
+table RootPaths {
+  paths:[string] (id: 0);
+}
+
+table ServerAddressByClientCIDR {
+  clientCIDR:string (id: 0);
+  serverAddress:string (id: 1);
+}
+
+table Status {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  status:string (id: 1);
+  message:string (id: 2);
+  reason:string (id: 3);
+  details:apimachinery.pkg.apis.meta.v1.StatusDetails (id: 4);
+  code:int (id: 5);
+}
+
+table StatusCause {
+  reason:string (id: 0);
+  message:string (id: 1);
+  field:string (id: 2);
+}
+
+table StatusDetails {
+  name:string (id: 0);
+  group:string (id: 1);
+  kind:string (id: 2);
+  uid:string (id: 5);
+  causes:[apimachinery.pkg.apis.meta.v1.StatusCause] (id: 3);
+  retryAfterSeconds:int (id: 4);
+}
+
+table TableOptions {
+  includeObject:string (id: 0);
+}
+
+table Time {
+  seconds:long (id: 0);
+  nanos:int (id: 1);
+}
+
+table Timestamp {
+  seconds:long (id: 0);
+  nanos:int (id: 1);
+}
+
+table TypeMeta {
+  kind:string (id: 0);
+  apiVersion:string (id: 1);
+}
+
+table UpdateOptions {
+  dryRun:[string] (id: 0);
+  fieldManager:string (id: 1);
+  fieldValidation:string (id: 2);
+}
+
+table Verbs {
+  items:[string] (id: 0);
+}
+
+table WatchEvent {
+  type:string (id: 0);
+  object:apimachinery.pkg.runtime.RawExtension (id: 1);
+}
+
+namespace api.apidiscovery.v2;
+
+table APIGroupDiscovery {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  versions:[api.apidiscovery.v2.APIVersionDiscovery] (id: 1);
+}
+
+table APIGroupDiscoveryList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.apidiscovery.v2.APIGroupDiscovery] (id: 1);
+}
+
+table APIResourceDiscovery {
+  resource:string (id: 0);
+  responseKind:apimachinery.pkg.apis.meta.v1.GroupVersionKind (id: 1);
+  scope:string (id: 2);
+  singularResource:string (id: 3);
+  verbs:[string] (id: 4);
+  shortNames:[string] (id: 5);
+  categories:[string] (id: 6);
+  subresources:[api.apidiscovery.v2.APISubresourceDiscovery] (id: 7);
+}
+
+table APISubresourceDiscovery {
+  subresource:string (id: 0);
+  responseKind:apimachinery.pkg.apis.meta.v1.GroupVersionKind (id: 1);
+  acceptedTypes:[apimachinery.pkg.apis.meta.v1.GroupVersionKind] (id: 2);
+  verbs:[string] (id: 3);
+}
+
+table APIVersionDiscovery {
+  version:string (id: 0);
+  resources:[api.apidiscovery.v2.APIResourceDiscovery] (id: 1);
+  freshness:string (id: 2);
+}
+
