@@ -1,0 +1,2217 @@
+// Generated from generated.proto
+
+namespace apimachinery.pkg.api.resource;
+
+table Quantity {
+  string:string (id: 0);
+}
+
+table QuantityValue {
+  string:string (id: 0);
+}
+
+namespace apimachinery.pkg.runtime;
+
+table RawExtension {
+  raw:[ubyte] (id: 0);
+}
+
+table TypeMeta {
+  apiVersion:string (id: 0);
+  kind:string (id: 1);
+}
+
+table Unknown {
+  typeMeta:apimachinery.pkg.runtime.TypeMeta (id: 0);
+  raw:[ubyte] (id: 1);
+  contentEncoding:string (id: 2);
+  contentType:string (id: 3);
+}
+
+namespace apimachinery.pkg.apis.meta.v1;
+
+table APIGroup {
+  name:string (id: 0);
+  versions:[apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery] (id: 1);
+  preferredVersion:apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery (id: 2);
+  serverAddressByClientCIDRs:[apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR] (id: 3);
+}
+
+table APIGroupList {
+  groups:[apimachinery.pkg.apis.meta.v1.APIGroup] (id: 0);
+}
+
+table APIResource {
+  name:string (id: 0);
+  singularName:string (id: 5);
+  namespaced:bool (id: 1);
+  group:string (id: 7);
+  version:string (id: 8);
+  kind:string (id: 2);
+  verbs:apimachinery.pkg.apis.meta.v1.Verbs (id: 3);
+  shortNames:[string] (id: 4);
+  categories:[string] (id: 6);
+  storageVersionHash:string (id: 9);
+}
+
+table APIResourceList {
+  groupVersion:string (id: 0);
+  resources:[apimachinery.pkg.apis.meta.v1.APIResource] (id: 1);
+}
+
+table APIVersions {
+  versions:[string] (id: 0);
+  serverAddressByClientCIDRs:[apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR] (id: 1);
+}
+
+table ApplyOptions {
+  dryRun:[string] (id: 0);
+  force:bool (id: 1);
+  fieldManager:string (id: 2);
+}
+
+table Condition {
+  type:string (id: 0);
+  status:string (id: 1);
+  observedGeneration:long (id: 2);
+  lastTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+  reason:string (id: 4);
+  message:string (id: 5);
+}
+
+table CreateOptions {
+  dryRun:[string] (id: 0);
+  fieldManager:string (id: 1);
+  fieldValidation:string (id: 2);
+}
+
+table DeleteOptions {
+  gracePeriodSeconds:long (id: 0);
+  preconditions:apimachinery.pkg.apis.meta.v1.Preconditions (id: 1);
+  orphanDependents:bool (id: 2);
+  propagationPolicy:string (id: 3);
+  dryRun:[string] (id: 4);
+}
+
+table Duration {
+  duration:long (id: 0);
+}
+
+table FieldsV1 {
+  Raw:[ubyte] (id: 0);
+}
+
+table GetOptions {
+  resourceVersion:string (id: 0);
+}
+
+table GroupKind {
+  group:string (id: 0);
+  kind:string (id: 1);
+}
+
+table GroupResource {
+  group:string (id: 0);
+  resource:string (id: 1);
+}
+
+table GroupVersion {
+  group:string (id: 0);
+  version:string (id: 1);
+}
+
+table GroupVersionForDiscovery {
+  groupVersion:string (id: 0);
+  version:string (id: 1);
+}
+
+table GroupVersionKind {
+  group:string (id: 0);
+  version:string (id: 1);
+  kind:string (id: 2);
+}
+
+table GroupVersionResource {
+  group:string (id: 0);
+  version:string (id: 1);
+  resource:string (id: 2);
+}
+
+table LabelSelector {
+  matchLabels:[apimachinery.pkg.apis.meta.v1.LabelSelector_.MatchLabelsEntry] (id: 0);
+  matchExpressions:[apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement] (id: 1);
+}
+
+namespace apimachinery.pkg.apis.meta.v1.LabelSelector_;
+
+table MatchLabelsEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace apimachinery.pkg.apis.meta.v1;
+
+table LabelSelectorRequirement {
+  key:string (id: 0);
+  operator:string (id: 1);
+  values:[string] (id: 2);
+}
+
+table List {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[apimachinery.pkg.runtime.RawExtension] (id: 1);
+}
+
+table ListMeta {
+  selfLink:string (id: 0);
+  resourceVersion:string (id: 1);
+  continue:string (id: 2);
+  remainingItemCount:long (id: 3);
+}
+
+table ListOptions {
+  labelSelector:string (id: 0);
+  fieldSelector:string (id: 1);
+  watch:bool (id: 2);
+  allowWatchBookmarks:bool (id: 7);
+  resourceVersion:string (id: 3);
+  resourceVersionMatch:string (id: 8);
+  timeoutSeconds:long (id: 4);
+  limit:long (id: 5);
+  continue:string (id: 6);
+  sendInitialEvents:bool (id: 9);
+}
+
+table ManagedFieldsEntry {
+  manager:string (id: 0);
+  operation:string (id: 1);
+  apiVersion:string (id: 2);
+  time:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+  fieldsType:string (id: 4);
+  fieldsV1:apimachinery.pkg.apis.meta.v1.FieldsV1 (id: 5);
+  subresource:string (id: 6);
+}
+
+table MicroTime {
+  seconds:long (id: 0);
+  nanos:int (id: 1);
+}
+
+table ObjectMeta {
+  name:string (id: 0);
+  generateName:string (id: 1);
+  namespace:string (id: 2);
+  selfLink:string (id: 3);
+  uid:string (id: 4);
+  resourceVersion:string (id: 5);
+  generation:long (id: 6);
+  creationTimestamp:apimachinery.pkg.apis.meta.v1.Time (id: 7);
+  deletionTimestamp:apimachinery.pkg.apis.meta.v1.Time (id: 8);
+  deletionGracePeriodSeconds:long (id: 9);
+  labels:[apimachinery.pkg.apis.meta.v1.ObjectMeta_.LabelsEntry] (id: 10);
+  annotations:[apimachinery.pkg.apis.meta.v1.ObjectMeta_.AnnotationsEntry] (id: 11);
+  ownerReferences:[apimachinery.pkg.apis.meta.v1.OwnerReference] (id: 12);
+  finalizers:[string] (id: 13);
+  managedFields:[apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry] (id: 14);
+}
+
+namespace apimachinery.pkg.apis.meta.v1.ObjectMeta_;
+
+table LabelsEntry {
+  key:string (key);
+  value:string;
+}
+
+table AnnotationsEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace apimachinery.pkg.apis.meta.v1;
+
+table OwnerReference {
+  apiVersion:string (id: 3);
+  kind:string (id: 0);
+  name:string (id: 1);
+  uid:string (id: 2);
+  controller:bool (id: 4);
+  blockOwnerDeletion:bool (id: 5);
+}
+
+table PartialObjectMetadata {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+}
+
+table PartialObjectMetadataList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[apimachinery.pkg.apis.meta.v1.PartialObjectMetadata] (id: 1);
+}
+
+table Patch {
+}
+
+table PatchOptions {
+  dryRun:[string] (id: 0);
+  force:bool (id: 1);
+  fieldManager:string (id: 2);
+  fieldValidation:string (id: 3);
+}
+
+table Preconditions {
+  uid:string (id: 0);
+  resourceVersion:string (id: 1);
+}
+
+table RootPaths {
+  paths:[string] (id: 0);
+}
+
+table ServerAddressByClientCIDR {
+  clientCIDR:string (id: 0);
+  serverAddress:string (id: 1);
+}
+
+table Status {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  status:string (id: 1);
+  message:string (id: 2);
+  reason:string (id: 3);
+  details:apimachinery.pkg.apis.meta.v1.StatusDetails (id: 4);
+  code:int (id: 5);
+}
+
+table StatusCause {
+  reason:string (id: 0);
+  message:string (id: 1);
+  field:string (id: 2);
+}
+
+table StatusDetails {
+  name:string (id: 0);
+  group:string (id: 1);
+  kind:string (id: 2);
+  uid:string (id: 5);
+  causes:[apimachinery.pkg.apis.meta.v1.StatusCause] (id: 3);
+  retryAfterSeconds:int (id: 4);
+}
+
+table TableOptions {
+  includeObject:string (id: 0);
+}
+
+table Time {
+  seconds:long (id: 0);
+  nanos:int (id: 1);
+}
+
+table Timestamp {
+  seconds:long (id: 0);
+  nanos:int (id: 1);
+}
+
+table TypeMeta {
+  kind:string (id: 0);
+  apiVersion:string (id: 1);
+}
+
+table UpdateOptions {
+  dryRun:[string] (id: 0);
+  fieldManager:string (id: 1);
+  fieldValidation:string (id: 2);
+}
+
+table Verbs {
+  items:[string] (id: 0);
+}
+
+table WatchEvent {
+  type:string (id: 0);
+  object:apimachinery.pkg.runtime.RawExtension (id: 1);
+}
+
+namespace apimachinery.pkg.util.intstr;
+
+table IntOrString {
+  type:long (id: 0);
+  intVal:int (id: 1);
+  strVal:string (id: 2);
+}
+
+namespace api.core.v1;
+
+table AWSElasticBlockStoreVolumeSource {
+  volumeID:string (id: 0);
+  fsType:string (id: 1);
+  partition:int (id: 2);
+  readOnly:bool (id: 3);
+}
+
+table Affinity {
+  nodeAffinity:api.core.v1.NodeAffinity (id: 0);
+  podAffinity:api.core.v1.PodAffinity (id: 1);
+  podAntiAffinity:api.core.v1.PodAntiAffinity (id: 2);
+}
+
+table AppArmorProfile {
+  type:string (id: 0);
+  localhostProfile:string (id: 1);
+}
+
+table AttachedVolume {
+  name:string (id: 0);
+  devicePath:string (id: 1);
+}
+
+table AvoidPods {
+  preferAvoidPods:[api.core.v1.PreferAvoidPodsEntry] (id: 0);
+}
+
+table AzureDiskVolumeSource {
+  diskName:string (id: 0);
+  diskURI:string (id: 1);
+  cachingMode:string (id: 2);
+  fsType:string (id: 3);
+  readOnly:bool (id: 4);
+  kind:string (id: 5);
+}
+
+table AzureFilePersistentVolumeSource {
+  secretName:string (id: 0);
+  shareName:string (id: 1);
+  readOnly:bool (id: 2);
+  secretNamespace:string (id: 3);
+}
+
+table AzureFileVolumeSource {
+  secretName:string (id: 0);
+  shareName:string (id: 1);
+  readOnly:bool (id: 2);
+}
+
+table Binding {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  target:api.core.v1.ObjectReference (id: 1);
+}
+
+table CSIPersistentVolumeSource {
+  driver:string (id: 0);
+  volumeHandle:string (id: 1);
+  readOnly:bool (id: 2);
+  fsType:string (id: 3);
+  volumeAttributes:[api.core.v1.CSIPersistentVolumeSource_.VolumeAttributesEntry] (id: 4);
+  controllerPublishSecretRef:api.core.v1.SecretReference (id: 5);
+  nodeStageSecretRef:api.core.v1.SecretReference (id: 6);
+  nodePublishSecretRef:api.core.v1.SecretReference (id: 7);
+  controllerExpandSecretRef:api.core.v1.SecretReference (id: 8);
+  nodeExpandSecretRef:api.core.v1.SecretReference (id: 9);
+}
+
+namespace api.core.v1.CSIPersistentVolumeSource_;
+
+table VolumeAttributesEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table CSIVolumeSource {
+  driver:string (id: 0);
+  readOnly:bool (id: 1);
+  fsType:string (id: 2);
+  volumeAttributes:[api.core.v1.CSIVolumeSource_.VolumeAttributesEntry] (id: 3);
+  nodePublishSecretRef:api.core.v1.LocalObjectReference (id: 4);
+}
+
+namespace api.core.v1.CSIVolumeSource_;
+
+table VolumeAttributesEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table Capabilities {
+  add:[string] (id: 0);
+  drop:[string] (id: 1);
+}
+
+table CephFSPersistentVolumeSource {
+  monitors:[string] (id: 0);
+  path:string (id: 1);
+  user:string (id: 2);
+  secretFile:string (id: 3);
+  secretRef:api.core.v1.SecretReference (id: 4);
+  readOnly:bool (id: 5);
+}
+
+table CephFSVolumeSource {
+  monitors:[string] (id: 0);
+  path:string (id: 1);
+  user:string (id: 2);
+  secretFile:string (id: 3);
+  secretRef:api.core.v1.LocalObjectReference (id: 4);
+  readOnly:bool (id: 5);
+}
+
+table CinderPersistentVolumeSource {
+  volumeID:string (id: 0);
+  fsType:string (id: 1);
+  readOnly:bool (id: 2);
+  secretRef:api.core.v1.SecretReference (id: 3);
+}
+
+table CinderVolumeSource {
+  volumeID:string (id: 0);
+  fsType:string (id: 1);
+  readOnly:bool (id: 2);
+  secretRef:api.core.v1.LocalObjectReference (id: 3);
+}
+
+table ClaimSource {
+  resourceClaimName:string (id: 0);
+  resourceClaimTemplateName:string (id: 1);
+}
+
+table ClientIPConfig {
+  timeoutSeconds:int (id: 0);
+}
+
+table ClusterTrustBundleProjection {
+  name:string (id: 0);
+  signerName:string (id: 1);
+  labelSelector:apimachinery.pkg.apis.meta.v1.LabelSelector (id: 2);
+  optional:bool (id: 4);
+  path:string (id: 3);
+}
+
+table ComponentCondition {
+  type:string (id: 0);
+  status:string (id: 1);
+  message:string (id: 2);
+  error:string (id: 3);
+}
+
+table ComponentStatus {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  conditions:[api.core.v1.ComponentCondition] (id: 1);
+}
+
+table ComponentStatusList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.ComponentStatus] (id: 1);
+}
+
+table ConfigMap {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  immutable:bool (id: 3);
+  data:[api.core.v1.ConfigMap_.DataEntry] (id: 1);
+  binaryData:[api.core.v1.ConfigMap_.BinaryDataEntry] (id: 2);
+}
+
+namespace api.core.v1.ConfigMap_;
+
+table DataEntry {
+  key:string (key);
+  value:string;
+}
+
+table BinaryDataEntry {
+  key:string (key);
+  value:[ubyte];
+}
+
+namespace api.core.v1;
+
+table ConfigMapEnvSource {
+  localObjectReference:api.core.v1.LocalObjectReference (id: 0);
+  optional:bool (id: 1);
+}
+
+table ConfigMapKeySelector {
+  localObjectReference:api.core.v1.LocalObjectReference (id: 0);
+  key:string (id: 1);
+  optional:bool (id: 2);
+}
+
+table ConfigMapList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.ConfigMap] (id: 1);
+}
+
+table ConfigMapNodeConfigSource {
+  namespace:string (id: 0);
+  name:string (id: 1);
+  uid:string (id: 2);
+  resourceVersion:string (id: 3);
+  kubeletConfigKey:string (id: 4);
+}
+
+table ConfigMapProjection {
+  localObjectReference:api.core.v1.LocalObjectReference (id: 0);
+  items:[api.core.v1.KeyToPath] (id: 1);
+  optional:bool (id: 2);
+}
+
+table ConfigMapVolumeSource {
+  localObjectReference:api.core.v1.LocalObjectReference (id: 0);
+  items:[api.core.v1.KeyToPath] (id: 1);
+  defaultMode:int (id: 2);
+  optional:bool (id: 3);
+}
+
+table Container {
+  name:string (id: 0);
+  image:string (id: 1);
+  command:[string] (id: 2);
+  args:[string] (id: 3);
+  workingDir:string (id: 4);
+  ports:[api.core.v1.ContainerPort] (id: 5);
+  envFrom:[api.core.v1.EnvFromSource] (id: 18);
+  env:[api.core.v1.EnvVar] (id: 6);
+  resources:api.core.v1.ResourceRequirements (id: 7);
+  resizePolicy:[api.core.v1.ContainerResizePolicy] (id: 22);
+  restartPolicy:string (id: 23);
+  volumeMounts:[api.core.v1.VolumeMount] (id: 8);
+  volumeDevices:[api.core.v1.VolumeDevice] (id: 20);
+  livenessProbe:api.core.v1.Probe (id: 9);
+  readinessProbe:api.core.v1.Probe (id: 10);
+  startupProbe:api.core.v1.Probe (id: 21);
+  lifecycle:api.core.v1.Lifecycle (id: 11);
+  terminationMessagePath:string (id: 12);
+  terminationMessagePolicy:string (id: 19);
+  imagePullPolicy:string (id: 13);
+  securityContext:api.core.v1.SecurityContext (id: 14);
+  stdin:bool (id: 15);
+  stdinOnce:bool (id: 16);
+  tty:bool (id: 17);
+}
+
+table ContainerImage {
+  names:[string] (id: 0);
+  sizeBytes:long (id: 1);
+}
+
+table ContainerPort {
+  name:string (id: 0);
+  hostPort:int (id: 1);
+  containerPort:int (id: 2);
+  protocol:string (id: 3);
+  hostIP:string (id: 4);
+}
+
+table ContainerResizePolicy {
+  resourceName:string (id: 0);
+  restartPolicy:string (id: 1);
+}
+
+table ContainerState {
+  waiting:api.core.v1.ContainerStateWaiting (id: 0);
+  running:api.core.v1.ContainerStateRunning (id: 1);
+  terminated:api.core.v1.ContainerStateTerminated (id: 2);
+}
+
+table ContainerStateRunning {
+  startedAt:apimachinery.pkg.apis.meta.v1.Time (id: 0);
+}
+
+table ContainerStateTerminated {
+  exitCode:int (id: 0);
+  signal:int (id: 1);
+  reason:string (id: 2);
+  message:string (id: 3);
+  startedAt:apimachinery.pkg.apis.meta.v1.Time (id: 4);
+  finishedAt:apimachinery.pkg.apis.meta.v1.Time (id: 5);
+  containerID:string (id: 6);
+}
+
+table ContainerStateWaiting {
+  reason:string (id: 0);
+  message:string (id: 1);
+}
+
+table ContainerStatus {
+  name:string (id: 0);
+  state:api.core.v1.ContainerState (id: 1);
+  lastState:api.core.v1.ContainerState (id: 2);
+  ready:bool (id: 3);
+  restartCount:int (id: 4);
+  image:string (id: 5);
+  imageID:string (id: 6);
+  containerID:string (id: 7);
+  started:bool (id: 8);
+  allocatedResources:[api.core.v1.ContainerStatus_.AllocatedResourcesEntry] (id: 9);
+  resources:api.core.v1.ResourceRequirements (id: 10);
+  volumeMounts:[api.core.v1.VolumeMountStatus] (id: 11);
+}
+
+namespace api.core.v1.ContainerStatus_;
+
+table AllocatedResourcesEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table DaemonEndpoint {
+  Port:int (id: 0);
+}
+
+table DownwardAPIProjection {
+  items:[api.core.v1.DownwardAPIVolumeFile] (id: 0);
+}
+
+table DownwardAPIVolumeFile {
+  path:string (id: 0);
+  fieldRef:api.core.v1.ObjectFieldSelector (id: 1);
+  resourceFieldRef:api.core.v1.ResourceFieldSelector (id: 2);
+  mode:int (id: 3);
+}
+
+table DownwardAPIVolumeSource {
+  items:[api.core.v1.DownwardAPIVolumeFile] (id: 0);
+  defaultMode:int (id: 1);
+}
+
+table EmptyDirVolumeSource {
+  medium:string (id: 0);
+  sizeLimit:apimachinery.pkg.api.resource.Quantity (id: 1);
+}
+
+table EndpointAddress {
+  ip:string (id: 0);
+  hostname:string (id: 2);
+  nodeName:string (id: 3);
+  targetRef:api.core.v1.ObjectReference (id: 1);
+}
+
+table EndpointPort {
+  name:string (id: 0);
+  port:int (id: 1);
+  protocol:string (id: 2);
+  appProtocol:string (id: 3);
+}
+
+table EndpointSubset {
+  addresses:[api.core.v1.EndpointAddress] (id: 0);
+  notReadyAddresses:[api.core.v1.EndpointAddress] (id: 1);
+  ports:[api.core.v1.EndpointPort] (id: 2);
+}
+
+table Endpoints {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  subsets:[api.core.v1.EndpointSubset] (id: 1);
+}
+
+table EndpointsList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.Endpoints] (id: 1);
+}
+
+table EnvFromSource {
+  prefix:string (id: 0);
+  configMapRef:api.core.v1.ConfigMapEnvSource (id: 1);
+  secretRef:api.core.v1.SecretEnvSource (id: 2);
+}
+
+table EnvVar {
+  name:string (id: 0);
+  value:string (id: 1);
+  valueFrom:api.core.v1.EnvVarSource (id: 2);
+}
+
+table EnvVarSource {
+  fieldRef:api.core.v1.ObjectFieldSelector (id: 0);
+  resourceFieldRef:api.core.v1.ResourceFieldSelector (id: 1);
+  configMapKeyRef:api.core.v1.ConfigMapKeySelector (id: 2);
+  secretKeyRef:api.core.v1.SecretKeySelector (id: 3);
+}
+
+table EphemeralContainer {
+  ephemeralContainerCommon:api.core.v1.EphemeralContainerCommon (id: 0);
+  targetContainerName:string (id: 1);
+}
+
+table EphemeralContainerCommon {
+  name:string (id: 0);
+  image:string (id: 1);
+  command:[string] (id: 2);
+  args:[string] (id: 3);
+  workingDir:string (id: 4);
+  ports:[api.core.v1.ContainerPort] (id: 5);
+  envFrom:[api.core.v1.EnvFromSource] (id: 18);
+  env:[api.core.v1.EnvVar] (id: 6);
+  resources:api.core.v1.ResourceRequirements (id: 7);
+  resizePolicy:[api.core.v1.ContainerResizePolicy] (id: 22);
+  restartPolicy:string (id: 23);
+  volumeMounts:[api.core.v1.VolumeMount] (id: 8);
+  volumeDevices:[api.core.v1.VolumeDevice] (id: 20);
+  livenessProbe:api.core.v1.Probe (id: 9);
+  readinessProbe:api.core.v1.Probe (id: 10);
+  startupProbe:api.core.v1.Probe (id: 21);
+  lifecycle:api.core.v1.Lifecycle (id: 11);
+  terminationMessagePath:string (id: 12);
+  terminationMessagePolicy:string (id: 19);
+  imagePullPolicy:string (id: 13);
+  securityContext:api.core.v1.SecurityContext (id: 14);
+  stdin:bool (id: 15);
+  stdinOnce:bool (id: 16);
+  tty:bool (id: 17);
+}
+
+table EphemeralVolumeSource {
+  volumeClaimTemplate:api.core.v1.PersistentVolumeClaimTemplate (id: 0);
+}
+
+table Event {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  involvedObject:api.core.v1.ObjectReference (id: 1);
+  reason:string (id: 2);
+  message:string (id: 3);
+  source:api.core.v1.EventSource (id: 4);
+  firstTimestamp:apimachinery.pkg.apis.meta.v1.Time (id: 5);
+  lastTimestamp:apimachinery.pkg.apis.meta.v1.Time (id: 6);
+  count:int (id: 7);
+  type:string (id: 8);
+  eventTime:apimachinery.pkg.apis.meta.v1.MicroTime (id: 9);
+  series:api.core.v1.EventSeries (id: 10);
+  action:string (id: 11);
+  related:api.core.v1.ObjectReference (id: 12);
+  reportingComponent:string (id: 13);
+  reportingInstance:string (id: 14);
+}
+
+table EventList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.Event] (id: 1);
+}
+
+table EventSeries {
+  count:int (id: 0);
+  lastObservedTime:apimachinery.pkg.apis.meta.v1.MicroTime (id: 1);
+}
+
+table EventSource {
+  component:string (id: 0);
+  host:string (id: 1);
+}
+
+table ExecAction {
+  command:[string] (id: 0);
+}
+
+table FCVolumeSource {
+  targetWWNs:[string] (id: 0);
+  lun:int (id: 1);
+  fsType:string (id: 2);
+  readOnly:bool (id: 3);
+  wwids:[string] (id: 4);
+}
+
+table FlexPersistentVolumeSource {
+  driver:string (id: 0);
+  fsType:string (id: 1);
+  secretRef:api.core.v1.SecretReference (id: 2);
+  readOnly:bool (id: 3);
+  options:[api.core.v1.FlexPersistentVolumeSource_.OptionsEntry] (id: 4);
+}
+
+namespace api.core.v1.FlexPersistentVolumeSource_;
+
+table OptionsEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table FlexVolumeSource {
+  driver:string (id: 0);
+  fsType:string (id: 1);
+  secretRef:api.core.v1.LocalObjectReference (id: 2);
+  readOnly:bool (id: 3);
+  options:[api.core.v1.FlexVolumeSource_.OptionsEntry] (id: 4);
+}
+
+namespace api.core.v1.FlexVolumeSource_;
+
+table OptionsEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table FlockerVolumeSource {
+  datasetName:string (id: 0);
+  datasetUUID:string (id: 1);
+}
+
+table GCEPersistentDiskVolumeSource {
+  pdName:string (id: 0);
+  fsType:string (id: 1);
+  partition:int (id: 2);
+  readOnly:bool (id: 3);
+}
+
+table GRPCAction {
+  port:int (id: 0);
+  service:string (id: 1);
+}
+
+table GitRepoVolumeSource {
+  repository:string (id: 0);
+  revision:string (id: 1);
+  directory:string (id: 2);
+}
+
+table GlusterfsPersistentVolumeSource {
+  endpoints:string (id: 0);
+  path:string (id: 1);
+  readOnly:bool (id: 2);
+  endpointsNamespace:string (id: 3);
+}
+
+table GlusterfsVolumeSource {
+  endpoints:string (id: 0);
+  path:string (id: 1);
+  readOnly:bool (id: 2);
+}
+
+table HTTPGetAction {
+  path:string (id: 0);
+  port:apimachinery.pkg.util.intstr.IntOrString (id: 1);
+  host:string (id: 2);
+  scheme:string (id: 3);
+  httpHeaders:[api.core.v1.HTTPHeader] (id: 4);
+}
+
+table HTTPHeader {
+  name:string (id: 0);
+  value:string (id: 1);
+}
+
+table HostAlias {
+  ip:string (id: 0);
+  hostnames:[string] (id: 1);
+}
+
+table HostIP {
+  ip:string (id: 0);
+}
+
+table HostPathVolumeSource {
+  path:string (id: 0);
+  type:string (id: 1);
+}
+
+table ISCSIPersistentVolumeSource {
+  targetPortal:string (id: 0);
+  iqn:string (id: 1);
+  lun:int (id: 2);
+  iscsiInterface:string (id: 3);
+  fsType:string (id: 4);
+  readOnly:bool (id: 5);
+  portals:[string] (id: 6);
+  chapAuthDiscovery:bool (id: 7);
+  chapAuthSession:bool (id: 9);
+  secretRef:api.core.v1.SecretReference (id: 8);
+  initiatorName:string (id: 10);
+}
+
+table ISCSIVolumeSource {
+  targetPortal:string (id: 0);
+  iqn:string (id: 1);
+  lun:int (id: 2);
+  iscsiInterface:string (id: 3);
+  fsType:string (id: 4);
+  readOnly:bool (id: 5);
+  portals:[string] (id: 6);
+  chapAuthDiscovery:bool (id: 7);
+  chapAuthSession:bool (id: 9);
+  secretRef:api.core.v1.LocalObjectReference (id: 8);
+  initiatorName:string (id: 10);
+}
+
+table KeyToPath {
+  key:string (id: 0);
+  path:string (id: 1);
+  mode:int (id: 2);
+}
+
+table Lifecycle {
+  postStart:api.core.v1.LifecycleHandler (id: 0);
+  preStop:api.core.v1.LifecycleHandler (id: 1);
+}
+
+table LifecycleHandler {
+  exec:api.core.v1.ExecAction (id: 0);
+  httpGet:api.core.v1.HTTPGetAction (id: 1);
+  tcpSocket:api.core.v1.TCPSocketAction (id: 2);
+  sleep:api.core.v1.SleepAction (id: 3);
+}
+
+table LimitRange {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.LimitRangeSpec (id: 1);
+}
+
+table LimitRangeItem {
+  type:string (id: 0);
+  max:[api.core.v1.LimitRangeItem_.MaxEntry] (id: 1);
+  min:[api.core.v1.LimitRangeItem_.MinEntry] (id: 2);
+  default:[api.core.v1.LimitRangeItem_.DefaultEntry] (id: 3);
+  defaultRequest:[api.core.v1.LimitRangeItem_.DefaultRequestEntry] (id: 4);
+  maxLimitRequestRatio:[api.core.v1.LimitRangeItem_.MaxLimitRequestRatioEntry] (id: 5);
+}
+
+namespace api.core.v1.LimitRangeItem_;
+
+table MaxEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table MinEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table DefaultEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table DefaultRequestEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table MaxLimitRequestRatioEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table LimitRangeList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.LimitRange] (id: 1);
+}
+
+table LimitRangeSpec {
+  limits:[api.core.v1.LimitRangeItem] (id: 0);
+}
+
+table List {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[apimachinery.pkg.runtime.RawExtension] (id: 1);
+}
+
+table LoadBalancerIngress {
+  ip:string (id: 0);
+  hostname:string (id: 1);
+  ipMode:string (id: 2);
+  ports:[api.core.v1.PortStatus] (id: 3);
+}
+
+table LoadBalancerStatus {
+  ingress:[api.core.v1.LoadBalancerIngress] (id: 0);
+}
+
+table LocalObjectReference {
+  name:string (id: 0);
+}
+
+table LocalVolumeSource {
+  path:string (id: 0);
+  fsType:string (id: 1);
+}
+
+table ModifyVolumeStatus {
+  targetVolumeAttributesClassName:string (id: 0);
+  status:string (id: 1);
+}
+
+table NFSVolumeSource {
+  server:string (id: 0);
+  path:string (id: 1);
+  readOnly:bool (id: 2);
+}
+
+table Namespace {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.NamespaceSpec (id: 1);
+  status:api.core.v1.NamespaceStatus (id: 2);
+}
+
+table NamespaceCondition {
+  type:string (id: 0);
+  status:string (id: 1);
+  lastTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 2);
+  reason:string (id: 3);
+  message:string (id: 4);
+}
+
+table NamespaceList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.Namespace] (id: 1);
+}
+
+table NamespaceSpec {
+  finalizers:[string] (id: 0);
+}
+
+table NamespaceStatus {
+  phase:string (id: 0);
+  conditions:[api.core.v1.NamespaceCondition] (id: 1);
+}
+
+table Node {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.NodeSpec (id: 1);
+  status:api.core.v1.NodeStatus (id: 2);
+}
+
+table NodeAddress {
+  type:string (id: 0);
+  address:string (id: 1);
+}
+
+table NodeAffinity {
+  requiredDuringSchedulingIgnoredDuringExecution:api.core.v1.NodeSelector (id: 0);
+  preferredDuringSchedulingIgnoredDuringExecution:[api.core.v1.PreferredSchedulingTerm] (id: 1);
+}
+
+table NodeCondition {
+  type:string (id: 0);
+  status:string (id: 1);
+  lastHeartbeatTime:apimachinery.pkg.apis.meta.v1.Time (id: 2);
+  lastTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+  reason:string (id: 4);
+  message:string (id: 5);
+}
+
+table NodeConfigSource {
+  configMap:api.core.v1.ConfigMapNodeConfigSource (id: 0);
+}
+
+table NodeConfigStatus {
+  assigned:api.core.v1.NodeConfigSource (id: 0);
+  active:api.core.v1.NodeConfigSource (id: 1);
+  lastKnownGood:api.core.v1.NodeConfigSource (id: 2);
+  error:string (id: 3);
+}
+
+table NodeDaemonEndpoints {
+  kubeletEndpoint:api.core.v1.DaemonEndpoint (id: 0);
+}
+
+table NodeList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.Node] (id: 1);
+}
+
+table NodeProxyOptions {
+  path:string (id: 0);
+}
+
+table NodeRuntimeHandler {
+  name:string (id: 0);
+  features:api.core.v1.NodeRuntimeHandlerFeatures (id: 1);
+}
+
+table NodeRuntimeHandlerFeatures {
+  recursiveReadOnlyMounts:bool (id: 0);
+}
+
+table NodeSelector {
+  nodeSelectorTerms:[api.core.v1.NodeSelectorTerm] (id: 0);
+}
+
+table NodeSelectorRequirement {
+  key:string (id: 0);
+  operator:string (id: 1);
+  values:[string] (id: 2);
+}
+
+table NodeSelectorTerm {
+  matchExpressions:[api.core.v1.NodeSelectorRequirement] (id: 0);
+  matchFields:[api.core.v1.NodeSelectorRequirement] (id: 1);
+}
+
+table NodeSpec {
+  podCIDR:string (id: 0);
+  podCIDRs:[string] (id: 6);
+  providerID:string (id: 2);
+  unschedulable:bool (id: 3);
+  taints:[api.core.v1.Taint] (id: 4);
+  configSource:api.core.v1.NodeConfigSource (id: 5);
+  externalID:string (id: 1);
+}
+
+table NodeStatus {
+  capacity:[api.core.v1.NodeStatus_.CapacityEntry] (id: 0);
+  allocatable:[api.core.v1.NodeStatus_.AllocatableEntry] (id: 1);
+  phase:string (id: 2);
+  conditions:[api.core.v1.NodeCondition] (id: 3);
+  addresses:[api.core.v1.NodeAddress] (id: 4);
+  daemonEndpoints:api.core.v1.NodeDaemonEndpoints (id: 5);
+  nodeInfo:api.core.v1.NodeSystemInfo (id: 6);
+  images:[api.core.v1.ContainerImage] (id: 7);
+  volumesInUse:[string] (id: 8);
+  volumesAttached:[api.core.v1.AttachedVolume] (id: 9);
+  config:api.core.v1.NodeConfigStatus (id: 10);
+  runtimeHandlers:[api.core.v1.NodeRuntimeHandler] (id: 11);
+}
+
+namespace api.core.v1.NodeStatus_;
+
+table CapacityEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table AllocatableEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table NodeSystemInfo {
+  machineID:string (id: 0);
+  systemUUID:string (id: 1);
+  bootID:string (id: 2);
+  kernelVersion:string (id: 3);
+  osImage:string (id: 4);
+  containerRuntimeVersion:string (id: 5);
+  kubeletVersion:string (id: 6);
+  kubeProxyVersion:string (id: 7);
+  operatingSystem:string (id: 8);
+  architecture:string (id: 9);
+}
+
+table ObjectFieldSelector {
+  apiVersion:string (id: 0);
+  fieldPath:string (id: 1);
+}
+
+table ObjectReference {
+  kind:string (id: 0);
+  namespace:string (id: 1);
+  name:string (id: 2);
+  uid:string (id: 3);
+  apiVersion:string (id: 4);
+  resourceVersion:string (id: 5);
+  fieldPath:string (id: 6);
+}
+
+table PersistentVolume {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.PersistentVolumeSpec (id: 1);
+  status:api.core.v1.PersistentVolumeStatus (id: 2);
+}
+
+table PersistentVolumeClaim {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.PersistentVolumeClaimSpec (id: 1);
+  status:api.core.v1.PersistentVolumeClaimStatus (id: 2);
+}
+
+table PersistentVolumeClaimCondition {
+  type:string (id: 0);
+  status:string (id: 1);
+  lastProbeTime:apimachinery.pkg.apis.meta.v1.Time (id: 2);
+  lastTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+  reason:string (id: 4);
+  message:string (id: 5);
+}
+
+table PersistentVolumeClaimList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.PersistentVolumeClaim] (id: 1);
+}
+
+table PersistentVolumeClaimSpec {
+  accessModes:[string] (id: 0);
+  selector:apimachinery.pkg.apis.meta.v1.LabelSelector (id: 3);
+  resources:api.core.v1.VolumeResourceRequirements (id: 1);
+  volumeName:string (id: 2);
+  storageClassName:string (id: 4);
+  volumeMode:string (id: 5);
+  dataSource:api.core.v1.TypedLocalObjectReference (id: 6);
+  dataSourceRef:api.core.v1.TypedObjectReference (id: 7);
+  volumeAttributesClassName:string (id: 8);
+}
+
+table PersistentVolumeClaimStatus {
+  phase:string (id: 0);
+  accessModes:[string] (id: 1);
+  capacity:[api.core.v1.PersistentVolumeClaimStatus_.CapacityEntry] (id: 2);
+  conditions:[api.core.v1.PersistentVolumeClaimCondition] (id: 3);
+  allocatedResources:[api.core.v1.PersistentVolumeClaimStatus_.AllocatedResourcesEntry] (id: 4);
+  allocatedResourceStatuses:[api.core.v1.PersistentVolumeClaimStatus_.AllocatedResourceStatusesEntry] (id: 5);
+  currentVolumeAttributesClassName:string (id: 6);
+  modifyVolumeStatus:api.core.v1.ModifyVolumeStatus (id: 7);
+}
+
+namespace api.core.v1.PersistentVolumeClaimStatus_;
+
+table CapacityEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table AllocatedResourcesEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table AllocatedResourceStatusesEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table PersistentVolumeClaimTemplate {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.PersistentVolumeClaimSpec (id: 1);
+}
+
+table PersistentVolumeClaimVolumeSource {
+  claimName:string (id: 0);
+  readOnly:bool (id: 1);
+}
+
+table PersistentVolumeList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.PersistentVolume] (id: 1);
+}
+
+table PersistentVolumeSource {
+  gcePersistentDisk:api.core.v1.GCEPersistentDiskVolumeSource (id: 0);
+  awsElasticBlockStore:api.core.v1.AWSElasticBlockStoreVolumeSource (id: 1);
+  hostPath:api.core.v1.HostPathVolumeSource (id: 2);
+  glusterfs:api.core.v1.GlusterfsPersistentVolumeSource (id: 3);
+  nfs:api.core.v1.NFSVolumeSource (id: 4);
+  rbd:api.core.v1.RBDPersistentVolumeSource (id: 5);
+  iscsi:api.core.v1.ISCSIPersistentVolumeSource (id: 6);
+  cinder:api.core.v1.CinderPersistentVolumeSource (id: 7);
+  cephfs:api.core.v1.CephFSPersistentVolumeSource (id: 8);
+  fc:api.core.v1.FCVolumeSource (id: 9);
+  flocker:api.core.v1.FlockerVolumeSource (id: 10);
+  flexVolume:api.core.v1.FlexPersistentVolumeSource (id: 11);
+  azureFile:api.core.v1.AzureFilePersistentVolumeSource (id: 12);
+  vsphereVolume:api.core.v1.VsphereVirtualDiskVolumeSource (id: 13);
+  quobyte:api.core.v1.QuobyteVolumeSource (id: 14);
+  azureDisk:api.core.v1.AzureDiskVolumeSource (id: 15);
+  photonPersistentDisk:api.core.v1.PhotonPersistentDiskVolumeSource (id: 16);
+  portworxVolume:api.core.v1.PortworxVolumeSource (id: 17);
+  scaleIO:api.core.v1.ScaleIOPersistentVolumeSource (id: 18);
+  local:api.core.v1.LocalVolumeSource (id: 19);
+  storageos:api.core.v1.StorageOSPersistentVolumeSource (id: 20);
+  csi:api.core.v1.CSIPersistentVolumeSource (id: 21);
+}
+
+table PersistentVolumeSpec {
+  capacity:[api.core.v1.PersistentVolumeSpec_.CapacityEntry] (id: 0);
+  persistentVolumeSource:api.core.v1.PersistentVolumeSource (id: 1);
+  accessModes:[string] (id: 2);
+  claimRef:api.core.v1.ObjectReference (id: 3);
+  persistentVolumeReclaimPolicy:string (id: 4);
+  storageClassName:string (id: 5);
+  mountOptions:[string] (id: 6);
+  volumeMode:string (id: 7);
+  nodeAffinity:api.core.v1.VolumeNodeAffinity (id: 8);
+  volumeAttributesClassName:string (id: 9);
+}
+
+namespace api.core.v1.PersistentVolumeSpec_;
+
+table CapacityEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table PersistentVolumeStatus {
+  phase:string (id: 0);
+  message:string (id: 1);
+  reason:string (id: 2);
+  lastPhaseTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+}
+
+table PhotonPersistentDiskVolumeSource {
+  pdID:string (id: 0);
+  fsType:string (id: 1);
+}
+
+table Pod {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.PodSpec (id: 1);
+  status:api.core.v1.PodStatus (id: 2);
+}
+
+table PodAffinity {
+  requiredDuringSchedulingIgnoredDuringExecution:[api.core.v1.PodAffinityTerm] (id: 0);
+  preferredDuringSchedulingIgnoredDuringExecution:[api.core.v1.WeightedPodAffinityTerm] (id: 1);
+}
+
+table PodAffinityTerm {
+  labelSelector:apimachinery.pkg.apis.meta.v1.LabelSelector (id: 0);
+  namespaces:[string] (id: 1);
+  topologyKey:string (id: 2);
+  namespaceSelector:apimachinery.pkg.apis.meta.v1.LabelSelector (id: 3);
+  matchLabelKeys:[string] (id: 4);
+  mismatchLabelKeys:[string] (id: 5);
+}
+
+table PodAntiAffinity {
+  requiredDuringSchedulingIgnoredDuringExecution:[api.core.v1.PodAffinityTerm] (id: 0);
+  preferredDuringSchedulingIgnoredDuringExecution:[api.core.v1.WeightedPodAffinityTerm] (id: 1);
+}
+
+table PodAttachOptions {
+  stdin:bool (id: 0);
+  stdout:bool (id: 1);
+  stderr:bool (id: 2);
+  tty:bool (id: 3);
+  container:string (id: 4);
+}
+
+table PodCondition {
+  type:string (id: 0);
+  status:string (id: 1);
+  lastProbeTime:apimachinery.pkg.apis.meta.v1.Time (id: 2);
+  lastTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+  reason:string (id: 4);
+  message:string (id: 5);
+}
+
+table PodDNSConfig {
+  nameservers:[string] (id: 0);
+  searches:[string] (id: 1);
+  options:[api.core.v1.PodDNSConfigOption] (id: 2);
+}
+
+table PodDNSConfigOption {
+  name:string (id: 0);
+  value:string (id: 1);
+}
+
+table PodExecOptions {
+  stdin:bool (id: 0);
+  stdout:bool (id: 1);
+  stderr:bool (id: 2);
+  tty:bool (id: 3);
+  container:string (id: 4);
+  command:[string] (id: 5);
+}
+
+table PodIP {
+  ip:string (id: 0);
+}
+
+table PodList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.Pod] (id: 1);
+}
+
+table PodLogOptions {
+  container:string (id: 0);
+  follow:bool (id: 1);
+  previous:bool (id: 2);
+  sinceSeconds:long (id: 3);
+  sinceTime:apimachinery.pkg.apis.meta.v1.Time (id: 4);
+  timestamps:bool (id: 5);
+  tailLines:long (id: 6);
+  limitBytes:long (id: 7);
+  insecureSkipTLSVerifyBackend:bool (id: 8);
+}
+
+table PodOS {
+  name:string (id: 0);
+}
+
+table PodPortForwardOptions {
+  ports:[int] (id: 0);
+}
+
+table PodProxyOptions {
+  path:string (id: 0);
+}
+
+table PodReadinessGate {
+  conditionType:string (id: 0);
+}
+
+table PodResourceClaim {
+  name:string (id: 0);
+  source:api.core.v1.ClaimSource (id: 1);
+}
+
+table PodResourceClaimStatus {
+  name:string (id: 0);
+  resourceClaimName:string (id: 1);
+}
+
+table PodSchedulingGate {
+  name:string (id: 0);
+}
+
+table PodSecurityContext {
+  seLinuxOptions:api.core.v1.SELinuxOptions (id: 0);
+  windowsOptions:api.core.v1.WindowsSecurityContextOptions (id: 7);
+  runAsUser:long (id: 1);
+  runAsGroup:long (id: 5);
+  runAsNonRoot:bool (id: 2);
+  supplementalGroups:[long] (id: 3);
+  fsGroup:long (id: 4);
+  sysctls:[api.core.v1.Sysctl] (id: 6);
+  fsGroupChangePolicy:string (id: 8);
+  seccompProfile:api.core.v1.SeccompProfile (id: 9);
+  appArmorProfile:api.core.v1.AppArmorProfile (id: 10);
+}
+
+table PodSignature {
+  podController:apimachinery.pkg.apis.meta.v1.OwnerReference (id: 0);
+}
+
+table PodSpec {
+  volumes:[api.core.v1.Volume] (id: 0);
+  initContainers:[api.core.v1.Container] (id: 19);
+  containers:[api.core.v1.Container] (id: 1);
+  ephemeralContainers:[api.core.v1.EphemeralContainer] (id: 33);
+  restartPolicy:string (id: 2);
+  terminationGracePeriodSeconds:long (id: 3);
+  activeDeadlineSeconds:long (id: 4);
+  dnsPolicy:string (id: 5);
+  nodeSelector:[api.core.v1.PodSpec_.NodeSelectorEntry] (id: 6);
+  serviceAccountName:string (id: 7);
+  serviceAccount:string (id: 8);
+  automountServiceAccountToken:bool (id: 20);
+  nodeName:string (id: 9);
+  hostNetwork:bool (id: 10);
+  hostPID:bool (id: 11);
+  hostIPC:bool (id: 12);
+  shareProcessNamespace:bool (id: 26);
+  securityContext:api.core.v1.PodSecurityContext (id: 13);
+  imagePullSecrets:[api.core.v1.LocalObjectReference] (id: 14);
+  hostname:string (id: 15);
+  subdomain:string (id: 16);
+  affinity:api.core.v1.Affinity (id: 17);
+  schedulerName:string (id: 18);
+  tolerations:[api.core.v1.Toleration] (id: 21);
+  hostAliases:[api.core.v1.HostAlias] (id: 22);
+  priorityClassName:string (id: 23);
+  priority:int (id: 24);
+  dnsConfig:api.core.v1.PodDNSConfig (id: 25);
+  readinessGates:[api.core.v1.PodReadinessGate] (id: 27);
+  runtimeClassName:string (id: 28);
+  enableServiceLinks:bool (id: 29);
+  preemptionPolicy:string (id: 30);
+  overhead:[api.core.v1.PodSpec_.OverheadEntry] (id: 31);
+  topologySpreadConstraints:[api.core.v1.TopologySpreadConstraint] (id: 32);
+  setHostnameAsFQDN:bool (id: 34);
+  os:api.core.v1.PodOS (id: 35);
+  hostUsers:bool (id: 36);
+  schedulingGates:[api.core.v1.PodSchedulingGate] (id: 37);
+  resourceClaims:[api.core.v1.PodResourceClaim] (id: 38);
+}
+
+namespace api.core.v1.PodSpec_;
+
+table NodeSelectorEntry {
+  key:string (key);
+  value:string;
+}
+
+table OverheadEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table PodStatus {
+  phase:string (id: 0);
+  conditions:[api.core.v1.PodCondition] (id: 1);
+  message:string (id: 2);
+  reason:string (id: 3);
+  nominatedNodeName:string (id: 10);
+  hostIP:string (id: 4);
+  hostIPs:[api.core.v1.HostIP] (id: 15);
+  podIP:string (id: 5);
+  podIPs:[api.core.v1.PodIP] (id: 11);
+  startTime:apimachinery.pkg.apis.meta.v1.Time (id: 6);
+  initContainerStatuses:[api.core.v1.ContainerStatus] (id: 9);
+  containerStatuses:[api.core.v1.ContainerStatus] (id: 7);
+  qosClass:string (id: 8);
+  ephemeralContainerStatuses:[api.core.v1.ContainerStatus] (id: 12);
+  resize:string (id: 13);
+  resourceClaimStatuses:[api.core.v1.PodResourceClaimStatus] (id: 14);
+}
+
+table PodStatusResult {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  status:api.core.v1.PodStatus (id: 1);
+}
+
+table PodTemplate {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  template:api.core.v1.PodTemplateSpec (id: 1);
+}
+
+table PodTemplateList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.PodTemplate] (id: 1);
+}
+
+table PodTemplateSpec {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.PodSpec (id: 1);
+}
+
+table PortStatus {
+  port:int (id: 0);
+  protocol:string (id: 1);
+  error:string (id: 2);
+}
+
+table PortworxVolumeSource {
+  volumeID:string (id: 0);
+  fsType:string (id: 1);
+  readOnly:bool (id: 2);
+}
+
+table Preconditions {
+  uid:string (id: 0);
+}
+
+table PreferAvoidPodsEntry {
+  podSignature:api.core.v1.PodSignature (id: 0);
+  evictionTime:apimachinery.pkg.apis.meta.v1.Time (id: 1);
+  reason:string (id: 2);
+  message:string (id: 3);
+}
+
+table PreferredSchedulingTerm {
+  weight:int (id: 0);
+  preference:api.core.v1.NodeSelectorTerm (id: 1);
+}
+
+table Probe {
+  handler:api.core.v1.ProbeHandler (id: 0);
+  initialDelaySeconds:int (id: 1);
+  timeoutSeconds:int (id: 2);
+  periodSeconds:int (id: 3);
+  successThreshold:int (id: 4);
+  failureThreshold:int (id: 5);
+  terminationGracePeriodSeconds:long (id: 6);
+}
+
+table ProbeHandler {
+  exec:api.core.v1.ExecAction (id: 0);
+  httpGet:api.core.v1.HTTPGetAction (id: 1);
+  tcpSocket:api.core.v1.TCPSocketAction (id: 2);
+  grpc:api.core.v1.GRPCAction (id: 3);
+}
+
+table ProjectedVolumeSource {
+  sources:[api.core.v1.VolumeProjection] (id: 0);
+  defaultMode:int (id: 1);
+}
+
+table QuobyteVolumeSource {
+  registry:string (id: 0);
+  volume:string (id: 1);
+  readOnly:bool (id: 2);
+  user:string (id: 3);
+  group:string (id: 4);
+  tenant:string (id: 5);
+}
+
+table RBDPersistentVolumeSource {
+  monitors:[string] (id: 0);
+  image:string (id: 1);
+  fsType:string (id: 2);
+  pool:string (id: 3);
+  user:string (id: 4);
+  keyring:string (id: 5);
+  secretRef:api.core.v1.SecretReference (id: 6);
+  readOnly:bool (id: 7);
+}
+
+table RBDVolumeSource {
+  monitors:[string] (id: 0);
+  image:string (id: 1);
+  fsType:string (id: 2);
+  pool:string (id: 3);
+  user:string (id: 4);
+  keyring:string (id: 5);
+  secretRef:api.core.v1.LocalObjectReference (id: 6);
+  readOnly:bool (id: 7);
+}
+
+table RangeAllocation {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  range:string (id: 1);
+  data:[ubyte] (id: 2);
+}
+
+table ReplicationController {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.ReplicationControllerSpec (id: 1);
+  status:api.core.v1.ReplicationControllerStatus (id: 2);
+}
+
+table ReplicationControllerCondition {
+  type:string (id: 0);
+  status:string (id: 1);
+  lastTransitionTime:apimachinery.pkg.apis.meta.v1.Time (id: 2);
+  reason:string (id: 3);
+  message:string (id: 4);
+}
+
+table ReplicationControllerList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.ReplicationController] (id: 1);
+}
+
+table ReplicationControllerSpec {
+  replicas:int (id: 0);
+  minReadySeconds:int (id: 3);
+  selector:[api.core.v1.ReplicationControllerSpec_.SelectorEntry] (id: 1);
+  template:api.core.v1.PodTemplateSpec (id: 2);
+}
+
+namespace api.core.v1.ReplicationControllerSpec_;
+
+table SelectorEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table ReplicationControllerStatus {
+  replicas:int (id: 0);
+  fullyLabeledReplicas:int (id: 1);
+  readyReplicas:int (id: 3);
+  availableReplicas:int (id: 4);
+  observedGeneration:long (id: 2);
+  conditions:[api.core.v1.ReplicationControllerCondition] (id: 5);
+}
+
+table ResourceClaim {
+  name:string (id: 0);
+}
+
+table ResourceFieldSelector {
+  containerName:string (id: 0);
+  resource:string (id: 1);
+  divisor:apimachinery.pkg.api.resource.Quantity (id: 2);
+}
+
+table ResourceQuota {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.ResourceQuotaSpec (id: 1);
+  status:api.core.v1.ResourceQuotaStatus (id: 2);
+}
+
+table ResourceQuotaList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.ResourceQuota] (id: 1);
+}
+
+table ResourceQuotaSpec {
+  hard:[api.core.v1.ResourceQuotaSpec_.HardEntry] (id: 0);
+  scopes:[string] (id: 1);
+  scopeSelector:api.core.v1.ScopeSelector (id: 2);
+}
+
+namespace api.core.v1.ResourceQuotaSpec_;
+
+table HardEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table ResourceQuotaStatus {
+  hard:[api.core.v1.ResourceQuotaStatus_.HardEntry] (id: 0);
+  used:[api.core.v1.ResourceQuotaStatus_.UsedEntry] (id: 1);
+}
+
+namespace api.core.v1.ResourceQuotaStatus_;
+
+table HardEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table UsedEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table ResourceRequirements {
+  limits:[api.core.v1.ResourceRequirements_.LimitsEntry] (id: 0);
+  requests:[api.core.v1.ResourceRequirements_.RequestsEntry] (id: 1);
+  claims:[api.core.v1.ResourceClaim] (id: 2);
+}
+
+namespace api.core.v1.ResourceRequirements_;
+
+table LimitsEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table RequestsEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table SELinuxOptions {
+  user:string (id: 0);
+  role:string (id: 1);
+  type:string (id: 2);
+  level:string (id: 3);
+}
+
+table ScaleIOPersistentVolumeSource {
+  gateway:string (id: 0);
+  system:string (id: 1);
+  secretRef:api.core.v1.SecretReference (id: 2);
+  sslEnabled:bool (id: 3);
+  protectionDomain:string (id: 4);
+  storagePool:string (id: 5);
+  storageMode:string (id: 6);
+  volumeName:string (id: 7);
+  fsType:string (id: 8);
+  readOnly:bool (id: 9);
+}
+
+table ScaleIOVolumeSource {
+  gateway:string (id: 0);
+  system:string (id: 1);
+  secretRef:api.core.v1.LocalObjectReference (id: 2);
+  sslEnabled:bool (id: 3);
+  protectionDomain:string (id: 4);
+  storagePool:string (id: 5);
+  storageMode:string (id: 6);
+  volumeName:string (id: 7);
+  fsType:string (id: 8);
+  readOnly:bool (id: 9);
+}
+
+table ScopeSelector {
+  matchExpressions:[api.core.v1.ScopedResourceSelectorRequirement] (id: 0);
+}
+
+table ScopedResourceSelectorRequirement {
+  scopeName:string (id: 0);
+  operator:string (id: 1);
+  values:[string] (id: 2);
+}
+
+table SeccompProfile {
+  type:string (id: 0);
+  localhostProfile:string (id: 1);
+}
+
+table Secret {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  immutable:bool (id: 4);
+  data:[api.core.v1.Secret_.DataEntry] (id: 1);
+  stringData:[api.core.v1.Secret_.StringDataEntry] (id: 3);
+  type:string (id: 2);
+}
+
+namespace api.core.v1.Secret_;
+
+table DataEntry {
+  key:string (key);
+  value:[ubyte];
+}
+
+table StringDataEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table SecretEnvSource {
+  localObjectReference:api.core.v1.LocalObjectReference (id: 0);
+  optional:bool (id: 1);
+}
+
+table SecretKeySelector {
+  localObjectReference:api.core.v1.LocalObjectReference (id: 0);
+  key:string (id: 1);
+  optional:bool (id: 2);
+}
+
+table SecretList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.Secret] (id: 1);
+}
+
+table SecretProjection {
+  localObjectReference:api.core.v1.LocalObjectReference (id: 0);
+  items:[api.core.v1.KeyToPath] (id: 1);
+  optional:bool (id: 2);
+}
+
+table SecretReference {
+  name:string (id: 0);
+  namespace:string (id: 1);
+}
+
+table SecretVolumeSource {
+  secretName:string (id: 0);
+  items:[api.core.v1.KeyToPath] (id: 1);
+  defaultMode:int (id: 2);
+  optional:bool (id: 3);
+}
+
+table SecurityContext {
+  capabilities:api.core.v1.Capabilities (id: 0);
+  privileged:bool (id: 1);
+  seLinuxOptions:api.core.v1.SELinuxOptions (id: 2);
+  windowsOptions:api.core.v1.WindowsSecurityContextOptions (id: 9);
+  runAsUser:long (id: 3);
+  runAsGroup:long (id: 7);
+  runAsNonRoot:bool (id: 4);
+  readOnlyRootFilesystem:bool (id: 5);
+  allowPrivilegeEscalation:bool (id: 6);
+  procMount:string (id: 8);
+  seccompProfile:api.core.v1.SeccompProfile (id: 10);
+  appArmorProfile:api.core.v1.AppArmorProfile (id: 11);
+}
+
+table SerializedReference {
+  reference:api.core.v1.ObjectReference (id: 0);
+}
+
+table Service {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  spec:api.core.v1.ServiceSpec (id: 1);
+  status:api.core.v1.ServiceStatus (id: 2);
+}
+
+table ServiceAccount {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  secrets:[api.core.v1.ObjectReference] (id: 1);
+  imagePullSecrets:[api.core.v1.LocalObjectReference] (id: 2);
+  automountServiceAccountToken:bool (id: 3);
+}
+
+table ServiceAccountList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.ServiceAccount] (id: 1);
+}
+
+table ServiceAccountTokenProjection {
+  audience:string (id: 0);
+  expirationSeconds:long (id: 1);
+  path:string (id: 2);
+}
+
+table ServiceList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.core.v1.Service] (id: 1);
+}
+
+table ServicePort {
+  name:string (id: 0);
+  protocol:string (id: 1);
+  appProtocol:string (id: 5);
+  port:int (id: 2);
+  targetPort:apimachinery.pkg.util.intstr.IntOrString (id: 3);
+  nodePort:int (id: 4);
+}
+
+table ServiceProxyOptions {
+  path:string (id: 0);
+}
+
+table ServiceSpec {
+  ports:[api.core.v1.ServicePort] (id: 0);
+  selector:[api.core.v1.ServiceSpec_.SelectorEntry] (id: 1);
+  clusterIP:string (id: 2);
+  clusterIPs:[string] (id: 14);
+  type:string (id: 3);
+  externalIPs:[string] (id: 4);
+  sessionAffinity:string (id: 5);
+  loadBalancerIP:string (id: 6);
+  loadBalancerSourceRanges:[string] (id: 7);
+  externalName:string (id: 8);
+  externalTrafficPolicy:string (id: 9);
+  healthCheckNodePort:int (id: 10);
+  publishNotReadyAddresses:bool (id: 11);
+  sessionAffinityConfig:api.core.v1.SessionAffinityConfig (id: 12);
+  ipFamilies:[string] (id: 15);
+  ipFamilyPolicy:string (id: 13);
+  allocateLoadBalancerNodePorts:bool (id: 16);
+  loadBalancerClass:string (id: 17);
+  internalTrafficPolicy:string (id: 18);
+  trafficDistribution:string (id: 19);
+}
+
+namespace api.core.v1.ServiceSpec_;
+
+table SelectorEntry {
+  key:string (key);
+  value:string;
+}
+
+namespace api.core.v1;
+
+table ServiceStatus {
+  loadBalancer:api.core.v1.LoadBalancerStatus (id: 0);
+  conditions:[apimachinery.pkg.apis.meta.v1.Condition] (id: 1);
+}
+
+table SessionAffinityConfig {
+  clientIP:api.core.v1.ClientIPConfig (id: 0);
+}
+
+table SleepAction {
+  seconds:long (id: 0);
+}
+
+table StorageOSPersistentVolumeSource {
+  volumeName:string (id: 0);
+  volumeNamespace:string (id: 1);
+  fsType:string (id: 2);
+  readOnly:bool (id: 3);
+  secretRef:api.core.v1.ObjectReference (id: 4);
+}
+
+table StorageOSVolumeSource {
+  volumeName:string (id: 0);
+  volumeNamespace:string (id: 1);
+  fsType:string (id: 2);
+  readOnly:bool (id: 3);
+  secretRef:api.core.v1.LocalObjectReference (id: 4);
+}
+
+table Sysctl {
+  name:string (id: 0);
+  value:string (id: 1);
+}
+
+table TCPSocketAction {
+  port:apimachinery.pkg.util.intstr.IntOrString (id: 0);
+  host:string (id: 1);
+}
+
+table Taint {
+  key:string (id: 0);
+  value:string (id: 1);
+  effect:string (id: 2);
+  timeAdded:apimachinery.pkg.apis.meta.v1.Time (id: 3);
+}
+
+table Toleration {
+  key:string (id: 0);
+  operator:string (id: 1);
+  value:string (id: 2);
+  effect:string (id: 3);
+  tolerationSeconds:long (id: 4);
+}
+
+table TopologySelectorLabelRequirement {
+  key:string (id: 0);
+  values:[string] (id: 1);
+}
+
+table TopologySelectorTerm {
+  matchLabelExpressions:[api.core.v1.TopologySelectorLabelRequirement] (id: 0);
+}
+
+table TopologySpreadConstraint {
+  maxSkew:int (id: 0);
+  topologyKey:string (id: 1);
+  whenUnsatisfiable:string (id: 2);
+  labelSelector:apimachinery.pkg.apis.meta.v1.LabelSelector (id: 3);
+  minDomains:int (id: 4);
+  nodeAffinityPolicy:string (id: 5);
+  nodeTaintsPolicy:string (id: 6);
+  matchLabelKeys:[string] (id: 7);
+}
+
+table TypedLocalObjectReference {
+  apiGroup:string (id: 0);
+  kind:string (id: 1);
+  name:string (id: 2);
+}
+
+table TypedObjectReference {
+  apiGroup:string (id: 0);
+  kind:string (id: 1);
+  name:string (id: 2);
+  namespace:string (id: 3);
+}
+
+table Volume {
+  name:string (id: 0);
+  volumeSource:api.core.v1.VolumeSource (id: 1);
+}
+
+table VolumeDevice {
+  name:string (id: 0);
+  devicePath:string (id: 1);
+}
+
+table VolumeMount {
+  name:string (id: 0);
+  readOnly:bool (id: 1);
+  recursiveReadOnly:string (id: 6);
+  mountPath:string (id: 2);
+  subPath:string (id: 3);
+  mountPropagation:string (id: 4);
+  subPathExpr:string (id: 5);
+}
+
+table VolumeMountStatus {
+  name:string (id: 0);
+  mountPath:string (id: 1);
+  readOnly:bool (id: 2);
+  recursiveReadOnly:string (id: 3);
+}
+
+table VolumeNodeAffinity {
+  required:api.core.v1.NodeSelector (id: 0);
+}
+
+table VolumeProjection {
+  secret:api.core.v1.SecretProjection (id: 0);
+  downwardAPI:api.core.v1.DownwardAPIProjection (id: 1);
+  configMap:api.core.v1.ConfigMapProjection (id: 2);
+  serviceAccountToken:api.core.v1.ServiceAccountTokenProjection (id: 3);
+  clusterTrustBundle:api.core.v1.ClusterTrustBundleProjection (id: 4);
+}
+
+table VolumeResourceRequirements {
+  limits:[api.core.v1.VolumeResourceRequirements_.LimitsEntry] (id: 0);
+  requests:[api.core.v1.VolumeResourceRequirements_.RequestsEntry] (id: 1);
+}
+
+namespace api.core.v1.VolumeResourceRequirements_;
+
+table LimitsEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+table RequestsEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.core.v1;
+
+table VolumeSource {
+  hostPath:api.core.v1.HostPathVolumeSource (id: 0);
+  emptyDir:api.core.v1.EmptyDirVolumeSource (id: 1);
+  gcePersistentDisk:api.core.v1.GCEPersistentDiskVolumeSource (id: 2);
+  awsElasticBlockStore:api.core.v1.AWSElasticBlockStoreVolumeSource (id: 3);
+  gitRepo:api.core.v1.GitRepoVolumeSource (id: 4);
+  secret:api.core.v1.SecretVolumeSource (id: 5);
+  nfs:api.core.v1.NFSVolumeSource (id: 6);
+  iscsi:api.core.v1.ISCSIVolumeSource (id: 7);
+  glusterfs:api.core.v1.GlusterfsVolumeSource (id: 8);
+  persistentVolumeClaim:api.core.v1.PersistentVolumeClaimVolumeSource (id: 9);
+  rbd:api.core.v1.RBDVolumeSource (id: 10);
+  flexVolume:api.core.v1.FlexVolumeSource (id: 11);
+  cinder:api.core.v1.CinderVolumeSource (id: 12);
+  cephfs:api.core.v1.CephFSVolumeSource (id: 13);
+  flocker:api.core.v1.FlockerVolumeSource (id: 14);
+  downwardAPI:api.core.v1.DownwardAPIVolumeSource (id: 15);
+  fc:api.core.v1.FCVolumeSource (id: 16);
+  azureFile:api.core.v1.AzureFileVolumeSource (id: 17);
+  configMap:api.core.v1.ConfigMapVolumeSource (id: 18);
+  vsphereVolume:api.core.v1.VsphereVirtualDiskVolumeSource (id: 19);
+  quobyte:api.core.v1.QuobyteVolumeSource (id: 20);
+  azureDisk:api.core.v1.AzureDiskVolumeSource (id: 21);
+  photonPersistentDisk:api.core.v1.PhotonPersistentDiskVolumeSource (id: 22);
+  projected:api.core.v1.ProjectedVolumeSource (id: 25);
+  portworxVolume:api.core.v1.PortworxVolumeSource (id: 23);
+  scaleIO:api.core.v1.ScaleIOVolumeSource (id: 24);
+  storageos:api.core.v1.StorageOSVolumeSource (id: 26);
+  csi:api.core.v1.CSIVolumeSource (id: 27);
+  ephemeral:api.core.v1.EphemeralVolumeSource (id: 28);
+}
+
+table VsphereVirtualDiskVolumeSource {
+  volumePath:string (id: 0);
+  fsType:string (id: 1);
+  storagePolicyName:string (id: 2);
+  storagePolicyID:string (id: 3);
+}
+
+table WeightedPodAffinityTerm {
+  weight:int (id: 0);
+  podAffinityTerm:api.core.v1.PodAffinityTerm (id: 1);
+}
+
+table WindowsSecurityContextOptions {
+  gmsaCredentialSpecName:string (id: 0);
+  gmsaCredentialSpec:string (id: 1);
+  runAsUserName:string (id: 2);
+  hostProcess:bool (id: 3);
+}
+
+namespace api.node.v1beta1;
+
+table Overhead {
+  podFixed:[api.node.v1beta1.Overhead_.PodFixedEntry] (id: 0);
+}
+
+namespace api.node.v1beta1.Overhead_;
+
+table PodFixedEntry {
+  key:string (key);
+  value:apimachinery.pkg.api.resource.Quantity;
+}
+
+namespace api.node.v1beta1;
+
+table RuntimeClass {
+  metadata:apimachinery.pkg.apis.meta.v1.ObjectMeta (id: 0);
+  handler:string (id: 1);
+  overhead:api.node.v1beta1.Overhead (id: 2);
+  scheduling:api.node.v1beta1.Scheduling (id: 3);
+}
+
+table RuntimeClassList {
+  metadata:apimachinery.pkg.apis.meta.v1.ListMeta (id: 0);
+  items:[api.node.v1beta1.RuntimeClass] (id: 1);
+}
+
+table Scheduling {
+  nodeSelector:[api.node.v1beta1.Scheduling_.NodeSelectorEntry] (id: 0);
+  tolerations:[api.core.v1.Toleration] (id: 1);
+}
+
+namespace api.node.v1beta1.Scheduling_;
+
+table NodeSelectorEntry {
+  key:string (key);
+  value:string;
+}
+

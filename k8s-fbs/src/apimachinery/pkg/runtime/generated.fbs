@@ -1,0 +1,20 @@
+// Generated from generated.proto
+
+namespace apimachinery.pkg.runtime;
+
+table RawExtension {
+  raw:[ubyte] (id: 0);
+}
+
+table TypeMeta {
+  apiVersion:string (id: 0);
+  kind:string (id: 1);
+}
+
+table Unknown {
+  typeMeta:apimachinery.pkg.runtime.TypeMeta (id: 0);
+  raw:[ubyte] (id: 1);
+  contentEncoding:string (id: 2);
+  contentType:string (id: 3);
+}
+
