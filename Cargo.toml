@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-k8s-fbs ={ path = "k8s-fbs" }
 actix-web = { version = "4.9.0" }
 actix-files = { version = "0.6.6" }
 env_logger = { version = "0.11.3" }
