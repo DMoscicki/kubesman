@@ -24,3 +24,5 @@ Cargo.lock
 
 # frontend ignore
 frontend/lib/protos
+
+master.zip

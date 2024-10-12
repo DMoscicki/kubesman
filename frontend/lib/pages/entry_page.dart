@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -8,6 +9,8 @@ import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
+import 'package:http/http.dart' as http;
+import 'package:frontend/k8s-classes/podlist.dart' as podlist;
 
 class EntryPage extends StatefulWidget {
   const EntryPage({super.key});
@@ -28,6 +31,7 @@ class _EntryPageState extends State<EntryPage>
 
   @override
   void initState() {
+    getPods();
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200))
       ..addListener(
@@ -145,4 +149,31 @@ class _EntryPageState extends State<EntryPage>
       ),
     );
   }
+}
+
+Future<void> getPods() async {
+  var client = http.Client();
+
+  Map<String, String> reqheader = {
+    'Content-Type': 'application/json',
+  };
+
+  var response = await client
+      .get(Uri.http('localhost:9000', '/pods'), headers: reqheader)
+      .onError((error, _) {
+    return Future(() => http.Response(error.toString(), 400));
+  });
+
+  final jsResp = jsonDecode(response.body);
+
+  final lang = podlist.Podlist.fromJson(jsResp);
+
+  print("ASDASDASDSAD");
+  print(lang.items?[0].spec);
+
+  // print("ASDASDASDASDASDASD");
+  // final langresp = podlist.Podlist.fromJson(jsResp.toJson());
+  // print(langresp.items);
+
+  client.close();
 }
