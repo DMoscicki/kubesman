@@ -1,5 +1,4 @@
 {
-  "description": "Information about the condition of a component.",
   "properties": {
     "error": {
       "description": "Condition error code for a component. For example, a health check error code.",
@@ -30,10 +29,11 @@
       ]
     }
   },
+  "type": "object",
   "required": [
     "type",
     "status"
   ],
-  "type": "object",
+  "description": "Information about the condition of a component.",
   "$schema": "http://json-schema.org/schema#"
 }

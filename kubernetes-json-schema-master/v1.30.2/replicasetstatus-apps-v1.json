@@ -1,5 +1,4 @@
 {
-  "description": "ReplicaSetStatus represents the current status of a ReplicaSet.",
   "properties": {
     "availableReplicas": {
       "description": "The number of available replicas (ready for at least minReadySeconds) for this replica set.",
@@ -58,9 +57,10 @@
       ]
     }
   },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "required": [
     "replicas"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ReplicaSetStatus represents the current status of a ReplicaSet."
 }

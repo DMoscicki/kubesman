@@ -1,5 +1,9 @@
 {
+  "required": [
+    "type"
+  ],
   "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
+  "type": "object",
   "properties": {
     "averageUtilization": {
       "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
@@ -25,9 +29,5 @@
       "description": "value is the target value of the metric (as a quantity)."
     }
   },
-  "required": [
-    "type"
-  ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

@@ -11,11 +11,11 @@ class Customresourcedefinitionstatus {
     ///acceptedNames are the names that are actually being used to serve discovery. They may be
     ///different than the names in spec.
     @JsonKey(name: "acceptedNames")
-    AcceptedNames? acceptedNames;
+    IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames? acceptedNames;
     
     ///conditions indicate state for particular aspects of a CustomResourceDefinition
     @JsonKey(name: "conditions")
-    List<CustomresourcedefinitionconditionApiextensionsV1>? conditions;
+    List<IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition>? conditions;
     
     ///storedVersions lists all versions of CustomResources that were ever persisted. Tracking
     ///these versions allows a migration path for stored versions in etcd. The field is mutable
@@ -42,18 +42,18 @@ class Customresourcedefinitionstatus {
 ///
 ///CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition
 @JsonSerializable()
-class AcceptedNames {
+class IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
     
     ///categories is a list of grouped resources this custom resource belongs to (e.g. 'all').
     ///This is published in API discovery documents, and used by clients to support invocations
     ///like `kubectl get all`.
     @JsonKey(name: "categories")
-    List<String?>? categories;
+    List<String>? categories;
     
     ///kind is the serialized kind of the resource. It is normally CamelCase and singular.
     ///Custom resource instances will use this value as the `kind` attribute in API calls.
     @JsonKey(name: "kind")
-    String? kind;
+    String kind;
     
     ///listKind is the serialized kind of the list for this resource. Defaults to "`kind`List".
     @JsonKey(name: "listKind")
@@ -63,20 +63,20 @@ class AcceptedNames {
     ///`/apis/<group>/<version>/.../<plural>`. Must match the name of the
     ///CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all lowercase.
     @JsonKey(name: "plural")
-    String? plural;
+    String plural;
     
     ///shortNames are short names for the resource, exposed in API discovery documents, and used
     ///by clients to support invocations like `kubectl get <shortname>`. It must be all
     ///lowercase.
     @JsonKey(name: "shortNames")
-    List<String?>? shortNames;
+    List<String>? shortNames;
     
     ///singular is the singular name of the resource. It must be all lowercase. Defaults to
     ///lowercased `kind`.
     @JsonKey(name: "singular")
     String? singular;
 
-    AcceptedNames({
+    IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames({
         this.categories,
         required this.kind,
         this.listKind,
@@ -85,15 +85,15 @@ class AcceptedNames {
         this.singular,
     });
 
-    factory AcceptedNames.fromJson(Map<String, dynamic> json) => _$AcceptedNamesFromJson(json);
+    factory IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames.fromJson(Map<String, dynamic> json) => _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesFromJson(json);
 
-    Map<String, dynamic> toJson() => _$AcceptedNamesToJson(this);
+    Map<String, dynamic> toJson() => _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesToJson(this);
 }
 
 
 ///CustomResourceDefinitionCondition contains details for the current condition of this pod.
 @JsonSerializable()
-class CustomresourcedefinitionconditionApiextensionsV1 {
+class IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition {
     
     ///lastTransitionTime last time the condition transitioned from one status to another.
     @JsonKey(name: "lastTransitionTime")
@@ -109,14 +109,14 @@ class CustomresourcedefinitionconditionApiextensionsV1 {
     
     ///status is the status of the condition. Can be True, False, Unknown.
     @JsonKey(name: "status")
-    String? status;
+    String status;
     
     ///type is the type of the condition. Types include Established, NamesAccepted and
     ///Terminating.
     @JsonKey(name: "type")
-    String? type;
+    String type;
 
-    CustomresourcedefinitionconditionApiextensionsV1({
+    IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition({
         this.lastTransitionTime,
         this.message,
         this.reason,
@@ -124,7 +124,7 @@ class CustomresourcedefinitionconditionApiextensionsV1 {
         required this.type,
     });
 
-    factory CustomresourcedefinitionconditionApiextensionsV1.fromJson(Map<String, dynamic> json) => _$CustomresourcedefinitionconditionApiextensionsV1FromJson(json);
+    factory IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition.fromJson(Map<String, dynamic> json) => _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionConditionFromJson(json);
 
-    Map<String, dynamic> toJson() => _$CustomresourcedefinitionconditionApiextensionsV1ToJson(this);
+    Map<String, dynamic> toJson() => _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionConditionToJson(this);
 }

@@ -1,4 +1,11 @@
 {
+  "required": [
+    "name",
+    "expression"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-map-type": "atomic",
   "description": "Variable is the definition of a variable that is used for composition. A variable is defined as a named expression.",
   "properties": {
     "expression": {
@@ -15,12 +22,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "name",
-    "expression"
-  ],
-  "type": "object",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

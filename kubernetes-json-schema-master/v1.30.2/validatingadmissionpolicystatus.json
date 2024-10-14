@@ -1,5 +1,6 @@
 {
-  "description": "ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "conditions": {
       "description": "The conditions represent the latest available observations of a policy's current state.",
@@ -28,6 +29,5 @@
       "description": "The results of type checking for each expression. Presence of this field indicates the completion of the type checking."
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ValidatingAdmissionPolicyStatus represents the status of an admission validation policy."
 }

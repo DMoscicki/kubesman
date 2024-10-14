@@ -113,48 +113,17 @@ flatbuffers: protos flatbufgen-from-proto-rust
 generate-dart-classes:
     #!/usr/bin/env bash
     set -exuo pipefail
-    # curl -L -O https://github.com/yannh/kubernetes-json-schema/archive/refs/heads/master.zip #you can comment this after download
+    rm -rf frontend/lib/k8s-classes/* ; rm -rf master.zip ; rm -rf ./rw; rm -rf kubernetes-json-schema-master;
+    curl -L -O https://github.com/yannh/kubernetes-json-schema/archive/refs/heads/master.zip #you can comment this after download
     unzip master.zip "kubernetes-json-schema-master/v1.30.2/*" -d ./
-    cd kubernetes-json-schema-master/v1.30.2
-    fd -e json -x sd 'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.2/' './'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta' './listmeta-meta-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta' './objectmeta-meta-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.NodeSpec' './nodespec-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time' './time-meta-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.NodeStatus' './nodestatus-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceSpec' './namespacespec-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceStatus' './namespacestatus-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1' './fieldsv1-meta-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.rbac.v1.PolicyRule' './policyrule-rbac-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetSpec' './daemonsetspec-apps-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetStatus' './daemonsetstatus-apps-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetSpec' './statefulsetspec-apps-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetStatus' './statefulsetstatus-apps-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.Node' './node-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.PreferredSchedulingTerm' './preferredschedulingterm-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector' './nodeselector-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry' './managedfieldsentry-meta-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference' './ownerreference-meta-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.Namespace' './namespace-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.apps.v1.DeploymentSpec' './deploymentspec-apps-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.apps.v1.DeploymentStatus' './deploymentstatus-apps-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.Pod' './pod-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.api.core.v1.Taint' './taint-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps' './jsonschemaprops-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceConversion' './customresourceconversion-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionNames' './customresourcedefinitionnames-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionVersion' './customresourcedefinitionversion-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookConversion' './webhookconversion-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceColumnDefinition' './customresourcecolumndefinition-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionSpec' './customresourcedefinitionspec-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionStatus' './customresourcedefinitionstatus-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionCondition' './customresourcedefinitioncondition-apiextensions-v1.json'
-    fd -e json -x sd './_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinition' './customresourcedefinition-apiextensions-v1.json'
-    fd -e json -x sd '.jsonStatus' '.json'
-    fd -e json -x sd '.jsonSpec' '.json'
-    # fd -e json -x sd 'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.' ''
-    fd -e json -x quicktype --no-ignore-json-refs -s schema {} --lang dart --use-json-annotation --null-safety --coders-in-class -o ../../frontend/lib/k8s-classes/{.}.dart
+    cargo build -p rewriter --release; rm -rf ./rw; mv -f target/release/rewriter ./rw
+    ./rw
+    cd kubernetes-json-schema-master/v1.30.2;
+    fd -e json -x quicktype --no-ignore-json-refs -s schema {} --lang dart --use-json-annotation --null-safety --coders-in-class -o ../../frontend/lib/k8s-classes/{.}.dart;
 
+dart-json-serialize:
+    cd frontend; flutter packages pub run build_runner build;
+    
 dev-serve:
 	DEV=true cargo run dev
 

@@ -1,5 +1,6 @@
 {
-  "description": "ResourceClaimStatus tracks whether the resource has been allocated and what the resulting attributes are.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "allocation": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.AllocationResult",
@@ -36,6 +37,5 @@
       "x-kubernetes-patch-strategy": "merge"
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ResourceClaimStatus tracks whether the resource has been allocated and what the resulting attributes are."
 }

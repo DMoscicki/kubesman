@@ -1,4 +1,9 @@
 {
+  "required": [
+    "metric",
+    "target"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
   "properties": {
     "metric": {
@@ -10,10 +15,5 @@
       "description": "target specifies the target value for the given metric"
     }
   },
-  "required": [
-    "metric",
-    "target"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

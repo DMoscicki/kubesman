@@ -1,5 +1,4 @@
 {
-  "description": "ReplicationControllerStatus represents the current status of a replication controller.",
   "properties": {
     "availableReplicas": {
       "description": "The number of available replicas (ready for at least minReadySeconds) for this replication controller.",
@@ -62,5 +61,6 @@
     "replicas"
   ],
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ReplicationControllerStatus represents the current status of a replication controller."
 }

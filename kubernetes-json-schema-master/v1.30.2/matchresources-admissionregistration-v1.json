@@ -1,4 +1,7 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-map-type": "atomic",
+  "type": "object",
   "description": "MatchResources decides whether to run the admission control policy on an object based on whether it meets the match criteria. The exclude rules take precedence over include rules (if a resource matches both, it is excluded)",
   "properties": {
     "excludeResourceRules": {
@@ -38,8 +41,5 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  },
-  "type": "object",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

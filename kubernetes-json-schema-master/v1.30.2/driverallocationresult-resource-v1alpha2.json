@@ -1,5 +1,6 @@
 {
   "description": "DriverAllocationResult contains vendor parameters and the allocation result for one request.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "namedResources": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesAllocationResult",
@@ -10,6 +11,5 @@
       "description": "VendorRequestParameters are the per-request configuration parameters from the time that the claim was allocated."
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

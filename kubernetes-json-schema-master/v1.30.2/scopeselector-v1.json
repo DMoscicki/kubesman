@@ -1,5 +1,5 @@
 {
-  "description": "A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "matchExpressions": {
       "description": "A list of scope selector requirements by scope of the resources.",
@@ -15,5 +15,5 @@
   },
   "type": "object",
   "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements."
 }

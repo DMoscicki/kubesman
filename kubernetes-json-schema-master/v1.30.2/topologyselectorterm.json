@@ -13,7 +13,7 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "x-kubernetes-map-type": "atomic"
 }

@@ -1,5 +1,9 @@
 {
-  "description": "JobSpec describes how the job execution will look like.",
+  "type": "object",
+  "required": [
+    "template"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "activeDeadlineSeconds": {
       "description": "Specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again.",
@@ -97,7 +101,7 @@
       ]
     },
     "template": {
-      "$ref": "./pod-v1.jsonTemplateSpec",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec",
       "description": "Describes the pod that will be created when executing a job. The only allowed template.spec.restartPolicy values are \"Never\" or \"OnFailure\". More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/"
     },
     "ttlSecondsAfterFinished": {
@@ -109,9 +113,5 @@
       ]
     }
   },
-  "required": [
-    "template"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "JobSpec describes how the job execution will look like."
 }

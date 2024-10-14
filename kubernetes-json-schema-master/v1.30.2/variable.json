@@ -1,5 +1,4 @@
 {
-  "description": "Variable is the definition of a variable that is used for composition. A variable is defined as a named expression.",
   "properties": {
     "expression": {
       "description": "Expression is the expression that will be evaluated as the value of the variable. The CEL expression has access to the same identifiers as the CEL expressions in Validation.",
@@ -16,11 +15,12 @@
       ]
     }
   },
+  "x-kubernetes-map-type": "atomic",
+  "type": "object",
+  "description": "Variable is the definition of a variable that is used for composition. A variable is defined as a named expression.",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "name",
     "expression"
-  ],
-  "type": "object",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

@@ -1,4 +1,8 @@
 {
+  "required": [
+    "ints"
+  ],
+  "type": "object",
   "description": "NamedResourcesIntSlice contains a slice of 64-bit integers.",
   "properties": {
     "ints": {
@@ -17,9 +21,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "required": [
-    "ints"
-  ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

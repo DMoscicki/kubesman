@@ -1,5 +1,10 @@
 {
-  "description": "IngressClassParametersReference identifies an API object. This can be used to specify a cluster or namespace-scoped resource.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "kind",
+    "name"
+  ],
+  "type": "object",
   "properties": {
     "apiGroup": {
       "description": "apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.",
@@ -37,10 +42,5 @@
       ]
     }
   },
-  "required": [
-    "kind",
-    "name"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "IngressClassParametersReference identifies an API object. This can be used to specify a cluster or namespace-scoped resource."
 }

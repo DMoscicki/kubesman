@@ -1,12 +1,18 @@
 {
   "description": "PodCondition contains details for the current condition of this pod.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "type",
+    "status"
+  ],
   "properties": {
     "lastProbeTime": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Last time we probed the condition."
     },
     "lastTransitionTime": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Last time the condition transitioned from one status to another."
     },
     "message": {
@@ -37,11 +43,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "type",
-    "status"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

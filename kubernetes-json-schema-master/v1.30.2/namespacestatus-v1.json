@@ -1,10 +1,11 @@
 {
-  "description": "NamespaceStatus is information about the current status of a Namespace.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "conditions": {
       "description": "Represents the latest available observations of a namespace's current state.",
       "items": {
-        "$ref": "./namespace-v1.jsonCondition"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
       },
       "type": [
         "array",
@@ -25,6 +26,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "NamespaceStatus is information about the current status of a Namespace."
 }

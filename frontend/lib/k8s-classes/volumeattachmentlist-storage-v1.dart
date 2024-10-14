@@ -29,7 +29,7 @@ class VolumeattachmentlistStorageV1 {
     ///Standard list metadata More info:
     ///https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
     @JsonKey(name: "metadata")
-    Metadata? metadata;
+    IoK8SApimachineryPkgApisMetaV1ListMeta? metadata;
 
     VolumeattachmentlistStorageV1({
         this.apiVersion,
@@ -2064,7 +2064,7 @@ final volumeattachmentlistStorageV1KindValues = EnumValues({
 ///ListMeta describes metadata that synthetic resources must have, including lists and
 ///various status objects. A resource may have only one of {ObjectMeta, ListMeta}.
 @JsonSerializable()
-class Metadata {
+class IoK8SApimachineryPkgApisMetaV1ListMeta {
     
     ///continue may be set if the user set a limit on the number of items returned, and
     ///indicates that the server has more data available. The value is opaque and may be used to
@@ -2074,7 +2074,7 @@ class Metadata {
     ///field returned when using this continue value will be identical to the value in the first
     ///response, unless you have received this token from an error message.
     @JsonKey(name: "continue")
-    String? metadataContinue;
+    String? ioK8SApimachineryPkgApisMetaV1ListMetaContinue;
     
     ///remainingItemCount is the number of subsequent items in the list which are not included
     ///in this list response. If the list request contained label or field selectors, then the
@@ -2100,16 +2100,16 @@ class Metadata {
     @JsonKey(name: "selfLink")
     String? selfLink;
 
-    Metadata({
-        this.metadataContinue,
+    IoK8SApimachineryPkgApisMetaV1ListMeta({
+        this.ioK8SApimachineryPkgApisMetaV1ListMetaContinue,
         this.remainingItemCount,
         this.resourceVersion,
         this.selfLink,
     });
 
-    factory Metadata.fromJson(Map<String, dynamic> json) => _$MetadataFromJson(json);
+    factory IoK8SApimachineryPkgApisMetaV1ListMeta.fromJson(Map<String, dynamic> json) => _$IoK8SApimachineryPkgApisMetaV1ListMetaFromJson(json);
 
-    Map<String, dynamic> toJson() => _$MetadataToJson(this);
+    Map<String, dynamic> toJson() => _$IoK8SApimachineryPkgApisMetaV1ListMetaToJson(this);
 }
 
 class EnumValues<T> {

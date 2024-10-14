@@ -1,5 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "ContainerResizePolicy represents resource resize policy for the container.",
+  "required": [
+    "resourceName",
+    "restartPolicy"
+  ],
   "properties": {
     "resourceName": {
       "description": "Name of the resource to which this resource resize policy applies. Supported values: cpu, memory.",
@@ -16,10 +21,5 @@
       ]
     }
   },
-  "required": [
-    "resourceName",
-    "restartPolicy"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

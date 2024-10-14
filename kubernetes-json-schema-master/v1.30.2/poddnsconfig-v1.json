@@ -1,5 +1,5 @@
 {
-  "description": "PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.",
+  "type": "object",
   "properties": {
     "nameservers": {
       "description": "A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.",
@@ -18,7 +18,7 @@
     "options": {
       "description": "A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.",
       "items": {
-        "$ref": "./pod-v1.jsonDNSConfigOption"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfigOption"
       },
       "type": [
         "array",
@@ -41,6 +41,6 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "type": "object",
+  "description": "PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.",
   "$schema": "http://json-schema.org/schema#"
 }

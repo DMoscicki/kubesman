@@ -1,8 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "description": "NodeSpec describes the attributes that a node is created with.",
   "properties": {
     "configSource": {
-      "$ref": "./node-v1.jsonConfigSource",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigSource",
       "description": "Deprecated: Previously used to specify the source of the node's configuration for the DynamicKubeletConfig feature. This feature is removed."
     },
     "externalID": {
@@ -44,7 +46,7 @@
     "taints": {
       "description": "If specified, the node's taints.",
       "items": {
-        "$ref": "./taint-v1.json"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.Taint"
       },
       "type": [
         "array",
@@ -59,7 +61,5 @@
         "null"
       ]
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

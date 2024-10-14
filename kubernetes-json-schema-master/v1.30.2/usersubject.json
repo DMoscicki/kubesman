@@ -1,5 +1,6 @@
 {
-  "description": "UserSubject holds detailed information for user-kind subject.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "name": {
       "description": "`name` is the username that matches, or \"*\" to match all usernames. Required.",
@@ -12,6 +13,5 @@
   "required": [
     "name"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "UserSubject holds detailed information for user-kind subject."
 }

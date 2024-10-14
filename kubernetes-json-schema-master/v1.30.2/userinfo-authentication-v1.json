@@ -1,5 +1,7 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "UserInfo holds the information about the user needed to implement the user.Info interface.",
+  "type": "object",
   "properties": {
     "extra": {
       "additionalProperties": {
@@ -48,7 +50,5 @@
         "null"
       ]
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

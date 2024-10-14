@@ -1,5 +1,10 @@
 {
-  "description": "DaemonSetStatus represents the current status of a daemon set.",
+  "required": [
+    "currentNumberScheduled",
+    "numberMisscheduled",
+    "desiredNumberScheduled",
+    "numberReady"
+  ],
   "properties": {
     "collisionCount": {
       "description": "Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
@@ -90,12 +95,7 @@
       ]
     }
   },
-  "required": [
-    "currentNumberScheduled",
-    "numberMisscheduled",
-    "desiredNumberScheduled",
-    "numberReady"
-  ],
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "DaemonSetStatus represents the current status of a daemon set."
 }

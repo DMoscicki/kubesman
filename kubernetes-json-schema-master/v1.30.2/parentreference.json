@@ -1,5 +1,11 @@
 {
+  "required": [
+    "resource",
+    "name"
+  ],
   "description": "ParentReference describes a reference to a parent object.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "group": {
       "description": "Group is the group of the object being referenced.",
@@ -29,11 +35,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "resource",
-    "name"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

@@ -1,5 +1,7 @@
 {
   "description": "ResourceRequest is a request for resources from one particular driver.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "namedResources": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesRequest",
@@ -9,7 +11,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
       "description": "VendorParameters are arbitrary setup parameters for the requested resource. They are ignored while allocating a claim."
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

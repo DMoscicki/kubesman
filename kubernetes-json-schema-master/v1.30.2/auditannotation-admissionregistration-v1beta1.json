@@ -1,4 +1,8 @@
 {
+  "required": [
+    "key",
+    "valueExpression"
+  ],
   "description": "AuditAnnotation describes how to produce an audit annotation for an API request.",
   "properties": {
     "key": {
@@ -16,10 +20,6 @@
       ]
     }
   },
-  "required": [
-    "key",
-    "valueExpression"
-  ],
   "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

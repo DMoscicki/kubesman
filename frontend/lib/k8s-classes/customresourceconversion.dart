@@ -20,7 +20,7 @@ class Customresourceconversion {
     ///webhook describes how to call the conversion webhook. Required when `strategy` is set to
     ///`"Webhook"`.
     @JsonKey(name: "webhook")
-    Webhook? webhook;
+    IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion? webhook;
 
     Customresourceconversion({
         required this.strategy,
@@ -38,7 +38,7 @@ class Customresourceconversion {
 ///
 ///WebhookConversion describes how to call a conversion webhook
 @JsonSerializable()
-class Webhook {
+class IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
     
     ///clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
     @JsonKey(name: "clientConfig")
@@ -51,16 +51,16 @@ class Webhook {
     ///versions and does not include any versions known to the API Server, calls to the webhook
     ///will fail.
     @JsonKey(name: "conversionReviewVersions")
-    List<String?>? conversionReviewVersions;
+    List<String> conversionReviewVersions;
 
-    Webhook({
+    IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion({
         this.clientConfig,
         required this.conversionReviewVersions,
     });
 
-    factory Webhook.fromJson(Map<String, dynamic> json) => _$WebhookFromJson(json);
+    factory IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion.fromJson(Map<String, dynamic> json) => _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionFromJson(json);
 
-    Map<String, dynamic> toJson() => _$WebhookToJson(this);
+    Map<String, dynamic> toJson() => _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionToJson(this);
 }
 
 

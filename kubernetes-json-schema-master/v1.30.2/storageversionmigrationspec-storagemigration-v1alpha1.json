@@ -1,5 +1,7 @@
 {
-  "description": "Spec of the storage version migration.",
+  "required": [
+    "resource"
+  ],
   "properties": {
     "continueToken": {
       "description": "The token used in the list options to get the next chunk of objects to migrate. When the .status.conditions indicates the migration is \"Running\", users can use this token to check the progress of the migration.",
@@ -13,9 +15,7 @@
       "description": "The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable."
     }
   },
-  "required": [
-    "resource"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Spec of the storage version migration.",
+  "type": "object"
 }

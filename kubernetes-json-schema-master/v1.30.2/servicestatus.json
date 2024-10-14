@@ -1,5 +1,5 @@
 {
-  "description": "ServiceStatus represents the current status of a service.",
+  "type": "object",
   "properties": {
     "conditions": {
       "description": "Current service state",
@@ -22,6 +22,6 @@
       "description": "LoadBalancer contains the current status of the load-balancer, if one is present."
     }
   },
-  "type": "object",
+  "description": "ServiceStatus represents the current status of a service.",
   "$schema": "http://json-schema.org/schema#"
 }

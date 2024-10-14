@@ -1,4 +1,7 @@
 {
+  "required": [
+    "desiredReplicas"
+  ],
   "description": "HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.",
   "properties": {
     "conditions": {
@@ -45,7 +48,7 @@
       ]
     },
     "lastScaleTime": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed."
     },
     "observedGeneration": {
@@ -57,9 +60,6 @@
       ]
     }
   },
-  "required": [
-    "desiredReplicas"
-  ],
   "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

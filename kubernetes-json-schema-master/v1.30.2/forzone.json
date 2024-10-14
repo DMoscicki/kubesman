@@ -1,5 +1,10 @@
 {
+  "type": "object",
+  "required": [
+    "name"
+  ],
   "description": "ForZone provides information about which zones should consume this endpoint.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "name": {
       "description": "name represents the name of the zone.",
@@ -8,10 +13,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "name"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

@@ -1,8 +1,7 @@
 {
-  "description": "PersistentVolumeStatus is the current status of a persistent volume.",
   "properties": {
     "lastPhaseTransitionTime": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "lastPhaseTransitionTime is the time the phase transitioned from one to another and automatically resets to current time everytime a volume phase transitions. This is a beta field and requires the PersistentVolumeLastPhaseTransitionTime feature to be enabled (enabled by default)."
     },
     "message": {
@@ -27,6 +26,7 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "PersistentVolumeStatus is the current status of a persistent volume.",
+  "type": "object"
 }

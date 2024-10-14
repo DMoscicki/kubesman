@@ -1,4 +1,9 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "containers"
+  ],
+  "type": "object",
   "description": "PodSpec is a description of a pod.",
   "properties": {
     "activeDeadlineSeconds": {
@@ -37,7 +42,7 @@
       "x-kubernetes-patch-strategy": "merge"
     },
     "dnsConfig": {
-      "$ref": "./pod-v1.jsonDNSConfig",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfig",
       "description": "Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy."
     },
     "dnsPolicy": {
@@ -175,7 +180,7 @@
       "x-kubernetes-map-type": "atomic"
     },
     "os": {
-      "$ref": "./pod-v1.jsonOS",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodOS",
       "description": "Specifies the OS of the containers in the pod. Some pod and container fields are restricted if this is set.\n\nIf the OS field is set to linux, the following fields must be unset: -securityContext.windowsOptions\n\nIf the OS field is set to windows, following fields must be unset: - spec.hostPID - spec.hostIPC - spec.hostUsers - spec.securityContext.appArmorProfile - spec.securityContext.seLinuxOptions - spec.securityContext.seccompProfile - spec.securityContext.fsGroup - spec.securityContext.fsGroupChangePolicy - spec.securityContext.sysctls - spec.shareProcessNamespace - spec.securityContext.runAsUser - spec.securityContext.runAsGroup - spec.securityContext.supplementalGroups - spec.containers[*].securityContext.appArmorProfile - spec.containers[*].securityContext.seLinuxOptions - spec.containers[*].securityContext.seccompProfile - spec.containers[*].securityContext.capabilities - spec.containers[*].securityContext.readOnlyRootFilesystem - spec.containers[*].securityContext.privileged - spec.containers[*].securityContext.allowPrivilegeEscalation - spec.containers[*].securityContext.procMount - spec.containers[*].securityContext.runAsUser - spec.containers[*].securityContext.runAsGroup"
     },
     "overhead": {
@@ -213,7 +218,7 @@
     "readinessGates": {
       "description": "If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to \"True\" More info: https://git.k8s.io/enhancements/keps/sig-network/580-pod-readiness-gates",
       "items": {
-        "$ref": "./pod-v1.jsonReadinessGate"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate"
       },
       "type": [
         "array",
@@ -224,7 +229,7 @@
     "resourceClaims": {
       "description": "ResourceClaims defines which ResourceClaims must be allocated and reserved before the Pod is allowed to start. The resources will be made available to those containers which consume them by name.\n\nThis is an alpha field and requires enabling the DynamicResourceAllocation feature gate.\n\nThis field is immutable.",
       "items": {
-        "$ref": "./pod-v1.jsonResourceClaim"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodResourceClaim"
       },
       "type": [
         "array",
@@ -261,7 +266,7 @@
     "schedulingGates": {
       "description": "SchedulingGates is an opaque list of values that if specified will block scheduling the pod. If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the scheduler will not attempt to schedule the pod.\n\nSchedulingGates can only be set at pod creation time, and be removed only afterwards.",
       "items": {
-        "$ref": "./pod-v1.jsonSchedulingGate"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodSchedulingGate"
       },
       "type": [
         "array",
@@ -275,7 +280,7 @@
       "x-kubernetes-patch-strategy": "merge"
     },
     "securityContext": {
-      "$ref": "./pod-v1.jsonSecurityContext",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodSecurityContext",
       "description": "SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field."
     },
     "serviceAccount": {
@@ -365,10 +370,5 @@
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge,retainKeys"
     }
-  },
-  "required": [
-    "containers"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

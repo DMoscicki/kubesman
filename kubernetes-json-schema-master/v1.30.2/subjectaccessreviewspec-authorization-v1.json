@@ -1,5 +1,5 @@
 {
-  "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "extra": {
       "additionalProperties": {
@@ -57,6 +57,6 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set",
+  "type": "object"
 }

@@ -1,5 +1,4 @@
 {
-  "description": "Info contains versioning information. how we'll want to distribute that information.",
   "properties": {
     "buildDate": {
       "type": [
@@ -56,6 +55,7 @@
       ]
     }
   },
+  "description": "Info contains versioning information. how we'll want to distribute that information.",
   "required": [
     "major",
     "minor",

@@ -28,12 +28,14 @@ Objectmeta _$ObjectmetaFromJson(Map<String, dynamic> json) => Objectmeta(
       ),
       managedFields: (json['managedFields'] as List<dynamic>?)
           ?.map((e) =>
-              ManagedfieldsentryMetaV1.fromJson(e as Map<String, dynamic>))
+              IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry.fromJson(
+                  e as Map<String, dynamic>))
           .toList(),
       name: json['name'] as String?,
       namespace: json['namespace'] as String?,
       ownerReferences: (json['ownerReferences'] as List<dynamic>?)
-          ?.map((e) => OwnerreferenceMetaV1.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => IoK8SApimachineryPkgApisMetaV1OwnerReference.fromJson(
+              e as Map<String, dynamic>))
           .toList(),
       resourceVersion: json['resourceVersion'] as String?,
       selfLink: json['selfLink'] as String?,
@@ -59,21 +61,23 @@ Map<String, dynamic> _$ObjectmetaToJson(Objectmeta instance) =>
       'uid': instance.uid,
     };
 
-ManagedfieldsentryMetaV1 _$ManagedfieldsentryMetaV1FromJson(
-        Map<String, dynamic> json) =>
-    ManagedfieldsentryMetaV1(
-      apiVersion: json['apiVersion'] as String?,
-      fieldsType: json['fieldsType'] as String?,
-      fieldsV1: json['fieldsV1'] as Map<String, dynamic>?,
-      manager: json['manager'] as String?,
-      operation: json['operation'] as String?,
-      subresource: json['subresource'] as String?,
-      time:
-          json['time'] == null ? null : DateTime.parse(json['time'] as String),
-    );
+IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry
+    _$IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntryFromJson(
+            Map<String, dynamic> json) =>
+        IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry(
+          apiVersion: json['apiVersion'] as String?,
+          fieldsType: json['fieldsType'] as String?,
+          fieldsV1: json['fieldsV1'] as Map<String, dynamic>?,
+          manager: json['manager'] as String?,
+          operation: json['operation'] as String?,
+          subresource: json['subresource'] as String?,
+          time: json['time'] == null
+              ? null
+              : DateTime.parse(json['time'] as String),
+        );
 
-Map<String, dynamic> _$ManagedfieldsentryMetaV1ToJson(
-        ManagedfieldsentryMetaV1 instance) =>
+Map<String, dynamic> _$IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntryToJson(
+        IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry instance) =>
     <String, dynamic>{
       'apiVersion': instance.apiVersion,
       'fieldsType': instance.fieldsType,
@@ -84,19 +88,20 @@ Map<String, dynamic> _$ManagedfieldsentryMetaV1ToJson(
       'time': instance.time?.toIso8601String(),
     };
 
-OwnerreferenceMetaV1 _$OwnerreferenceMetaV1FromJson(
-        Map<String, dynamic> json) =>
-    OwnerreferenceMetaV1(
-      apiVersion: json['apiVersion'] as String?,
-      blockOwnerDeletion: json['blockOwnerDeletion'] as bool?,
-      controller: json['controller'] as bool?,
-      kind: json['kind'] as String?,
-      name: json['name'] as String?,
-      uid: json['uid'] as String?,
-    );
+IoK8SApimachineryPkgApisMetaV1OwnerReference
+    _$IoK8SApimachineryPkgApisMetaV1OwnerReferenceFromJson(
+            Map<String, dynamic> json) =>
+        IoK8SApimachineryPkgApisMetaV1OwnerReference(
+          apiVersion: json['apiVersion'] as String,
+          blockOwnerDeletion: json['blockOwnerDeletion'] as bool?,
+          controller: json['controller'] as bool?,
+          kind: json['kind'] as String,
+          name: json['name'] as String,
+          uid: json['uid'] as String,
+        );
 
-Map<String, dynamic> _$OwnerreferenceMetaV1ToJson(
-        OwnerreferenceMetaV1 instance) =>
+Map<String, dynamic> _$IoK8SApimachineryPkgApisMetaV1OwnerReferenceToJson(
+        IoK8SApimachineryPkgApisMetaV1OwnerReference instance) =>
     <String, dynamic>{
       'apiVersion': instance.apiVersion,
       'blockOwnerDeletion': instance.blockOwnerDeletion,

@@ -1,5 +1,5 @@
 {
-  "description": "SessionAffinityConfig represents the configurations of session affinity.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "clientIP": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.ClientIPConfig",
@@ -7,5 +7,5 @@
     }
   },
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "SessionAffinityConfig represents the configurations of session affinity."
 }

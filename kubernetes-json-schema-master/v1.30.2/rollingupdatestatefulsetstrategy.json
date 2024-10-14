@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.",
   "properties": {
     "maxUnavailable": {
@@ -14,6 +15,5 @@
       ]
     }
   },
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

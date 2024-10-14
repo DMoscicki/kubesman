@@ -1,5 +1,4 @@
 {
-  "description": "LeaseSpec is a specification of a Lease.",
   "properties": {
     "acquireTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
@@ -33,6 +32,7 @@
       "description": "renewTime is a time when the current holder of a lease has last updated the lease."
     }
   },
+  "description": "LeaseSpec is a specification of a Lease.",
   "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

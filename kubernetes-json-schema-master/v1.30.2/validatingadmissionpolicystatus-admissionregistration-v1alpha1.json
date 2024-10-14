@@ -1,5 +1,7 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "ValidatingAdmissionPolicyStatus represents the status of a ValidatingAdmissionPolicy.",
+  "type": "object",
   "properties": {
     "conditions": {
       "description": "The conditions represent the latest available observations of a policy's current state.",
@@ -27,7 +29,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.TypeChecking",
       "description": "The results of type checking for each expression. Presence of this field indicates the completion of the type checking."
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

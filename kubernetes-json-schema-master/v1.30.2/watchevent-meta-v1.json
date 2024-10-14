@@ -1,22 +1,11 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "description": "Event represents a single event to a watched resource.",
-  "properties": {
-    "object": {
-      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
-      "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context."
-    },
-    "type": {
-      "type": [
-        "string",
-        "null"
-      ]
-    }
-  },
   "required": [
     "type",
     "object"
   ],
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
@@ -314,5 +303,16 @@
       "version": "v1alpha1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "properties": {
+    "object": {
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context."
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
 }

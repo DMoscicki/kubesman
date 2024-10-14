@@ -1,5 +1,6 @@
 {
-  "description": "ResourceRequirements describes the compute resource requirements.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "claims": {
       "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.\n\nThis is an alpha field and requires enabling the DynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
@@ -36,6 +37,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ResourceRequirements describes the compute resource requirements."
 }

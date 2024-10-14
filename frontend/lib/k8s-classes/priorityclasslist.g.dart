@@ -16,7 +16,8 @@ Priorityclasslist _$PriorityclasslistFromJson(Map<String, dynamic> json) =>
       kind: $enumDecodeNullable(_$PriorityclasslistKindEnumMap, json['kind']),
       metadata: json['metadata'] == null
           ? null
-          : Metadata.fromJson(json['metadata'] as Map<String, dynamic>),
+          : IoK8SApimachineryPkgApisMetaV1ListMeta.fromJson(
+              json['metadata'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PriorityclasslistToJson(Priorityclasslist instance) =>
@@ -172,15 +173,21 @@ Map<String, dynamic> _$IoK8SApimachineryPkgApisMetaV1OwnerReferenceToJson(
       'uid': instance.uid,
     };
 
-Metadata _$MetadataFromJson(Map<String, dynamic> json) => Metadata(
-      metadataContinue: json['continue'] as String?,
-      remainingItemCount: (json['remainingItemCount'] as num?)?.toInt(),
-      resourceVersion: json['resourceVersion'] as String?,
-      selfLink: json['selfLink'] as String?,
-    );
+IoK8SApimachineryPkgApisMetaV1ListMeta
+    _$IoK8SApimachineryPkgApisMetaV1ListMetaFromJson(
+            Map<String, dynamic> json) =>
+        IoK8SApimachineryPkgApisMetaV1ListMeta(
+          ioK8SApimachineryPkgApisMetaV1ListMetaContinue:
+              json['continue'] as String?,
+          remainingItemCount: (json['remainingItemCount'] as num?)?.toInt(),
+          resourceVersion: json['resourceVersion'] as String?,
+          selfLink: json['selfLink'] as String?,
+        );
 
-Map<String, dynamic> _$MetadataToJson(Metadata instance) => <String, dynamic>{
-      'continue': instance.metadataContinue,
+Map<String, dynamic> _$IoK8SApimachineryPkgApisMetaV1ListMetaToJson(
+        IoK8SApimachineryPkgApisMetaV1ListMeta instance) =>
+    <String, dynamic>{
+      'continue': instance.ioK8SApimachineryPkgApisMetaV1ListMetaContinue,
       'remainingItemCount': instance.remainingItemCount,
       'resourceVersion': instance.resourceVersion,
       'selfLink': instance.selfLink,

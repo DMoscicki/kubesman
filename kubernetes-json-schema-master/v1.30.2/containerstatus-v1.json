@@ -1,5 +1,6 @@
 {
   "description": "ContainerStatus contains details for the current status of this container.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "allocatedResources": {
       "additionalProperties": {
@@ -90,13 +91,12 @@
       "x-kubernetes-patch-strategy": "merge"
     }
   },
+  "type": "object",
   "required": [
     "name",
     "ready",
     "restartCount",
     "image",
     "imageID"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

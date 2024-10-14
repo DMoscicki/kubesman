@@ -1,5 +1,6 @@
 {
   "description": "ParamKind is a tuple of Group Kind and Version.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion is the API group version the resources belong to. In format of \"group/version\". Required.",
@@ -16,7 +17,6 @@
       ]
     }
   },
-  "type": "object",
   "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

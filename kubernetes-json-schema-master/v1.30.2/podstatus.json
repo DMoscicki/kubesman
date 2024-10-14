@@ -1,10 +1,9 @@
 {
-  "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system, especially if the node that hosts the pod cannot contact the control plane.",
   "properties": {
     "conditions": {
       "description": "Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
       "items": {
-        "$ref": "./pod-v1.jsonCondition"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodCondition"
       },
       "type": [
         "array",
@@ -101,7 +100,7 @@
     "podIPs": {
       "description": "podIPs holds the IP addresses allocated to the pod. If this field is specified, the 0th entry must match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list is empty if no IPs have been allocated yet.",
       "items": {
-        "$ref": "./pod-v1.jsonIP"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodIP"
       },
       "type": [
         "array",
@@ -138,7 +137,7 @@
     "resourceClaimStatuses": {
       "description": "Status of resource claims.",
       "items": {
-        "$ref": "./pod-v1.jsonResourceClaimStatus"
+        "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodResourceClaimStatus"
       },
       "type": [
         "array",
@@ -152,10 +151,11 @@
       "x-kubernetes-patch-strategy": "merge,retainKeys"
     },
     "startTime": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod."
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system, especially if the node that hosts the pod cannot contact the control plane.",
+  "type": "object"
 }

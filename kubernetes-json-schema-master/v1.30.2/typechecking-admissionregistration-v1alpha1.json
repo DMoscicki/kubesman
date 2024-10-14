@@ -1,5 +1,4 @@
 {
-  "description": "TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy",
   "properties": {
     "expressionWarnings": {
       "description": "The type checking warnings for each expression.",
@@ -14,5 +13,6 @@
     }
   },
   "type": "object",
+  "description": "TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy",
   "$schema": "http://json-schema.org/schema#"
 }

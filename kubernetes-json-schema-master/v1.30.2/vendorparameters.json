@@ -1,5 +1,6 @@
 {
   "description": "VendorParameters are opaque parameters for one particular driver.",
+  "type": "object",
   "properties": {
     "driverName": {
       "description": "DriverName is the name used by the DRA driver kubelet plugin.",
@@ -13,6 +14,5 @@
       "description": "Parameters can be arbitrary setup parameters. They are ignored while allocating a claim."
     }
   },
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

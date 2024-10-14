@@ -1,5 +1,4 @@
 {
-  "description": "ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume",
   "properties": {
     "fsType": {
       "description": "fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\"",
@@ -69,6 +68,7 @@
       ]
     }
   },
+  "description": "ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume",
   "required": [
     "gateway",
     "system",

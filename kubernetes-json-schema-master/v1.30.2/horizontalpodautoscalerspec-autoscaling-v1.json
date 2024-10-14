@@ -1,5 +1,8 @@
 {
-  "description": "specification of a horizontal pod autoscaler.",
+  "required": [
+    "scaleTargetRef",
+    "maxReplicas"
+  ],
   "properties": {
     "maxReplicas": {
       "description": "maxReplicas is the upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.",
@@ -30,10 +33,7 @@
       ]
     }
   },
-  "required": [
-    "scaleTargetRef",
-    "maxReplicas"
-  ],
+  "description": "specification of a horizontal pod autoscaler.",
   "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

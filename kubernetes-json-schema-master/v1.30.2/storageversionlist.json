@@ -1,4 +1,12 @@
 {
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "internal.apiserver.k8s.io",
+      "kind": "StorageVersionList",
+      "version": "v1alpha1"
+    }
+  ],
+  "type": "object",
   "description": "A list of StorageVersions.",
   "properties": {
     "apiVersion": {
@@ -20,29 +28,21 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "StorageVersionList"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "StorageVersionList"
       ]
     },
     "metadata": {
-      "$ref": "./listmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
   "required": [
     "items"
-  ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "internal.apiserver.k8s.io",
-      "kind": "StorageVersionList",
-      "version": "v1alpha1"
-    }
   ],
   "$schema": "http://json-schema.org/schema#"
 }

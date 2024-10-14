@@ -1,5 +1,5 @@
 {
-  "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "chapAuthDiscovery": {
       "description": "chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication",
@@ -84,11 +84,11 @@
       ]
     }
   },
+  "type": "object",
+  "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.",
   "required": [
     "targetPortal",
     "iqn",
     "lun"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

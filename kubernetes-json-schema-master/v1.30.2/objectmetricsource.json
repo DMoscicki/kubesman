@@ -1,4 +1,10 @@
 {
+  "required": [
+    "describedObject",
+    "target",
+    "metric"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
   "properties": {
     "describedObject": {
@@ -14,11 +20,5 @@
       "description": "target specifies the target value for the given metric"
     }
   },
-  "required": [
-    "describedObject",
-    "target",
-    "metric"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

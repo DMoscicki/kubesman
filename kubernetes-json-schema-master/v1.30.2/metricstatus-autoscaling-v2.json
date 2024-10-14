@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "MetricStatus describes the last-read state of a single metric.",
   "properties": {
     "containerResource": {
@@ -31,7 +33,5 @@
   },
   "required": [
     "type"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

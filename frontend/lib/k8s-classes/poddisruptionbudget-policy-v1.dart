@@ -26,7 +26,7 @@ class PoddisruptionbudgetPolicyV1 {
     ///Standard object's metadata. More info:
     ///https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
     @JsonKey(name: "metadata")
-    Metadata? metadata;
+    IoK8SApimachineryPkgApisMetaV1ObjectMeta? metadata;
     
     ///Specification of the desired behavior of the PodDisruptionBudget.
     @JsonKey(name: "spec")
@@ -84,14 +84,14 @@ final kindValues = EnumValues({
 ///ObjectMeta is metadata that all persisted resources must have, which includes all objects
 ///users must create.
 @JsonSerializable()
-class Metadata {
+class IoK8SApimachineryPkgApisMetaV1ObjectMeta {
     
     ///Annotations is an unstructured key value map stored with a resource that may be set by
     ///external tools to store and retrieve arbitrary metadata. They are not queryable and
     ///should be preserved when modifying objects. More info:
     ///https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
     @JsonKey(name: "annotations")
-    Map<String, String?>? annotations;
+    Map<String, String>? annotations;
     
     ///CreationTimestamp is a timestamp representing the server time when this object was
     ///created. It is not guaranteed to be set in happens-before order across separate
@@ -141,7 +141,7 @@ class Metadata {
     ///enforced ordering finalizers are free to order amongst themselves and are not vulnerable
     ///to ordering changes in the list.
     @JsonKey(name: "finalizers")
-    List<String?>? finalizers;
+    List<String>? finalizers;
     
     ///GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF
     ///the Name field has not been provided. If this field is used, the name returned to the
@@ -166,7 +166,7 @@ class Metadata {
     ///select) objects. May match selectors of replication controllers and services. More info:
     ///https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
     @JsonKey(name: "labels")
-    Map<String, String?>? labels;
+    Map<String, String>? labels;
     
     ///ManagedFields maps workflow-id and version to the set of fields that are managed by that
     ///workflow. This is mostly for internal housekeeping, and users typically shouldn't need to
@@ -174,7 +174,7 @@ class Metadata {
     ///the name of a specific apply path like "ci-cd". The set of fields is always in the
     ///version that the workflow used when modifying the object.
     @JsonKey(name: "managedFields")
-    List<ManagedfieldsentryMetaV1>? managedFields;
+    List<IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry>? managedFields;
     
     ///Name must be unique within a namespace. Is required when creating resources, although
     ///some resources may allow a client to request the generation of an appropriate name
@@ -199,7 +199,7 @@ class Metadata {
     ///entry in this list will point to this controller, with the controller field set to true.
     ///There cannot be more than one managing controller.
     @JsonKey(name: "ownerReferences")
-    List<OwnerreferenceMetaV1>? ownerReferences;
+    List<IoK8SApimachineryPkgApisMetaV1OwnerReference>? ownerReferences;
     
     ///An opaque value that represents the internal version of this object that can be used by
     ///clients to determine when objects have changed. May be used for optimistic concurrency,
@@ -227,7 +227,7 @@ class Metadata {
     @JsonKey(name: "uid")
     String? uid;
 
-    Metadata({
+    IoK8SApimachineryPkgApisMetaV1ObjectMeta({
         this.annotations,
         this.creationTimestamp,
         this.deletionGracePeriodSeconds,
@@ -245,16 +245,16 @@ class Metadata {
         this.uid,
     });
 
-    factory Metadata.fromJson(Map<String, dynamic> json) => _$MetadataFromJson(json);
+    factory IoK8SApimachineryPkgApisMetaV1ObjectMeta.fromJson(Map<String, dynamic> json) => _$IoK8SApimachineryPkgApisMetaV1ObjectMetaFromJson(json);
 
-    Map<String, dynamic> toJson() => _$MetadataToJson(this);
+    Map<String, dynamic> toJson() => _$IoK8SApimachineryPkgApisMetaV1ObjectMetaToJson(this);
 }
 
 
 ///ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource
 ///that the fieldset applies to.
 @JsonSerializable()
-class ManagedfieldsentryMetaV1 {
+class IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry {
     
     ///APIVersion defines the version of this resource that this field set applies to. The
     ///format is "group/version" just like the top-level APIVersion field. It is necessary to
@@ -296,7 +296,7 @@ class ManagedfieldsentryMetaV1 {
     @JsonKey(name: "time")
     DateTime? time;
 
-    ManagedfieldsentryMetaV1({
+    IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry({
         this.apiVersion,
         this.fieldsType,
         this.fieldsV1,
@@ -306,9 +306,9 @@ class ManagedfieldsentryMetaV1 {
         this.time,
     });
 
-    factory ManagedfieldsentryMetaV1.fromJson(Map<String, dynamic> json) => _$ManagedfieldsentryMetaV1FromJson(json);
+    factory IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntry.fromJson(Map<String, dynamic> json) => _$IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntryFromJson(json);
 
-    Map<String, dynamic> toJson() => _$ManagedfieldsentryMetaV1ToJson(this);
+    Map<String, dynamic> toJson() => _$IoK8SApimachineryPkgApisMetaV1ManagedFieldsEntryToJson(this);
 }
 
 
@@ -316,11 +316,11 @@ class ManagedfieldsentryMetaV1 {
 ///owning object must be in the same namespace as the dependent, or be cluster-scoped, so
 ///there is no namespace field.
 @JsonSerializable()
-class OwnerreferenceMetaV1 {
+class IoK8SApimachineryPkgApisMetaV1OwnerReference {
     
     ///API version of the referent.
     @JsonKey(name: "apiVersion")
-    String? apiVersion;
+    String apiVersion;
     
     ///If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot
     ///be deleted from the key-value store until this reference is removed. See
@@ -338,19 +338,19 @@ class OwnerreferenceMetaV1 {
     ///Kind of the referent. More info:
     ///https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     @JsonKey(name: "kind")
-    String? kind;
+    String kind;
     
     ///Name of the referent. More info:
     ///https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
     @JsonKey(name: "name")
-    String? name;
+    String name;
     
     ///UID of the referent. More info:
     ///https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
     @JsonKey(name: "uid")
-    String? uid;
+    String uid;
 
-    OwnerreferenceMetaV1({
+    IoK8SApimachineryPkgApisMetaV1OwnerReference({
         required this.apiVersion,
         this.blockOwnerDeletion,
         this.controller,
@@ -359,9 +359,9 @@ class OwnerreferenceMetaV1 {
         required this.uid,
     });
 
-    factory OwnerreferenceMetaV1.fromJson(Map<String, dynamic> json) => _$OwnerreferenceMetaV1FromJson(json);
+    factory IoK8SApimachineryPkgApisMetaV1OwnerReference.fromJson(Map<String, dynamic> json) => _$IoK8SApimachineryPkgApisMetaV1OwnerReferenceFromJson(json);
 
-    Map<String, dynamic> toJson() => _$OwnerreferenceMetaV1ToJson(this);
+    Map<String, dynamic> toJson() => _$IoK8SApimachineryPkgApisMetaV1OwnerReferenceToJson(this);
 }
 
 

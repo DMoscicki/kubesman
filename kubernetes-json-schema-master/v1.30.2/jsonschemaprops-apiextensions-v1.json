@@ -1,12 +1,6 @@
 {
-  "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).",
   "properties": {
-    "$ref": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
+    "$ref": "",
     "$schema": {
       "type": [
         "string",
@@ -14,14 +8,14 @@
       ]
     },
     "additionalItems": {
-      "$ref": "./jsonschemaprops-apiextensions-v1.jsonOrBool"
+      "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool"
     },
     "additionalProperties": {
-      "$ref": "./jsonschemaprops-apiextensions-v1.jsonOrBool"
+      "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool"
     },
     "allOf": {
       "items": {
-        "$ref": "./jsonschemaprops-apiextensions-v1.json"
+        "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
       },
       "type": [
         "array",
@@ -31,7 +25,7 @@
     },
     "anyOf": {
       "items": {
-        "$ref": "./jsonschemaprops-apiextensions-v1.json"
+        "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
       },
       "type": [
         "array",
@@ -45,7 +39,7 @@
     },
     "definitions": {
       "additionalProperties": {
-        "$ref": "./jsonschemaprops-apiextensions-v1.json"
+        "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
       },
       "type": [
         "object",
@@ -54,7 +48,7 @@
     },
     "dependencies": {
       "additionalProperties": {
-        "$ref": "./jsonschemaprops-apiextensions-v1.jsonOrStringArray"
+        "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrStringArray"
       },
       "type": [
         "object",
@@ -109,7 +103,7 @@
       ]
     },
     "items": {
-      "$ref": "./jsonschemaprops-apiextensions-v1.jsonOrArray"
+      "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrArray"
     },
     "maxItems": {
       "format": "int64",
@@ -175,7 +169,7 @@
       ]
     },
     "not": {
-      "$ref": "./jsonschemaprops-apiextensions-v1.json"
+      "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
     },
     "nullable": {
       "type": [
@@ -185,7 +179,7 @@
     },
     "oneOf": {
       "items": {
-        "$ref": "./jsonschemaprops-apiextensions-v1.json"
+        "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
       },
       "type": [
         "array",
@@ -201,7 +195,7 @@
     },
     "patternProperties": {
       "additionalProperties": {
-        "$ref": "./jsonschemaprops-apiextensions-v1.json"
+        "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
       },
       "type": [
         "object",
@@ -210,7 +204,7 @@
     },
     "properties": {
       "additionalProperties": {
-        "$ref": "./jsonschemaprops-apiextensions-v1.json"
+        "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
       },
       "type": [
         "object",
@@ -308,6 +302,7 @@
       "x-kubernetes-patch-strategy": "merge"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/)."
 }

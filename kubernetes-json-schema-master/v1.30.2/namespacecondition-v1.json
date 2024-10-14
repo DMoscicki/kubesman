@@ -1,8 +1,12 @@
 {
   "description": "NamespaceCondition contains details about state of namespace.",
+  "required": [
+    "type",
+    "status"
+  ],
   "properties": {
     "lastTransitionTime": {
-      "$ref": "./time-meta-v1.json"
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
     },
     "message": {
       "type": [
@@ -31,10 +35,6 @@
       ]
     }
   },
-  "required": [
-    "type",
-    "status"
-  ],
   "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

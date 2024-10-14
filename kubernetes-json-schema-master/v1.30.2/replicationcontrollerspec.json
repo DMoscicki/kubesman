@@ -1,5 +1,6 @@
 {
   "description": "ReplicationControllerSpec is the specification of a replication controller.",
+  "type": "object",
   "properties": {
     "minReadySeconds": {
       "description": "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -32,10 +33,9 @@
       "x-kubernetes-map-type": "atomic"
     },
     "template": {
-      "$ref": "./pod-v1.jsonTemplateSpec",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec",
       "description": "Template is the object that describes the pod that will be created if insufficient replicas are detected. This takes precedence over a TemplateRef. The only allowed template.spec.restartPolicy value is \"Always\". More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template"
     }
   },
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

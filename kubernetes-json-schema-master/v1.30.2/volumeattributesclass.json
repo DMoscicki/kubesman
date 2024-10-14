@@ -1,5 +1,17 @@
 {
   "description": "VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "storage.k8s.io",
+      "kind": "VolumeAttributesClass",
+      "version": "v1alpha1"
+    }
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "driverName"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -17,16 +29,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "VolumeAttributesClass"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "VolumeAttributesClass"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "parameters": {
@@ -42,17 +54,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "driverName"
-  ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "storage.k8s.io",
-      "kind": "VolumeAttributesClass",
-      "version": "v1alpha1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

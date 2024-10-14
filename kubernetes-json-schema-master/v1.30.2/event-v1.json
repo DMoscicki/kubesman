@@ -1,5 +1,13 @@
 {
   "description": "Event is a report of an event somewhere in the cluster.  Events have a limited retention time and triggers and messages may evolve with time.  Event consumers should not rely on the timing of an event with a given Reason reflecting a consistent underlying trigger, or the continued existence of events with that Reason.  Events should be treated as informative, best-effort, supplemental data.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "Event",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "action": {
       "description": "What action was taken/failed regarding to the Regarding object.",
@@ -10,12 +18,12 @@
     },
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "enum": [
+        "v1"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "v1"
       ]
     },
     "count": {
@@ -31,7 +39,7 @@
       "description": "Time when this Event was first observed."
     },
     "firstTimestamp": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)"
     },
     "involvedObject": {
@@ -40,16 +48,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "Event"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "Event"
       ]
     },
     "lastTimestamp": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "The time at which the most recent occurrence of this event was recorded."
     },
     "message": {
@@ -60,7 +68,7 @@
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "reason": {
@@ -104,17 +112,9 @@
       ]
     }
   },
+  "type": "object",
   "required": [
     "metadata",
     "involvedObject"
-  ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "Event",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

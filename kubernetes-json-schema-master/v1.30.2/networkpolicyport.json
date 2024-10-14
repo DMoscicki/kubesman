@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "NetworkPolicyPort describes a port to allow traffic on",
   "properties": {
     "endPort": {
@@ -21,6 +22,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "UserSubject holds detailed information for user-kind subject.",
   "properties": {
     "name": {
@@ -11,7 +13,5 @@
   },
   "required": [
     "name"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

@@ -1,4 +1,8 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "name"
+  ],
   "description": "GroupSubject holds detailed information for group-kind subject.",
   "properties": {
     "name": {
@@ -9,9 +13,5 @@
       ]
     }
   },
-  "required": [
-    "name"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

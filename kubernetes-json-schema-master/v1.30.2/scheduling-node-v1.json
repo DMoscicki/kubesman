@@ -1,5 +1,4 @@
 {
-  "description": "Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.",
   "properties": {
     "nodeSelector": {
       "additionalProperties": {
@@ -27,6 +26,7 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "description": "Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.",
   "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

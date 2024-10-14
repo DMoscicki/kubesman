@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.",
   "properties": {
     "resourceVersion": {
@@ -16,6 +17,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }
