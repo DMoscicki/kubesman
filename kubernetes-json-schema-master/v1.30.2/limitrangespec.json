@@ -1,4 +1,9 @@
 {
+  "type": "object",
+  "required": [
+    "limits"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "LimitRangeSpec defines a min/max usage limit for resources that match on kind.",
   "properties": {
     "limits": {
@@ -12,10 +17,5 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  },
-  "required": [
-    "limits"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

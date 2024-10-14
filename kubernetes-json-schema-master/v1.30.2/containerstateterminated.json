@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "ContainerStateTerminated is a terminated state of a container.",
   "properties": {
     "containerID": {
@@ -17,7 +19,7 @@
       ]
     },
     "finishedAt": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time at which the container last terminated"
     },
     "message": {
@@ -43,13 +45,11 @@
       ]
     },
     "startedAt": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time at which previous execution of the container started"
     }
   },
   "required": [
     "exitCode"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "The names of the group, the version, and the resource.",
   "properties": {
     "group": {
@@ -23,6 +24,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

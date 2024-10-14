@@ -1,5 +1,10 @@
 {
+  "required": [
+    "driver"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "Represents a source location of a volume to mount, managed by an external CSI driver",
+  "type": "object",
   "properties": {
     "driver": {
       "description": "driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.",
@@ -39,10 +44,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "driver"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

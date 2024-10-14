@@ -1,8 +1,14 @@
 {
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
   "description": "Describes the state of a migration at a certain point.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "lastUpdateTime": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "The last time this condition was updated."
     },
     "message": {
@@ -33,11 +39,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "type",
-    "status"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

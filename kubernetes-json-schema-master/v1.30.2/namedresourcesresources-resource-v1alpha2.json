@@ -1,5 +1,4 @@
 {
-  "description": "NamedResourcesResources is used in ResourceModel.",
   "properties": {
     "instances": {
       "description": "The list of all individual resources instances currently available.",
@@ -13,9 +12,10 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "type": "object",
+  "description": "NamedResourcesResources is used in ResourceModel.",
   "required": [
     "instances"
   ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

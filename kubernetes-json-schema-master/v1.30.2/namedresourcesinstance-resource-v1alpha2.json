@@ -1,5 +1,4 @@
 {
-  "description": "NamedResourcesInstance represents one individual hardware instance that can be selected based on its attributes.",
   "properties": {
     "attributes": {
       "description": "Attributes defines the attributes of this resource instance. The name of each attribute must be unique.",
@@ -23,6 +22,7 @@
   "required": [
     "name"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "NamedResourcesInstance represents one individual hardware instance that can be selected based on its attributes.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

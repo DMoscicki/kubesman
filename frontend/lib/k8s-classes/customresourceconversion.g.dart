@@ -12,7 +12,8 @@ Customresourceconversion _$CustomresourceconversionFromJson(
       strategy: json['strategy'] as String?,
       webhook: json['webhook'] == null
           ? null
-          : Webhook.fromJson(json['webhook'] as Map<String, dynamic>),
+          : IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion
+              .fromJson(json['webhook'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CustomresourceconversionToJson(
@@ -22,21 +23,28 @@ Map<String, dynamic> _$CustomresourceconversionToJson(
       'webhook': instance.webhook,
     };
 
-Webhook _$WebhookFromJson(Map<String, dynamic> json) => Webhook(
-      clientConfig: json['clientConfig'] == null
-          ? null
-          : IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
-              .fromJson(json['clientConfig'] as Map<String, dynamic>),
-      conversionReviewVersions:
-          (json['conversionReviewVersions'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toList(),
-    );
+IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion
+    _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionFromJson(
+            Map<String, dynamic> json) =>
+        IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion(
+          clientConfig: json['clientConfig'] == null
+              ? null
+              : IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
+                  .fromJson(json['clientConfig'] as Map<String, dynamic>),
+          conversionReviewVersions:
+              (json['conversionReviewVersions'] as List<dynamic>)
+                  .map((e) => e as String)
+                  .toList(),
+        );
 
-Map<String, dynamic> _$WebhookToJson(Webhook instance) => <String, dynamic>{
-      'clientConfig': instance.clientConfig,
-      'conversionReviewVersions': instance.conversionReviewVersions,
-    };
+Map<String, dynamic>
+    _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionToJson(
+            IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion
+                instance) =>
+        <String, dynamic>{
+          'clientConfig': instance.clientConfig,
+          'conversionReviewVersions': instance.conversionReviewVersions,
+        };
 
 IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
     _$IoK8SApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfigFromJson(

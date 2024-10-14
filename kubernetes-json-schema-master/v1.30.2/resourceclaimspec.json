@@ -1,5 +1,10 @@
 {
   "description": "ResourceClaimSpec defines how a resource is to be allocated.",
+  "required": [
+    "resourceClassName"
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "allocationMode": {
       "description": "Allocation can start immediately or when a Pod wants to use the resource. \"WaitForFirstConsumer\" is the default.",
@@ -19,10 +24,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "resourceClassName"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

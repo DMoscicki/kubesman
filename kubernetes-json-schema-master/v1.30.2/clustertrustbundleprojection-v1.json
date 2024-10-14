@@ -1,5 +1,4 @@
 {
-  "description": "ClusterTrustBundleProjection describes how to select a set of ClusterTrustBundle objects and project their contents into the pod filesystem.",
   "properties": {
     "labelSelector": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
@@ -34,9 +33,10 @@
       ]
     }
   },
+  "type": "object",
+  "description": "ClusterTrustBundleProjection describes how to select a set of ClusterTrustBundle objects and project their contents into the pod filesystem.",
   "required": [
     "path"
   ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

@@ -10,16 +10,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "Lease"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "Lease"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "spec": {

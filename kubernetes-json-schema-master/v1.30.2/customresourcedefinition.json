@@ -10,30 +10,27 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "CustomResourceDefinition"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "CustomResourceDefinition"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "spec": {
-      "$ref": "./customresourcedefinitionspec-apiextensions-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionSpec",
       "description": "spec describes how the user wants the resources to appear"
     },
     "status": {
-      "$ref": "./customresourcedefinitionstatus-apiextensions-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionStatus",
       "description": "status indicates the actual state of the CustomResourceDefinition"
     }
   },
-  "required": [
-    "spec"
-  ],
   "type": "object",
   "x-kubernetes-group-version-kind": [
     {
@@ -42,5 +39,8 @@
       "version": "v1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "spec"
+  ]
 }

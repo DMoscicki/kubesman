@@ -1,5 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "VolumeAttachmentStatus is the status of a VolumeAttachment request.",
+  "type": "object",
+  "required": [
+    "attached"
+  ],
   "properties": {
     "attachError": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.storage.v1.VolumeError",
@@ -29,10 +34,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.storage.v1.VolumeError",
       "description": "detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher."
     }
-  },
-  "required": [
-    "attached"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

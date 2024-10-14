@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "description": "IPAddressList contains a list of IPAddress.",
   "properties": {
     "apiVersion": {
@@ -20,29 +22,27 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "IPAddressList"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "IPAddressList"
       ]
     },
     "metadata": {
-      "$ref": "./listmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
   "required": [
     "items"
   ],
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "networking.k8s.io",
       "kind": "IPAddressList",
       "version": "v1alpha1"
     }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

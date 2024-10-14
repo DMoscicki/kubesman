@@ -1,5 +1,5 @@
 {
-  "description": "A scoped-resource selector requirement is a selector that contains values, a scope name, and an operator that relates the scope name and values.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "operator": {
       "description": "Represents a scope's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist.",
@@ -30,10 +30,10 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "description": "A scoped-resource selector requirement is a selector that contains values, a scope name, and an operator that relates the scope name and values.",
   "required": [
     "scopeName",
     "operator"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

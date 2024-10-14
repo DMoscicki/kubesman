@@ -1,5 +1,11 @@
 {
   "description": "DeploymentSpec is the specification of the desired behavior of the Deployment.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "selector",
+    "template"
+  ],
+  "type": "object",
   "properties": {
     "minReadySeconds": {
       "description": "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -50,14 +56,8 @@
       "x-kubernetes-patch-strategy": "retainKeys"
     },
     "template": {
-      "$ref": "./pod-v1.jsonTemplateSpec",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec",
       "description": "Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is \"Always\"."
     }
-  },
-  "required": [
-    "selector",
-    "template"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

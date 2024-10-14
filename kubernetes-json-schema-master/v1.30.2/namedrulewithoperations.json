@@ -1,5 +1,5 @@
 {
-  "description": "NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiGroups": {
       "description": "APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required.",
@@ -81,5 +81,5 @@
   },
   "type": "object",
   "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames."
 }

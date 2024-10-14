@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "RoleRef contains information that points to the role being used",
   "properties": {
     "apiGroup": {
@@ -23,12 +24,11 @@
       ]
     }
   },
+  "type": "object",
   "required": [
     "apiGroup",
     "kind",
     "name"
   ],
-  "type": "object",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "x-kubernetes-map-type": "atomic"
 }

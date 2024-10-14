@@ -1,5 +1,6 @@
 {
-  "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "cachingMode": {
       "description": "cachingMode is the Host Caching mode: None, Read Only, Read Write.",
@@ -48,6 +49,5 @@
     "diskName",
     "diskURI"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod."
 }

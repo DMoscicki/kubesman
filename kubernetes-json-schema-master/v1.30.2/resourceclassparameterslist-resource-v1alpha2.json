@@ -1,14 +1,17 @@
 {
-  "description": "ResourceClassParametersList is a collection of ResourceClassParameters.",
+  "required": [
+    "items"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "enum": [
+        "resource.k8s.io/v1alpha2"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "resource.k8s.io/v1alpha2"
       ]
     },
     "items": {
@@ -23,22 +26,19 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "ResourceClassParametersList"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "ResourceClassParametersList"
       ]
     },
     "metadata": {
-      "$ref": "./listmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata"
     }
   },
-  "required": [
-    "items"
-  ],
   "type": "object",
   "x-kubernetes-group-version-kind": [
     {
@@ -47,5 +47,5 @@
       "version": "v1alpha2"
     }
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ResourceClassParametersList is a collection of ResourceClassParameters."
 }

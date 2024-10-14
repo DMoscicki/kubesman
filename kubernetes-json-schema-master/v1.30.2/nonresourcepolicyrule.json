@@ -30,10 +30,10 @@
       "x-kubernetes-list-type": "set"
     }
   },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "verbs",
     "nonResourceURLs"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

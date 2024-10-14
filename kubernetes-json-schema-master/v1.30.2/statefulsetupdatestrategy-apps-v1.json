@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.",
   "properties": {
     "rollingUpdate": {
@@ -12,7 +14,5 @@
         "null"
       ]
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

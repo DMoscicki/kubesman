@@ -1,5 +1,6 @@
 {
   "description": "HorizontalPodAutoscalerBehavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively).",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "scaleDown": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HPAScalingRules",
@@ -10,6 +11,5 @@
       "description": "scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of:\n  * increase no more than 4 pods per 60 seconds\n  * double the number of pods per 60 seconds\nNo stabilization is used."
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

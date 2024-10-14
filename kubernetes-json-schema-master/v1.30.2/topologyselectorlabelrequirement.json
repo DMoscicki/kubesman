@@ -1,5 +1,10 @@
 {
   "description": "A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "key",
+    "values"
+  ],
   "properties": {
     "key": {
       "description": "The label key that the selector applies to.",
@@ -23,10 +28,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "required": [
-    "key",
-    "values"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

@@ -1,5 +1,5 @@
 {
-  "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.",
+  "type": "object",
   "properties": {
     "driver": {
       "description": "driver is the name of the driver to use for this volume.",
@@ -40,9 +40,9 @@
       "description": "secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts."
     }
   },
+  "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "driver"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

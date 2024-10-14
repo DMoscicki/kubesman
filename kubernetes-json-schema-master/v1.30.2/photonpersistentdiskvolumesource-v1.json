@@ -1,5 +1,10 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "Represents a Photon Controller persistent disk resource.",
+  "required": [
+    "pdID"
+  ],
   "properties": {
     "fsType": {
       "description": "fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
@@ -15,10 +20,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "pdID"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

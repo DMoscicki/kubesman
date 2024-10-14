@@ -1,5 +1,4 @@
 {
-  "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
   "properties": {
     "containerName": {
       "description": "Container name: required for volumes, optional for env vars",
@@ -20,10 +19,11 @@
       ]
     }
   },
+  "type": "object",
+  "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+  "x-kubernetes-map-type": "atomic",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "resource"
-  ],
-  "type": "object",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

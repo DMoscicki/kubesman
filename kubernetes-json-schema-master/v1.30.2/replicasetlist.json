@@ -1,4 +1,13 @@
 {
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "apps",
+      "kind": "ReplicaSetList",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "ReplicaSetList is a collection of ReplicaSets.",
   "properties": {
     "apiVersion": {
@@ -20,29 +29,20 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "ReplicaSetList"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "ReplicaSetList"
       ]
     },
     "metadata": {
-      "$ref": "./listmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
   "required": [
     "items"
-  ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "apps",
-      "kind": "ReplicaSetList",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

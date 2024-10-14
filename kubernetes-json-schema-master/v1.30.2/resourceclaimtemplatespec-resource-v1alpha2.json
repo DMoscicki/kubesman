@@ -1,8 +1,9 @@
 {
-  "description": "ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation."
     },
     "spec": {
@@ -10,9 +11,8 @@
       "description": "Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here."
     }
   },
+  "description": "ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.",
   "required": [
     "spec"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

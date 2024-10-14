@@ -1,5 +1,5 @@
 {
-  "description": "IngressBackend describes all endpoints for a given service and port.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "resource": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference",
@@ -11,5 +11,5 @@
     }
   },
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "IngressBackend describes all endpoints for a given service and port."
 }

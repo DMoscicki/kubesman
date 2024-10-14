@@ -1,5 +1,5 @@
 {
-  "description": "APIResource specifies the name of a resource and whether it is namespaced.",
+  "type": "object",
   "properties": {
     "categories": {
       "description": "categories is a list of the grouped resources this resource belongs to (e.g. 'all')",
@@ -92,13 +92,13 @@
       ]
     }
   },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "APIResource specifies the name of a resource and whether it is namespaced.",
   "required": [
     "name",
     "singularName",
     "namespaced",
     "kind",
     "verbs"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

@@ -1,8 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "FlowSchemaCondition describes conditions for a FlowSchema.",
+  "type": "object",
   "properties": {
     "lastTransitionTime": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "`lastTransitionTime` is the last time the condition transitioned from one status to another."
     },
     "message": {
@@ -33,7 +35,5 @@
         "null"
       ]
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

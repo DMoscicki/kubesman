@@ -14,10 +14,10 @@
       "description": "lastObservedTime is the time when last Event from the series was seen before last heartbeat."
     }
   },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "count",
     "lastObservedTime"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

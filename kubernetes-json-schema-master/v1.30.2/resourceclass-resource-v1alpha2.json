@@ -1,14 +1,13 @@
 {
-  "description": "ResourceClass is used by administrators to influence how resources are allocated.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "enum": [
+        "resource.k8s.io/v1alpha2"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "resource.k8s.io/v1alpha2"
       ]
     },
     "driverName": {
@@ -20,16 +19,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "ResourceClass"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "ResourceClass"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "parametersRef": {
@@ -44,14 +43,15 @@
       ]
     },
     "suitableNodes": {
-      "$ref": "./node-v1.jsonSelector",
+      "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
       "description": "Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.\n\nSetting this field is optional. If null, all nodes are candidates."
     }
   },
+  "type": "object",
+  "description": "ResourceClass is used by administrators to influence how resources are allocated.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
   "required": [
     "driverName"
   ],
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "resource.k8s.io",

@@ -1,5 +1,6 @@
 {
-  "description": "DeleteOptions may be provided when deleting an API object.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -32,12 +33,12 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "DeleteOptions"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "DeleteOptions"
       ]
     },
     "orphanDependents": {
@@ -59,7 +60,6 @@
       ]
     }
   },
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
@@ -357,5 +357,5 @@
       "version": "v1alpha1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "description": "DeleteOptions may be provided when deleting an API object."
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "PodSchedulingContextSpec describes where resources for the Pod are needed.",
   "properties": {
     "potentialNodes": {
@@ -23,6 +24,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

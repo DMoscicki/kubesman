@@ -1,5 +1,7 @@
 {
   "description": "IngressSpec describes the Ingress the user wishes to exist.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "defaultBackend": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.networking.v1.IngressBackend",
@@ -34,7 +36,5 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

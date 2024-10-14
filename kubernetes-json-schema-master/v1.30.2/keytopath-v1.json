@@ -1,5 +1,6 @@
 {
-  "description": "Maps a string key to a path within a volume.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "key": {
       "description": "key is the key to project.",
@@ -28,6 +29,5 @@
     "key",
     "path"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "Maps a string key to a path within a volume."
 }

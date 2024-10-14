@@ -1,8 +1,12 @@
 {
-  "description": "TokenRequestStatus is the result of a token request.",
+  "required": [
+    "token",
+    "expirationTimestamp"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "expirationTimestamp": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "ExpirationTimestamp is the time of expiration of the returned token."
     },
     "token": {
@@ -13,10 +17,6 @@
       ]
     }
   },
-  "required": [
-    "token",
-    "expirationTimestamp"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "TokenRequestStatus is the result of a token request.",
+  "type": "object"
 }

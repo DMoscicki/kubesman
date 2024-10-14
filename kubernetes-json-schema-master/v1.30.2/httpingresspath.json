@@ -1,5 +1,9 @@
 {
-  "description": "HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "pathType",
+    "backend"
+  ],
   "properties": {
     "backend": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.networking.v1.IngressBackend",
@@ -20,10 +24,6 @@
       ]
     }
   },
-  "required": [
-    "pathType",
-    "backend"
-  ],
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend."
 }

@@ -3,12 +3,12 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "enum": [
+        "resource.k8s.io/v1alpha2"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "resource.k8s.io/v1alpha2"
       ]
     },
     "driverRequests": {
@@ -28,16 +28,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "ResourceClaimParameters"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "ResourceClaimParameters"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "shareable": {
@@ -48,7 +48,6 @@
       ]
     }
   },
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "resource.k8s.io",
@@ -56,5 +55,6 @@
       "version": "v1alpha2"
     }
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

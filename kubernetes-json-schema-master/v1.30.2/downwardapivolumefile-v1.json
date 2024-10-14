@@ -1,5 +1,7 @@
 {
-  "description": "DownwardAPIVolumeFile represents information to create the file containing the pod field",
+  "required": [
+    "path"
+  ],
   "properties": {
     "fieldRef": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.ObjectFieldSelector",
@@ -25,9 +27,7 @@
       "description": "Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported."
     }
   },
-  "required": [
-    "path"
-  ],
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "DownwardAPIVolumeFile represents information to create the file containing the pod field"
 }

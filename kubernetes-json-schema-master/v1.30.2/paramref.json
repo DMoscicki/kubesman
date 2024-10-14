@@ -1,5 +1,6 @@
 {
-  "description": "ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding.",
+  "x-kubernetes-map-type": "atomic",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "name": {
       "description": "name is the name of the resource being referenced.\n\nOne of `name` or `selector` must be set, but `name` and `selector` are mutually exclusive properties. If one is set, the other must be unset.\n\nA single parameter used for all admission requests can be configured by setting the `name` field, leaving `selector` blank, and setting namespace if `paramKind` is namespace-scoped.",
@@ -28,6 +29,5 @@
     }
   },
   "type": "object",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding."
 }

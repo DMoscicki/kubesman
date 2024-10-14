@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "description": "Spec of the storage version migration.",
   "properties": {
     "continueToken": {
@@ -15,7 +17,5 @@
   },
   "required": [
     "resource"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

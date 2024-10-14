@@ -1,5 +1,6 @@
 {
   "description": "StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.",
+  "type": "object",
   "properties": {
     "rollingUpdate": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy",
@@ -13,6 +14,5 @@
       ]
     }
   },
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

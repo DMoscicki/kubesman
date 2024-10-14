@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.",
   "properties": {
     "effect": {
@@ -16,7 +17,7 @@
       ]
     },
     "timeAdded": {
-      "$ref": "./time-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints."
     },
     "value": {
@@ -27,10 +28,9 @@
       ]
     }
   },
+  "type": "object",
   "required": [
     "key",
     "effect"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

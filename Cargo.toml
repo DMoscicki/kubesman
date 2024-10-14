@@ -3,6 +3,9 @@ name = "kubesman"
 version = "0.1.0"
 edition = "2021"
 
+[workspace]
+members = ["rewriter"]
+
 [dependencies]
 actix-web = { version = "4.9.0" }
 actix-files = { version = "0.6.6" }

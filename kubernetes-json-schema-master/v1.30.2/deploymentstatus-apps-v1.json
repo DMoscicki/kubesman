@@ -1,5 +1,5 @@
 {
-  "description": "DeploymentStatus is the most recently observed status of the Deployment.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "availableReplicas": {
       "description": "Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.",
@@ -74,6 +74,6 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "DeploymentStatus is the most recently observed status of the Deployment.",
+  "type": "object"
 }

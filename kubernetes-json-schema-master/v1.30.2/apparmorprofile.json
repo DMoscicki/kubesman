@@ -1,5 +1,17 @@
 {
   "description": "AppArmorProfile defines a pod or container's AppArmor settings.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "localhostProfile": "LocalhostProfile"
+      }
+    }
+  ],
   "properties": {
     "localhostProfile": {
       "description": "localhostProfile indicates a profile loaded on the node that should be used. The profile must be preconfigured on the node to work. Must match the loaded name of the profile. Must be set if and only if type is \"Localhost\".",
@@ -16,17 +28,5 @@
       ]
     }
   },
-  "required": [
-    "type"
-  ],
-  "type": "object",
-  "x-kubernetes-unions": [
-    {
-      "discriminator": "type",
-      "fields-to-discriminateBy": {
-        "localhostProfile": "LocalhostProfile"
-      }
-    }
-  ],
   "$schema": "http://json-schema.org/schema#"
 }

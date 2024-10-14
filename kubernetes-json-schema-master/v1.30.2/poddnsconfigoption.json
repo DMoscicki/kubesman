@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "PodDNSConfigOption defines DNS resolver options of a pod.",
   "properties": {
     "name": {
@@ -15,6 +16,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

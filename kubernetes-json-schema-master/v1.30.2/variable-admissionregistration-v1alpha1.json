@@ -1,5 +1,10 @@
 {
-  "description": "Variable is the definition of a variable that is used for composition.",
+  "required": [
+    "name",
+    "expression"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "expression": {
       "description": "Expression is the expression that will be evaluated as the value of the variable. The CEL expression has access to the same identifiers as the CEL expressions in Validation.",
@@ -16,10 +21,5 @@
       ]
     }
   },
-  "required": [
-    "name",
-    "expression"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "Variable is the definition of a variable that is used for composition."
 }

@@ -1,5 +1,6 @@
 {
-  "description": "TokenRequest contains parameters of a service account token.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "audience": {
       "description": "audience is the intended audience of the token in \"TokenRequestSpec\". It will default to the audiences of kube apiserver.",
@@ -20,6 +21,5 @@
   "required": [
     "audience"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "TokenRequest contains parameters of a service account token."
 }

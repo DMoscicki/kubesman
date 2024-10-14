@@ -1,5 +1,12 @@
 {
+  "required": [
+    "name",
+    "type",
+    "jsonPath"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "CustomResourceColumnDefinition specifies a column for server side printing.",
+  "type": "object",
   "properties": {
     "description": {
       "description": "description is a human readable description of this column.",
@@ -44,12 +51,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "name",
-    "type",
-    "jsonPath"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

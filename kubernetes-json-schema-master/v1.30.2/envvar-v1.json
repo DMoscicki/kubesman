@@ -1,4 +1,8 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "name"
+  ],
   "description": "EnvVar represents an environment variable present in a Container.",
   "properties": {
     "name": {
@@ -20,9 +24,5 @@
       "description": "Source for the environment variable's value. Cannot be used if value is not empty."
     }
   },
-  "required": [
-    "name"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

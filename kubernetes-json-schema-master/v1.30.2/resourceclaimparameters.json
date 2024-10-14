@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "ResourceClaimParameters defines resource requests for a ResourceClaim in an in-tree format understood by Kubernetes.",
   "properties": {
     "apiVersion": {
@@ -25,16 +26,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "ResourceClaimParameters"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "ResourceClaimParameters"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "shareable": {
@@ -45,7 +46,6 @@
       ]
     }
   },
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "resource.k8s.io",

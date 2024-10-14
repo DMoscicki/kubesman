@@ -1,4 +1,8 @@
 {
+  "required": [
+    "spec",
+    "status"
+  ],
   "description": "Storage version of a specific resource.",
   "properties": {
     "apiVersion": {
@@ -10,16 +14,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "StorageVersion"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "StorageVersion"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "The name is <group>.<resource>."
     },
     "spec": {
@@ -31,10 +35,6 @@
       "description": "API server instances report the version they can decode and the version they encode objects to when persisting objects in the backend."
     }
   },
-  "required": [
-    "spec",
-    "status"
-  ],
   "type": "object",
   "x-kubernetes-group-version-kind": [
     {

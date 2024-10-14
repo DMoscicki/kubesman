@@ -1,5 +1,4 @@
 {
-  "description": "CSINodeDriver holds information about the specification of one CSI driver installed on a node",
   "properties": {
     "allocatable": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.storage.v1.VolumeNodeResources",
@@ -34,10 +33,11 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "description": "CSINodeDriver holds information about the specification of one CSI driver installed on a node",
+  "type": "object",
   "required": [
     "name",
     "nodeID"
   ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

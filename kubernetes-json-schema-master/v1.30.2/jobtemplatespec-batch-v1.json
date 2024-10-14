@@ -1,8 +1,9 @@
 {
   "description": "JobTemplateSpec describes the data a Job should have when created from a template",
+  "type": "object",
   "properties": {
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "spec": {
@@ -10,6 +11,5 @@
       "description": "Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
     }
   },
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

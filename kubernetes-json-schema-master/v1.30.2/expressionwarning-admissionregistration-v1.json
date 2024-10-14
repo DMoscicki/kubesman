@@ -1,5 +1,10 @@
 {
   "description": "ExpressionWarning is a warning information that targets a specific expression.",
+  "required": [
+    "fieldRef",
+    "warning"
+  ],
+  "type": "object",
   "properties": {
     "fieldRef": {
       "description": "The path to the field that refers the expression. For example, the reference to the expression of the first item of validations is \"spec.validations[0].expression\"",
@@ -16,10 +21,5 @@
       ]
     }
   },
-  "required": [
-    "fieldRef",
-    "warning"
-  ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

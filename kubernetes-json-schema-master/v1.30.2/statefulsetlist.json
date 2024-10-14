@@ -1,4 +1,11 @@
 {
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "apps",
+      "kind": "StatefulSetList",
+      "version": "v1"
+    }
+  ],
   "description": "StatefulSetList is a collection of StatefulSets.",
   "properties": {
     "apiVersion": {
@@ -20,29 +27,22 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "StatefulSetList"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "StatefulSetList"
       ]
     },
     "metadata": {
-      "$ref": "./listmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "items"
   ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "apps",
-      "kind": "StatefulSetList",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

@@ -10,16 +10,16 @@
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "enum": [
+        "PodDisruptionBudget"
+      ],
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "PodDisruptionBudget"
       ]
     },
     "metadata": {
-      "$ref": "./objectmeta-meta-v1.json",
+      "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "spec": {
@@ -31,6 +31,7 @@
       "description": "Most recently observed status of the PodDisruptionBudget."
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "x-kubernetes-group-version-kind": [
     {
@@ -38,6 +39,5 @@
       "kind": "PodDisruptionBudget",
       "version": "v1"
     }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

@@ -1,5 +1,4 @@
 {
-  "description": "NamespaceSpec describes the attributes on a Namespace.",
   "properties": {
     "finalizers": {
       "description": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/",
@@ -16,6 +15,7 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "NamespaceSpec describes the attributes on a Namespace.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

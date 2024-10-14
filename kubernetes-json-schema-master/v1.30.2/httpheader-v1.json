@@ -1,5 +1,10 @@
 {
   "description": "HTTPHeader describes a custom header to be used in HTTP probes",
+  "required": [
+    "name",
+    "value"
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "name": {
       "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
@@ -16,10 +21,5 @@
       ]
     }
   },
-  "required": [
-    "name",
-    "value"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }
