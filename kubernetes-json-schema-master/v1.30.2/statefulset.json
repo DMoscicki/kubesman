@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -31,6 +30,8 @@
       "description": "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time."
     }
   },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n  - Network: A single stable DNS and hostname.\n  - Storage: As many VolumeClaims as requested.\n\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "apps",
@@ -38,6 +39,5 @@
       "version": "v1"
     }
   ],
-  "type": "object",
-  "description": "StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n  - Network: A single stable DNS and hostname.\n  - Storage: As many VolumeClaims as requested.\n\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity."
+  "type": "object"
 }

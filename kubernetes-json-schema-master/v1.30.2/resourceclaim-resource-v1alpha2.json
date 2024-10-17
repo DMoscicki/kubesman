@@ -1,6 +1,15 @@
 {
-  "description": "ResourceClaim describes which resources are needed by a resource consumer. Its status tracks whether the resource has been allocated and what the resulting attributes are.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
+  "required": [
+    "spec"
+  ],
   "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "resource.k8s.io",
+      "kind": "ResourceClaim",
+      "version": "v1alpha2"
+    }
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -35,15 +44,6 @@
       "description": "Status describes whether the resource is available and with which attributes."
     }
   },
-  "required": [
-    "spec"
-  ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "resource.k8s.io",
-      "kind": "ResourceClaim",
-      "version": "v1alpha2"
-    }
-  ]
+  "description": "ResourceClaim describes which resources are needed by a resource consumer. Its status tracks whether the resource has been allocated and what the resulting attributes are.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
+  "type": "object"
 }

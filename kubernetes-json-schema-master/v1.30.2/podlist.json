@@ -1,4 +1,7 @@
 {
+  "required": [
+    "items"
+  ],
   "$schema": "http://json-schema.org/schema#",
   "description": "PodList is a list of Pods.",
   "type": "object",
@@ -35,9 +38,6 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "required": [
-    "items"
-  ],
   "x-kubernetes-group-version-kind": [
     {
       "group": "",

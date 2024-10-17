@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "description": "FlowSchemaStatus represents the current state of a FlowSchema.",
   "properties": {
     "conditions": {
       "description": "`conditions` is a list of the current states of FlowSchema.",
@@ -18,6 +18,6 @@
       "x-kubernetes-patch-strategy": "merge"
     }
   },
-  "description": "FlowSchemaStatus represents the current state of a FlowSchema.",
+  "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

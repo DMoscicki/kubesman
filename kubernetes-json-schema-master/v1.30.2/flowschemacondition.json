@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "description": "FlowSchemaCondition describes conditions for a FlowSchema.",
   "properties": {
     "lastTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -33,7 +35,5 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "FlowSchemaCondition describes conditions for a FlowSchema."
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -41,6 +41,6 @@
     "scaleTargetRef",
     "maxReplicas"
   ],
-  "type": "object",
-  "description": "HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler."
+  "description": "HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler.",
+  "type": "object"
 }

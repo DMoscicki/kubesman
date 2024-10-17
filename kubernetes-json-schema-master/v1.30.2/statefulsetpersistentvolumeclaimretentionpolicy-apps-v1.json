@@ -1,7 +1,4 @@
 {
-  "description": "StatefulSetPersistentVolumeClaimRetentionPolicy describes the policy used for PVCs created from the StatefulSet VolumeClaimTemplates.",
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "whenDeleted": {
       "description": "WhenDeleted specifies what happens to PVCs created from StatefulSet VolumeClaimTemplates when the StatefulSet is deleted. The default policy of `Retain` causes PVCs to not be affected by StatefulSet deletion. The `Delete` policy causes those PVCs to be deleted.",
@@ -17,5 +14,8 @@
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "StatefulSetPersistentVolumeClaimRetentionPolicy describes the policy used for PVCs created from the StatefulSet VolumeClaimTemplates."
 }

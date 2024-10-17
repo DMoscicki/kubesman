@@ -1,5 +1,4 @@
 {
-  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "current": {
@@ -20,5 +19,6 @@
     "current",
     "describedObject"
   ],
-  "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object)."
+  "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
+  "type": "object"
 }

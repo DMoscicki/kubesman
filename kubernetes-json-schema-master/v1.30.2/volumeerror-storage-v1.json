@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "description": "VolumeError captures an error encountered during a volume operation.",
   "type": "object",
   "properties": {
     "message": {
@@ -14,5 +13,6 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "time represents the time the error was encountered."
     }
-  }
+  },
+  "description": "VolumeError captures an error encountered during a volume operation."
 }

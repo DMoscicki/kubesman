@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "description": "PersistentVolumeStatus is the current status of a persistent volume.",
   "properties": {
     "lastPhaseTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -26,7 +28,5 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "description": "PersistentVolumeStatus is the current status of a persistent volume.",
   "type": "object"
 }

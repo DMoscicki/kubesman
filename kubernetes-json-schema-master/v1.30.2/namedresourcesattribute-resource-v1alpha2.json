@@ -1,7 +1,7 @@
 {
-  "required": [
-    "name"
-  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "NamedResourcesAttribute is a combination of an attribute name and its value.",
   "properties": {
     "bool": {
       "description": "BoolValue is a true/false value.",
@@ -52,7 +52,7 @@
       ]
     }
   },
-  "description": "NamedResourcesAttribute is a combination of an attribute name and its value.",
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "required": [
+    "name"
+  ]
 }

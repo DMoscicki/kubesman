@@ -1,7 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "description": "EventSource contains information for an event.",
-  "type": "object",
   "properties": {
     "component": {
       "description": "Component from which the event is generated.",
@@ -17,5 +15,7 @@
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

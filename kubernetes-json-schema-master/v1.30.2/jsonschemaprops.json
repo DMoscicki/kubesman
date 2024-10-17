@@ -1,5 +1,4 @@
 {
-  "type": "object",
   "properties": {
     "$ref": "",
     "$schema": {
@@ -303,6 +302,7 @@
       "x-kubernetes-patch-strategy": "merge"
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/)."
+  "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -1,16 +1,4 @@
 {
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "storagemigration.k8s.io",
-      "kind": "StorageVersionMigrationList",
-      "version": "v1alpha1"
-    }
-  ],
-  "required": [
-    "items"
-  ],
-  "description": "StorageVersionMigrationList is a collection of storage version migrations.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -50,5 +38,17 @@
       "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "items"
+  ],
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "storagemigration.k8s.io",
+      "kind": "StorageVersionMigrationList",
+      "version": "v1alpha1"
+    }
+  ],
+  "type": "object",
+  "description": "StorageVersionMigrationList is a collection of storage version migrations."
 }

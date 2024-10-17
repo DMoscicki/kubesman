@@ -1,4 +1,8 @@
 {
+  "required": [
+    "containers"
+  ],
+  "description": "PodSpec is a description of a pod.",
   "properties": {
     "activeDeadlineSeconds": {
       "description": "Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.",
@@ -365,10 +369,6 @@
       "x-kubernetes-patch-strategy": "merge,retainKeys"
     }
   },
-  "description": "PodSpec is a description of a pod.",
   "type": "object",
-  "required": [
-    "containers"
-  ],
   "$schema": "http://json-schema.org/schema#"
 }

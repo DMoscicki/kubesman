@@ -1,9 +1,4 @@
 {
-  "required": [
-    "strings"
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "NamedResourcesStringSlice contains a slice of strings.",
   "properties": {
     "strings": {
       "description": "Strings is the slice of strings.",
@@ -20,5 +15,10 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "description": "NamedResourcesStringSlice contains a slice of strings.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "strings"
+  ],
   "type": "object"
 }

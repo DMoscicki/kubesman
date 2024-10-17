@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "properties": {
     "ip": {
       "description": "IP is the IP address assigned to the host",
@@ -8,7 +9,6 @@
       ]
     }
   },
-  "description": "HostIP represents a single IP address allocated to the host.",
   "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "description": "HostIP represents a single IP address allocated to the host."
 }

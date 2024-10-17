@@ -1,8 +1,5 @@
 {
   "description": "NamedResourcesFilter is used in ResourceFilterModel.",
-  "required": [
-    "selector"
-  ],
   "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
@@ -13,5 +10,8 @@
         "null"
       ]
     }
-  }
+  },
+  "required": [
+    "selector"
+  ]
 }

@@ -1,12 +1,5 @@
 {
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "rbac.authorization.k8s.io",
-      "kind": "ClusterRoleBinding",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#",
+  "description": "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -45,7 +38,14 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "rbac.authorization.k8s.io",
+      "kind": "ClusterRoleBinding",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "roleRef"
   ],

@@ -48,7 +48,7 @@
       ]
     }
   },
+  "description": "UserInfo holds the information about the user needed to implement the user.Info interface.",
   "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "description": "UserInfo holds the information about the user needed to implement the user.Info interface."
+  "type": "object"
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -33,17 +34,16 @@
       "description": "Status is filled in by the server and indicates whether the request is allowed or not"
     }
   },
+  "required": [
+    "spec"
+  ],
+  "description": "LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a namespace scoped resource makes it much easier to grant namespace scoped policy that includes permissions checking.",
+  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "authorization.k8s.io",
       "kind": "LocalSubjectAccessReview",
       "version": "v1"
     }
-  ],
-  "description": "LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a namespace scoped resource makes it much easier to grant namespace scoped policy that includes permissions checking.",
-  "required": [
-    "spec"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

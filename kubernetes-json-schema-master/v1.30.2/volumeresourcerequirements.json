@@ -1,5 +1,4 @@
 {
-  "type": "object",
   "properties": {
     "limits": {
       "additionalProperties": {
@@ -22,6 +21,7 @@
       ]
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "description": "VolumeResourceRequirements describes the storage resource requirements for a volume.",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

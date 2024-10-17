@@ -1,6 +1,10 @@
 {
   "type": "object",
+  "required": [
+    "spec"
+  ],
   "$schema": "http://json-schema.org/schema#",
+  "description": "ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.",
   "properties": {
     "metadata": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
@@ -10,9 +14,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaimSpec",
       "description": "Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here."
     }
-  },
-  "description": "ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.",
-  "required": [
-    "spec"
-  ]
+  }
 }

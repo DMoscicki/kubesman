@@ -1,9 +1,4 @@
 {
-  "description": "PortworxVolumeSource represents a Portworx volume resource.",
-  "required": [
-    "volumeID"
-  ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "fsType": {
@@ -27,5 +22,10 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object",
+  "description": "PortworxVolumeSource represents a Portworx volume resource.",
+  "required": [
+    "volumeID"
+  ]
 }

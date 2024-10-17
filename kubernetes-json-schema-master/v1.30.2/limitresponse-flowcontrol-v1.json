@@ -1,10 +1,6 @@
 {
   "description": "LimitResponse defines how to handle requests that can not be executed right now.",
-  "required": [
-    "type"
-  ],
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-unions": [
     {
       "discriminator": "type",
@@ -12,6 +8,10 @@
         "queuing": "Queuing"
       }
     }
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "type"
   ],
   "properties": {
     "queuing": {

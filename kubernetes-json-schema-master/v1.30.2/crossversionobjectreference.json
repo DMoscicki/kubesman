@@ -1,11 +1,10 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
-  "type": "object",
   "required": [
     "kind",
     "name"
   ],
+  "type": "object",
+  "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
   "properties": {
     "apiVersion": {
       "description": "apiVersion is the API version of the referent",
@@ -28,5 +27,6 @@
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#"
 }

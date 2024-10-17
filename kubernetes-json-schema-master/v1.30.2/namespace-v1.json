@@ -1,13 +1,4 @@
 {
-  "type": "object",
-  "description": "Namespace provides a scope for Names. Use of multiple namespaces is optional.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "Namespace",
-      "version": "v1"
-    }
-  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -42,5 +33,14 @@
       "description": "Status describes the current status of a Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
     }
   },
+  "type": "object",
+  "description": "Namespace provides a scope for Names. Use of multiple namespaces is optional.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "Namespace",
+      "version": "v1"
+    }
+  ],
   "$schema": "http://json-schema.org/schema#"
 }

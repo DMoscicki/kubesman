@@ -1,9 +1,4 @@
 {
-  "type": "object",
-  "required": [
-    "template"
-  ],
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "activeDeadlineSeconds": {
       "description": "Specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again.",
@@ -113,5 +108,10 @@
       ]
     }
   },
-  "description": "JobSpec describes how the job execution will look like."
+  "type": "object",
+  "description": "JobSpec describes how the job execution will look like.",
+  "required": [
+    "template"
+  ],
+  "$schema": "http://json-schema.org/schema#"
 }

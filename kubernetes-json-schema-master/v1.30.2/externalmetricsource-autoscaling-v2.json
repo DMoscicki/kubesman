@@ -1,5 +1,4 @@
 {
-  "type": "object",
   "properties": {
     "metric": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier",
@@ -15,5 +14,6 @@
     "target"
   ],
   "$schema": "http://json-schema.org/schema#",
-  "description": "ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster)."
+  "description": "ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
+  "type": "object"
 }

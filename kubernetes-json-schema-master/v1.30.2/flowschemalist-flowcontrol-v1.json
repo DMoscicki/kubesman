@@ -1,4 +1,9 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "items"
+  ],
+  "description": "FlowSchemaList is a list of FlowSchema objects.",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -42,10 +47,5 @@
       "kind": "FlowSchemaList",
       "version": "v1"
     }
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "FlowSchemaList is a list of FlowSchema objects.",
-  "required": [
-    "items"
   ]
 }

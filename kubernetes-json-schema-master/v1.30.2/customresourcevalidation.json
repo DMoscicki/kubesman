@@ -1,11 +1,11 @@
 {
-  "type": "object",
   "properties": {
     "openAPIV3Schema": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps",
       "description": "openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning."
     }
   },
+  "description": "CustomResourceValidation is a list of validation methods for CustomResources.",
   "$schema": "http://json-schema.org/schema#",
-  "description": "CustomResourceValidation is a list of validation methods for CustomResources."
+  "type": "object"
 }

@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "properties": {
     "apiGroup": {
       "description": "APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.",
@@ -29,11 +30,10 @@
       ]
     }
   },
+  "description": "ResourceClassParametersReference contains enough information to let you locate the parameters for a ResourceClass.",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "kind",
     "name"
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "ResourceClassParametersReference contains enough information to let you locate the parameters for a ResourceClass.",
-  "type": "object"
+  ]
 }

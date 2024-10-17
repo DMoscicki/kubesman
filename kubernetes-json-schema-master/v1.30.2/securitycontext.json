@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "description": "SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.",
   "properties": {
     "allowPrivilegeEscalation": {
@@ -74,5 +73,6 @@
       "description": "The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux."
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

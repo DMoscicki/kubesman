@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
   "type": "object",
   "properties": {
     "name": {
@@ -9,7 +11,5 @@
       ]
     }
   },
-  "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
-  "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "x-kubernetes-map-type": "atomic"
 }

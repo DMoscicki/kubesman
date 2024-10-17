@@ -1,4 +1,9 @@
 {
+  "required": [
+    "name",
+    "served",
+    "storage"
+  ],
   "description": "CustomResourceDefinitionVersion describes a version for CRD.",
   "type": "object",
   "properties": {
@@ -68,10 +73,5 @@
       "description": "subresources specify what subresources this version of the defined custom resource have."
     }
   },
-  "required": [
-    "name",
-    "served",
-    "storage"
-  ],
   "$schema": "http://json-schema.org/schema#"
 }

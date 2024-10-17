@@ -1,6 +1,7 @@
 {
-  "description": "ValidatingAdmissionPolicyBindingSpec is the specification of the ValidatingAdmissionPolicyBinding.",
   "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ValidatingAdmissionPolicyBindingSpec is the specification of the ValidatingAdmissionPolicyBinding.",
   "properties": {
     "matchResources": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.MatchResources",
@@ -31,6 +32,5 @@
       ],
       "x-kubernetes-list-type": "set"
     }
-  },
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

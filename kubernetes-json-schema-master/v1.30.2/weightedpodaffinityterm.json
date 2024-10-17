@@ -1,5 +1,6 @@
 {
   "description": "The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "podAffinityTerm": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodAffinityTerm",
@@ -15,7 +16,6 @@
     }
   },
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "required": [
     "weight",
     "podAffinityTerm"

@@ -1,16 +1,4 @@
 {
-  "required": [
-    "items"
-  ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "resource.k8s.io",
-      "kind": "ResourceClassList",
-      "version": "v1alpha2"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#",
   "description": "ResourceClassList is a collection of classes.",
   "properties": {
     "apiVersion": {
@@ -44,5 +32,17 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata"
     }
-  }
+  },
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "resource.k8s.io",
+      "kind": "ResourceClassList",
+      "version": "v1alpha2"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
 }

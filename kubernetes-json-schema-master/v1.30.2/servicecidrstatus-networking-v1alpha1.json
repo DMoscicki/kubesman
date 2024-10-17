@@ -17,7 +17,7 @@
       "x-kubernetes-patch-strategy": "merge"
     }
   },
-  "description": "ServiceCIDRStatus describes the current state of the ServiceCIDR.",
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ServiceCIDRStatus describes the current state of the ServiceCIDR."
 }

@@ -1,4 +1,10 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ResourceClass is used by administrators to influence how resources are allocated.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
+  "required": [
+    "driverName"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -47,17 +53,11 @@
       "description": "Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.\n\nSetting this field is optional. If null, all nodes are candidates."
     }
   },
-  "type": "object",
-  "description": "ResourceClass is used by administrators to influence how resources are allocated.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
-  "required": [
-    "driverName"
-  ],
   "x-kubernetes-group-version-kind": [
     {
       "group": "resource.k8s.io",
       "kind": "ResourceClass",
       "version": "v1alpha2"
     }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

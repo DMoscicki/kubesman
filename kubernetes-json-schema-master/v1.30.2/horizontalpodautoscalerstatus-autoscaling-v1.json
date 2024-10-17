@@ -1,8 +1,7 @@
 {
-  "required": [
-    "currentReplicas",
-    "desiredReplicas"
-  ],
+  "description": "current status of a horizontal pod autoscaler",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "currentCPUUtilizationPercentage": {
       "description": "currentCPUUtilizationPercentage is the current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.",
@@ -41,7 +40,8 @@
       ]
     }
   },
-  "description": "current status of a horizontal pod autoscaler",
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "required": [
+    "currentReplicas",
+    "desiredReplicas"
+  ]
 }

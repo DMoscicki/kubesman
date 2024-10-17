@@ -1,4 +1,5 @@
 {
+  "description": "EndpointPort represents a Port used by an EndpointSlice",
   "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
@@ -32,6 +33,5 @@
       ]
     }
   },
-  "description": "EndpointPort represents a Port used by an EndpointSlice",
   "x-kubernetes-map-type": "atomic"
 }

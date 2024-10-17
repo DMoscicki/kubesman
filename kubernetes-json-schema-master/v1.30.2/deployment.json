@@ -1,5 +1,6 @@
 {
   "type": "object",
+  "description": "Deployment enables declarative updates for Pods and ReplicaSets.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -31,7 +32,6 @@
       "description": "Most recently observed status of the Deployment."
     }
   },
-  "description": "Deployment enables declarative updates for Pods and ReplicaSets.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "apps",

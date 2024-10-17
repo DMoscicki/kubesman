@@ -1,8 +1,5 @@
 {
-  "type": "object",
-  "required": [
-    "spec"
-  ],
+  "description": "TokenRequest requests a token for a given service account.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -37,13 +34,16 @@
       "description": "Status is filled in by the server and indicates whether the token can be authenticated."
     }
   },
-  "description": "TokenRequest requests a token for a given service account.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "spec"
+  ],
+  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "authentication.k8s.io",
       "kind": "TokenRequest",
       "version": "v1"
     }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

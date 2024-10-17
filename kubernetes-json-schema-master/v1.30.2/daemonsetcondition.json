@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "properties": {
     "lastTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -33,9 +34,8 @@
       ]
     }
   },
-  "description": "DaemonSetCondition describes the state of a DaemonSet at a certain point.",
-  "type": "object",
   "$schema": "http://json-schema.org/schema#",
+  "description": "DaemonSetCondition describes the state of a DaemonSet at a certain point.",
   "required": [
     "type",
     "status"

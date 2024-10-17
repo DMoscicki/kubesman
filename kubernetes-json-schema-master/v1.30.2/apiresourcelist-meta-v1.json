@@ -1,5 +1,17 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "APIResourceList",
+      "version": "v1"
+    }
+  ],
+  "required": [
+    "groupVersion",
+    "resources"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -40,17 +52,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "required": [
-    "groupVersion",
-    "resources"
-  ],
-  "description": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced.",
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "APIResourceList",
-      "version": "v1"
-    }
-  ]
+  "$schema": "http://json-schema.org/schema#"
 }

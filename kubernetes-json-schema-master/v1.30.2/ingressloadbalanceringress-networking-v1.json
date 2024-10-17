@@ -1,6 +1,4 @@
 {
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "hostname": {
       "description": "hostname is set for load-balancer ingress points that are DNS based.",
@@ -28,5 +26,7 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "IngressLoadBalancerIngress represents the status of a load-balancer ingress point."
+  "type": "object",
+  "description": "IngressLoadBalancerIngress represents the status of a load-balancer ingress point.",
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Event represents a single event to a watched resource.",
   "properties": {
     "object": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
@@ -11,13 +13,11 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "Event represents a single event to a watched resource.",
   "required": [
     "type",
     "object"
   ],
+  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",

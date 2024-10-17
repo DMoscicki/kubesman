@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "description": "DeploymentStatus is the most recently observed status of the Deployment.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "availableReplicas": {
@@ -73,7 +75,5 @@
         "null"
       ]
     }
-  },
-  "description": "DeploymentStatus is the most recently observed status of the Deployment.",
-  "type": "object"
+  }
 }

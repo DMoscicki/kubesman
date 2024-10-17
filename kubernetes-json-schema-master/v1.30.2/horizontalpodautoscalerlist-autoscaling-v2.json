@@ -1,16 +1,13 @@
 {
+  "description": "HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects.",
   "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-group-version-kind": [
     {
       "group": "autoscaling",
       "kind": "HorizontalPodAutoscalerList",
       "version": "v2"
     }
-  ],
-  "description": "HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects.",
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "items"
   ],
   "properties": {
     "apiVersion": {
@@ -47,5 +44,8 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "metadata is the standard list metadata."
     }
-  }
+  },
+  "required": [
+    "items"
+  ]
 }

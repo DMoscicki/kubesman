@@ -1,4 +1,9 @@
 {
+  "required": [
+    "schedule",
+    "jobTemplate"
+  ],
+  "description": "CronJobSpec describes how the job execution will look like and when it will actually run.",
   "type": "object",
   "properties": {
     "concurrencyPolicy": {
@@ -58,10 +63,5 @@
       ]
     }
   },
-  "required": [
-    "schedule",
-    "jobTemplate"
-  ],
-  "description": "CronJobSpec describes how the job execution will look like and when it will actually run.",
   "$schema": "http://json-schema.org/schema#"
 }

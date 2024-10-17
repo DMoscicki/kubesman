@@ -1,6 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
+  "description": "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.",
   "properties": {
     "maxUnavailable": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
@@ -15,5 +14,6 @@
       ]
     }
   },
-  "description": "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType."
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

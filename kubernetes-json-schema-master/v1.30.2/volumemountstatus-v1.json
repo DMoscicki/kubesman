@@ -1,9 +1,10 @@
 {
+  "description": "VolumeMountStatus shows status of volume mounts.",
   "required": [
     "name",
     "mountPath"
   ],
-  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "mountPath": {
       "description": "MountPath corresponds to the original VolumeMount.",
@@ -34,6 +35,5 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "description": "VolumeMountStatus shows status of volume mounts."
+  "type": "object"
 }

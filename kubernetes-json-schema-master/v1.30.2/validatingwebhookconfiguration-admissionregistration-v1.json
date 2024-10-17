@@ -1,12 +1,5 @@
 {
-  "description": "ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "admissionregistration.k8s.io",
-      "kind": "ValidatingWebhookConfiguration",
-      "version": "v1"
-    }
-  ],
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -49,6 +42,13 @@
       "x-kubernetes-patch-strategy": "merge"
     }
   },
-  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "admissionregistration.k8s.io",
+      "kind": "ValidatingWebhookConfiguration",
+      "version": "v1"
+    }
+  ],
+  "description": "ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it.",
   "$schema": "http://json-schema.org/schema#"
 }

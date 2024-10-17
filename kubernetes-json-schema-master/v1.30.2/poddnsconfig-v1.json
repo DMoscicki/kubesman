@@ -1,5 +1,6 @@
 {
   "type": "object",
+  "description": "PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.",
   "properties": {
     "nameservers": {
       "description": "A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.",
@@ -41,6 +42,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.",
   "$schema": "http://json-schema.org/schema#"
 }

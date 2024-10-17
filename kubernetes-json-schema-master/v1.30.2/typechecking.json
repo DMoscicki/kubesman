@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "properties": {
     "expressionWarnings": {
       "description": "The type checking warnings for each expression.",
@@ -14,5 +13,6 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy"
+  "description": "TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy",
+  "type": "object"
 }

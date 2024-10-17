@@ -1,4 +1,5 @@
 {
+  "description": "DaemonSetSpec is the specification of a daemon set.",
   "properties": {
     "minReadySeconds": {
       "description": "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).",
@@ -29,11 +30,10 @@
       "description": "An update strategy to replace existing DaemonSet pods with new pods."
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "DaemonSetSpec is the specification of a daemon set.",
   "required": [
     "selector",
     "template"
-  ]
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

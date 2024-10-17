@@ -1,8 +1,5 @@
 {
-  "required": [
-    "type",
-    "status"
-  ],
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "description": "NodeCondition contains condition information for a node.",
   "properties": {
@@ -43,5 +40,8 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#"
+  "required": [
+    "type",
+    "status"
+  ]
 }

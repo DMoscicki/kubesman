@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "properties": {
     "devicePath": {
       "description": "devicePath is the path inside of the container that the device will be mapped to.",
@@ -15,11 +16,10 @@
       ]
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "name",
     "devicePath"
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "volumeDevice describes a mapping of a raw block device within a container.",
-  "type": "object"
+  "description": "volumeDevice describes a mapping of a raw block device within a container."
 }

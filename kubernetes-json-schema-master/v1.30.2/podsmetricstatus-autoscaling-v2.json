@@ -1,5 +1,11 @@
 {
+  "required": [
+    "metric",
+    "current"
+  ],
+  "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).",
   "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "current": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricValueStatus",
@@ -9,11 +15,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier",
       "description": "metric identifies the target metric by name and selector"
     }
-  },
-  "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).",
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "metric",
-    "current"
-  ]
+  }
 }

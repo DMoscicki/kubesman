@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -45,8 +46,6 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "required": [
     "driverName"
   ],
@@ -57,5 +56,6 @@
       "version": "v1alpha1"
     }
   ],
-  "description": "VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning."
+  "description": "VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.",
+  "type": "object"
 }

@@ -1,4 +1,5 @@
 {
+  "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "fsType": {
@@ -52,6 +53,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.",
   "type": "object"
 }

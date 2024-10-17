@@ -1,7 +1,11 @@
 {
+  "required": [
+    "group",
+    "names",
+    "scope",
+    "versions"
+  ],
   "$schema": "http://json-schema.org/schema#",
-  "description": "CustomResourceDefinitionSpec describes how a user wants their resource to appear",
-  "type": "object",
   "properties": {
     "conversion": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceConversion",
@@ -44,10 +48,6 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "required": [
-    "group",
-    "names",
-    "scope",
-    "versions"
-  ]
+  "type": "object",
+  "description": "CustomResourceDefinitionSpec describes how a user wants their resource to appear"
 }

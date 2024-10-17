@@ -1,6 +1,9 @@
 {
-  "type": "object",
   "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
+  "required": [
+    "type"
+  ],
+  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "averageUtilization": {
@@ -26,8 +29,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity",
       "description": "value is the target value of the metric (as a quantity)."
     }
-  },
-  "required": [
-    "type"
-  ]
+  }
 }

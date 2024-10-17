@@ -1,9 +1,10 @@
 {
+  "description": "ScaleStatus represents the current status of a scale subresource.",
+  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "required": [
     "replicas"
   ],
-  "description": "ScaleStatus represents the current status of a scale subresource.",
   "properties": {
     "replicas": {
       "description": "replicas is the actual number of observed instances of the scaled object.",
@@ -20,6 +21,5 @@
         "null"
       ]
     }
-  },
-  "type": "object"
+  }
 }

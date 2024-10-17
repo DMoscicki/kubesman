@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "description": "PriorityLevelConfigurationSpec specifies the configuration of a priority level.",
   "properties": {
     "exempt": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta3.ExemptPriorityLevelConfiguration",
@@ -18,10 +16,8 @@
       ]
     }
   },
-  "required": [
-    "type"
-  ],
   "type": "object",
+  "description": "PriorityLevelConfigurationSpec specifies the configuration of a priority level.",
   "x-kubernetes-unions": [
     {
       "discriminator": "type",
@@ -30,5 +26,9 @@
         "limited": "Limited"
       }
     }
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "type"
   ]
 }

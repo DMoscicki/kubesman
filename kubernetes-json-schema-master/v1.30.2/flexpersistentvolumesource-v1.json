@@ -1,4 +1,8 @@
 {
+  "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.",
+  "required": [
+    "driver"
+  ],
   "properties": {
     "driver": {
       "description": "driver is the name of the driver to use for this volume.",
@@ -40,9 +44,5 @@
     }
   },
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.",
-  "required": [
-    "driver"
-  ]
+  "$schema": "http://json-schema.org/schema#"
 }

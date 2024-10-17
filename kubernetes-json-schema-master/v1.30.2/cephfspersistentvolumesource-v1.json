@@ -1,4 +1,5 @@
 {
+  "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.",
   "properties": {
     "monitors": {
       "description": "monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
@@ -51,6 +52,5 @@
   "required": [
     "monitors"
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling."
+  "$schema": "http://json-schema.org/schema#"
 }

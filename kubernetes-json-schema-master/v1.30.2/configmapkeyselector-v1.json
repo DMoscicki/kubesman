@@ -1,9 +1,5 @@
 {
-  "x-kubernetes-map-type": "atomic",
-  "required": [
-    "key"
-  ],
-  "description": "Selects a key from a ConfigMap.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "key": {
       "description": "The key to select.",
@@ -27,6 +23,10 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "x-kubernetes-map-type": "atomic",
+  "description": "Selects a key from a ConfigMap.",
+  "required": [
+    "key"
+  ],
+  "type": "object"
 }

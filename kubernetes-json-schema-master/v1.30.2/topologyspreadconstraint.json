@@ -1,6 +1,11 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "description": "TopologySpreadConstraint specifies how to spread matching pods among the given topology.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "maxSkew",
+    "topologyKey",
+    "whenUnsatisfiable"
+  ],
   "properties": {
     "labelSelector": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
@@ -65,10 +70,5 @@
       ]
     }
   },
-  "required": [
-    "maxSkew",
-    "topologyKey",
-    "whenUnsatisfiable"
-  ],
   "type": "object"
 }

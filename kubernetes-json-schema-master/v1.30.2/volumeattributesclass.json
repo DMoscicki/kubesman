@@ -1,5 +1,4 @@
 {
-  "description": "VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "storage.k8s.io",
@@ -7,11 +6,11 @@
       "version": "v1alpha1"
     }
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "required": [
     "driverName"
   ],
+  "description": "VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -54,5 +53,6 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object"
 }

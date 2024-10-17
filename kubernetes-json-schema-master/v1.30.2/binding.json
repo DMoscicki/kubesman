@@ -26,7 +26,8 @@
       "description": "The target object that you want to bind to the standard object."
     }
   },
-  "$schema": "http://json-schema.org/schema#",
+  "description": "Binding ties one object to another; for example, a pod is bound to a node by a scheduler. Deprecated in 1.7, please use the bindings subresource of pods instead.",
+  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
@@ -34,9 +35,8 @@
       "version": "v1"
     }
   ],
-  "description": "Binding ties one object to another; for example, a pod is bound to a node by a scheduler. Deprecated in 1.7, please use the bindings subresource of pods instead.",
   "required": [
     "target"
   ],
-  "type": "object"
+  "$schema": "http://json-schema.org/schema#"
 }

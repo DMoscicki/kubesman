@@ -1,5 +1,6 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "ConfigMapList is a resource containing a list of ConfigMap objects.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -33,16 +34,15 @@
       "description": "More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
-  "required": [
-    "items"
-  ],
-  "type": "object",
-  "description": "ConfigMapList is a resource containing a list of ConfigMap objects.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
       "kind": "ConfigMapList",
       "version": "v1"
     }
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "items"
   ]
 }

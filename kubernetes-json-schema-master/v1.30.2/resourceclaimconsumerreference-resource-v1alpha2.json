@@ -1,12 +1,10 @@
 {
-  "description": "ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim.",
   "required": [
     "resource",
     "name",
     "uid"
   ],
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiGroup": {
       "description": "APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.",
@@ -36,5 +34,7 @@
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim."
 }

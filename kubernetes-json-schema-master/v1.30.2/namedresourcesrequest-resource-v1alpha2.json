@@ -10,8 +10,8 @@
     }
   },
   "description": "NamedResourcesRequest is used in ResourceRequestModel.",
-  "type": "object",
   "required": [
     "selector"
-  ]
+  ],
+  "type": "object"
 }

@@ -1,5 +1,12 @@
 {
   "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "ResourceQuota",
+      "version": "v1"
+    }
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -32,12 +39,5 @@
     }
   },
   "description": "ResourceQuota sets aggregate quota restrictions enforced per namespace",
-  "$schema": "http://json-schema.org/schema#",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "ResourceQuota",
-      "version": "v1"
-    }
-  ]
+  "$schema": "http://json-schema.org/schema#"
 }

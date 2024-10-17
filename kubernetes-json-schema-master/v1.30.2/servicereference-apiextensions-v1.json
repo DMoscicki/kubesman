@@ -1,11 +1,4 @@
 {
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "namespace",
-    "name"
-  ],
-  "description": "ServiceReference holds a reference to Service.legacy.k8s.io",
   "properties": {
     "name": {
       "description": "name is the name of the service. Required",
@@ -36,5 +29,12 @@
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ServiceReference holds a reference to Service.legacy.k8s.io",
+  "required": [
+    "namespace",
+    "name"
+  ],
+  "type": "object"
 }

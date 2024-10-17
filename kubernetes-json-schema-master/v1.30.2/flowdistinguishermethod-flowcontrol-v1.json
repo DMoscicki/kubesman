@@ -1,4 +1,8 @@
 {
+  "required": [
+    "type"
+  ],
+  "type": "object",
   "description": "FlowDistinguisherMethod specifies the method of a flow distinguisher.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
@@ -9,9 +13,5 @@
         "null"
       ]
     }
-  },
-  "type": "object",
-  "required": [
-    "type"
-  ]
+  }
 }

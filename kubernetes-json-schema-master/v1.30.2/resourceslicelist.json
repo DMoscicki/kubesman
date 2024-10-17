@@ -1,7 +1,4 @@
 {
-  "description": "ResourceSliceList is a collection of ResourceSlices.",
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "required": [
     "items"
   ],
@@ -44,5 +41,8 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ResourceSliceList is a collection of ResourceSlices.",
+  "type": "object"
 }

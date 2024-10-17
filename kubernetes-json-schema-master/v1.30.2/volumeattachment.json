@@ -1,9 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "spec"
-  ],
-  "type": "object",
   "description": "VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.\n\nVolumeAttachment objects are non-namespaced.",
   "properties": {
     "apiVersion": {
@@ -36,11 +31,16 @@
       "description": "status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher."
     }
   },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "storage.k8s.io",
       "kind": "VolumeAttachment",
       "version": "v1"
     }
+  ],
+  "required": [
+    "spec"
   ]
 }

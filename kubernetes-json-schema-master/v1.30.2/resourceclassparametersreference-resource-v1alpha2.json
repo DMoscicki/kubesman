@@ -29,11 +29,11 @@
       ]
     }
   },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ResourceClassParametersReference contains enough information to let you locate the parameters for a ResourceClass.",
   "required": [
     "kind",
     "name"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "ResourceClassParametersReference contains enough information to let you locate the parameters for a ResourceClass."
+  "type": "object"
 }

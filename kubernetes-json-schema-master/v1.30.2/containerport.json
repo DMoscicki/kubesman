@@ -1,5 +1,7 @@
 {
+  "type": "object",
   "description": "ContainerPort represents a network port in a single container.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "containerPort": {
       "description": "Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.",
@@ -41,7 +43,5 @@
   },
   "required": [
     "containerPort"
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  ]
 }

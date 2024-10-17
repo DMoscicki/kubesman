@@ -1,4 +1,8 @@
 {
+  "x-kubernetes-map-type": "atomic",
+  "required": [
+    "ip"
+  ],
   "$schema": "http://json-schema.org/schema#",
   "description": "EndpointAddress is a tuple that describes single IP address.",
   "properties": {
@@ -28,9 +32,5 @@
       "description": "Reference to object providing the endpoint."
     }
   },
-  "x-kubernetes-map-type": "atomic",
-  "required": [
-    "ip"
-  ],
   "type": "object"
 }

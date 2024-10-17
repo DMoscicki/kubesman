@@ -31,13 +31,13 @@
       "description": "Most recently observed status of the PodDisruptionBudget."
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "policy",
       "kind": "PodDisruptionBudget",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

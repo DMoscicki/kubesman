@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
-  "x-kubernetes-map-type": "atomic",
   "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.",
   "properties": {
     "matchExpressions": {
@@ -26,5 +25,6 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  }
+  },
+  "x-kubernetes-map-type": "atomic"
 }

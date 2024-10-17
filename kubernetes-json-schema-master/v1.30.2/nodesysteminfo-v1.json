@@ -1,6 +1,4 @@
 {
-  "type": "object",
-  "description": "NodeSystemInfo is a set of ids/uuids to uniquely identify the node.",
   "required": [
     "machineID",
     "systemUUID",
@@ -85,5 +83,7 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#"
+  "description": "NodeSystemInfo is a set of ids/uuids to uniquely identify the node.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

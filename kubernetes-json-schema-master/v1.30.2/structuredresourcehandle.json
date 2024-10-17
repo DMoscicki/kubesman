@@ -27,10 +27,10 @@
       "description": "VendorClassParameters are the per-claim configuration parameters from the resource class at the time that the claim was allocated."
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "description": "StructuredResourceHandle is the in-tree representation of the allocation result.",
   "required": [
     "results"
   ],
+  "$schema": "http://json-schema.org/schema#",
+  "description": "StructuredResourceHandle is the in-tree representation of the allocation result.",
   "type": "object"
 }

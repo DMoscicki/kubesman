@@ -1,4 +1,6 @@
 {
+  "description": "NodeRuntimeHandler is a set of runtime handler information.",
+  "type": "object",
   "properties": {
     "features": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.NodeRuntimeHandlerFeatures",
@@ -12,7 +14,5 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "description": "NodeRuntimeHandler is a set of runtime handler information.",
-  "type": "object"
+  "$schema": "http://json-schema.org/schema#"
 }

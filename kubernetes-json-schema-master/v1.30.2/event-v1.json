@@ -1,13 +1,4 @@
 {
-  "description": "Event is a report of an event somewhere in the cluster.  Events have a limited retention time and triggers and messages may evolve with time.  Event consumers should not rely on the timing of an event with a given Reason reflecting a consistent underlying trigger, or the continued existence of events with that Reason.  Events should be treated as informative, best-effort, supplemental data.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "Event",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "action": {
       "description": "What action was taken/failed regarding to the Regarding object.",
@@ -113,6 +104,15 @@
     }
   },
   "type": "object",
+  "description": "Event is a report of an event somewhere in the cluster.  Events have a limited retention time and triggers and messages may evolve with time.  Event consumers should not rely on the timing of an event with a given Reason reflecting a consistent underlying trigger, or the continued existence of events with that Reason.  Events should be treated as informative, best-effort, supplemental data.",
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "Event",
+      "version": "v1"
+    }
+  ],
   "required": [
     "metadata",
     "involvedObject"

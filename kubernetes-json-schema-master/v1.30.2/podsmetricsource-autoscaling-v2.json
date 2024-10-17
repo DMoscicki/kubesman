@@ -10,10 +10,10 @@
       "description": "target specifies the target value for the given metric"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "metric",
     "target"
   ],
-  "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

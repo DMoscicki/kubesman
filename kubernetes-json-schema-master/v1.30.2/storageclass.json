@@ -1,5 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "description": "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.",
+  "required": [
+    "provisioner"
+  ],
   "properties": {
     "allowVolumeExpansion": {
       "description": "allowVolumeExpansion shows whether the storage class allow volume expand.",
@@ -89,16 +92,13 @@
       ]
     }
   },
-  "required": [
-    "provisioner"
-  ],
-  "description": "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.",
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "storage.k8s.io",
       "kind": "StorageClass",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

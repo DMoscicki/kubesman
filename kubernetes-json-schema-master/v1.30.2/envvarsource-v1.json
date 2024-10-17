@@ -1,5 +1,7 @@
 {
   "description": "EnvVarSource represents a source for the value of an EnvVar.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "configMapKeyRef": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector",
@@ -17,7 +19,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector",
       "description": "Selects a key of a secret in the pod's namespace"
     }
-  },
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  }
 }

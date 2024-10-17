@@ -1,5 +1,6 @@
 {
   "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "PodSchedulingContextStatus describes where resources for the Pod can be allocated.",
   "properties": {
     "resourceClaims": {
@@ -16,6 +17,5 @@
       ],
       "x-kubernetes-list-type": "map"
     }
-  },
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

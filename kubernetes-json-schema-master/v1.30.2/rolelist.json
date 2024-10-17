@@ -1,7 +1,16 @@
 {
+  "description": "RoleList is a collection of Roles",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "rbac.authorization.k8s.io",
+      "kind": "RoleList",
+      "version": "v1"
+    }
+  ],
   "required": [
     "items"
   ],
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -35,14 +44,5 @@
       "description": "Standard object's metadata."
     }
   },
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "rbac.authorization.k8s.io",
-      "kind": "RoleList",
-      "version": "v1"
-    }
-  ],
-  "description": "RoleList is a collection of Roles",
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

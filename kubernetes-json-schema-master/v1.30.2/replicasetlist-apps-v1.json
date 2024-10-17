@@ -1,14 +1,10 @@
 {
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "apps",
-      "kind": "ReplicaSetList",
-      "version": "v1"
-    }
+  "description": "ReplicaSetList is a collection of ReplicaSets.",
+  "required": [
+    "items"
   ],
   "$schema": "http://json-schema.org/schema#",
-  "description": "ReplicaSetList is a collection of ReplicaSets.",
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -45,7 +41,11 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "required": [
-    "items"
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "apps",
+      "kind": "ReplicaSetList",
+      "version": "v1"
+    }
   ]
 }

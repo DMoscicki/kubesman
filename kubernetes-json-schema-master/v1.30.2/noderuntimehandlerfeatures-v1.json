@@ -1,5 +1,6 @@
 {
   "description": "NodeRuntimeHandlerFeatures is a set of runtime features.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "recursiveReadOnlyMounts": {
       "description": "RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.",
@@ -9,6 +10,5 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

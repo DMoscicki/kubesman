@@ -1,6 +1,11 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "type",
+    "status"
+  ],
   "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "DaemonSetCondition describes the state of a DaemonSet at a certain point.",
   "properties": {
     "lastTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -34,10 +39,5 @@
         "null"
       ]
     }
-  },
-  "description": "DaemonSetCondition describes the state of a DaemonSet at a certain point.",
-  "required": [
-    "type",
-    "status"
-  ]
+  }
 }

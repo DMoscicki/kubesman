@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -33,6 +34,7 @@
       "description": "Status is filled in by the server and indicates whether the request is allowed or not"
     }
   },
+  "description": "SubjectAccessReview checks whether or not a user or group can perform an action.",
   "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-group-version-kind": [
     {
@@ -41,9 +43,7 @@
       "version": "v1"
     }
   ],
-  "type": "object",
   "required": [
     "spec"
-  ],
-  "description": "SubjectAccessReview checks whether or not a user or group can perform an action."
+  ]
 }

@@ -1,4 +1,6 @@
 {
+  "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.",
+  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-group-version-kind": [
     {
       "group": "rbac.authorization.k8s.io",
@@ -6,7 +8,6 @@
       "version": "v1"
     }
   ],
-  "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -44,6 +45,5 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  },
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

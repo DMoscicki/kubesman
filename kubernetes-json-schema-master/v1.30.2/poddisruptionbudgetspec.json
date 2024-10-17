@@ -1,4 +1,7 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "description": "PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.",
+  "type": "object",
   "properties": {
     "maxUnavailable": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
@@ -20,8 +23,5 @@
         "null"
       ]
     }
-  },
-  "description": "PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.",
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  }
 }

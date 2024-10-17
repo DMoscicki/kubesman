@@ -15,7 +15,7 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "ExecAction describes a \"run in container\" action.",
   "type": "object",
+  "description": "ExecAction describes a \"run in container\" action.",
   "$schema": "http://json-schema.org/schema#"
 }

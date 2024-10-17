@@ -1,5 +1,7 @@
 {
   "description": "LoadBalancerStatus represents the status of a load-balancer.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "ingress": {
       "description": "Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.",
@@ -12,7 +14,5 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

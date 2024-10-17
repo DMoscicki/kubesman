@@ -1,9 +1,10 @@
 {
+  "description": "EnvVar represents an environment variable present in a Container.",
+  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "required": [
     "name"
   ],
-  "description": "EnvVar represents an environment variable present in a Container.",
   "properties": {
     "name": {
       "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
@@ -23,6 +24,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.EnvVarSource",
       "description": "Source for the environment variable's value. Cannot be used if value is not empty."
     }
-  },
-  "type": "object"
+  }
 }

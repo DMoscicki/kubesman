@@ -27,7 +27,7 @@
     "name"
   ],
   "description": "TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace.",
-  "type": "object",
   "x-kubernetes-map-type": "atomic",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

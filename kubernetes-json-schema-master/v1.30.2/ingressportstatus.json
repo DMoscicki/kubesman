@@ -23,11 +23,11 @@
       ]
     }
   },
-  "description": "IngressPortStatus represents the error condition of a service port",
   "required": [
     "port",
     "protocol"
   ],
+  "type": "object",
   "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "description": "IngressPortStatus represents the error condition of a service port"
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "description": "ResourceClaimSchedulingStatus contains information about one particular ResourceClaim with \"WaitForFirstConsumer\" allocation mode.",
   "properties": {
     "name": {
       "description": "Name matches the pod.spec.resourceClaims[*].Name field.",
@@ -23,6 +23,6 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "ResourceClaimSchedulingStatus contains information about one particular ResourceClaim with \"WaitForFirstConsumer\" allocation mode.",
+  "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

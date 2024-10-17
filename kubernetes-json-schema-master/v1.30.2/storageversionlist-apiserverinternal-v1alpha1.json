@@ -1,14 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "description": "A list of StorageVersions.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "internal.apiserver.k8s.io",
-      "kind": "StorageVersionList",
-      "version": "v1alpha1"
-    }
-  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -45,7 +35,17 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "internal.apiserver.k8s.io",
+      "kind": "StorageVersionList",
+      "version": "v1alpha1"
+    }
+  ],
+  "description": "A list of StorageVersions.",
   "required": [
     "items"
-  ]
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -1,4 +1,11 @@
 {
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "admissionregistration.k8s.io",
+      "kind": "MutatingWebhookConfiguration",
+      "version": "v1"
+    }
+  ],
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
@@ -43,12 +50,5 @@
     }
   },
   "type": "object",
-  "description": "MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "admissionregistration.k8s.io",
-      "kind": "MutatingWebhookConfiguration",
-      "version": "v1"
-    }
-  ]
+  "description": "MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object."
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-group-version-kind": [
     {
       "group": "apiregistration.k8s.io",
@@ -6,7 +7,7 @@
       "version": "v1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#",
+  "description": "APIService represents a server for a particular GroupVersion. Name must be \"version.group\".",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -38,6 +39,5 @@
       "description": "Status contains derived information about an API server"
     }
   },
-  "description": "APIService represents a server for a particular GroupVersion. Name must be \"version.group\".",
   "type": "object"
 }

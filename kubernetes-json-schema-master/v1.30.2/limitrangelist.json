@@ -1,7 +1,10 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "items"
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "LimitRangeList",
+      "version": "v1"
+    }
   ],
   "properties": {
     "apiVersion": {
@@ -38,11 +41,8 @@
   },
   "description": "LimitRangeList is a list of LimitRange items.",
   "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "LimitRangeList",
-      "version": "v1"
-    }
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "items"
   ]
 }

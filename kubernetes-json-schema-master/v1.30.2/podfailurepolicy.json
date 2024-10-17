@@ -12,10 +12,10 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "description": "PodFailurePolicy describes how failed pods influence the backoffLimit.",
-  "type": "object",
   "required": [
     "rules"
   ],
+  "description": "PodFailurePolicy describes how failed pods influence the backoffLimit.",
+  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

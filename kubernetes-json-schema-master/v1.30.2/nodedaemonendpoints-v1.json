@@ -5,7 +5,7 @@
       "description": "Endpoint on which Kubelet is listening."
     }
   },
+  "type": "object",
   "description": "NodeDaemonEndpoints lists ports opened by daemons running on the Node.",
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "$schema": "http://json-schema.org/schema#"
 }

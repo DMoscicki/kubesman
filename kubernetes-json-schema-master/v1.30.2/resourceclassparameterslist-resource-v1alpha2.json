@@ -1,7 +1,12 @@
 {
-  "required": [
-    "items"
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "resource.k8s.io",
+      "kind": "ResourceClassParametersList",
+      "version": "v1alpha2"
+    }
   ],
+  "description": "ResourceClassParametersList is a collection of ResourceClassParameters.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
@@ -40,12 +45,7 @@
     }
   },
   "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "resource.k8s.io",
-      "kind": "ResourceClassParametersList",
-      "version": "v1alpha2"
-    }
-  ],
-  "description": "ResourceClassParametersList is a collection of ResourceClassParameters."
+  "required": [
+    "items"
+  ]
 }

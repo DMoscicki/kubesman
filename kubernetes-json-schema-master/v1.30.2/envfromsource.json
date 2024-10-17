@@ -1,5 +1,6 @@
 {
   "description": "EnvFromSource represents the source of a set of ConfigMaps",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "configMapRef": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapEnvSource",
@@ -17,6 +18,5 @@
       "description": "The Secret to select from"
     }
   },
-  "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

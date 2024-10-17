@@ -1,8 +1,7 @@
 {
-  "required": [
-    "type",
-    "status"
-  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "PersistentVolumeClaimCondition contains details about state of pvc",
   "properties": {
     "lastProbeTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -39,7 +38,8 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "PersistentVolumeClaimCondition contains details about state of pvc"
+  "required": [
+    "type",
+    "status"
+  ]
 }

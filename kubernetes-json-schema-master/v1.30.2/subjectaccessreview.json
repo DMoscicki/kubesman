@@ -1,7 +1,10 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "spec"
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "authorization.k8s.io",
+      "kind": "SubjectAccessReview",
+      "version": "v1"
+    }
   ],
   "properties": {
     "apiVersion": {
@@ -34,13 +37,10 @@
       "description": "Status is filled in by the server and indicates whether the request is allowed or not"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "description": "SubjectAccessReview checks whether or not a user or group can perform an action.",
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "authorization.k8s.io",
-      "kind": "SubjectAccessReview",
-      "version": "v1"
-    }
-  ]
+  "required": [
+    "spec"
+  ],
+  "type": "object"
 }

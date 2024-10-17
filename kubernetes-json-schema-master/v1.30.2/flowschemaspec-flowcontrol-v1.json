@@ -1,10 +1,5 @@
 {
-  "description": "FlowSchemaSpec describes how the FlowSchema's specification looks like.",
-  "required": [
-    "priorityLevelConfiguration"
-  ],
   "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "properties": {
     "distinguisherMethod": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.FlowDistinguisherMethod",
@@ -33,5 +28,10 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  }
+  },
+  "required": [
+    "priorityLevelConfiguration"
+  ],
+  "type": "object",
+  "description": "FlowSchemaSpec describes how the FlowSchema's specification looks like."
 }

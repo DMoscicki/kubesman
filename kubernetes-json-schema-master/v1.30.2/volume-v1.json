@@ -1,5 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "name"
+  ],
   "properties": {
     "awsElasticBlockStore": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource",
@@ -125,9 +127,7 @@
       "description": "vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine"
     }
   },
-  "required": [
-    "name"
-  ],
   "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "Volume represents a named volume in a pod that may be accessed by any container in the pod."
 }

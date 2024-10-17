@@ -1,5 +1,4 @@
 {
-  "description": "DriverAllocationResult contains vendor parameters and the allocation result for one request.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "namedResources": {
@@ -11,5 +10,6 @@
       "description": "VendorRequestParameters are the per-request configuration parameters from the time that the claim was allocated."
     }
   },
+  "description": "DriverAllocationResult contains vendor parameters and the allocation result for one request.",
   "type": "object"
 }

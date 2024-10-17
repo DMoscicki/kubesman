@@ -1,4 +1,11 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "selector",
+    "template",
+    "serviceName"
+  ],
+  "type": "object",
   "description": "A StatefulSetSpec is the specification of a StatefulSet.",
   "properties": {
     "minReadySeconds": {
@@ -70,12 +77,5 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  },
-  "type": "object",
-  "required": [
-    "selector",
-    "template",
-    "serviceName"
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

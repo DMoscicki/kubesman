@@ -1,12 +1,4 @@
 {
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "networking.k8s.io",
-      "kind": "NetworkPolicy",
-      "version": "v1"
-    }
-  ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
@@ -38,5 +30,13 @@
       "description": "spec represents the specification of the desired behavior for this NetworkPolicy."
     }
   },
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "networking.k8s.io",
+      "kind": "NetworkPolicy",
+      "version": "v1"
+    }
+  ],
   "description": "NetworkPolicy describes what network traffic is allowed for a set of Pods"
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
   "properties": {
     "apiVersion": {
@@ -45,6 +46,5 @@
       "description": "Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over."
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

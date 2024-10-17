@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "type": "object",
+  "description": "DriverRequests describes all resources that are needed from one particular driver.",
   "properties": {
     "driverName": {
       "description": "DriverName is the name used by the DRA driver kubelet plugin.",
@@ -25,5 +25,5 @@
       "description": "VendorParameters are arbitrary setup parameters for all requests of the claim. They are ignored while allocating the claim."
     }
   },
-  "description": "DriverRequests describes all resources that are needed from one particular driver."
+  "$schema": "http://json-schema.org/schema#"
 }

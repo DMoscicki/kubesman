@@ -1,10 +1,9 @@
 {
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "required": [
     "type",
     "status"
   ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "PodCondition contains details for the current condition of this pod.",
   "properties": {
     "lastProbeTime": {
@@ -43,5 +42,6 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object"
 }

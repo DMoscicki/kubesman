@@ -2,7 +2,9 @@
   "required": [
     "type"
   ],
+  "$schema": "http://json-schema.org/schema#",
   "description": "MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).",
+  "type": "object",
   "properties": {
     "containerResource": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ContainerResourceMetricSource",
@@ -31,7 +33,5 @@
         "null"
       ]
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

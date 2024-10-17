@@ -1,4 +1,9 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "port"
+  ],
   "properties": {
     "port": {
       "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -15,10 +20,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "port"
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  }
 }

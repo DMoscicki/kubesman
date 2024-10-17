@@ -1,9 +1,11 @@
 {
-  "required": [
-    "items"
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "admissionregistration.k8s.io",
+      "kind": "ValidatingWebhookConfigurationList",
+      "version": "v1"
+    }
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "description": "ValidatingWebhookConfigurationList is a list of ValidatingWebhookConfiguration.",
   "properties": {
     "apiVersion": {
@@ -38,11 +40,9 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "admissionregistration.k8s.io",
-      "kind": "ValidatingWebhookConfigurationList",
-      "version": "v1"
-    }
-  ]
+  "required": [
+    "items"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

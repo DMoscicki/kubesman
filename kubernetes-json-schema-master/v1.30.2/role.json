@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -33,14 +35,12 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "type": "object",
-  "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.",
-  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-group-version-kind": [
     {
       "group": "rbac.authorization.k8s.io",
       "kind": "Role",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#"
 }

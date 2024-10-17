@@ -1,5 +1,5 @@
 {
-  "description": "CronJobStatus represents the current state of a cron job.",
+  "type": "object",
   "properties": {
     "active": {
       "description": "A list of pointers to currently running jobs.",
@@ -21,6 +21,6 @@
       "description": "Information when was the last time the job successfully completed."
     }
   },
-  "type": "object",
+  "description": "CronJobStatus represents the current state of a cron job.",
   "$schema": "http://json-schema.org/schema#"
 }

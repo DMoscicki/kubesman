@@ -1,6 +1,4 @@
 {
-  "type": "object",
-  "description": "ServiceBackendPort is the service port being referenced.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "name": {
@@ -18,5 +16,7 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object",
+  "description": "ServiceBackendPort is the service port being referenced."
 }

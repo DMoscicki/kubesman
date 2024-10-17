@@ -1,5 +1,4 @@
 {
-  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "description": "ScaleSpec describes the attributes of a scale subresource.",
   "properties": {
@@ -11,5 +10,6 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object"
 }

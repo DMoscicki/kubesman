@@ -1,9 +1,9 @@
 {
+  "description": "Storage version of a specific resource.",
   "required": [
     "spec",
     "status"
   ],
-  "description": "Storage version of a specific resource.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -35,7 +35,6 @@
       "description": "API server instances report the version they can decode and the version they encode objects to when persisting objects in the backend."
     }
   },
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "internal.apiserver.k8s.io",
@@ -43,5 +42,6 @@
       "version": "v1alpha1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

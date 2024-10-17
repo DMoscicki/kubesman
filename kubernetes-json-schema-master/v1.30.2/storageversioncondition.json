@@ -1,12 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "description": "Describes the state of the storageVersion at a certain point.",
   "type": "object",
-  "required": [
-    "type",
-    "status",
-    "reason",
-    "message"
-  ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "lastTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -49,5 +44,10 @@
       ]
     }
   },
-  "description": "Describes the state of the storageVersion at a certain point."
+  "required": [
+    "type",
+    "status",
+    "reason",
+    "message"
+  ]
 }

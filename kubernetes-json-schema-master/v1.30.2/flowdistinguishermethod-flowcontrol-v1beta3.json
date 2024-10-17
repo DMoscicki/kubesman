@@ -1,5 +1,4 @@
 {
-  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "required": [
     "type"
@@ -13,5 +12,6 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object"
 }

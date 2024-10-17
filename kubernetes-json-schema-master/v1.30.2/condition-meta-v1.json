@@ -1,5 +1,13 @@
 {
-  "description": "Condition contains details for one aspect of the current state of this API Resource.",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "type",
+    "status",
+    "lastTransitionTime",
+    "reason",
+    "message"
+  ],
+  "type": "object",
   "properties": {
     "lastTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -42,13 +50,5 @@
       ]
     }
   },
-  "type": "object",
-  "required": [
-    "type",
-    "status",
-    "lastTransitionTime",
-    "reason",
-    "message"
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  "description": "Condition contains details for one aspect of the current state of this API Resource."
 }

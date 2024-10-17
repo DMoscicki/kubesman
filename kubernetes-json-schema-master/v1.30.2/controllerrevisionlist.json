@@ -1,6 +1,14 @@
 {
+  "type": "object",
   "required": [
     "items"
+  ],
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "apps",
+      "kind": "ControllerRevisionList",
+      "version": "v1"
+    }
   ],
   "properties": {
     "apiVersion": {
@@ -35,14 +43,6 @@
       "description": "More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "apps",
-      "kind": "ControllerRevisionList",
-      "version": "v1"
-    }
-  ],
-  "description": "ControllerRevisionList is a resource containing a list of ControllerRevision objects."
+  "description": "ControllerRevisionList is a resource containing a list of ControllerRevision objects.",
+  "$schema": "http://json-schema.org/schema#"
 }

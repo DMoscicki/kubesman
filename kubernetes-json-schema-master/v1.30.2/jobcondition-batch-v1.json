@@ -1,9 +1,5 @@
 {
-  "required": [
-    "type",
-    "status"
-  ],
-  "$schema": "http://json-schema.org/schema#",
+  "description": "JobCondition describes current state of a job.",
   "properties": {
     "lastProbeTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -42,6 +38,10 @@
       ]
     }
   },
-  "type": "object",
-  "description": "JobCondition describes current state of a job."
+  "required": [
+    "type",
+    "status"
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

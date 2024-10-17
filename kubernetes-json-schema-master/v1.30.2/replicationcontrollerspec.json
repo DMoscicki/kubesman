@@ -1,5 +1,6 @@
 {
   "description": "ReplicationControllerSpec is the specification of a replication controller.",
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
     "minReadySeconds": {
@@ -36,6 +37,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec",
       "description": "Template is the object that describes the pod that will be created if insufficient replicas are detected. This takes precedence over a TemplateRef. The only allowed template.spec.restartPolicy value is \"Always\". More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template"
     }
-  },
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

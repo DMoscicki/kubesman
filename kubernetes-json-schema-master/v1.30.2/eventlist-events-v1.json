@@ -1,16 +1,4 @@
 {
-  "description": "EventList is a list of Event objects.",
-  "required": [
-    "items"
-  ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "events.k8s.io",
-      "kind": "EventList",
-      "version": "v1"
-    }
-  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -47,5 +35,17 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "events.k8s.io",
+      "kind": "EventList",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "items"
+  ],
+  "description": "EventList is a list of Event objects."
 }

@@ -6,6 +6,8 @@
       "version": "v1beta3"
     }
   ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "required": [
     "items"
   ],
@@ -42,7 +44,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "`metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
-  },
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  }
 }

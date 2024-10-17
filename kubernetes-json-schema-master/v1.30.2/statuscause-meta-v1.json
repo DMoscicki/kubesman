@@ -23,6 +23,6 @@
     }
   },
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered."
+  "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.",
+  "$schema": "http://json-schema.org/schema#"
 }

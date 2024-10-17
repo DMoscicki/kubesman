@@ -1,5 +1,5 @@
 {
-  "description": "StorageVersionSpec is an empty spec.",
   "type": "object",
+  "description": "StorageVersionSpec is an empty spec.",
   "$schema": "http://json-schema.org/schema#"
 }

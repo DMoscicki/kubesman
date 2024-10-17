@@ -1,9 +1,6 @@
 {
-  "required": [
-    "attacher",
-    "source",
-    "nodeName"
-  ],
+  "$schema": "http://json-schema.org/schema#",
+  "description": "VolumeAttachmentSpec is the specification of a VolumeAttachment request.",
   "properties": {
     "attacher": {
       "description": "attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().",
@@ -24,7 +21,10 @@
       "description": "source represents the volume that should be attached."
     }
   },
-  "type": "object",
-  "description": "VolumeAttachmentSpec is the specification of a VolumeAttachment request.",
-  "$schema": "http://json-schema.org/schema#"
+  "required": [
+    "attacher",
+    "source",
+    "nodeName"
+  ],
+  "type": "object"
 }

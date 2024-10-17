@@ -1,5 +1,12 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "description": "StorageVersionMigration represents a migration of stored data to the latest storage version.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "storagemigration.k8s.io",
+      "kind": "StorageVersionMigration",
+      "version": "v1alpha1"
+    }
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -34,13 +41,6 @@
       "description": "Status of the migration."
     }
   },
-  "description": "StorageVersionMigration represents a migration of stored data to the latest storage version.",
   "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "storagemigration.k8s.io",
-      "kind": "StorageVersionMigration",
-      "version": "v1alpha1"
-    }
-  ]
+  "$schema": "http://json-schema.org/schema#"
 }

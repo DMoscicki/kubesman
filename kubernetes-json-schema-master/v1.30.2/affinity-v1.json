@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "description": "Affinity is a group of affinity scheduling rules.",
   "properties": {
     "nodeAffinity": {
@@ -15,5 +14,6 @@
       "description": "Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s))."
     }
   },
-  "type": "object"
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -40,6 +40,8 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "rbac.authorization.k8s.io",
@@ -47,10 +49,8 @@
       "version": "v1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.",
-  "type": "object",
   "required": [
     "roleRef"
-  ]
+  ],
+  "description": "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject."
 }

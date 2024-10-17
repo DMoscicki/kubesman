@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "NodeSystemInfo is a set of ids/uuids to uniquely identify the node.",
   "properties": {
     "architecture": {
@@ -83,7 +85,5 @@
     "kubeProxyVersion",
     "operatingSystem",
     "architecture"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

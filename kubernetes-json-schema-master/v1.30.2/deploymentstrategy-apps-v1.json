@@ -1,4 +1,7 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "DeploymentStrategy describes how to replace existing pods with new ones.",
   "properties": {
     "rollingUpdate": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.apps.v1.RollingUpdateDeployment",
@@ -11,8 +14,5 @@
         "null"
       ]
     }
-  },
-  "description": "DeploymentStrategy describes how to replace existing pods with new ones.",
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

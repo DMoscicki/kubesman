@@ -1,10 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "targetPortal",
     "iqn",
     "lun"
   ],
-  "type": "object",
   "properties": {
     "chapAuthDiscovery": {
       "description": "chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication",
@@ -89,6 +89,6 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "description": "ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling."
+  "description": "ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.",
+  "type": "object"
 }

@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Scale represents a scaling request for a resource.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "autoscaling",
@@ -6,8 +8,7 @@
       "version": "v1"
     }
   ],
-  "description": "Scale represents a scaling request for a resource.",
-  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -41,6 +42,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.autoscaling.v1.ScaleStatus",
       "description": "status is the current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only."
     }
-  },
-  "type": "object"
+  }
 }

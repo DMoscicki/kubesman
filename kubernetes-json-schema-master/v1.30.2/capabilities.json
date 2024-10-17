@@ -1,4 +1,5 @@
 {
+  "description": "Adds and removes POSIX capabilities from running containers.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "add": {
@@ -30,6 +31,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "type": "object",
-  "description": "Adds and removes POSIX capabilities from running containers."
+  "type": "object"
 }

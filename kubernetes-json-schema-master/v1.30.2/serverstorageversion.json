@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "description": "An API server instance reports the version it can decode and the version it encodes objects to when persisting objects in the backend.",
   "type": "object",
+  "description": "An API server instance reports the version it can decode and the version it encodes objects to when persisting objects in the backend.",
   "properties": {
     "apiServerID": {
       "description": "The ID of the reporting API server.",

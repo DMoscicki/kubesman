@@ -1,17 +1,6 @@
 {
-  "required": [
-    "spec"
-  ],
   "description": "CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.",
   "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "storage.k8s.io",
-      "kind": "CSIDriver",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -41,5 +30,16 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.storage.v1.CSIDriverSpec",
       "description": "spec represents the specification of the CSI Driver."
     }
-  }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "storage.k8s.io",
+      "kind": "CSIDriver",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "spec"
+  ]
 }

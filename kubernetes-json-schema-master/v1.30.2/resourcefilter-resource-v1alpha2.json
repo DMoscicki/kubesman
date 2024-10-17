@@ -1,5 +1,5 @@
 {
-  "description": "ResourceFilter is a filter for resources from one particular driver.",
+  "type": "object",
   "properties": {
     "driverName": {
       "description": "DriverName is the name used by the DRA driver kubelet plugin.",
@@ -14,5 +14,5 @@
     }
   },
   "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "description": "ResourceFilter is a filter for resources from one particular driver."
 }

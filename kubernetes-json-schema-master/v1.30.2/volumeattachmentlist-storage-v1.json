@@ -1,17 +1,4 @@
 {
-  "type": "object",
-  "required": [
-    "items"
-  ],
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "storage.k8s.io",
-      "kind": "VolumeAttachmentList",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "VolumeAttachmentList is a collection of VolumeAttachment objects.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -47,5 +34,18 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
-  }
+  },
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "storage.k8s.io",
+      "kind": "VolumeAttachmentList",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "description": "VolumeAttachmentList is a collection of VolumeAttachment objects.",
+  "required": [
+    "items"
+  ]
 }

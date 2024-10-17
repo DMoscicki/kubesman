@@ -57,10 +57,10 @@
       ]
     }
   },
+  "description": "ReplicaSetStatus represents the current status of a ReplicaSet.",
   "required": [
     "replicas"
   ],
-  "type": "object",
-  "description": "ReplicaSetStatus represents the current status of a ReplicaSet.",
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,5 +1,4 @@
 {
-  "description": "PodTemplateSpec describes the data a pod should have when created from a template",
   "properties": {
     "metadata": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
@@ -11,5 +10,6 @@
     }
   },
   "type": "object",
+  "description": "PodTemplateSpec describes the data a pod should have when created from a template",
   "$schema": "http://json-schema.org/schema#"
 }

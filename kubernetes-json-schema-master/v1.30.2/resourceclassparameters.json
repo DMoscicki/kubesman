@@ -49,7 +49,6 @@
     }
   },
   "type": "object",
-  "description": "ResourceClassParameters defines resource requests for a ResourceClass in an in-tree format understood by Kubernetes.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "resource.k8s.io",
@@ -57,5 +56,6 @@
       "version": "v1alpha2"
     }
   ],
+  "description": "ResourceClassParameters defines resource requests for a ResourceClass in an in-tree format understood by Kubernetes.",
   "$schema": "http://json-schema.org/schema#"
 }

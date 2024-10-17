@@ -1,7 +1,6 @@
 {
-  "type": "object",
-  "description": "ValidatingAdmissionPolicySpec is the specification of the desired behavior of the AdmissionPolicy.",
   "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "auditAnnotations": {
       "description": "auditAnnotations contains CEL expressions which are used to produce audit annotations for the audit event of the API request. validations and auditAnnotations may not both be empty; a least one of validations or auditAnnotations is required.",
@@ -72,5 +71,6 @@
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge"
     }
-  }
+  },
+  "description": "ValidatingAdmissionPolicySpec is the specification of the desired behavior of the AdmissionPolicy."
 }

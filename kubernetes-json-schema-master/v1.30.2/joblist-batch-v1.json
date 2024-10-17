@@ -1,6 +1,16 @@
 {
+  "required": [
+    "items"
+  ],
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "batch",
+      "kind": "JobList",
+      "version": "v1"
+    }
+  ],
   "$schema": "http://json-schema.org/schema#",
-  "type": "object",
+  "description": "JobList is a collection of jobs.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -37,15 +47,5 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
-  "description": "JobList is a collection of jobs.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "batch",
-      "kind": "JobList",
-      "version": "v1"
-    }
-  ],
-  "required": [
-    "items"
-  ]
+  "type": "object"
 }

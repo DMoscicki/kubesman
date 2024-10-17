@@ -1,9 +1,4 @@
 {
-  "required": [
-    "driver",
-    "volumeHandle"
-  ],
-  "type": "object",
   "properties": {
     "controllerExpandSecretRef": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference",
@@ -67,6 +62,11 @@
       ]
     }
   },
-  "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)",
-  "$schema": "http://json-schema.org/schema#"
+  "required": [
+    "driver",
+    "volumeHandle"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)"
 }

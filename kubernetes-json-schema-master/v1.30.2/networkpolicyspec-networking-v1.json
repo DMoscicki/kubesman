@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "description": "NetworkPolicySpec provides the specification of a NetworkPolicy",
   "required": [
     "podSelector"
   ],
@@ -44,7 +46,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "description": "NetworkPolicySpec provides the specification of a NetworkPolicy"
+  "type": "object"
 }

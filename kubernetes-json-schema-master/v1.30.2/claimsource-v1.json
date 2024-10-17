@@ -1,7 +1,4 @@
 {
-  "type": "object",
-  "description": "ClaimSource describes a reference to a ResourceClaim.\n\nExactly one of these fields should be set.  Consumers of this type must treat an empty object as if it has an unknown value.",
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "resourceClaimName": {
       "description": "ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.",
@@ -17,5 +14,8 @@
         "null"
       ]
     }
-  }
+  },
+  "description": "ClaimSource describes a reference to a ResourceClaim.\n\nExactly one of these fields should be set.  Consumers of this type must treat an empty object as if it has an unknown value.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

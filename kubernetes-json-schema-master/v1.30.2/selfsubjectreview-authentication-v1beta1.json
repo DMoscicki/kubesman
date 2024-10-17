@@ -1,4 +1,5 @@
 {
+  "description": "SelfSubjectReview contains the user information that the kube-apiserver has about the user making this request. When using impersonation, users will receive the user info of the user being impersonated.  If impersonation or request header authentication is used, any extra keys will have their case ignored and returned as lowercase.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "authentication.k8s.io",
@@ -6,7 +7,6 @@
       "version": "v1beta1"
     }
   ],
-  "description": "SelfSubjectReview contains the user information that the kube-apiserver has about the user making this request. When using impersonation, users will receive the user info of the user being impersonated.  If impersonation or request header authentication is used, any extra keys will have their case ignored and returned as lowercase.",
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {

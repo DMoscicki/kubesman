@@ -1,5 +1,7 @@
 {
-  "description": "HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.",
+  "required": [
+    "desiredReplicas"
+  ],
   "properties": {
     "conditions": {
       "description": "conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.",
@@ -57,9 +59,7 @@
       ]
     }
   },
+  "description": "HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.",
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "desiredReplicas"
-  ]
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -1,4 +1,8 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "port"
+  ],
   "type": "object",
   "properties": {
     "port": {
@@ -16,9 +20,5 @@
         "null"
       ]
     }
-  },
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "port"
-  ]
+  }
 }

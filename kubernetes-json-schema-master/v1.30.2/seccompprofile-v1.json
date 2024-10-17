@@ -1,10 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
-  "required": [
-    "type"
-  ],
-  "type": "object",
   "x-kubernetes-unions": [
     {
       "discriminator": "type",
@@ -13,6 +7,7 @@
       }
     }
   ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "localhostProfile": {
       "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is \"Localhost\". Must NOT be set for any other type.",
@@ -28,5 +23,10 @@
         "null"
       ]
     }
-  }
+  },
+  "required": [
+    "type"
+  ],
+  "type": "object",
+  "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set."
 }

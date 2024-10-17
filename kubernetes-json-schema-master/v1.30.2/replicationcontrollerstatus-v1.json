@@ -57,10 +57,10 @@
       ]
     }
   },
-  "description": "ReplicationControllerStatus represents the current status of a replication controller.",
   "required": [
     "replicas"
   ],
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ReplicationControllerStatus represents the current status of a replication controller."
 }

@@ -1,5 +1,5 @@
 {
-  "description": "Local represents directly-attached storage with node affinity (Beta feature)",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "fsType": {
       "description": "fsType is the filesystem type to mount. It applies only when the Path is a block device. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default value is to auto-select a filesystem if unspecified.",
@@ -16,9 +16,9 @@
       ]
     }
   },
+  "type": "object",
+  "description": "Local represents directly-attached storage with node affinity (Beta feature)",
   "required": [
     "path"
-  ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

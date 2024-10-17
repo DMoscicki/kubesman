@@ -1,6 +1,4 @@
 {
-  "description": "NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from.",
-  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
     "from": {
@@ -25,5 +23,7 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from."
 }

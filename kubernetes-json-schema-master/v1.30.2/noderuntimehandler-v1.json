@@ -13,6 +13,6 @@
     }
   },
   "$schema": "http://json-schema.org/schema#",
-  "description": "NodeRuntimeHandler is a set of runtime handler information.",
-  "type": "object"
+  "type": "object",
+  "description": "NodeRuntimeHandler is a set of runtime handler information."
 }

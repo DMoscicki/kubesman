@@ -3,7 +3,6 @@
   "required": [
     "name"
   ],
-  "description": "ForZone provides information about which zones should consume this endpoint.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "name": {
@@ -13,5 +12,6 @@
         "null"
       ]
     }
-  }
+  },
+  "description": "ForZone provides information about which zones should consume this endpoint."
 }

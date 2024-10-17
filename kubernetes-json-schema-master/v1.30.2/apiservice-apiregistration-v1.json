@@ -1,5 +1,12 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "apiregistration.k8s.io",
+      "kind": "APIService",
+      "version": "v1"
+    }
+  ],
   "description": "APIService represents a server for a particular GroupVersion. Name must be \"version.group\".",
   "properties": {
     "apiVersion": {
@@ -35,12 +42,5 @@
       "description": "Status contains derived information about an API server"
     }
   },
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "apiregistration.k8s.io",
-      "kind": "APIService",
-      "version": "v1"
-    }
-  ]
+  "$schema": "http://json-schema.org/schema#"
 }

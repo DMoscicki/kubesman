@@ -55,7 +55,8 @@
       ]
     }
   },
-  "description": "Info contains versioning information. how we'll want to distribute that information.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "required": [
     "major",
     "minor",
@@ -67,6 +68,5 @@
     "compiler",
     "platform"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "Info contains versioning information. how we'll want to distribute that information."
 }

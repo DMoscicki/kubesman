@@ -1,6 +1,6 @@
 {
-  "type": "object",
   "description": "SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "nonResourceAttributes": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.authorization.v1.NonResourceAttributes",
@@ -11,5 +11,5 @@
       "description": "ResourceAuthorizationAttributes describes information for a resource access request"
     }
   },
-  "$schema": "http://json-schema.org/schema#"
+  "type": "object"
 }

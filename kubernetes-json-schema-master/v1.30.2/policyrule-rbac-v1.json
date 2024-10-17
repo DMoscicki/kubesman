@@ -1,10 +1,6 @@
 {
-  "type": "object",
-  "description": "PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.",
-  "required": [
-    "verbs"
-  ],
   "$schema": "http://json-schema.org/schema#",
+  "description": "PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.",
   "properties": {
     "apiGroups": {
       "description": "APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. \"\" represents the core API group and \"*\" represents all API groups.",
@@ -76,5 +72,9 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  }
+  },
+  "type": "object",
+  "required": [
+    "verbs"
+  ]
 }

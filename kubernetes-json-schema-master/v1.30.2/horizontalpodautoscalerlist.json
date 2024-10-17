@@ -6,7 +6,6 @@
       "version": "v2"
     }
   ],
-  "$schema": "http://json-schema.org/schema#",
   "description": "HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects.",
   "properties": {
     "apiVersion": {
@@ -41,8 +40,9 @@
       "description": "metadata is the standard list metadata."
     }
   },
+  "type": "object",
   "required": [
     "items"
   ],
-  "type": "object"
+  "$schema": "http://json-schema.org/schema#"
 }

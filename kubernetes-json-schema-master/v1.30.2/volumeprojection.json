@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "clusterTrustBundle": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.ClusterTrustBundleProjection",
@@ -21,7 +22,6 @@
       "description": "serviceAccountToken is information about the serviceAccountToken data to project"
     }
   },
-  "description": "Projection that may be projected along with other supported volume types",
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "Projection that may be projected along with other supported volume types"
 }

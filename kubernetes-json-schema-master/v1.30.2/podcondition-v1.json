@@ -1,11 +1,4 @@
 {
-  "description": "PodCondition contains details for the current condition of this pod.",
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "required": [
-    "type",
-    "status"
-  ],
   "properties": {
     "lastProbeTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -43,5 +36,12 @@
         "null"
       ]
     }
-  }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "PodCondition contains details for the current condition of this pod."
 }

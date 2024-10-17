@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "description": "ReplicaSetSpec is the specification of a ReplicaSet.",
+  "type": "object",
   "properties": {
     "minReadySeconds": {
       "description": "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -27,7 +27,7 @@
       "description": "Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template"
     }
   },
-  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "selector"
   ]

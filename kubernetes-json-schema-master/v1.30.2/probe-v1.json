@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "exec": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.ExecAction",
@@ -65,7 +66,6 @@
       ]
     }
   },
-  "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
   "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic."
 }

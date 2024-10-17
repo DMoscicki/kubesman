@@ -1,13 +1,9 @@
 {
   "description": "ResourceQuotaList is a list of ResourceQuota items.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "ResourceQuotaList",
-      "version": "v1"
-    }
-  ],
   "type": "object",
+  "required": [
+    "items"
+  ],
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
@@ -42,7 +38,11 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "required": [
-    "items"
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "ResourceQuotaList",
+      "version": "v1"
+    }
   ]
 }

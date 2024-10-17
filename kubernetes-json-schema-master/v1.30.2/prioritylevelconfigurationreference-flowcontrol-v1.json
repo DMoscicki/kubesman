@@ -1,9 +1,5 @@
 {
   "description": "PriorityLevelConfigurationReference contains information that points to the \"request-priority\" being used.",
-  "type": "object",
-  "required": [
-    "name"
-  ],
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "name": {
@@ -13,5 +9,9 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object",
+  "required": [
+    "name"
+  ]
 }

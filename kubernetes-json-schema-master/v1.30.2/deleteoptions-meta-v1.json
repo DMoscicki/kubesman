@@ -120,7 +120,6 @@
     }
   },
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
@@ -418,5 +417,6 @@
       "version": "v1alpha1"
     }
   ],
-  "description": "DeleteOptions may be provided when deleting an API object."
+  "description": "DeleteOptions may be provided when deleting an API object.",
+  "$schema": "http://json-schema.org/schema#"
 }

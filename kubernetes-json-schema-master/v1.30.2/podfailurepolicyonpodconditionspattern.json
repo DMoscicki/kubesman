@@ -1,5 +1,4 @@
 {
-  "type": "object",
   "required": [
     "type",
     "status"
@@ -21,5 +20,6 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object"
 }

@@ -1,4 +1,7 @@
 {
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "APIServiceStatus contains derived information about an API server",
   "properties": {
     "conditions": {
       "description": "Current service state of apiService.",
@@ -16,8 +19,5 @@
       "x-kubernetes-patch-merge-key": "type",
       "x-kubernetes-patch-strategy": "merge"
     }
-  },
-  "description": "APIServiceStatus contains derived information about an API server",
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  }
 }

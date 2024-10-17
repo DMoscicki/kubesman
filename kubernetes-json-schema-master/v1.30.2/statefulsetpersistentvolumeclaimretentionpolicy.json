@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "description": "StatefulSetPersistentVolumeClaimRetentionPolicy describes the policy used for PVCs created from the StatefulSet VolumeClaimTemplates.",
   "properties": {
     "whenDeleted": {
@@ -17,5 +15,7 @@
         "null"
       ]
     }
-  }
+  },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

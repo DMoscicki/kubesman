@@ -1,7 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes",
-  "type": "object",
   "properties": {
     "accessModes": {
       "description": "accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1",
@@ -61,5 +59,7 @@
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

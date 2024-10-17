@@ -1,7 +1,5 @@
 {
-  "description": "ReplicaSetSpec is the specification of a ReplicaSet.",
   "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "required": [
     "selector"
   ],
@@ -30,5 +28,7 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec",
       "description": "Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template"
     }
-  }
+  },
+  "type": "object",
+  "description": "ReplicaSetSpec is the specification of a ReplicaSet."
 }

@@ -1,8 +1,12 @@
 {
-  "description": "LeaseList is a list of Lease objects.",
-  "required": [
-    "items"
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "coordination.k8s.io",
+      "kind": "LeaseList",
+      "version": "v1"
+    }
   ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -40,12 +44,8 @@
     }
   },
   "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "coordination.k8s.io",
-      "kind": "LeaseList",
-      "version": "v1"
-    }
+  "required": [
+    "items"
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "description": "LeaseList is a list of Lease objects."
 }

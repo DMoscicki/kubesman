@@ -1,10 +1,5 @@
 {
-  "type": "object",
   "description": "StatefulSetStatus represents the current state of a StatefulSet.",
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "replicas"
-  ],
   "properties": {
     "availableReplicas": {
       "description": "Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.",
@@ -92,5 +87,10 @@
         "null"
       ]
     }
-  }
+  },
+  "required": [
+    "replicas"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

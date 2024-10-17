@@ -1,5 +1,7 @@
 {
+  "type": "object",
   "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "annotations": {
       "additionalProperties": {
@@ -135,7 +137,5 @@
         "null"
       ]
     }
-  },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

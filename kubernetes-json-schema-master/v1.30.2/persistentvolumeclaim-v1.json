@@ -1,6 +1,14 @@
 {
-  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "PersistentVolumeClaim",
+      "version": "v1"
+    }
+  ],
   "description": "PersistentVolumeClaim is a user's request for and claim to a persistent volume",
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -34,13 +42,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimStatus",
       "description": "status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims"
     }
-  },
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "PersistentVolumeClaim",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

@@ -1,9 +1,9 @@
 {
+  "description": "LimitRangeSpec defines a min/max usage limit for resources that match on kind.",
+  "type": "object",
   "required": [
     "limits"
   ],
-  "description": "LimitRangeSpec defines a min/max usage limit for resources that match on kind.",
-  "type": "object",
   "properties": {
     "limits": {
       "description": "Limits is the list of LimitRangeItem objects that are enforced.",

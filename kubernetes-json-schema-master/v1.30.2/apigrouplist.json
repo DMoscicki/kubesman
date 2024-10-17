@@ -1,11 +1,14 @@
 {
-  "description": "APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
       "kind": "APIGroupList",
       "version": "v1"
     }
+  ],
+  "description": "APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.",
+  "required": [
+    "groups"
   ],
   "properties": {
     "apiVersion": {
@@ -37,9 +40,6 @@
       ]
     }
   },
-  "required": [
-    "groups"
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

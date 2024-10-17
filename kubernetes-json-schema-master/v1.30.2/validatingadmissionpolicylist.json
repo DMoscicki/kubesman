@@ -32,6 +32,8 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "ValidatingAdmissionPolicyList is a list of ValidatingAdmissionPolicy.",
   "type": "object",
   "x-kubernetes-group-version-kind": [
     {
@@ -39,7 +41,5 @@
       "kind": "ValidatingAdmissionPolicyList",
       "version": "v1beta1"
     }
-  ],
-  "description": "ValidatingAdmissionPolicyList is a list of ValidatingAdmissionPolicy.",
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

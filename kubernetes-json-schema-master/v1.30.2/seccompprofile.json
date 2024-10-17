@@ -1,16 +1,6 @@
 {
-  "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
-  "$schema": "http://json-schema.org/schema#",
   "required": [
     "type"
-  ],
-  "x-kubernetes-unions": [
-    {
-      "discriminator": "type",
-      "fields-to-discriminateBy": {
-        "localhostProfile": "LocalhostProfile"
-      }
-    }
   ],
   "type": "object",
   "properties": {
@@ -28,5 +18,15 @@
         "null"
       ]
     }
-  }
+  },
+  "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "localhostProfile": "LocalhostProfile"
+      }
+    }
+  ]
 }

@@ -1,14 +1,14 @@
 {
-  "type": "object",
+  "required": [
+    "items"
+  ],
+  "description": "IngressClassList is a collection of IngressClasses.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "networking.k8s.io",
       "kind": "IngressClassList",
       "version": "v1"
     }
-  ],
-  "required": [
-    "items"
   ],
   "$schema": "http://json-schema.org/schema#",
   "properties": {
@@ -47,5 +47,5 @@
       "description": "Standard list metadata."
     }
   },
-  "description": "IngressClassList is a collection of IngressClasses."
+  "type": "object"
 }

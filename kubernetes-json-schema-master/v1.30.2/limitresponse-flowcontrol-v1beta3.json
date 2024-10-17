@@ -8,11 +8,6 @@
     }
   ],
   "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "description": "LimitResponse defines how to handle requests that can not be executed right now.",
-  "required": [
-    "type"
-  ],
   "properties": {
     "queuing": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta3.QueuingConfiguration",
@@ -25,5 +20,10 @@
         "null"
       ]
     }
-  }
+  },
+  "required": [
+    "type"
+  ],
+  "description": "LimitResponse defines how to handle requests that can not be executed right now.",
+  "type": "object"
 }

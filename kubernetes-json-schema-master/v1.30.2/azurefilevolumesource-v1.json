@@ -1,6 +1,4 @@
 {
-  "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
-  "type": "object",
   "properties": {
     "readOnly": {
       "description": "readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
@@ -24,9 +22,11 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#",
   "required": [
     "secretName",
     "shareName"
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod."
 }

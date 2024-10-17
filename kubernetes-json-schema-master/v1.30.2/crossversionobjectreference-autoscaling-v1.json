@@ -1,12 +1,12 @@
 {
+  "x-kubernetes-map-type": "atomic",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "kind",
     "name"
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
-  "x-kubernetes-map-type": "atomic",
   "type": "object",
+  "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
   "properties": {
     "apiVersion": {
       "description": "apiVersion is the API version of the referent",

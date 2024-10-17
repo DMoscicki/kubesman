@@ -10,6 +10,6 @@
       "description": "service references a service as a backend. This is a mutually exclusive setting with \"Resource\"."
     }
   },
-  "type": "object",
-  "description": "IngressBackend describes all endpoints for a given service and port."
+  "description": "IngressBackend describes all endpoints for a given service and port.",
+  "type": "object"
 }

@@ -1,5 +1,12 @@
 {
-  "description": "ResourceClassList is a collection of classes.",
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "resource.k8s.io",
+      "kind": "ResourceClassList",
+      "version": "v1alpha2"
+    }
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -36,16 +43,9 @@
       "description": "Standard list metadata"
     }
   },
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "resource.k8s.io",
-      "kind": "ResourceClassList",
-      "version": "v1alpha2"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#",
+  "description": "ResourceClassList is a collection of classes.",
   "required": [
     "items"
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -1,12 +1,4 @@
 {
-  "description": "ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it.",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "admissionregistration.k8s.io",
-      "kind": "ValidatingAdmissionPolicy",
-      "version": "v1alpha1"
-    }
-  ],
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
@@ -42,5 +34,13 @@
       "description": "The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only."
     }
   },
-  "type": "object"
+  "description": "ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it.",
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "admissionregistration.k8s.io",
+      "kind": "ValidatingAdmissionPolicy",
+      "version": "v1alpha1"
+    }
+  ]
 }

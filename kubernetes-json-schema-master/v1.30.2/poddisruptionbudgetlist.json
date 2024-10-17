@@ -7,8 +7,8 @@
       "version": "v1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#",
   "description": "PodDisruptionBudgetList is a collection of PodDisruptionBudgets.",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "items"
   ],

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "description": "NodeSpec describes the attributes that a node is created with.",
   "properties": {
     "configSource": {
@@ -60,6 +61,5 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "PersistentVolumeClaimList is a list of PersistentVolumeClaim items.",
   "required": [
     "items"
@@ -39,13 +41,11 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "type": "object",
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
       "kind": "PersistentVolumeClaimList",
       "version": "v1"
     }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

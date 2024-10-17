@@ -1,4 +1,11 @@
 {
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "authorization.k8s.io",
+      "kind": "SelfSubjectAccessReview",
+      "version": "v1"
+    }
+  ],
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
@@ -35,12 +42,5 @@
   "required": [
     "spec"
   ],
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "authorization.k8s.io",
-      "kind": "SelfSubjectAccessReview",
-      "version": "v1"
-    }
-  ]
+  "type": "object"
 }

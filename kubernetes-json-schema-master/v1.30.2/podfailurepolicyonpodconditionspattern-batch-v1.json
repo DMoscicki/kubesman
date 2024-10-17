@@ -15,11 +15,11 @@
       ]
     }
   },
-  "type": "object",
-  "description": "PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type.",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "type",
     "status"
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "description": "PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type.",
+  "type": "object"
 }

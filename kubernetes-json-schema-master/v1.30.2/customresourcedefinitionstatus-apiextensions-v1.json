@@ -33,7 +33,7 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
-  "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition"
 }

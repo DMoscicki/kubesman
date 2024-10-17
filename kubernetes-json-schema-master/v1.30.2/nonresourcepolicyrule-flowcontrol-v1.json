@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
+  "description": "NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request.",
   "type": "object",
   "properties": {
     "nonResourceURLs": {
@@ -31,7 +32,6 @@
       "x-kubernetes-list-type": "set"
     }
   },
-  "description": "NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request.",
   "required": [
     "verbs",
     "nonResourceURLs"

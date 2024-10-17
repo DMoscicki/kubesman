@@ -1,6 +1,4 @@
 {
-  "type": "object",
-  "description": "ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.",
   "properties": {
     "aggregationRule": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.rbac.v1.AggregationRule",
@@ -46,5 +44,7 @@
       "version": "v1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding."
 }

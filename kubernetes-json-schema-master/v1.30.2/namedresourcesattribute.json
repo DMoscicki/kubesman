@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "bool": {
       "description": "BoolValue is a true/false value.",
@@ -50,9 +49,10 @@
       ]
     }
   },
-  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "NamedResourcesAttribute is a combination of an attribute name and its value.",
   "required": [
     "name"
   ],
-  "description": "NamedResourcesAttribute is a combination of an attribute name and its value."
+  "type": "object"
 }

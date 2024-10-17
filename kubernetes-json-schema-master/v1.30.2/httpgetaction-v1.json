@@ -1,6 +1,9 @@
 {
-  "type": "object",
   "description": "HTTPGetAction describes an action based on HTTP Get requests.",
+  "required": [
+    "port"
+  ],
+  "type": "object",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "host": {
@@ -39,8 +42,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "port"
-  ]
+  }
 }

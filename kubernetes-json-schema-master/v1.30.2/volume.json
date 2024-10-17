@@ -1,9 +1,5 @@
 {
-  "required": [
-    "name"
-  ],
   "type": "object",
-  "description": "Volume represents a named volume in a pod that may be accessed by any container in the pod.",
   "$schema": "http://json-schema.org/schema#",
   "properties": {
     "awsElasticBlockStore": {
@@ -129,5 +125,9 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource",
       "description": "vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine"
     }
-  }
+  },
+  "required": [
+    "name"
+  ],
+  "description": "Volume represents a named volume in a pod that may be accessed by any container in the pod."
 }

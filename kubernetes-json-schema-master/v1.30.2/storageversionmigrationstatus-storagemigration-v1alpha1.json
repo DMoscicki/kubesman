@@ -1,4 +1,7 @@
 {
+  "type": "object",
+  "description": "Status of the storage version migration.",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "conditions": {
       "description": "The latest available observations of the migration's current state.",
@@ -23,8 +26,5 @@
         "null"
       ]
     }
-  },
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "description": "Status of the storage version migration."
+  }
 }

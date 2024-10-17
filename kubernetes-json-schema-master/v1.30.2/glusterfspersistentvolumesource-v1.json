@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "properties": {
     "endpoints": {
       "description": "endpoints is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
@@ -29,11 +30,10 @@
       ]
     }
   },
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
+  "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.",
   "required": [
     "endpoints",
     "path"
   ],
-  "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling."
+  "$schema": "http://json-schema.org/schema#"
 }

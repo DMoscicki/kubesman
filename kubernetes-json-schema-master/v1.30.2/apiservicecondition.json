@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "lastTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -34,10 +34,10 @@
       ]
     }
   },
-  "type": "object",
-  "description": "APIServiceCondition describes the state of an APIService at a particular point",
   "required": [
     "type",
     "status"
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "description": "APIServiceCondition describes the state of an APIService at a particular point"
 }

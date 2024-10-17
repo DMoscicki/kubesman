@@ -1,6 +1,11 @@
 {
-  "type": "object",
   "description": "An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "required": [
+    "weight",
+    "preference"
+  ],
   "properties": {
     "preference": {
       "$ref": "./_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorTerm",
@@ -14,10 +19,5 @@
         "null"
       ]
     }
-  },
-  "required": [
-    "weight",
-    "preference"
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

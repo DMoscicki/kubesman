@@ -1,7 +1,5 @@
 {
-  "required": [
-    "items"
-  ],
+  "description": "ResourceSliceList is a collection of ResourceSlices.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "resource.k8s.io",
@@ -9,9 +7,10 @@
       "version": "v1alpha2"
     }
   ],
-  "type": "object",
   "$schema": "http://json-schema.org/schema#",
-  "description": "ResourceSliceList is a collection of ResourceSlices.",
+  "required": [
+    "items"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -47,5 +46,6 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata"
     }
-  }
+  },
+  "type": "object"
 }

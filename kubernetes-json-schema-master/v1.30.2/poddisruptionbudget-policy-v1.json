@@ -1,14 +1,4 @@
 {
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "policy",
-      "kind": "PodDisruptionBudget",
-      "version": "v1"
-    }
-  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -42,5 +32,15 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.policy.v1.PodDisruptionBudgetStatus",
       "description": "Most recently observed status of the PodDisruptionBudget."
     }
-  }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "policy",
+      "kind": "PodDisruptionBudget",
+      "version": "v1"
+    }
+  ],
+  "type": "object",
+  "description": "PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods",
+  "$schema": "http://json-schema.org/schema#"
 }

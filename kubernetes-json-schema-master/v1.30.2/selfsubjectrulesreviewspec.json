@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "description": "SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.",
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
     "namespace": {

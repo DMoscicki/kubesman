@@ -1,8 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "required": [
-    "items"
-  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -36,7 +32,6 @@
       "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
-  "description": "APIServiceList is a list of APIService objects.",
   "type": "object",
   "x-kubernetes-group-version-kind": [
     {
@@ -44,5 +39,10 @@
       "kind": "APIServiceList",
       "version": "v1"
     }
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "description": "APIServiceList is a list of APIService objects.",
+  "required": [
+    "items"
   ]
 }

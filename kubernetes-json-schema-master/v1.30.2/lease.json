@@ -1,5 +1,12 @@
 {
-  "description": "Lease defines a lease concept.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "coordination.k8s.io",
+      "kind": "Lease",
+      "version": "v1"
+    }
+  ],
+  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -27,13 +34,6 @@
       "description": "spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
     }
   },
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "coordination.k8s.io",
-      "kind": "Lease",
-      "version": "v1"
-    }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Lease defines a lease concept."
 }

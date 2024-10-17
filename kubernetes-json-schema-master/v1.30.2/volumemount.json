@@ -50,11 +50,11 @@
       ]
     }
   },
-  "description": "VolumeMount describes a mounting of a Volume within a container.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "name",
     "mountPath"
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "description": "VolumeMount describes a mounting of a Volume within a container."
 }

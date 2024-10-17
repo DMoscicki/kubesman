@@ -30,7 +30,7 @@
       ]
     }
   },
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
-  "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-  "$schema": "http://json-schema.org/schema#"
+  "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}."
 }

@@ -1,5 +1,4 @@
 {
-  "description": "MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object.",
   "x-kubernetes-group-version-kind": [
     {
       "group": "admissionregistration.k8s.io",
@@ -7,8 +6,6 @@
       "version": "v1"
     }
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -47,5 +44,8 @@
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "description": "MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object.",
+  "type": "object"
 }

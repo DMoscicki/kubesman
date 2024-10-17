@@ -1,4 +1,6 @@
 {
+  "description": "FlowSchemaCondition describes conditions for a FlowSchema.",
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
     "lastTransitionTime": {
@@ -33,7 +35,5 @@
         "null"
       ]
     }
-  },
-  "$schema": "http://json-schema.org/schema#",
-  "description": "FlowSchemaCondition describes conditions for a FlowSchema."
+  }
 }

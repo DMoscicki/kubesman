@@ -1,4 +1,7 @@
 {
+  "description": "ValidatingAdmissionPolicyList is a list of ValidatingAdmissionPolicy.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -35,14 +38,11 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "description": "ValidatingAdmissionPolicyList is a list of ValidatingAdmissionPolicy.",
-  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-group-version-kind": [
     {
       "group": "admissionregistration.k8s.io",
       "kind": "ValidatingAdmissionPolicyList",
       "version": "v1alpha1"
     }
-  ],
-  "type": "object"
+  ]
 }

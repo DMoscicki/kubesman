@@ -1,10 +1,6 @@
 {
-  "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
   "type": "object",
-  "required": [
-    "key",
-    "operator"
-  ],
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "key": {
       "description": "The label key that the selector applies to.",
@@ -35,5 +31,9 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "$schema": "http://json-schema.org/schema#"
+  "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+  "required": [
+    "key",
+    "operator"
+  ]
 }

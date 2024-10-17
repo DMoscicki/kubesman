@@ -15,10 +15,9 @@
       ]
     }
   },
+  "type": "object",
   "description": "AppArmorProfile defines a pod or container's AppArmor settings.",
-  "required": [
-    "type"
-  ],
+  "$schema": "http://json-schema.org/schema#",
   "x-kubernetes-unions": [
     {
       "discriminator": "type",
@@ -27,6 +26,7 @@
       }
     }
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  "required": [
+    "type"
+  ]
 }

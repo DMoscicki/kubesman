@@ -1,4 +1,6 @@
 {
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "description": "PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.",
   "properties": {
     "apiGroups": {
@@ -72,8 +74,6 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "required": [
     "verbs"
   ]

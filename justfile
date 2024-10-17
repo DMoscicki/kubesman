@@ -120,9 +120,17 @@ generate-dart-classes:
     ./rw
     cd kubernetes-json-schema-master/v1.30.2;
     fd -e json -x quicktype --no-ignore-json-refs -s schema {} --lang dart --use-json-annotation --null-safety --coders-in-class -o ../../frontend/lib/k8s-classes/{.}.dart;
-
+    
+cleanup:
+    #!/usr/bin/env bash
+    set -exuo pipefail
+    cd frontend/lib/k8s-classes;
+    fd v1 -x rm -rf {}
+    
 dart-json-serialize:
     cd frontend; flutter packages pub run build_runner build;
+
+post-generate: cleanup dart-json-serialize
     
 dev-serve:
 	DEV=true cargo run dev

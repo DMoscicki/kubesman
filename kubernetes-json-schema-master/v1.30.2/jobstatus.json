@@ -1,6 +1,6 @@
 {
-  "description": "JobStatus represents the current state of a Job.",
   "type": "object",
+  "description": "JobStatus represents the current state of a Job.",
   "properties": {
     "active": {
       "description": "The number of pending and running pods which are not terminating (without a deletionTimestamp). The value is zero for finished jobs.",

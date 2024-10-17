@@ -1,6 +1,8 @@
 {
   "x-kubernetes-map-type": "atomic",
+  "description": "ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding.",
   "$schema": "http://json-schema.org/schema#",
+  "type": "object",
   "properties": {
     "name": {
       "description": "name is the name of the resource being referenced.\n\nOne of `name` or `selector` must be set, but `name` and `selector` are mutually exclusive properties. If one is set, the other must be unset.\n\nA single parameter used for all admission requests can be configured by setting the `name` field, leaving `selector` blank, and setting namespace if `paramKind` is namespace-scoped.",
@@ -27,7 +29,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
       "description": "selector can be used to match multiple param objects based on their labels. Supply selector: {} to match all resources of the ParamKind.\n\nIf multiple params are found, they are all evaluated with the policy expressions and the results are ANDed together.\n\nOne of `name` or `selector` must be set, but `name` and `selector` are mutually exclusive properties. If one is set, the other must be unset."
     }
-  },
-  "type": "object",
-  "description": "ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding."
+  }
 }

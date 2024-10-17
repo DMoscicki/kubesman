@@ -1,5 +1,7 @@
 {
   "description": "NetworkPolicyList is a list of NetworkPolicy objects.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -36,7 +38,6 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
-  "type": "object",
   "required": [
     "items"
   ],
@@ -46,6 +47,5 @@
       "kind": "NetworkPolicyList",
       "version": "v1"
     }
-  ],
-  "$schema": "http://json-schema.org/schema#"
+  ]
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "availableReplicas": {
       "description": "The number of available replicas (ready for at least minReadySeconds) for this replication controller.",
@@ -60,7 +61,6 @@
   "required": [
     "replicas"
   ],
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "description": "ReplicationControllerStatus represents the current status of a replication controller."
+  "description": "ReplicationControllerStatus represents the current status of a replication controller.",
+  "type": "object"
 }

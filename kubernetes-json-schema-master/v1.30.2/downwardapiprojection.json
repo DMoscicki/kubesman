@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.",
   "properties": {
     "items": {
@@ -13,6 +14,5 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
-  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

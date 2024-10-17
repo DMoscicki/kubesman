@@ -1,6 +1,16 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "required": [
     "spec"
+  ],
+  "type": "object",
+  "description": "TokenReview attempts to authenticate a token to a known user. Note: TokenReview requests may be cached by the webhook token authenticator plugin in the kube-apiserver.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "authentication.k8s.io",
+      "kind": "TokenReview",
+      "version": "v1"
+    }
   ],
   "properties": {
     "apiVersion": {
@@ -35,15 +45,5 @@
       "$ref": "./_definitions.json#/definitions/io.k8s.api.authentication.v1.TokenReviewStatus",
       "description": "Status is filled in by the server and indicates whether the request can be authenticated."
     }
-  },
-  "type": "object",
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "authentication.k8s.io",
-      "kind": "TokenReview",
-      "version": "v1"
-    }
-  ],
-  "description": "TokenReview attempts to authenticate a token to a known user. Note: TokenReview requests may be cached by the webhook token authenticator plugin in the kube-apiserver.",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

@@ -1,6 +1,4 @@
 {
-  "type": "object",
-  "description": "UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.",
   "properties": {
     "failed": {
       "description": "failed holds UIDs of failed Pods.",
@@ -31,5 +29,7 @@
       "x-kubernetes-list-type": "set"
     }
   },
+  "description": "UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.",
+  "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

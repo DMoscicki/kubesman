@@ -1,11 +1,6 @@
 {
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "EndpointsList",
-      "version": "v1"
-    }
-  ],
+  "$schema": "http://json-schema.org/schema#",
+  "description": "EndpointsList is a list of endpoints.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -39,10 +34,15 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "description": "EndpointsList is a list of endpoints.",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "EndpointsList",
+      "version": "v1"
+    }
+  ],
+  "type": "object",
   "required": [
     "items"
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  ]
 }

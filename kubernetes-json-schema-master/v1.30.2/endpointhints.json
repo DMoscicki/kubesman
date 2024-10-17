@@ -1,4 +1,7 @@
 {
+  "description": "EndpointHints provides hints describing how an endpoint should be consumed.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
   "properties": {
     "forZones": {
       "description": "forZones indicates the zone(s) this endpoint should be consumed by to enable topology aware routing.",
@@ -11,8 +14,5 @@
       ],
       "x-kubernetes-list-type": "atomic"
     }
-  },
-  "description": "EndpointHints provides hints describing how an endpoint should be consumed.",
-  "type": "object",
-  "$schema": "http://json-schema.org/schema#"
+  }
 }

@@ -1,10 +1,4 @@
 {
-  "type": "object",
-  "required": [
-    "seconds"
-  ],
-  "$schema": "http://json-schema.org/schema#",
-  "description": "SleepAction describes a \"sleep\" action.",
   "properties": {
     "seconds": {
       "description": "Seconds is the number of seconds to sleep.",
@@ -14,5 +8,11 @@
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "SleepAction describes a \"sleep\" action.",
+  "required": [
+    "seconds"
+  ]
 }

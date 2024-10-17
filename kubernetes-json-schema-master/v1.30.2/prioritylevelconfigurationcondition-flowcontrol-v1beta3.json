@@ -1,6 +1,4 @@
 {
-  "type": "object",
-  "description": "PriorityLevelConfigurationCondition defines the condition of priority level.",
   "properties": {
     "lastTransitionTime": {
       "$ref": "./_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -35,5 +33,7 @@
       ]
     }
   },
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "PriorityLevelConfigurationCondition defines the condition of priority level."
 }

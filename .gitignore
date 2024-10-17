@@ -23,7 +23,7 @@ Cargo.lock
 .vscode/
 
 # frontend ignore
-frontend/lib/protos
-
+frontend/lib/k8s-classes/
+kubernetes-json-schema-master/
 master.zip
 rw

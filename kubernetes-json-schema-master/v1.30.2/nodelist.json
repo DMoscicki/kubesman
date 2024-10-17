@@ -1,10 +1,15 @@
 {
-  "description": "NodeList is the whole list of all Nodes which have been registered with master.",
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "",
+      "kind": "NodeList",
+      "version": "v1"
+    }
+  ],
   "required": [
     "items"
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -38,11 +43,6 @@
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     }
   },
-  "x-kubernetes-group-version-kind": [
-    {
-      "group": "",
-      "kind": "NodeList",
-      "version": "v1"
-    }
-  ]
+  "description": "NodeList is the whole list of all Nodes which have been registered with master.",
+  "type": "object"
 }
