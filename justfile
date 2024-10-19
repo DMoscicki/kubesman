@@ -126,6 +126,7 @@ cleanup:
     set -exuo pipefail
     cd frontend/lib/k8s-classes;
     fd v1 -x rm -rf {}
+    fd v2 -x rm -rf {}
     
 dart-json-serialize:
     cd frontend; flutter packages pub run build_runner build;
