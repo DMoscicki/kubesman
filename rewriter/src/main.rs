@@ -1,75 +1,64 @@
-use std::{collections::HashMap, fs::{self, File}, io::{self, BufWriter, Write}};
-
-use serde_json::{Map, Value};
-
-const URL: &str = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.2/";
+use std::{fs::{self, OpenOptions}, io::{self, Write}, path::{Path, PathBuf}};
 
 fn main() -> io::Result<()> {
-    let entries = fs::read_dir("./kubernetes-json-schema-master/v1.30.2")?
-    .map(|res| res.map(|e| e.path()))
-    .collect::<Result<Vec<_>, io::Error>>()?;
+    let mut mod_files: Vec<PathBuf>  = Vec::new();
 
-    let entries_iter = entries.iter();
+    let target_dir = Path::new("./k8s-protos/src");
 
-    for v in entries_iter {
-        let data_raw = fs::read_to_string(v).expect("cant read file");
-        let mut f: HashMap<String, Value> = serde_json::from_str(&data_raw).expect("error in json");
-    
-        let f_iter = f.iter_mut();
+    overwrite_mods(target_dir, &mut mod_files)?;
 
-        for (kk, val) in f_iter {
-            if kk == "$ref" {
-                let new_val = overwrite_val(val);
-                *val = Value::String(new_val);
-            }
-            match val {
-                Value::Null => {},
-                Value::Bool(_) => {},
-                Value::Number(_) => {},
-                Value::String(_) => {},
-                Value::Array(_) => {},
-                Value::Object(m) => {
-                    get_keys(m);
-                },
-            }
+    add_mods(target_dir, &mut mod_files)?;
+
+    Ok(())
+}
+
+fn overwrite_mods<'a>(path: &Path, mod_files: &'a mut Vec<PathBuf>) -> io::Result<()> {
+    for val in fs::read_dir(path)? {
+        let res = val?;
+        if res.file_type()?.is_dir() {
+            overwrite_mods(res.path().as_path(), mod_files)?
         }
+        if res.file_name().to_str().unwrap() == "mod.rs" {
+            let res_p = res.path().clone();
+            let splitx: Vec<&str> = res_p.as_path().to_str().unwrap().split("/").collect();
+            let index = splitx.iter().position(
+                |&n| n == "v1" || n == "v1alpha1" || n == "v1alpha2" || n == "v2" || n == "v1beta1" ||
+                n == "v2beta1" || n == "v2beta2" || n == "v1beta2" || n == "v1beta3"
+            );
+            if let Some(idx) = index {
+                let content = fs::read_to_string(res.path())?;
 
-        fs::remove_file(v).expect("cant remove file");
-        let new_f = File::create(v).expect("cant create file");
-        let mut writer = BufWriter::new(new_f);
-        serde_json::to_writer_pretty(&mut writer, &f).expect("cant write data to file");
-        writer.flush().unwrap();
+                let to_str = format!("::{}::", splitx.get(idx).unwrap());
+
+                let new_content = content.replace("::generated::", &to_str);
+
+                let mut file = OpenOptions::new().write(true).truncate(true).open(res.path())?;
+
+                file.write(new_content.as_bytes())?;
+                file.flush()?
+            }
+
+            mod_files.push(res.path());
+        }
     }
 
     Ok(())
 }
 
-fn get_keys(map: &mut Map<String, Value>) {
-    let tmp_iter = map.iter_mut();
-    for (kk, val) in tmp_iter {
-        if kk == "$ref" {
-            let new_val = overwrite_val(val);
-            *val = Value::String(new_val);
+fn add_mods<'a>(path: &Path, mod_files: &'a mut Vec<PathBuf>) -> io::Result<()> {
+    let protos_dir = fs::read_dir(path)?;
+    for v in protos_dir {
+        let cur = v?;
+        if cur.path().is_dir() {
+            add_mods(&cur.path(), mod_files)?;
         }
-        match val {
-            Value::Null => {},
-            Value::Bool(_) => {},
-            Value::Number(_) => {},
-            Value::String(_) => {},
-            Value::Array(_) => {},
-            Value::Object(m) => {
-                get_keys(m);
-            },
+        let mod_file = cur.path().clone().parent().unwrap().join("mod.rs");
+        if !mod_files.contains(&mod_file) {
+            let mut f = fs::OpenOptions::new().append(true).write(true).create(true).open(mod_file)?;
+            let to_file = format!("pub mod {};\n", cur.file_name().to_str().unwrap());
+            f.write(to_file.as_bytes())?;
+            f.flush()?
         }
     }
-}
-
-fn overwrite_val(val: &Value) -> String {
-    if let Some(xx) = val.as_str() {
-        let new_val = xx.replace(URL, "./");
-        return new_val;
-    } else {
-        println!("is not str");
-        return "".to_string();
-    }
+    Ok(())
 }

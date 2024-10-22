@@ -2,7 +2,7 @@ use std::env;
 
 use actix_web::{middleware::Logger, web::{self}, App, HttpServer};
 use actix_files as fs;
-use handlers::pods;
+use handlers::{namespaces, pods};
 use log::info;
 use kube::{config::KubeConfigOptions, Client, Config, Error};
 
