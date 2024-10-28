@@ -1,6 +1,5 @@
 use std::{fs, io, time};
 use k8s_protos::api::core::v1::PodList as PodBuf;
-use protobuf::Message;
 
 fn main() -> io::Result<()> {
     // let tt = "2024-10-24T15:48:22Z";

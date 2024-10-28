@@ -42,10 +42,10 @@ protos-list:
 protos-gen-dart DART_OUT="frontend/lib/protos":
 	#!/usr/bin/env bash
 	set -exuo pipefail
+	rm -rf frontend/lib/protos/*
 	while read -r line; do
-		protoc --dart_out={{DART_OUT}} --proto_path=k8s-pb/protos ${line#*/} ;
+		protoc --dart_out={{DART_OUT}} --proto_path=k8s-pb/src k8s-pb/src/${line#*/} ;
 	done <k8s-pb/protos.list
-	rm -rf k8s-pb
 
 # Generate Rust files 
 # just protos-rust PATH_TO_FOLDER
@@ -61,8 +61,6 @@ protos-rust RUST_OUT="src/protos":
 	cargo build -p rewriter --release; rm -rf ./rw; mv -f target/release/rewriter ./rw;
 	mv -f k8s-pb/protos/* k8s-pb/src/; rm -rf k8s-pb/protos;
 	./rw overwrite false;
-	mv -f k8s-pb/src/apiextensions-apiserver k8s-pb/src/apiextensions_apiserver;
-	mv -f k8s-pb/src/kube-aggregator k8s-pb/src/kube_aggregator;
 	cd k8s-pb/src;
 	#fd generated.rs -x mv {} {//}/mod.rs;
 	fd -e rs -x sd 'super::generated::ObjectMeta' 'crate::apimachinery::pkg::apis::meta::v1::ObjectMeta'
@@ -98,13 +96,21 @@ protos-rust RUST_OUT="src/protos":
 	fd -e rs -x sd 'super::generated::JobSpec' 'crate::api::batch::v1::JobSpec'
 	#fd generated.rs -x mv {} {//}/mod.rs;
 	cd ..; cd ..; ./rw overwrite true; rm -rf k8s-pb/src/mod.rs;
-	rm -rf k8s-protos/src/*/; mv k8s-pb/src/*/ k8s-protos/src/; rm -rf k8s-pb
+	# rm -rf k8s-protos/src/*/; mv k8s-pb/src/*/ k8s-protos/src/;
 
 protos-fill:
 	./rw ; rm -rf k8s-protos/src/mod.rs
 
+protos-end:
+	#!/usr/bin/env bash
+	set -exuo pipefail
+	rm -rf k8s-protos/src/*/; mv k8s-pb/src/*/ k8s-protos/src/;
+	mv -f k8s-protos/src/apiextensions-apiserver k8s-protos/src/apiextensions_apiserver;
+	mv -f k8s-protos/src/kube-aggregator k8s-protos/src/kube_aggregator;
+	rm -rf k8s-pb
+
 # Download and generate all protos dependent files
-protos: protos-dl protos-patch protos-list protos-rust
+protos: protos-dl protos-patch protos-list protos-rust protos-gen-dart protos-end
 
 flatbuf-gen:
 	#!/usr/bin/env bash
