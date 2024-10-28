@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/components/menu_btn.dart';
 import 'package:frontend/components/sidebar.dart';
 import 'package:frontend/pages/workloads/pods.dart';
+import 'package:frontend/protos/api/core/v1/generated.pb.dart';
 import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,7 @@ class _EntryPageState extends State<EntryPage>
 
   @override
   void initState() {
-    // getPods();
+    getPods();
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200))
       ..addListener(
@@ -151,29 +152,26 @@ class _EntryPageState extends State<EntryPage>
   }
 }
 
-// Future<void> getPods() async {
-//   var client = http.Client();
+Future<void> getPods() async {
+  var client = http.Client();
 
-//   Map<String, String> reqheader = {
-//     'Content-Type': 'application/json',
-//   };
+  Map<String, String> reqheader = {
+    'Content-Type': 'application/protobuf',
+  };
 
-//   var response = await client
-//       .get(Uri.http('localhost:9000', '/pods'), headers: reqheader)
-//       .onError((error, _) {
-//     return Future(() => http.Response(error.toString(), 400));
-//   });
+  var response = await client
+      .get(Uri.http('localhost:9000', '/pods'), headers: reqheader)
+      .onError((error, _) {
+    return Future(() => http.Response(error.toString(), 400));
+  });
 
-//   final jsResp = jsonDecode(response.body);
+  final x = PodList.fromBuffer(response.bodyBytes);
 
-//   final lang = podlist.Podlist.fromJson(jsResp);
+  print(x.items);
 
-//   print("ASDASDASDSAD");
-//   print(lang.items?[0].spec);
+  // print("ASDASDASDASDASDASD");
+  // final langresp = podlist.Podlist.fromJson(jsResp.toJson());
+  // print(langresp.items);
 
-//   // print("ASDASDASDASDASDASD");
-//   // final langresp = podlist.Podlist.fromJson(jsResp.toJson());
-//   // print(langresp.items);
-
-//   client.close();
-// }
+  client.close();
+}

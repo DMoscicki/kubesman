@@ -1,5 +1,4 @@
 use std::collections::BTreeMap;
-use k8s_protos::api::core::v1::NamespaceStatus as St;
 use k8s_openapi::api::core::v1::Namespace;
 use kube::{api::{ObjectList, PostParams}, Api, Client};
 
@@ -8,14 +7,6 @@ pub async fn get_all_namespaces(client: &Client) -> ObjectList<Namespace> {
     let namespace_api: Api<Namespace> = Api::all(client.clone());
 
     let ns_list = namespace_api.list(&Default::default()).await.unwrap();
-
-    let xns = ns_list.items.get(0).unwrap().clone();
-
-    let fxs = serde_json::to_string(&xns.status.unwrap()).unwrap();
-
-    let xfg = protobuf_json_mapping::parse_from_str::<St>(&fxs).unwrap();
-
-    println!("{}", xfg);
 
     ns_list
 }

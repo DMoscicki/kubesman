@@ -52,18 +52,25 @@ protos-gen-dart DART_OUT="frontend/lib/protos":
 protos-rust RUST_OUT="src/protos":
 	#!/usr/bin/env bash
 	set -exuo pipefail
-	rm -rf k8s-protos/src/*/;
-	while read -r line; do
-		mkdir -p k8s-protos/src/${line%/*} ;
-		protoc --rs_out=k8s-protos/src/${line%/*}/ --rs_opt='gen_mod_rs=false generate_getter=true generate_accessors=true btreemap=true' -I=./k8s-pb/protos ./k8s-pb/protos/${line#*/} ;
-	done <k8s-pb/protos.list
-	mv -f k8s-protos/src/protos/* k8s-protos/src/; rm -rf k8s-protos/src/protos;
-	mv -f k8s-protos/src/apiextensions-apiserver k8s-protos/src/apiextensions_apiserver;
-	mv -f k8s-protos/src/kube-aggregator k8s-protos/src/kube_aggregator;
-	cargo build -p rewriter --release; rm -rf ./rw; mv -f target/release/rewriter ./rw; cd k8s-protos/src;
-	fd generated.rs -x mv {} {//}/mod.rs;
+	# rm -rf k8s-protos/src/*/;
+	mkdir -p k8s-pb/src
+	# while read -r line; do
+	# 	#mkdir -p k8s-pb/src/${line%/*} ;
+	# 	protoc --rs_out=k8s-pb/${line%/*}/ --rs_opt='gen_mod_rs=false generate_getter=true generate_accessors=true btreemap=true' -I=./k8s-pb/protos ./k8s-pb/protos/${line#*/} ;
+	# done <k8s-pb/protos.list
+	cargo build -p rewriter --release; rm -rf ./rw; mv -f target/release/rewriter ./rw;
+	mv -f k8s-pb/protos/* k8s-pb/src/; rm -rf k8s-pb/protos;
+	./rw overwrite false;
+	mv -f k8s-pb/src/apiextensions-apiserver k8s-pb/src/apiextensions_apiserver;
+	mv -f k8s-pb/src/kube-aggregator k8s-pb/src/kube_aggregator;
+	cd k8s-pb/src;
+	#fd generated.rs -x mv {} {//}/mod.rs;
 	fd -e rs -x sd 'super::generated::ObjectMeta' 'crate::apimachinery::pkg::apis::meta::v1::ObjectMeta'
+	#-----experimantal with time, cause it has same fields ------
 	fd -e rs -x sd 'super::generated::Time' 'crate::apimachinery::pkg::apis::meta::v1::Time'
+	fd -e rs -x sd 'super::generated::MicroTime' 'crate::apimachinery::pkg::apis::meta::v1::Time'
+	fd -e rs -x sd 'super::generated::Timestamp' 'crate::apimachinery::pkg::apis::meta::v1::Time'
+	#------end experimental----------------
 	fd -e rs -x sd 'super::generated::ListMeta' 'crate::apimachinery::pkg::apis::meta::v1::ListMeta'
 	fd -e rs -x sd 'super::generated::RawExtension' 'crate::apimachinery::pkg::runtime::RawExtension'
 	fd -e rs -x sd 'super::generated::ObjectReference' 'crate::api::core::v1::ObjectReference'
@@ -73,7 +80,6 @@ protos-rust RUST_OUT="src/protos":
 	fd -e rs -x sd 'super::generated::UserInfo' 'crate::api::authentication::v1::UserInfo'
 	fd -e rs -x sd 'super::generated::Status' 'crate::apimachinery::pkg::apis::meta::v1::Status'
 	fd -e rs -x sd 'super::generated::Duration' 'crate::apimachinery::pkg::apis::meta::v1::Duration'
-	# fd -e rs -x sd 'super::generated::file_descriptor' 'crate::apimachinery::pkg::runtime::file_descriptor'
 	fd -e rs -x sd 'super::generated::GroupVersionKind' 'crate::apimachinery::pkg::apis::meta::v1::GroupVersionKind'
 	fd -e rs -x sd 'super::generated::GroupVersionResource' 'crate::apimachinery::pkg::apis::meta::v1::GroupVersionResource'
 	fd -e rs -x sd 'super::generated::IntOrString' 'crate::apimachinery::pkg::util::intstr::IntOrString'
@@ -81,7 +87,6 @@ protos-rust RUST_OUT="src/protos":
 	fd -e rs -x sd 'super::generated::PodTemplateSpec' 'crate::api::core::v1::PodTemplateSpec'
 	fd -e rs -x sd 'super::generated::TopologySelectorTerm' 'crate::api::core::v1::TopologySelectorTerm'
 	fd -e rs -x sd 'super::generated::NodeSelector' 'crate::api::core::v1::NodeSelector'
-	fd -e rs -x sd 'super::generated::MicroTime' 'crate::apimachinery::pkg::apis::meta::v1::MicroTime'
 	fd -e rs -x sd 'super::generated::EventSource' 'crate::api::core::v1::EventSource'
 	fd -e rs -x sd 'super::generated::OwnerReference' 'crate::apimachinery::pkg::apis::meta::v1::OwnerReference'
 	fd -e rs -x sd 'super::generated::Condition' 'crate::apimachinery::pkg::apis::meta::v1::Condition'
@@ -91,12 +96,15 @@ protos-rust RUST_OUT="src/protos":
 	fd -e rs -x sd 'super::generated::PersistentVolumeSpec' 'crate::api::core::v1::PersistentVolumeSpec'
 	fd -e rs -x sd 'super::generated::DeleteOptions' 'crate::apimachinery::pkg::apis::meta::v1::DeleteOptions'
 	fd -e rs -x sd 'super::generated::JobSpec' 'crate::api::batch::v1::JobSpec'
+	#fd generated.rs -x mv {} {//}/mod.rs;
+	cd ..; cd ..; ./rw overwrite true; rm -rf k8s-pb/src/mod.rs;
+	rm -rf k8s-protos/src/*/; mv k8s-pb/src/*/ k8s-protos/src/; rm -rf k8s-pb
 
 protos-fill:
 	./rw ; rm -rf k8s-protos/src/mod.rs
 
 # Download and generate all protos dependent files
-protos: protos-dl protos-patch protos-list protos-rust protos-fill protos-gen-dart
+protos: protos-dl protos-patch protos-list protos-rust
 
 flatbuf-gen:
 	#!/usr/bin/env bash
