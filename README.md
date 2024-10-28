@@ -6,11 +6,13 @@
 - [jq](https://stedolan.github.io/jq/)
 - [just](https://github.com/casey/just)
 - [sd](https://github.com/chmln/sd)
-- [protoc_plugin](https://pub.dev/packages/protoc_plugin)
+- [dart protoc_plugin](https://pub.dev/packages/protoc_plugin)
 - [rust](https://www.rust-lang.org/)
 
-## Build Process
-The code generation process consists of 2 steps;
+### TODO: `exampler` will be renamed for testing
 
-1. `generate-dart-classes` - download k8s schemas and convert to dart classes with JsonSerialize;
-2. `dart-json-serialize` - generate json serialize;
+## Build Process
+The code generation process just in 1 step;
+1. `just protos` - download k8s `.proto` and generate it to dart and rust files;
+
+## It's not tested on Windows
