@@ -3,6 +3,7 @@ use std::{error::Error, io};
 use k8s_openapi::api::core::v1::Pod;
 use k8s_protos::api::core::v1::PodList;
 use kube::{api::ObjectList, Api, Client};
+use log::info;
 
 pub async fn get_all_pods(client: &Client) -> Result<PodList, io::Error> {
     let pods: Api<Pod> = Api::namespaced(client.clone(), "");

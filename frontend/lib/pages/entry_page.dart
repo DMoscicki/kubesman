@@ -167,7 +167,7 @@ Future<void> getPods() async {
 
   final x = PodList.fromBuffer(response.bodyBytes);
 
-  print(x.items);
+  print(x);
 
   // print("ASDASDASDASDASDASD");
   // final langresp = podlist.Podlist.fromJson(jsResp.toJson());
