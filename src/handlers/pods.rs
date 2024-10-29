@@ -1,4 +1,4 @@
-use actix_web::{body::BoxBody, get, http::header::{ContentEncoding, ContentType}, web, HttpResponse, Responder, Result};
+use actix_web::{body::BoxBody, get, http::header::{ContentEncoding, ContentType}, web::{self, Json}, HttpResponse, Responder, ResponseError, Result};
 use k8s_protos::api::core::v1::PodList;
 use kube::Client;
 use pod_api::{get_all_pods, get_pods_by_namespace};
@@ -23,8 +23,8 @@ async fn get_pods(kube_state: web::Data<Client>) -> HttpResponse {
                 },
             }
         },
-        Err(_) => {
-            return HttpResponse::BadRequest().finish()
+        Err(e) => {
+            e.error_response()
         },
     }
 }

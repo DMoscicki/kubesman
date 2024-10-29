@@ -29,7 +29,7 @@ impl CustomizeCallback for GenStruct {
         }
 
         if field.proto().type_() == Type::TYPE_MESSAGE && field.is_singular() {
-            if field.proto().name().to_lowercase().contains("time") || field.proto().name() == "startedAt" {
+            if field.proto().name().to_lowercase().contains("time") || field.proto().name() == "startedAt" || field.proto().name() == "finishedAt" {
                 return Customize::default().before("#[serde(with = \"crate::custom_date\")]\n#[serde(default)]")
             }
 

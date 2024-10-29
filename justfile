@@ -94,12 +94,7 @@ protos-rust RUST_OUT="src/protos":
 	fd -e rs -x sd 'super::generated::PersistentVolumeSpec' 'crate::api::core::v1::PersistentVolumeSpec'
 	fd -e rs -x sd 'super::generated::DeleteOptions' 'crate::apimachinery::pkg::apis::meta::v1::DeleteOptions'
 	fd -e rs -x sd 'super::generated::JobSpec' 'crate::api::batch::v1::JobSpec'
-	#fd generated.rs -x mv {} {//}/mod.rs;
 	cd ..; cd ..; ./rw overwrite true; rm -rf k8s-pb/src/mod.rs;
-	# rm -rf k8s-protos/src/*/; mv k8s-pb/src/*/ k8s-protos/src/;
-
-protos-fill:
-	./rw ; rm -rf k8s-protos/src/mod.rs
 
 protos-end:
 	#!/usr/bin/env bash
@@ -112,28 +107,6 @@ protos-end:
 # Download and generate all protos dependent files
 protos: protos-dl protos-patch protos-list protos-rust protos-gen-dart protos-end
 
-flatbuf-gen:
-	#!/usr/bin/env bash
-	set -exuo pipefail
-	while read -r line; do
-		# mkdir -p tmp_gen_fbs/${line%/*} ;
-		flatc -I k8s-pb/protos -o fbs/${line%/*} --keep-proto-id --gen-all --proto k8s-pb/${line}  ;
-	done <k8s-pb/protos.list
-
-# When mod.rs will create in each folder, you need to fill this
-flatbufgen-from-proto-rust:
-	#!/usr/bin/env bash
-	set -exuo pipefail
-	fd -e proto -x sd 'map<string, bytes>' 'map<string, [ubyte]>'
-	while read -r line; do
-		flatc -I k8s-pb/protos -o k8s-fbs/src/${line%/*} --keep-proto-id --gen-all --rust-serialize --rust-module-root-file --proto k8s-pb/${line} --rust --dart;
-		# flatc -I k8s-pb/protos -o frontend/lib/fbs/${line%/*} --keep-proto-id --gen-all --proto k8s-pb/${line} --dart --gen-object-api ;
-	done <k8s-pb/protos.list
-	mv k8s-fbs/src/protos/* k8s-fbs/src; rm -rf k8s-fbs/src/protos; fd -e fbs | sort -fd > k8s-fbs/fbs.list ;
-	cd k8s-fbs/src;
-	fd -t d -x touch {}/mod.rs; fd -e rs -x sd 'use core::mem;' 'use ::std::mem;' ;
-	mv frontend/lib/fbs/protos/* frontend/lib/fbs; rm -rf frontend/lib/fbs/protos;
-
 rename_files:
 	#!/usr/bin/env bash
 	set -exuo pipefail
@@ -144,23 +117,12 @@ rename_files:
 	done <protos.list
 	rm -rf protos.list
 
-flatbufgen-from-proto-dart:
-	#!/usr/bin/env bash
-	set -exuo pipefail
-	while read -r line; do
-		flatc -I k8s-pb/protos -o frontend/lib/fbs/${line%/*} --keep-proto-id --gen-all --proto k8s-pb/${line} --dart --gen-object-api ;
-	done <k8s-pb/protos.list
-	mv frontend/lib/fbs/protos/* frontend/lib/fbs; rm -rf frontend/lib/fbs/protos;
-
 move-dart-files:
 	#!/usr/bin/env bash
 	set -exuo pipefail
 	mkdir -p frontend/lib/fbs
 	cd k8s-fbs/src
-	# fd -t d -x mkdir -p ../frontend/lib/fbs/{\.};
 	fd -e dart -x mv -f {} ../../frontend/lib/fbs/;
-
-flatbuffers: protos flatbufgen-from-proto-rust
 
 generate-dart-classes:
 	#!/usr/bin/env bash
