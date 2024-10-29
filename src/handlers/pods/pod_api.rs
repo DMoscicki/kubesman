@@ -1,12 +1,29 @@
+use std::{error::Error, io};
+
 use k8s_openapi::api::core::v1::Pod;
+use k8s_protos::api::core::v1::PodList;
 use kube::{api::ObjectList, Api, Client};
 
-pub async fn get_all_pods(client: &Client) -> ObjectList<Pod> {
+pub async fn get_all_pods(client: &Client) -> Result<PodList, io::Error> {
     let pods: Api<Pod> = Api::namespaced(client.clone(), "");
 
-    let pod_list = pods.list(&Default::default()).await.unwrap();
+    let pod_list = pods.list(&Default::default()).await;
 
-    pod_list
+    match pod_list {
+        Ok(pd) => {
+            let dd = serde_json::to_value(pd)?;
+
+            let podx: PodList = serde_json::from_value(dd)?;
+        
+            Ok(podx)
+        },
+        Err(e) => {
+            eprintln!("{}", e);
+            let kube_err = e.to_string();
+            let e_new = io::Error::new(io::ErrorKind::NotFound, kube_err);
+            Err(e_new)
+        },
+    }
 }
 
 pub async fn get_pods_by_namespace(client: &Client, ns: &str) -> ObjectList<Pod> {

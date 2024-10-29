@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:frontend/components/menu_btn.dart';
 import 'package:frontend/components/sidebar.dart';
 import 'package:frontend/pages/workloads/pods.dart';
+import 'package:frontend/protos/api/core/v1/generated.pb.dart';
 import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:http/http.dart' as http;
-import 'package:frontend/k8s-classes/podlist.dart' as podlist;
+// import 'package:frontend/k8s-classes/podlist.dart' as podlist;
 
 class EntryPage extends StatefulWidget {
   const EntryPage({super.key});
@@ -155,7 +156,7 @@ Future<void> getPods() async {
   var client = http.Client();
 
   Map<String, String> reqheader = {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/protobuf',
   };
 
   var response = await client
@@ -164,12 +165,9 @@ Future<void> getPods() async {
     return Future(() => http.Response(error.toString(), 400));
   });
 
-  final jsResp = jsonDecode(response.body);
+  final x = PodList.fromBuffer(response.bodyBytes);
 
-  final lang = podlist.Podlist.fromJson(jsResp);
-
-  print("ASDASDASDSAD");
-  print(lang.items?[0].spec);
+  print(x.items);
 
   // print("ASDASDASDASDASDASD");
   // final langresp = podlist.Podlist.fromJson(jsResp.toJson());

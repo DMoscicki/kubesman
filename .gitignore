@@ -23,7 +23,8 @@ Cargo.lock
 .vscode/
 
 # frontend ignore
-frontend/lib/protos
-
-master.zip
+frontend/lib/protos/*/
 rw
+k8s-protos/src/*/
+k8s-pb
+release
