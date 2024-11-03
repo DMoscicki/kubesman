@@ -105,7 +105,7 @@ protos-end:
 	rm -rf k8s-pb
 
 # Download and generate all protos dependent files
-protos: protos-dl protos-patch protos-list protos-rust protos-gen-dart protos-end
+protos: protos-dl protos-patch protos-list protos-rust
 
 rename_files:
 	#!/usr/bin/env bash
@@ -146,3 +146,7 @@ build-wasm:
 
 build-front:
 	cd frontend && flutter build web --release
+
+self-signed:
+    cd certs_proxy_dev
+    openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout localhost.key -out localhost.crt

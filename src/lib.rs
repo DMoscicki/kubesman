@@ -1,12 +1,15 @@
 use std::env;
-
-use actix_web::{middleware::Logger, web::{self}, App, HttpServer};
+use actix_web::{middleware::Logger, http, web::{self}, App, HttpServer};
 use actix_files as fs;
-use handlers::{namespaces, pods};
+use handlers::pods;
 use log::info;
 use kube::{config::KubeConfigOptions, Client, Config, Error};
+use actix_cors::Cors;
 
 mod handlers;
+mod auth;
+
+// add casdoor init conn
 
 pub async fn kube_client() -> Result<Client, Error> {
 
@@ -16,6 +19,15 @@ pub async fn kube_client() -> Result<Client, Error> {
     let client = Client::try_from(config);
 
     client
+}
+
+fn cors_project() -> Cors {
+    let cors = Cors::default()
+                        .max_age(3600)
+                        .allowed_methods(vec!["GET", "POST", "PATCH"])
+                        .allowed_header(http::header::CONTENT_TYPE)
+                        .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT]);
+    cors
 }
 
 pub async fn run_backend(client: Client) -> std::io::Result<()> {
@@ -44,6 +56,7 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
     .service(pods::get_pods)
     .service(pods::get_pods_by_ns)
     .app_data(web::Data::new(client.clone()))
+    .wrap(cors_project())
     .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/web/").index_file("index.html")))
     .bind(("127.0.0.1", 9000))?
     .run()
@@ -55,6 +68,7 @@ async fn serve_build(client: Client) -> std::io::Result<()> {
     .service(pods::get_pods)
     .service(pods::get_pods_by_ns)
     .app_data(web::Data::new(client.clone()))
+    .wrap(cors_project())
     .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/build/web/").index_file("index.html")))
     .bind(("127.0.0.1", 9000))?
     .run()
@@ -71,6 +85,7 @@ async fn production_mod(client: Client) -> std::io::Result<()> {
     .service(pods::get_pods_by_ns)
     .service(pods::get_pods_by_ns)
     .app_data(web::Data::new(client.clone()))
+    .wrap(cors_project())
     .wrap(Logger::default()))
     .bind(("0.0.0.0", port))?
     .run()
