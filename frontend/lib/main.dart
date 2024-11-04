@@ -1,9 +1,36 @@
+import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/pages/entry_page.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final platform = await CasdoorFlutterSdkPlatform().getPlatformVersion();
+
+  await dotenv.load(fileName: "dev.env");
+
+  final AuthConfig config = AuthConfig(
+      clientId: dotenv.get('CASDOOR_CLIENT_ID'),
+      serverUrl: (dotenv.get('CASDOOR_ENDPOINT')),
+      organizationName: dotenv.get('CASDOOR_ORGANISATION_NAME'),
+      appName: dotenv.get('CASDOOR_APPLICATION_NAME'),
+      redirectUri: "http://localhost:9000/callback.html",
+      callbackUrlScheme: "casdoor");
+
+  String callBackUrl = config.redirectUri;
+
+  if (platform != "web") {
+    callBackUrl = '${config.callbackUrlScheme}://callback';
+  }
+
+  config.redirectUri = callBackUrl;
+
+  data.casdoor_ = Casdoor(config: config);
+
   runApp(ChangeNotifierProvider(
     create: (context) => ThemeProvider(),
     child: const MyApp(),
