@@ -1,20 +1,17 @@
-import 'dart:convert';
 import 'dart:math';
 
+import 'package:desktop_webview_window/desktop_webview_window.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/components/menu_btn.dart';
 import 'package:frontend/components/sidebar.dart';
 import 'package:frontend/pages/workloads/pods.dart';
-import 'package:frontend/protos/api/core/v1/generated.pb.dart';
-import 'package:frontend/services/rest.dart';
 import 'package:frontend/services/secure_storage.dart';
 import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
-import 'package:http/http.dart' as http;
-// import 'package:frontend/k8s-classes/podlist.dart' as podlist;
 
 class EntryPage extends StatefulWidget {
   const EntryPage({super.key});
@@ -33,12 +30,39 @@ class _EntryPageState extends State<EntryPage>
   late Animation<double> scalAnimation;
   late Animation<double> animation;
 
-  Future<bool> authenticated() async {
-    final result = await data.casdoor_.show();
+  Future authenticated(BuildContext ctx) async {
+    String result = '';
+
+    if (kIsWeb || kIsWasm) {
+      result = await data.casdoor.show();
+    } else {
+      if (!ctx.mounted) return;
+      // result = await data.casdoor.showFullscreen(ctx);
+      result = await data.casdoor.show();
+    }
+
+    // try {
+    //   // if (!ctx.mounted) return;
+    //   if (kIsWasm || kIsWeb) {
+    //     result = await data.casdoor.show();
+    //   } else if (defaultTargetPlatform == TargetPlatform.iOS ||
+    //       defaultTargetPlatform == TargetPlatform.macOS) {
+    //     browser.open(
+    //         url: WebUri(data.casdoor.config.redirectUri),
+    //         // settings: ChromeSafariBrowserSettings(
+    //         //     // shareState: CustomTabsShareState.SHARE_STATE_OFF,
+    //         //     barCollapsingEnabled: true));
+    //     );
+    //     // Navigator.pushReplacementNamed(ctx, data.casdoor.config.redirectUri);
+    //   }
+    // } catch (e) {
+    //   setState(() {});
+    //   return;
+    // }
 
     final code = Uri.parse(result).queryParameters['code'] ?? "";
 
-    final response = await data.casdoor_.requestOauthAccessToken(code);
+    final response = await data.casdoor.requestOauthAccessToken(code);
 
     if (response.statusCode == 200 && response.body.isNotEmpty) {
       final tokenString = response.body;
@@ -47,15 +71,11 @@ class _EntryPageState extends State<EntryPage>
       setState(() {});
     }
 
-    return true;
+    return;
   }
 
   @override
   void initState() {
-    // print("REQUEST");
-    // var response = RequestMixin.request(
-    //     "get", Uri.http('localhost:9000', '/pods'), {}, null);
-    // print(response.toString());
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200))
       ..addListener(
@@ -102,7 +122,6 @@ class _EntryPageState extends State<EntryPage>
               return const SizedBox.shrink();
             } else if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasError) {
-                print("ITS OK");
                 return const Text('Error');
               } else if (snapshot.hasData) {
                 if (data.token.accessToken != "") {
@@ -187,7 +206,6 @@ class _EntryPageState extends State<EntryPage>
                     ],
                   );
                 } else {
-                  authenticated();
                   final dim = MediaQuery.of(context).size.height * .5;
                   return Stack(children: [
                     Positioned(
@@ -197,14 +215,16 @@ class _EntryPageState extends State<EntryPage>
                       child: Transform.scale(
                         scale: 2,
                         child: TextButton(
-                            onPressed: authenticated,
+                            onPressed: () async {
+                              authenticated(context);
+                            },
                             child: const Text("Login")),
                       ),
                     )
                   ]);
                 }
               } else {
-                return const Text('Empty data');
+                return const Text('Empty');
               }
             } else {
               return Text('State: ${snapshot.connectionState}');

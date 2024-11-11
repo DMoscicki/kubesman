@@ -138,6 +138,7 @@ generate-dart-classes:
 dev-serve:
 	DEV=true cargo run dev
 
+# NOT WORKING WITH MIDDLEWARE
 serve-builded:
 	DEV=false cargo run dev
 
@@ -147,6 +148,9 @@ build-wasm:
 build-front:
 	cd frontend && flutter build web --release
 
-self-signed:
-    cd certs_proxy_dev
-    openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout localhost.key -out localhost.crt
+frontend_dev:
+	cd frontend; flutter run -d web-server --web-port 9000
+
+# Working only with dev, dont use it on production
+dev_casdoor:
+	docker run -p 8000:8000 -v ./dev_db:/var/lib/mysql -d casbin/casdoor-all-in-one:latest -c  'service mariadb start; mysqladmin -u root password 123456; exec ./server --createDatabase=false'

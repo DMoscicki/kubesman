@@ -27,13 +27,13 @@ class Data {
   static final Data _appData = Data._internal();
 
   Data._internal();
-  late final Casdoor casdoor_;
+  late final Casdoor casdoor;
 
   String versions = '';
   // String authToken = '';
   Token token = Token('', '', '');
 
-  String userUuid = "";
+  // String userUuid = "";
 
   factory Data() {
     return _appData;

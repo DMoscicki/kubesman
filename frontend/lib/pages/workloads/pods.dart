@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/protos/api/core/v1/generated.pb.dart' as Core;
+import 'package:frontend/services/rest.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PodsPage extends StatelessWidget {
@@ -10,6 +12,15 @@ class PodsPage extends StatelessWidget {
     "Snoo",
     "Clippy",
   ];
+
+  Future makeRequest() async {
+    final response = await RequestMixin.request(
+        "get", Uri.parse("http://localhost:8080/pods"), {}, null);
+
+    final pods = Core.PodList.fromBuffer(response.bodyBytes);
+
+    print(pods);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,18 +63,21 @@ class PodsPage extends StatelessWidget {
                   color: Color(0xFF7553F6),
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                 ),
-                child: const Row(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                         child: Padding(
-                      padding: EdgeInsets.only(top: 6, right: 8),
+                      padding: const EdgeInsets.only(top: 6, right: 8),
                       child: Column(
                         children: [
-                          Text(
+                          const Text(
                             "ASDSADSADASD",
                             // style: Theme.of(context).colorScheme.secondary,
                           ),
+                          TextButton(
+                              onPressed: makeRequest,
+                              child: const Text("Request"))
                         ],
                       ),
                     ))

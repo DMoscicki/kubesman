@@ -15,8 +15,7 @@ mod auth;
 fn init_casdoor() -> AuthSdk {
     let client_id = "23c224b2ca49096e137a";
     let client_secret = "82cd7e0910cb7ad2474efbbde63f04ab80ccf2d8";
-    let cert = r###"
-    -----BEGIN CERTIFICATE-----
+    let cert = r###"-----BEGIN CERTIFICATE-----
 MIIE3TCCAsWgAwIBAgIDAeJAMA0GCSqGSIb3DQEBCwUAMCgxDjAMBgNVBAoTBWFk
 bWluMRYwFAYDVQQDEw1jZXJ0LWJ1aWx0LWluMB4XDTI0MTEwNTE3NTQxOFoXDTQ0
 MTEwNTE3NTQxOFowKDEOMAwGA1UEChMFYWRtaW4xFjAUBgNVBAMTDWNlcnQtYnVp
@@ -44,8 +43,7 @@ TbJQLk14vmCWHLkY3SBeWJnEgi7f8K5rtVIO7uKvtFKLVdO7Av7Xm/gphkAKlDyn
 OVh+pguVpc6fygHXrrdFk8lbmVlAiQ2+V4vc1DH1jaTGOm+3D1OQuQNU7dC2j+Oh
 Ull3jSbRC5YWknC8IL73l88fTOXCOWQ3GadpKd0pTZ8Z0wdy+TrAMzAUGEca8cwu
 Ug==
------END CERTIFICATE-----
-"###;
+-----END CERTIFICATE-----"###;
     let org_name = "Kubernetes";
     let app = CasdorConfig::new("http://localhost:8000", client_id, client_secret, cert, org_name, Some("Kubernetes".to_owned())).into_sdk();
     app.authn()
@@ -107,7 +105,7 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
             .wrap(cors_project())
             .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/web/").index_file("index.html"))
     })
-    .bind(("127.0.0.1", 9000))?
+    .bind(("127.0.0.1", 8080))?
     .run()
     .await
 }
@@ -116,17 +114,17 @@ async fn serve_build(client: Client) -> std::io::Result<()> {
     HttpServer::new(move || {
         let auth = HttpAuthentication::with_fn(validator);
         let auth_sdk = init_casdoor();
+
         App::new()
             .service(pods::get_pods)
             .service(pods::get_pods_by_ns)
             .app_data(web::Data::new(client.clone()))
             .app_data(auth_sdk)
-            // .wrap(auth)
             .wrap(auth)
             .wrap(cors_project())
             .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/build/web/").index_file("index.html"))
     })
-    .bind(("127.0.0.1", 9000))?
+    .bind(("127.0.0.1", 8080))?
     .run()
     .await
 }

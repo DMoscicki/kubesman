@@ -28,12 +28,6 @@ class SecureStorageClass {
         });
 
         final userInfo = JwtDecoder.decode(data.token.accessToken);
-        // data.currentUser = User()
-        //   ..userUuid = userInfo["sub"]
-        //   ..userRole = UserRole.EMPTY_ROLE
-        //   ..name = userInfo["name"]
-        //   ..email = userInfo["email"];
-        // data.userUuid = userInfo["sub"];
       }
       return data.token;
     } catch (e) {
@@ -52,7 +46,7 @@ class SecureStorageClass {
 
   Future<void> deleteToken() async {
     data.token = Token("", "", "");
-    data.userUuid = "";
+    // data.userUuid = "";
     await secureStorage.storage.deleteAll();
   }
 }

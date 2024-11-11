@@ -6,8 +6,6 @@ import 'dart:io';
 
 mixin RequestMixin {
   static Future<bool> refreshToken() async {
-/*    final response = await data.casdoor_.refreshToken(
-        data.token.refreshToken, dotenv.get('CASDOOR_CLIENT_SECRET'));*/
     final response = await http.post(
         Uri(
           scheme: "https",
@@ -35,10 +33,7 @@ mixin RequestMixin {
   static Future<http.Response> sendRequest(String method, Uri path,
       Map<String, String> headers, dynamic body) async {
     late http.Response resp;
-    headers["Authorization"] = data.token.accessToken;
-    headers["useruuid"] = data.userUuid;
-
-    print(headers);
+    headers["Authorization"] = 'Bearer ${data.token.accessToken}';
 
     if (method == "get") {
       resp = await http.get(path, headers: headers);

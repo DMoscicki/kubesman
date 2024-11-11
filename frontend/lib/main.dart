@@ -1,15 +1,26 @@
 import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
+import 'package:desktop_webview_window/desktop_webview_window.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/pages/entry_page.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
+import 'dart:async';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final platform = await CasdoorFlutterSdkPlatform().getPlatformVersion();
+  // if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) {
+  //   final availableVersion = await WebViewEnvironment.getAvailableVersion();
+  //   assert(availableVersion != null,
+  //       'Failed to find an installed WebView2 runtime or non-stable Microsoft Edge installation.');
+
+  //   webViewEnvironment = await WebViewEnvironment.create(
+  //       settings: WebViewEnvironmentSettings(userDataFolder: 'custom_path'));
+  // }
+  // final platform = await CasdoorFlutterSdkPlatfor,.m().getPlatformVersion();
 
   await dotenv.load(fileName: "dev.env");
 
@@ -21,15 +32,13 @@ Future main() async {
       redirectUri: "http://localhost:9000/callback.html",
       callbackUrlScheme: "casdoor");
 
-  String callBackUrl = config.redirectUri;
+  // String callbackUri = config.redirectUri;
+  // if (!kIsWeb && !kIsWasm) {
+  //   callbackUri = '${config.callbackUrlScheme}://callback.html';
+  // }
+  // config.redirectUri = callbackUri;
 
-  if (platform != "web") {
-    callBackUrl = '${config.callbackUrlScheme}://callback';
-  }
-
-  config.redirectUri = callBackUrl;
-
-  data.casdoor_ = Casdoor(config: config);
+  data.casdoor = Casdoor(config: config);
 
   runApp(ChangeNotifierProvider(
     create: (context) => ThemeProvider(),
@@ -50,57 +59,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class MainPage extends StatefulWidget {
-//   const MainPage({super.key});
-
-//   @override
-//   State<MainPage> createState() => _MainPageState();
-// }
-
-// class _MainPageState extends State<MainPage> {
-//   final _controller = SidebarXController(selectedIndex: 0);
-
-//   final WidgetStateProperty<Icon?> thumbIcon =
-//       WidgetStateProperty.resolveWith<Icon?>(
-//     (Set<WidgetState> states) {
-//       if (states.contains(WidgetState.selected)) {
-//         return const Icon(Icons.sunny);
-//       }
-//       return const Icon(Icons.dark_mode_outlined);
-//     },
-//   );
-
-//   @override
-//   Widget build(BuildContext context) {
-//     var screenSize = MediaQuery.of(context).size;
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Theme.of(context).colorScheme.surface,
-//         elevation: 0,
-//         title: Padding(
-//           padding: const EdgeInsets.only(left: 40.0, top: 30.0),
-//           child: Text('Kubesman',
-//               style: GoogleFonts.robotoMono(
-//                   fontSize: FontSizer.littlefontmain(context),
-//                   color: Theme.of(context).colorScheme.secondary)),
-//         ),
-//         centerTitle: false,
-//         titleSpacing: 0.0,
-//         actions: [
-//           Padding(
-//               padding: const EdgeInsets.only(right: 30.0, top: 24.0),
-//               child: Switch(
-//                   value: context.read<ThemeProvider>().themeData ==
-//                       ThemeClass.lightTheme,
-//                   thumbIcon: thumbIcon,
-//                   activeColor: Colors.amberAccent,
-//                   onChanged: (_) {
-//                     Provider.of<ThemeProvider>(context, listen: false)
-//                         .toggleTheme();
-//                   })),
-//         ],
-//       ),
-//     );
-//   }
-// }
