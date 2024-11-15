@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:desktop_webview_window/desktop_webview_window.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/components/menu_btn.dart';
@@ -12,6 +10,8 @@ import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
+
+const List<String> list = <String>['One', 'Two', 'Three', 'Logout'];
 
 class EntryPage extends StatefulWidget {
   const EntryPage({super.key});
@@ -29,36 +29,17 @@ class _EntryPageState extends State<EntryPage>
   late AnimationController _animationController;
   late Animation<double> scalAnimation;
   late Animation<double> animation;
+  var userName = '';
 
   Future authenticated(BuildContext ctx) async {
+
     String result = '';
-
-    if (kIsWeb || kIsWasm) {
-      result = await data.casdoor.show();
-    } else {
+    try {
       if (!ctx.mounted) return;
-      // result = await data.casdoor.showFullscreen(ctx);
-      result = await data.casdoor.show();
+      result = await data.casdoor.showFullscreen(ctx);
+    } catch (e) {
+      return;
     }
-
-    // try {
-    //   // if (!ctx.mounted) return;
-    //   if (kIsWasm || kIsWeb) {
-    //     result = await data.casdoor.show();
-    //   } else if (defaultTargetPlatform == TargetPlatform.iOS ||
-    //       defaultTargetPlatform == TargetPlatform.macOS) {
-    //     browser.open(
-    //         url: WebUri(data.casdoor.config.redirectUri),
-    //         // settings: ChromeSafariBrowserSettings(
-    //         //     // shareState: CustomTabsShareState.SHARE_STATE_OFF,
-    //         //     barCollapsingEnabled: true));
-    //     );
-    //     // Navigator.pushReplacementNamed(ctx, data.casdoor.config.redirectUri);
-    //   }
-    // } catch (e) {
-    //   setState(() {});
-    //   return;
-    // }
 
     final code = Uri.parse(result).queryParameters['code'] ?? "";
 
@@ -68,10 +49,19 @@ class _EntryPageState extends State<EntryPage>
       final tokenString = response.body;
       await secureStorage.saveToken(tokenString);
       await secureStorage.loadToken();
-      setState(() {});
+      setState(() {
+        userName = data.casdoor.getUserInfo(tokenString).toString();
+      });
+      return;
     }
 
     return;
+  }
+
+  Future logout() async {
+    await data.casdoor.tokenLogout(data.token.accessToken, '', 'logout', clearCache: false);
+    await secureStorage.deleteToken();
+    setState(() {});
   }
 
   @override
@@ -203,6 +193,19 @@ class _EntryPageState extends State<EntryPage>
                                   .toggleTheme();
                             }),
                       ),
+                      DropdownMenu(
+                          initialSelection: userName,
+                          onSelected: (String? value) {
+                            setState(() {
+                              if (value == "Logout") {
+                                logout();
+                              }
+                            });
+                          },
+                          dropdownMenuEntries: list.map<DropdownMenuEntry<String>>((String value) {
+                            return DropdownMenuEntry<String>(value: value, label: value);
+                        }).toList()
+                      )
                     ],
                   );
                 } else {
@@ -233,28 +236,3 @@ class _EntryPageState extends State<EntryPage>
         ));
   }
 }
-
-// Future<void> getPods() async {
-//   var client = http.Client();
-
-//   Map<String, String> reqheader = {
-//     'Content-Type': 'application/protobuf',
-//   };
-
-//   var response = await client
-//       .get(Uri.http('localhost:9000', '/pods'), headers: reqheader)
-//       .onError((error, _) {
-//     return Future(() => http.Response(error.toString(), 400));
-//   });
-
-//   final x = PodList.fromBuffer(response.bodyBytes);
-
-//   print(x);
-
-//   // print("ASDASDASDASDASDASD");
-//   // final langresp = podlist.Podlist.fromJson(jsResp.toJson());
-//   // print(langresp.items);
-
-//   client.close();
-// }
-

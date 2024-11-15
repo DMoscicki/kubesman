@@ -1,9 +1,9 @@
-use std::{error::Error, io};
+use std::io;
 
 use k8s_openapi::api::core::v1::Pod;
 use k8s_protos::api::core::v1::PodList;
 use kube::{api::ObjectList, Api, Client};
-use log::info;
+use log::error;
 
 pub async fn get_all_pods(client: &Client) -> Result<PodList, io::Error> {
     let pods: Api<Pod> = Api::namespaced(client.clone(), "");
@@ -19,7 +19,7 @@ pub async fn get_all_pods(client: &Client) -> Result<PodList, io::Error> {
             Ok(podx)
         },
         Err(e) => {
-            eprintln!("{}", e);
+            error!("{}", e);
             let kube_err = e.to_string();
             let e_new = io::Error::new(io::ErrorKind::NotFound, kube_err);
             Err(e_new)

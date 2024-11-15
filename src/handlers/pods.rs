@@ -1,4 +1,4 @@
-use actix_web::{body::BoxBody, get, http::header::{ContentEncoding, ContentType}, web::{self, Json}, HttpResponse, Responder, ResponseError, Result};
+use actix_web::{get, web::{self}, HttpResponse, Responder, ResponseError, Result};
 use k8s_protos::api::core::v1::PodList;
 use kube::Client;
 use pod_api::{get_all_pods, get_pods_by_namespace};

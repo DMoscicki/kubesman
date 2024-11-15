@@ -105,7 +105,7 @@ protos-end:
 	rm -rf k8s-pb
 
 # Download and generate all protos dependent files
-protos: protos-dl protos-patch protos-list protos-rust
+protos: protos-dl protos-patch protos-list protos-rust protos-end
 
 rename_files:
 	#!/usr/bin/env bash
@@ -153,4 +153,7 @@ frontend_dev:
 
 # Working only with dev, dont use it on production
 dev_casdoor:
-	docker run -p 8000:8000 -v ./dev_db:/var/lib/mysql -d casbin/casdoor-all-in-one:latest -c  'service mariadb start; mysqladmin -u root password 123456; exec ./server --createDatabase=false'
+	podman run -p 8000:8000 -d casbin/casdoor-all-in-one:latest >> ./container_id.txt
+
+re_run_container:
+	podman restart "$(cat container_id.txt)"
