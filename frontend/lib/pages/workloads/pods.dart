@@ -56,7 +56,7 @@ class PodsPage extends StatelessWidget {
               ),
               Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                 height: 280,
                 width: 260,
                 decoration: const BoxDecoration(
@@ -68,19 +68,19 @@ class PodsPage extends StatelessWidget {
                   children: [
                     Expanded(
                         child: Padding(
-                      padding: const EdgeInsets.only(top: 6, right: 8),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "ASDSADSADASD",
-                            // style: Theme.of(context).colorScheme.secondary,
+                          padding: const EdgeInsets.only(top: 6, right: 8),
+                          child: Column(
+                            children: [
+                              const Text(
+                                "ASDSADSADASD",
+                                // style: Theme.of(context).colorScheme.secondary,
+                              ),
+                              TextButton(
+                                  onPressed: makeRequest,
+                                  child: const Text("Request"))
+                            ],
                           ),
-                          TextButton(
-                              onPressed: makeRequest,
-                              child: const Text("Request"))
-                        ],
-                      ),
-                    ))
+                        ))
                   ],
                 ),
               ),

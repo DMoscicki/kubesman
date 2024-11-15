@@ -9,36 +9,36 @@ import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 
-Future main() async {
+Future main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) {
-  //   final availableVersion = await WebViewEnvironment.getAvailableVersion();
-  //   assert(availableVersion != null,
-  //       'Failed to find an installed WebView2 runtime or non-stable Microsoft Edge installation.');
-
-  //   webViewEnvironment = await WebViewEnvironment.create(
-  //       settings: WebViewEnvironmentSettings(userDataFolder: 'custom_path'));
-  // }
-  // final platform = await CasdoorFlutterSdkPlatfor,.m().getPlatformVersion();
+  final platform = await CasdoorFlutterSdkPlatform().getPlatformVersion();
 
   await dotenv.load(fileName: "dev.env");
 
   final AuthConfig config = AuthConfig(
       clientId: dotenv.get('CASDOOR_CLIENT_ID'),
-      serverUrl: (dotenv.get('CASDOOR_ENDPOINT')),
+      serverUrl: dotenv.get('CASDOOR_ENDPOINT'),
       organizationName: dotenv.get('CASDOOR_ORGANISATION_NAME'),
       appName: dotenv.get('CASDOOR_APPLICATION_NAME'),
-      redirectUri: "http://localhost:9000/callback.html",
+      redirectUri: 'http://localhost:9000/callback.html',
       callbackUrlScheme: "casdoor");
 
-  // String callbackUri = config.redirectUri;
-  // if (!kIsWeb && !kIsWasm) {
-  //   callbackUri = '${config.callbackUrlScheme}://callback.html';
-  // }
-  // config.redirectUri = callbackUri;
+  String callbackUri = config.redirectUri;
 
-  data.casdoor = Casdoor(config: config);
+  if (platform != "web") {
+    callbackUri = '${config.callbackUrlScheme}://callback';
+  }
+
+  config.redirectUri = callbackUri;
+
+  final Casdoor casdorCfg = Casdoor(config: config);
+
+  data.casdoor = casdorCfg;
+
+  if (runWebViewTitleBarWidget(args)) {
+    return;
+  }
 
   runApp(ChangeNotifierProvider(
     create: (context) => ThemeProvider(),
