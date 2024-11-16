@@ -9,12 +9,12 @@ import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 
-Future main(List<String> args) async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final platform = await CasdoorFlutterSdkPlatform().getPlatformVersion();
 
-  await dotenv.load(fileName: "dev.env");
+  await dotenv.load(fileName: "../.env.dev");
 
   final AuthConfig config = AuthConfig(
       clientId: dotenv.get('CASDOOR_CLIENT_ID'),
@@ -35,10 +35,6 @@ Future main(List<String> args) async {
   final Casdoor casdorCfg = Casdoor(config: config);
 
   data.casdoor = casdorCfg;
-
-  if (runWebViewTitleBarWidget(args)) {
-    return;
-  }
 
   runApp(ChangeNotifierProvider(
     create: (context) => ThemeProvider(),
