@@ -47,6 +47,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   jwt_decoder: ^2.0.1
   desktop_webview_window: ^0.2.3
+  flutter_inappwebview: ^6.1.5
 
 dev_dependencies:
   flutter_test:
@@ -72,7 +73,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - dev.env
+    - ../.env.dev
     - assets/RiveAssets/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

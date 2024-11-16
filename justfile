@@ -153,7 +153,7 @@ frontend_dev:
 
 # Working only with dev, dont use it on production
 dev_casdoor:
-	podman run -p 8000:8000 -d casbin/casdoor-all-in-one:latest >> ./container_id.txt
+	docker run -p 8000:8000 -d casbin/casdoor-all-in-one:latest >> ./container_id.txt
 
 re_run_container:
-	podman restart "$(cat container_id.txt)"
+	docker restart "$(cat container_id.txt)"
