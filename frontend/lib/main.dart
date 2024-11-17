@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
-import 'package:desktop_webview_window/desktop_webview_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -14,15 +15,31 @@ Future main() async {
 
   final platform = await CasdoorFlutterSdkPlatform().getPlatformVersion();
 
-  await dotenv.load(fileName: "../.env.dev");
+  await dotenv.load(fileName: ".env.dev");
+
+  String server = '';
+
+  if (!kIsWasm && !kIsWeb) {
+    if (Platform.isAndroid) {
+      server =
+          dotenv.get('CASDOOR_ENDPOINT').replaceAll("localhost", "10.0.2.2");
+    }
+  }
 
   final AuthConfig config = AuthConfig(
       clientId: dotenv.get('CASDOOR_CLIENT_ID'),
-      serverUrl: dotenv.get('CASDOOR_ENDPOINT'),
+      serverUrl: server,
       organizationName: dotenv.get('CASDOOR_ORGANISATION_NAME'),
       appName: dotenv.get('CASDOOR_APPLICATION_NAME'),
       redirectUri: 'http://localhost:9000/callback.html',
       callbackUrlScheme: "casdoor");
+
+  if (!kIsWeb || !kIsWasm) {
+    if (Platform.isAndroid) {
+      // config.serverUrl = "http://10.0.2.2:8000";
+      config.redirectUri = 'http://10.0.2.2:8000/callback.html';
+    }
+  }
 
   String callbackUri = config.redirectUri;
 
