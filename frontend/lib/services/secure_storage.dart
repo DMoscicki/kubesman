@@ -32,6 +32,8 @@ class SecureStorageClass {
       return data.token;
     } catch (e) {
       // logger.e(e);
+      print("error loadToken");
+      print(e);
       return Token("", "", "");
     }
   }
@@ -41,6 +43,8 @@ class SecureStorageClass {
       await secureStorage.storage.write(key: "token", value: input);
     } catch (e) {
       // logger.e(e);
+      print("ERROR savetoken");
+      print(e);
     }
   }
 

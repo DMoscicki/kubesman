@@ -23,7 +23,7 @@ Cargo.lock
 .vscode/
 
 container_id.txt
-.env*
+.env
 
 # frontend ignore
 frontend/lib/protos/*/

@@ -17,18 +17,18 @@ Future main() async {
 
   await dotenv.load(fileName: ".env.dev");
 
-  String server = '';
+  String server = dotenv.get('CASDOOR_ENDPOINT');
 
   if (!kIsWasm && !kIsWeb) {
     if (Platform.isAndroid) {
       server =
-          dotenv.get('CASDOOR_ENDPOINT').replaceAll("localhost", "10.0.2.2");
+          server.replaceAll("localhost", "10.0.2.2");
     }
   }
 
   final AuthConfig config = AuthConfig(
       clientId: dotenv.get('CASDOOR_CLIENT_ID'),
-      serverUrl: server,
+      serverUrl: (server),
       organizationName: dotenv.get('CASDOOR_ORGANISATION_NAME'),
       appName: dotenv.get('CASDOOR_APPLICATION_NAME'),
       redirectUri: 'http://localhost:9000/callback.html',
@@ -36,7 +36,6 @@ Future main() async {
 
   if (!kIsWeb || !kIsWasm) {
     if (Platform.isAndroid) {
-      // config.serverUrl = "http://10.0.2.2:8000";
       config.redirectUri = 'http://10.0.2.2:8000/callback.html';
     }
   }

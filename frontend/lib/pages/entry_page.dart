@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:frontend/auth_factory/factory.dart';
+import 'package:frontend/auth_factory/macos_auth.dart';
 import 'package:frontend/components/menu_btn.dart';
 import 'package:frontend/components/sidebar.dart';
 import 'package:frontend/pages/workloads/pods.dart';
@@ -39,7 +39,6 @@ class _EntryPageState extends State<EntryPage>
   var userName = '';
 
   Future authenticated(BuildContext ctx) async {
-    final Completer<String> isFinished = Completer<String>();
     String result = '';
 
     try {
@@ -48,65 +47,8 @@ class _EntryPageState extends State<EntryPage>
       } else {
         if (Platform.isMacOS) {
           if (!ctx.mounted) return;
-          final urler = data.casdoor.getSigninUrl();
-
-          final browser = InAppAuthBrowser();
-          final settings = InAppBrowserClassSettings(
-              browserSettings: InAppBrowserSettings(
-                hideTitleBar: true,
-                hideUrlBar: true,
-                hideToolbarBottom: true,
-              ),
-              webViewSettings: InAppWebViewSettings(
-                javaScriptEnabled: true,
-                isInspectable: false,
-                clearCache: false,
-                userAgent:
-                    "Mozilla/5.0 (Android 14; Mobile; rv:123.0) Gecko/123.0 Firefox/123.0",
-                useShouldOverrideUrlLoading: true,
-                useOnLoadResource: true,
-              ));
-
-          browser.setOnExitCallback(() {
-            if (!isFinished.isCompleted) {
-              isFinished.completeError(CasdoorAuthCancelledException());
-            }
-          });
-
-          browser.setOnShouldOverrideUrlLoadingCallback((returnUrl) async {
-            if (returnUrl != null) {
-              if (returnUrl.scheme == data.casdoor.config.callbackUrlScheme) {
-                isFinished.complete(returnUrl.toString());
-                // result = returnUrl.toString();
-                final code =
-                    Uri.parse(returnUrl.toString()).queryParameters['code'] ??
-                        "";
-                final response =
-                    await data.casdoor.requestOauthAccessToken(code);
-
-                final tokenString = response.body;
-
-                await secureStorage.saveToken(tokenString);
-                await secureStorage.loadToken();
-
-                // setState(() {
-                //   userName = data.casdoor.getUserInfo(tokenString).toString();
-                // });
-
-                browser.close();
-                browser.onExit();
-                return NavigationActionPolicy.ALLOW;
-              }
-            }
-
-            return NavigationActionPolicy.ALLOW;
-          });
-
-          browser.openUrlRequest(
-            urlRequest: URLRequest(url: WebUri(urler.toString())),
-            settings: settings,
-          );
-          return;
+          var urler = data.casdoor.getSigninUrl();
+          result = await MacOSAuthCasdoor(urler.toString());
         }
         if (Platform.isIOS || Platform.isAndroid || Platform.isLinux) {
           if (!ctx.mounted) return;
@@ -293,7 +235,6 @@ class _EntryPageState extends State<EntryPage>
                     ],
                   );
                 } else {
-                  // authenticated(context);
                   final dim = MediaQuery.of(context).size.height * .5;
                   return Stack(children: [
                     Positioned(
