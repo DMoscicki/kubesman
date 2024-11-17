@@ -27,7 +27,7 @@ class SecureStorageClass {
           "token_type": decoded["token_type"],
         });
 
-        final userInfo = JwtDecoder.decode(data.token.accessToken);
+        // final userInfo = JwtDecoder.decode(data.token.accessToken);
       }
       return data.token;
     } catch (e) {

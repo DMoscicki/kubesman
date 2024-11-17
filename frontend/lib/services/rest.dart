@@ -8,19 +8,20 @@ mixin RequestMixin {
   static Future<bool> refreshToken() async {
     final response = await http.post(
         Uri(
-          scheme: "https",
-          host: dotenv.get('CASDOOR_ENDPOINT').split("//").last,
-          port: 8000,
+          scheme: data.casdoor.parseScheme(),
+          host: data.casdoor.parseHost(),
+          port: data.casdoor.parsePort(),
           path: "api/login/oauth/refresh_token",
         ),
         body: {
           'grant_type': 'refresh_token',
           'refresh_token': data.token.refreshToken,
-          'scope': "read",
+          'scope': 'read',
           'client_id': dotenv.get('CASDOOR_CLIENT_ID'),
           'client_secret': dotenv.get('CASDOOR_CLIENT_SECRET')
         });
-    if (response.statusCode == 200) {
+
+    if (response.statusCode == 200 && response.body.isNotEmpty) {
       await secureStorage.saveToken(response.body);
       await secureStorage.loadToken();
       return true;
