@@ -1,7 +1,7 @@
 use std::io;
 
 use k8s_openapi::api::core::v1::Pod;
-use k8s_protos::api::core::v1::PodList;
+use k8s_protos::{api::core::v1::PodList, converter};
 use kube::{api::ObjectList, Api, Client};
 use log::error;
 
@@ -12,9 +12,7 @@ pub async fn get_all_pods(client: &Client) -> Result<PodList, io::Error> {
 
     match pod_list {
         Ok(pd) => {
-            let dd = serde_json::to_value(pd)?;
-
-            let podx: PodList = serde_json::from_value(dd)?;
+            let podx: PodList = converter::from_openapi(pd)?;
         
             Ok(podx)
         },

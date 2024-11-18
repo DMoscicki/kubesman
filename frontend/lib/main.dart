@@ -21,8 +21,7 @@ Future main() async {
 
   if (!kIsWasm && !kIsWeb) {
     if (Platform.isAndroid) {
-      server =
-          server.replaceAll("localhost", "10.0.2.2");
+      server = server.replaceAll("localhost", "10.0.2.2");
     }
   }
 
@@ -34,16 +33,13 @@ Future main() async {
       redirectUri: 'http://localhost:9000/callback.html',
       callbackUrlScheme: "casdoor");
 
-  if (!kIsWeb || !kIsWasm) {
-    if (Platform.isAndroid) {
-      config.redirectUri = 'http://10.0.2.2:8000/callback.html';
-    }
-  }
-
   String callbackUri = config.redirectUri;
 
   if (platform != "web") {
     callbackUri = '${config.callbackUrlScheme}://callback';
+    if (Platform.isAndroid) {
+      config.redirectUri = 'http://10.0.2.2:8000/callback.html';
+    }
   }
 
   config.redirectUri = callbackUri;
