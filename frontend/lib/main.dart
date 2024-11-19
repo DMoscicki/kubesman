@@ -15,6 +15,7 @@ Future main() async {
 
   final platform = await CasdoorFlutterSdkPlatform().getPlatformVersion();
 
+<<<<<<< HEAD
   await dotenv.load(fileName: "dev.env");
 
   String server = dotenv.get('CASDOOR_ENDPOINT');
@@ -22,24 +23,51 @@ Future main() async {
   if (!kIsWasm && !kIsWeb) {
     if (Platform.isAndroid) {
       server = server.replaceAll("localhost", "10.0.2.2");
+=======
+  await dotenv.load(fileName: ".env.dev");
+
+  String server = '';
+
+  if (!kIsWasm && !kIsWeb) {
+    if (Platform.isAndroid) {
+      server =
+          dotenv.get('CASDOOR_ENDPOINT').replaceAll("localhost", "10.0.2.2");
+>>>>>>> master
     }
   }
 
   final AuthConfig config = AuthConfig(
       clientId: dotenv.get('CASDOOR_CLIENT_ID'),
+<<<<<<< HEAD
       serverUrl: (server),
+=======
+      serverUrl: server,
+>>>>>>> master
       organizationName: dotenv.get('CASDOOR_ORGANISATION_NAME'),
       appName: dotenv.get('CASDOOR_APPLICATION_NAME'),
       redirectUri: 'http://localhost:9000/callback.html',
       callbackUrlScheme: "casdoor");
 
+<<<<<<< HEAD
+=======
+  if (!kIsWeb || !kIsWasm) {
+    if (Platform.isAndroid) {
+      // config.serverUrl = "http://10.0.2.2:8000";
+      config.redirectUri = 'http://10.0.2.2:8000/callback.html';
+    }
+  }
+
+>>>>>>> master
   String callbackUri = config.redirectUri;
 
   if (platform != "web") {
     callbackUri = '${config.callbackUrlScheme}://callback';
+<<<<<<< HEAD
     if (Platform.isAndroid) {
       config.redirectUri = 'http://10.0.2.2:8000/callback.html';
     }
+=======
+>>>>>>> master
   }
 
   config.redirectUri = callbackUri;

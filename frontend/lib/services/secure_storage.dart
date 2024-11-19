@@ -2,6 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:frontend/auth_factory/factory.dart';
+<<<<<<< HEAD
+=======
+import 'package:jwt_decoder/jwt_decoder.dart';
+>>>>>>> master
 
 class SecureStorageClass {
   FlutterSecureStorage storage = const FlutterSecureStorage();
@@ -31,8 +35,11 @@ class SecureStorageClass {
       return data.token;
     } catch (e) {
       // logger.e(e);
+<<<<<<< HEAD
       print("error loadToken");
       print(e);
+=======
+>>>>>>> master
       return Token("", "", "");
     }
   }
@@ -42,8 +49,11 @@ class SecureStorageClass {
       await secureStorage.storage.write(key: "token", value: input);
     } catch (e) {
       // logger.e(e);
+<<<<<<< HEAD
       print("ERROR savetoken");
       print(e);
+=======
+>>>>>>> master
     }
   }
 
