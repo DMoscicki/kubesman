@@ -1,4 +1,4 @@
-use actix_web::{dev::ServiceRequest, error, http::{self, header::HeaderValue}, web, Error};
+use actix_web::{dev::ServiceRequest, error, web, Error};
 use actix_web_httpauth::extractors::bearer::BearerAuth;
 use casdoor_rs_sdk::AuthSdk;
 use log::{info, error};

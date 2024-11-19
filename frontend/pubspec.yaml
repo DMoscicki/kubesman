@@ -38,8 +38,7 @@ dependencies:
   hexcolor: ^3.0.1
   provider:
   google_fonts: ^6.2.1
-  rive: ^0.13.13
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^2.0.14
   protobuf: ^3.1.0
   http: ^1.2.2
   casdoor_flutter_sdk: ^1.6.0
@@ -73,8 +72,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - ./.env.dev
-    - assets/RiveAssets/
+    - dev.env
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

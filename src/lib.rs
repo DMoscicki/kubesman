@@ -1,5 +1,5 @@
 use std::env;
-use actix_web::{http, middleware::{from_fn, Logger}, web::{self}, App, HttpServer};
+use actix_web::{http, middleware::Logger, web::{self}, App, HttpServer};
 use actix_files as fs;
 use auth::validator;
 use handlers::pods;
@@ -13,7 +13,7 @@ mod handlers;
 mod auth;
 
 fn init_casdoor() -> AuthSdk {
-    dotenvy::from_path("./.env.dev").unwrap();
+    dotenvy::from_path("./dev.env").unwrap();
 
     let client_id = env::var("CASDOOR_CLIENT_ID").unwrap();
     let client_secret = env::var("CASDOOR_CLIENT_SECRET").unwrap();

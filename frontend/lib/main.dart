@@ -15,7 +15,7 @@ Future main() async {
 
   final platform = await CasdoorFlutterSdkPlatform().getPlatformVersion();
 
-  await dotenv.load(fileName: ".env.dev");
+  await dotenv.load(fileName: "dev.env");
 
   String server = dotenv.get('CASDOOR_ENDPOINT');
 

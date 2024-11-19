@@ -14,28 +14,28 @@ class _HomeMenuState extends State<HomeMenu> {
     return ExpansionTile(
       title: Text("Home".toUpperCase(),
           style: GoogleFonts.robotoMono(
-              color: Theme.of(context).colorScheme.surface,
+              color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold)),
       showTrailingIcon: false,
       children: [
         ListTile(
           title: Text("Search",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("API Explore",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("Events",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
@@ -52,21 +52,21 @@ class OperatorsMenu extends StatelessWidget {
     return ExpansionTile(
       title: Text("Operators".toUpperCase(),
           style: GoogleFonts.robotoMono(
-              color: Theme.of(context).colorScheme.surface,
+              color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold)),
       showTrailingIcon: false,
       children: [
         ListTile(
           title: Text("OperatorHub",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("Installed Operators",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
@@ -83,42 +83,42 @@ class Workloads extends StatelessWidget {
     return ExpansionTile(
       title: Text("Workloads".toUpperCase(),
           style: GoogleFonts.robotoMono(
-              color: Theme.of(context).colorScheme.surface,
+              color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold)),
       showTrailingIcon: false,
       children: [
         ListTile(
           title: Text("Pods",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("Deployments",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("StatefulSets",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("Secrets",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("ConfigMaps",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
@@ -135,28 +135,28 @@ class Networking extends StatelessWidget {
     return ExpansionTile(
       title: Text("Networking".toUpperCase(),
           style: GoogleFonts.robotoMono(
-              color: Theme.of(context).colorScheme.surface,
+              color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold)),
       showTrailingIcon: false,
       children: [
         ListTile(
           title: Text("Services",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("Ingresses",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("NetworkPolicies",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
@@ -173,28 +173,28 @@ class UserManagement extends StatelessWidget {
     return ExpansionTile(
       title: Text("User Management".toUpperCase(),
           style: GoogleFonts.robotoMono(
-              color: Theme.of(context).colorScheme.surface,
+              color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold)),
       showTrailingIcon: false,
       children: [
         ListTile(
           title: Text("ServiceAccounts",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("Roles",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),
         ListTile(
           title: Text("RoleBindings",
               style: GoogleFonts.robotoMono(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
         ),

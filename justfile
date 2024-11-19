@@ -156,4 +156,4 @@ dev_casdoor:
 	docker run -p 8000:8000 -d casbin/casdoor-all-in-one:latest >> ./container_id.txt
 
 re_run_container:
-	docker restart "$(cat container_id.txt)"
+	podman restart "$(cat container_id.txt)"
