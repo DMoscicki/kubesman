@@ -1,97 +1,132 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/protos/api/core/v1/generated.pb.dart' as Core;
 import 'package:frontend/services/rest.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PodsPage extends StatelessWidget {
+class PodsPage extends StatefulWidget {
   const PodsPage({super.key});
 
-  static const List<String> dropDownOptions = [
-    "Dash",
-    "Sparky",
-    "Snoo",
-    "Clippy",
-  ];
+  @override
+  State<PodsPage> createState() => PodsPageState();
+}
 
-  Future makeRequest() async {
+class PodsPageState extends State<PodsPage>
+    with SingleTickerProviderStateMixin {
+  Future<List<Core.Pod>> makeRequest() async {
     final response = await RequestMixin.request(
         "get", Uri.parse("http://localhost:8080/pods"), {}, null);
 
     final pods = Core.PodList.fromBuffer(response.bodyBytes);
 
-    print(pods);
+    return pods.items;
+  }
+
+  final GlobalKey<AnimatedListState> _key = GlobalKey();
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000));
+    Timer(Duration(milliseconds: 100), () => animationController.forward());
+    super.initState();
+  }
+
+  Future<void> _dialogBuilder(BuildContext context, String data) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Pod information'),
+          content: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Text(data),
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        bottom: false,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 40),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Text(
-                      "Pods",
-                      style: GoogleFonts.robotoMono(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30.0,
-                      ),
-                    ),
-                  ),
-                  DropdownButton(
-                      items: dropDownOptions
-                          .map<DropdownMenuItem<String>>((String mascot) {
-                        return DropdownMenuItem<String>(
-                            value: mascot, child: Text(mascot));
-                      }).toList(),
-                      onChanged: (_) => {}),
-                ],
-              ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                height: 280,
-                width: 260,
-                decoration: const BoxDecoration(
-                  color: Color(0xFF7553F6),
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+    return FutureBuilder<List<Core.Pod>>(
+        future: makeRequest(),
+        builder: (
+          BuildContext context,
+          AsyncSnapshot<List<Core.Pod>> snapshot,
+        ) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return SizedBox.shrink();
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Text("pods loading error");
+            }
+            if (snapshot.hasData) {
+              return Scaffold(
+                appBar: AppBar(
+                  elevation: 0,
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                        child: Padding(
-                      padding: const EdgeInsets.only(top: 6, right: 8),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "ASDSADSADASD",
-                            // style: Theme.of(context).colorScheme.secondary,
-                          ),
-                          TextButton(
-                              onPressed: RequestMixin.refreshToken,
-                              child: const Text("Refresh")),
-                          TextButton(
-                              onPressed: makeRequest,
-                              child: const Text("Request"))
-                        ],
-                      ),
-                    ))
-                  ],
+                body: AnimatedList(
+                  key: _key,
+                  initialItemCount: snapshot.data!.length,
+                  itemBuilder: (_, index, animation) {
+                    double animationStart = 0.1 * index;
+                    double animationEnd = animationStart + 0.4;
+                    return SlideTransition(
+                        key: UniqueKey(),
+                        position: Tween(begin: Offset(2, 0), end: Offset(0, 0))
+                            .animate(CurvedAnimation(
+                                parent: animationController,
+                                curve: Interval(animationStart, animationEnd,
+                                    curve: Curves.ease))),
+                        child: FadeTransition(
+                            opacity: animationController,
+                            child: Card(
+                                color: Theme.of(context).colorScheme.secondary,
+                                margin: const EdgeInsets.all(10),
+                                child: ListTile(
+                                  title: Text(
+                                    snapshot.data![index].metadata.name,
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .surface),
+                                  ),
+                                  trailing: IconButton(
+                                      onPressed: () => {
+                                            _dialogBuilder(
+                                                context,
+                                                snapshot.data![index].metadata
+                                                    .toString())
+                                          },
+                                      icon: Icon(Icons.info,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface)),
+                                ))));
+                  },
                 ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+              );
+            } else {
+              return SizedBox.shrink();
+            }
+          } else {
+            return SizedBox.shrink();
+          }
+        });
   }
 }
