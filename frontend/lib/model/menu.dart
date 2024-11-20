@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/workloads/pods.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeMenu extends StatefulWidget {
   const HomeMenu({super.key});
 
   @override
-  State<HomeMenu> createState() => _HomeMenuState();
+  State<HomeMenu> createState() => HomeMenuState();
 }
 
-class _HomeMenuState extends State<HomeMenu> {
+class HomeMenuState extends State<HomeMenu> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
@@ -75,8 +76,15 @@ class OperatorsMenu extends StatelessWidget {
   }
 }
 
-class Workloads extends StatelessWidget {
+class Workloads extends StatefulWidget {
   const Workloads({super.key});
+
+  @override
+  State<Workloads> createState() => WorkloadsState();
+}
+
+class WorkloadsState extends State<Workloads> {
+  late AnimationController animCtrl;
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +101,14 @@ class Workloads extends StatelessWidget {
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
+          onTap: () => {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        PodsPage())),
+            // Navigator.pop(context)
+          },
         ),
         ListTile(
           title: Text("Deployments",
