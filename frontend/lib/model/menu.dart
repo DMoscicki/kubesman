@@ -115,6 +115,13 @@ class WorkloadsState extends State<Workloads> {
                       return PodsPage();
                     }))
                   }
+                else
+                  {
+                    Navigator.of(context)
+                        .push(CupertinoPageRoute(builder: (context) {
+                      return PodsPage();
+                    }))
+                  }
               }
             else
               {
