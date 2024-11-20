@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/workloads/pods.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -93,7 +97,7 @@ class WorkloadsState extends State<Workloads> {
           style: GoogleFonts.robotoMono(
               color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold)),
-      showTrailingIcon: false,
+      showTrailingIcon: true,
       children: [
         ListTile(
           title: Text("Pods",
@@ -102,12 +106,23 @@ class WorkloadsState extends State<Workloads> {
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
           onTap: () => {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        PodsPage())),
-            // Navigator.pop(context)
+            if (!kIsWasm && !kIsWeb)
+              {
+                if (Platform.isAndroid)
+                  {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return PodsPage();
+                    }))
+                  }
+              }
+            else
+              {
+                Navigator.of(context)
+                    .push(CupertinoPageRoute(builder: (context) {
+                  return PodsPage();
+                }))
+              }
           },
         ),
         ListTile(

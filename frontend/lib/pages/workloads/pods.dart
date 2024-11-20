@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/protos/api/core/v1/generated.pb.dart' as Core;
 import 'package:frontend/services/rest.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PodsPage extends StatefulWidget {
   const PodsPage({super.key});
@@ -16,8 +16,14 @@ class PodsPage extends StatefulWidget {
 class PodsPageState extends State<PodsPage>
     with SingleTickerProviderStateMixin {
   Future<List<Core.Pod>> makeRequest() async {
-    final response = await RequestMixin.request(
-        "get", Uri.parse("http://localhost:8080/pods"), {}, null);
+    String url = "http://localhost:8080/pods";
+    if (!kIsWasm && !kIsWeb) {
+      if (Platform.isAndroid) {
+        url = url.replaceAll("localhost", "10.0.2.2");
+      }
+    }
+    final response =
+        await RequestMixin.request("get", Uri.parse(url), {}, null);
 
     final pods = Core.PodList.fromBuffer(response.bodyBytes);
 
@@ -31,8 +37,14 @@ class PodsPageState extends State<PodsPage>
   void initState() {
     animationController = AnimationController(
         vsync: this, duration: Duration(milliseconds: 1000));
-    Timer(Duration(milliseconds: 100), () => animationController.forward());
+    Timer(Duration(milliseconds: 200), () => animationController.forward());
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   Future<void> _dialogBuilder(BuildContext context, String data) {
@@ -70,10 +82,27 @@ class PodsPageState extends State<PodsPage>
           AsyncSnapshot<List<Core.Pod>> snapshot,
         ) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return SizedBox.shrink();
+            return Scaffold();
           } else if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
-              return Text("pods loading error");
+              return AlertDialog(
+                title: const Text('Error'),
+                content: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Text("Somethins went wrong"),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: Theme.of(context).textTheme.labelLarge,
+                    ),
+                    child: const Text('Close'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
             }
             if (snapshot.hasData) {
               return Scaffold(
@@ -84,7 +113,8 @@ class PodsPageState extends State<PodsPage>
                   key: _key,
                   initialItemCount: snapshot.data!.length,
                   itemBuilder: (_, index, animation) {
-                    double animationStart = 0.1 * index;
+                    // рассчитать
+                    double animationStart = 0.01 * index;
                     double animationEnd = animationStart + 0.4;
                     return SlideTransition(
                         key: UniqueKey(),
@@ -122,10 +152,44 @@ class PodsPageState extends State<PodsPage>
                 ),
               );
             } else {
-              return SizedBox.shrink();
+              return AlertDialog(
+                title: const Text('Error'),
+                content: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Text("Somethins went wrong"),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: Theme.of(context).textTheme.labelLarge,
+                    ),
+                    child: const Text('Close'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
             }
           } else {
-            return SizedBox.shrink();
+            return AlertDialog(
+              title: const Text('Error'),
+              content: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Text("Somethins went wrong"),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: Theme.of(context).textTheme.labelLarge,
+                  ),
+                  child: const Text('Close'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
           }
         });
   }

@@ -157,3 +157,6 @@ dev_casdoor:
 
 re_run_container:
 	podman restart "$(cat container_id.txt)"
+
+frontend-web:
+	flutter run -d chrome --web-port 9000

@@ -52,6 +52,7 @@ class MainDrawerState extends State<MainDrawer> {
           IconButton(
               onPressed: () {
                 logout();
+                Navigator.of(context).pop();
                 setState(() {});
               },
               icon: Icon(Icons.logout))
