@@ -2,7 +2,7 @@ use std::env;
 use actix_web::{http, middleware::Logger, web::{self}, App, HttpServer};
 use actix_files as fs;
 use auth::validator;
-use handlers::pods;
+use handlers::{configmaps, deployments, pods, secrets, statefulsets};
 use log::info;
 use kube::{config::KubeConfigOptions, Client, Config, Error};
 use actix_cors::Cors;
@@ -103,6 +103,10 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
         App::new()
             .service(pods::get_pods)
             .service(pods::get_pods_by_ns)
+            .service(deployments::get_all_deploys)
+            .service(statefulsets::get_all_deploys)
+            .service(secrets::get_secrets)
+            .service(configmaps::get_configmaps)
             .app_data(web::Data::new(client.clone()))
             .app_data(web::Data::new(auth_sdk))
             .wrap(auth)
@@ -122,6 +126,7 @@ async fn serve_build(client: Client) -> std::io::Result<()> {
         App::new()
             .service(pods::get_pods)
             .service(pods::get_pods_by_ns)
+            .service(deployments::get_all_deploys)
             .app_data(web::Data::new(client.clone()))
             .app_data(auth_sdk)
             .wrap(auth)
@@ -146,6 +151,7 @@ async fn production_mod(client: Client) -> std::io::Result<()> {
         App::new()
             .service(pods::get_pods_by_ns)
             .service(pods::get_pods_by_ns)
+            .service(deployments::get_all_deploys)
             .app_data(web::Data::new(client.clone()))
             .app_data(web::Data::new(auth_sdk))
             .wrap(auth)

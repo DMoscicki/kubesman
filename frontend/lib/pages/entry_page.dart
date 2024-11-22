@@ -8,6 +8,9 @@ import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/auth_factory/macos_auth.dart';
 import 'package:frontend/components/drawer.dart';
 import 'package:frontend/services/secure_storage.dart';
+import 'package:frontend/themes/themes.dart';
+import 'package:frontend/themes/themes.provider.dart';
+import 'package:provider/provider.dart';
 
 WebViewEnvironment? webViewEnvironment;
 
@@ -57,6 +60,11 @@ class _EntryPageState extends State<EntryPage>
     return;
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   // @override
   // void initState() {
   //   _animationController = AnimationController(
@@ -92,9 +100,25 @@ class _EntryPageState extends State<EntryPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        primary: true,
         appBar: AppBar(
+          elevation: 0,
+          primary: true,
           forceMaterialTransparency: true,
           backgroundColor: Theme.of(context).colorScheme.secondary,
+          titleSpacing: 0.0,
+          centerTitle: false,
+          actions: [
+            Switch(
+                value: context.read<ThemeProvider>().themeData ==
+                    ThemeClass.lightTheme,
+                thumbIcon: thumbIcon,
+                activeColor: Colors.amberAccent,
+                onChanged: (_) {
+                  Provider.of<ThemeProvider>(context, listen: false)
+                      .toggleTheme();
+                }),
+          ],
         ),
         extendBody: true,
         resizeToAvoidBottomInset: false,
