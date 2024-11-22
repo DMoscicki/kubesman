@@ -4,20 +4,20 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/workloads/utils.dart';
-import 'package:frontend/protos/api/core/v1/generated.pb.dart' as Core;
+import 'package:frontend/protos/api/core/v1/generated.pb.dart';
 import 'package:frontend/services/rest.dart';
 
-class PodsPage extends StatefulWidget {
-  const PodsPage({super.key});
+class SecretsPage extends StatefulWidget {
+  const SecretsPage({super.key});
 
   @override
-  State<PodsPage> createState() => PodsPageState();
+  State<SecretsPage> createState() => SecretsState();
 }
 
-class PodsPageState extends State<PodsPage>
+class SecretsState extends State<SecretsPage>
     with SingleTickerProviderStateMixin {
-  Future<List<Core.Pod>> makeRequest() async {
-    String url = "http://localhost:8080/pods";
+  Future<List<Secret>> makeRequest() async {
+    String url = "http://localhost:8080/secrets";
     if (!kIsWasm && !kIsWeb) {
       if (Platform.isAndroid) {
         url = url.replaceAll("localhost", "10.0.2.2");
@@ -26,9 +26,8 @@ class PodsPageState extends State<PodsPage>
     final response =
         await RequestMixin.request("get", Uri.parse(url), {}, null);
 
-    final pods = Core.PodList.fromBuffer(response.bodyBytes);
-
-    return pods.items;
+    final secrets = SecretList.fromBuffer(response.bodyBytes);
+    return secrets.items;
   }
 
   final GlobalKey<AnimatedListState> _key = GlobalKey();
@@ -53,7 +52,7 @@ class PodsPageState extends State<PodsPage>
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Pod information'),
+          title: const Text('Secrets information'),
           content: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Text(data),
@@ -76,17 +75,17 @@ class PodsPageState extends State<PodsPage>
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Core.Pod>>(
+    return FutureBuilder<List<Secret>>(
         future: makeRequest(),
         builder: (
           BuildContext context,
-          AsyncSnapshot<List<Core.Pod>> snapshot,
+          AsyncSnapshot<List<Secret>> snapshot,
         ) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Scaffold();
+            return ErrorAlertDialog(context);
           } else if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
-              return Scaffold();
+              return ErrorAlertDialog(context);
             }
             if (snapshot.hasData) {
               return Scaffold(

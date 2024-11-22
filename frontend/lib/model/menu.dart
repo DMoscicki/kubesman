@@ -3,7 +3,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/workloads/configmaps.dart';
+import 'package:frontend/pages/workloads/deployments.dart';
 import 'package:frontend/pages/workloads/pods.dart';
+import 'package:frontend/pages/workloads/secrets.dart';
+import 'package:frontend/pages/workloads/statefulsets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeMenu extends StatefulWidget {
@@ -138,6 +142,32 @@ class WorkloadsState extends State<Workloads> {
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
+          onTap: () => {
+            if (!kIsWasm && !kIsWeb)
+              {
+                if (Platform.isAndroid)
+                  {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return DeploymentsPage();
+                    }))
+                  }
+                else
+                  {
+                    Navigator.of(context)
+                        .push(CupertinoPageRoute(builder: (context) {
+                      return DeploymentsPage();
+                    }))
+                  }
+              }
+            else
+              {
+                Navigator.of(context)
+                    .push(CupertinoPageRoute(builder: (context) {
+                  return DeploymentsPage();
+                }))
+              }
+          },
         ),
         ListTile(
           title: Text("StatefulSets",
@@ -145,6 +175,32 @@ class WorkloadsState extends State<Workloads> {
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
+          onTap: () => {
+            if (!kIsWasm && !kIsWeb)
+              {
+                if (Platform.isAndroid)
+                  {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return StatefulSetsPage();
+                    }))
+                  }
+                else
+                  {
+                    Navigator.of(context)
+                        .push(CupertinoPageRoute(builder: (context) {
+                      return StatefulSetsPage();
+                    }))
+                  }
+              }
+            else
+              {
+                Navigator.of(context)
+                    .push(CupertinoPageRoute(builder: (context) {
+                  return StatefulSetsPage();
+                }))
+              }
+          },
         ),
         ListTile(
           title: Text("Secrets",
@@ -152,6 +208,32 @@ class WorkloadsState extends State<Workloads> {
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
+          onTap: () => {
+            if (!kIsWasm && !kIsWeb)
+              {
+                if (Platform.isAndroid)
+                  {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return SecretsPage();
+                    }))
+                  }
+                else
+                  {
+                    Navigator.of(context)
+                        .push(CupertinoPageRoute(builder: (context) {
+                      return SecretsPage();
+                    }))
+                  }
+              }
+            else
+              {
+                Navigator.of(context)
+                    .push(CupertinoPageRoute(builder: (context) {
+                  return SecretsPage();
+                }))
+              }
+          },
         ),
         ListTile(
           title: Text("ConfigMaps",
@@ -159,6 +241,32 @@ class WorkloadsState extends State<Workloads> {
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.normal,
                   fontSize: 14.0)),
+          onTap: () => {
+            if (!kIsWasm && !kIsWeb)
+              {
+                if (Platform.isAndroid)
+                  {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return ConfigMapsPage();
+                    }))
+                  }
+                else
+                  {
+                    Navigator.of(context)
+                        .push(CupertinoPageRoute(builder: (context) {
+                      return ConfigMapsPage();
+                    }))
+                  }
+              }
+            else
+              {
+                Navigator.of(context)
+                    .push(CupertinoPageRoute(builder: (context) {
+                  return ConfigMapsPage();
+                }))
+              }
+          },
         ),
       ],
     );

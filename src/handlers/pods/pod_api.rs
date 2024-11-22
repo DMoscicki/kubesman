@@ -1,7 +1,7 @@
 use std::io;
 
 use k8s_openapi::api::core::v1::Pod;
-use k8s_protos::{api::core::v1::PodList, converter};
+use k8s_rs_pb::{api::core::v1::PodList, converter};
 use kube::{api::ObjectList, Api, Client};
 use log::error;
 
@@ -18,8 +18,7 @@ pub async fn get_all_pods(client: &Client) -> Result<PodList, io::Error> {
         },
         Err(e) => {
             error!("{}", e);
-            let kube_err = e.to_string();
-            let e_new = io::Error::new(io::ErrorKind::NotFound, kube_err);
+            let e_new = io::Error::new(io::ErrorKind::NotFound, e.to_string());
             Err(e_new)
         },
     }

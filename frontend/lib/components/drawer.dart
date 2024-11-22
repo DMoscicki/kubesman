@@ -3,6 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/model/menu.dart';
 import 'package:frontend/services/secure_storage.dart';
+import 'package:frontend/themes/themes.dart';
+import 'package:frontend/themes/themes.provider.dart';
+import 'package:provider/provider.dart';
 
 class MainDrawer extends StatefulWidget {
   final String userName;
