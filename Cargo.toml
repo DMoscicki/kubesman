@@ -3,6 +3,9 @@ name = "kubesman"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "kubesman_server"
+path = "src/main.rs"
 
 [dependencies]
 k8s-rs-pb ="0.1.3"

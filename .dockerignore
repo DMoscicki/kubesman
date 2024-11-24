@@ -1,0 +1,6 @@
+./frontend
+target
+Containerfile*
+.dockerignore
+.git
+.gitignore

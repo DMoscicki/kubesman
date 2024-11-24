@@ -1,0 +1,23 @@
+FROM rust:1.82.0 AS builder
+
+RUN apt-get update -y && apt-get upgrade -y
+
+WORKDIR /kubesman_server
+
+COPY ./ ./
+
+RUN cargo build --release
+
+RUN chmod +x /kubesman_server/target/release/kubesman_server
+
+FROM gcr.io/distroless/cc-debian12 AS server
+
+WORKDIR /
+
+COPY --from=builder kubesman_server/target/release/kubesman_server /kubesman_server
+
+# RUN apt-get update -y && apt-get upgrade -y && apt install -y openssl ca-certificates
+
+ENV DEV=true
+
+CMD ["./kubesman_server"]
