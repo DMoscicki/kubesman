@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/workloads/utils.dart';
 import 'package:frontend/protos/api/apps/v1beta1/generated.pb.dart';
-import 'package:frontend/protos/api/core/v1/generated.pb.dart';
 import 'package:frontend/services/rest.dart';
 
 class StatefulSetsPage extends StatefulWidget {

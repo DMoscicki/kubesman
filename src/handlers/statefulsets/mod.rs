@@ -2,9 +2,9 @@ use actix_web::{get, web, HttpResponse, ResponseError};
 use k8s_rs_pb::api::apps::v1::StatefulSetList;
 use kube::Client;
 use protobuf::Message;
-use statefulsets::get_all_states;
+use statefulsets_kube::get_all_states;
 
-mod statefulsets;
+mod statefulsets_kube;
 
 #[get("/statefulsets")]
 async fn get_all_deploys(kube_state: web::Data<Client>) -> HttpResponse {

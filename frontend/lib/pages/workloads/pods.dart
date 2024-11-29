@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/components/table_view.dart';
 import 'package:frontend/pages/workloads/utils.dart';
 import 'package:frontend/protos/api/core/v1/generated.pb.dart' as Core;
 import 'package:frontend/services/rest.dart';
@@ -48,32 +49,6 @@ class PodsPageState extends State<PodsPage>
     super.dispose();
   }
 
-  Future<void> _dialogBuilder(BuildContext context, String data) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Pod information'),
-          content: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Text(data),
-          ),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
-              ),
-              child: const Text('Close'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Core.Pod>>(
@@ -90,51 +65,29 @@ class PodsPageState extends State<PodsPage>
             }
             if (snapshot.hasData) {
               return Scaffold(
-                appBar: AppBar(
-                  elevation: 0,
-                ),
-                body: AnimatedList(
-                  key: _key,
-                  initialItemCount: snapshot.data!.length,
-                  itemBuilder: (_, index, animation) {
-                    // рассчитать
-                    double animationStart = 0.01 * index;
-                    double animationEnd = animationStart + 0.4;
-                    return SlideTransition(
-                        key: UniqueKey(),
-                        position: Tween(begin: Offset(2, 0), end: Offset(0, 0))
-                            .animate(CurvedAnimation(
-                                parent: animationController,
-                                curve: Interval(animationStart, animationEnd,
-                                    curve: Curves.ease))),
-                        child: FadeTransition(
-                            opacity: animationController,
-                            child: Card(
-                                color: Theme.of(context).colorScheme.secondary,
-                                margin: const EdgeInsets.all(10),
-                                child: ListTile(
-                                  title: Text(
-                                    snapshot.data![index].metadata.name,
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .surface),
-                                  ),
-                                  trailing: IconButton(
-                                      onPressed: () => {
-                                            _dialogBuilder(
-                                                context,
-                                                snapshot.data![index].metadata
-                                                    .toString())
-                                          },
-                                      icon: Icon(Icons.info,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .surface)),
-                                ))));
-                  },
-                ),
-              );
+                  appBar: AppBar(
+                    elevation: 0,
+                  ),
+                  body: AnimatedList(
+                    key: _key,
+                    initialItemCount: 1,
+                    itemBuilder: (_, index, animation) {
+                      // рассчитать
+                      double animationStart = 0.01 * index;
+                      double animationEnd = animationStart + 0.4;
+
+                      return SlideTransition(
+                          key: UniqueKey(),
+                          position:
+                              Tween(begin: Offset(2, 0), end: Offset(0, 0))
+                                  .animate(CurvedAnimation(
+                                      parent: animationController,
+                                      curve: Interval(
+                                          animationStart, animationEnd,
+                                          curve: Curves.ease))),
+                          child: PodsTable(podList: snapshot.data!));
+                    },
+                  ));
             } else {
               return ErrorAlertDialog(context);
             }

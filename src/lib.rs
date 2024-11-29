@@ -4,7 +4,7 @@ use actix_files as fs;
 use auth::validator;
 use handlers::{configmaps, deployments, pods, secrets, statefulsets};
 use log::info;
-use kube::{config::KubeConfigOptions, Client, Config, Error};
+use kube::{Client, Config, Error};
 use actix_cors::Cors;
 use casdoor_rs_sdk::{self, Config as CasdorConfig, AuthSdk};
 use actix_web_httpauth::middleware::HttpAuthentication;
@@ -17,34 +17,37 @@ fn init_casdoor() -> AuthSdk {
 
     let client_id = env::var("CASDOOR_CLIENT_ID").unwrap();
     let client_secret = env::var("CASDOOR_CLIENT_SECRET").unwrap();
-    let cert = r###"-----BEGIN CERTIFICATE-----
-MIIE3TCCAsWgAwIBAgIDAeJAMA0GCSqGSIb3DQEBCwUAMCgxDjAMBgNVBAoTBWFk
-bWluMRYwFAYDVQQDEw1jZXJ0LWJ1aWx0LWluMB4XDTI0MTExNzA4MDY1NFoXDTQ0
-MTExNzA4MDY1NFowKDEOMAwGA1UEChMFYWRtaW4xFjAUBgNVBAMTDWNlcnQtYnVp
-bHQtaW4wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCsiHXaeWqtXlCg
-4IpvaE3gkpxqnrT+Zq0xJsm7ox/WespIIGUTqkD0TSJx4tLOlR5ApO4eMLayUptR
-E96svCq6R1pq294KiwIzEYIiexMr6UBtI6Xtw5epRHBawe36wRotuOBNb6RnydEm
-CHXqgjedVddLmxNa1Cy6ka1K9LOlzhS+89fqO9c37aAuaoBOvhybBYiN86XNmysj
-OCtTD3v9AY0VZ00p3a450g5GGOpGFc/axS3Enbw6d/8dCBN9pOG2VNgJo9SB1v+D
-HCftpeCrR9x5uwY6vgOgQ2zhUq5lVGEbOEJTfH8meATZITpCk2rPplnQrKSzEoa+
-O8csoMQU5GMruQYs4icsnsYnKsEZvwAfiEuXtaUSYl3qb2RqCQK0hUdKzaZSoyJP
-LSoyvaOJGCKEBaolEZICPK73zyjOLbCQCLcc+E944QgUVG7kA+ZawI9/RoHr9YDB
-u/YprjSzkdBkiU6+lUe5cgpjOR24zWlOhEs/8nceRzlFGdekP8zruS2wvlKZOpAG
-G8uWlKZ3KsfdmA6d2RiFhS2aIZQzPDfDijSHm8HWoRfwY7xEJsbtROI9ENoIfxSg
-FDQzZ0X/aIhb/UCZdsBzJ4SUnchoN8Bwvk+hPaU1+YPLszzPaUv9YR9ZJawCUh1u
-2jtvWxozvDHgDBCVFgd39KeagCkCpQIDAQABoxAwDjAMBgNVHRMBAf8EAjAAMA0G
-CSqGSIb3DQEBCwUAA4ICAQBnFSNsKCBf19lbwCRjbZJAH7aKhGcnEK/2pmp9/SAZ
-khxQ/FXYqfuB1RwU2T64pu9+AekV6bQy4Am/AxG3CsWlLfCYEvSK9szGkyrNEvny
-+ONG49bvBeLwWuaJK5gCK/5hVaME0LeEGeC90pIC39r4DmNQBZD7/6uWdY1HCcTB
-V8Ti3rmw/MUFQpDv1xgFQkzRt7tm5WKVEQWPlHaBrXLc6qKspaG8iKuUfgU906m7
-ZC+PRLE739YgiwLoTnVotqGdX557WvZ3qLUrZprwlIP5NgVovOkl2fSV45uyaSpE
-oEvz3KP0S6HEYLcgqH6slv+ouz3a0HIvwv8k9WHd3GnDRHW6fMLBINkzY88dclfY
-GW7Gt5Bxm+uW8vQy6s1NvVl6KIwufpc6BYIgSnkhkZ2xVkkjnHSi8PfmQCp8s5hU
-gusrAFlsVe9vEJWvGwGzCpHhhoI0b06Phmv+YcpO3bg1uXyFGD13JcSEo5JNTSKV
-wgBZaWQEAy/VgTq6UsGxKs/xpPIAyMZyi2t+H0WfIgEReWwgTlvnk94GoM7JvZFh
-QF1ygmuHu2t29fCEnIDXlbL7+iiBNEUm0nue76geKMY6M5TVIEGUWBtwkLZTWY2k
-m9juBMWegkgnehC5vgZi4ZWJGG/mFZZoe+NebyheYLvAHq4IH4Oc65UD0Dc/apH4
-lw==-----END CERTIFICATE-----"###;
+    let cert = r###"
+-----BEGIN CERTIFICATE-----
+MIIE3TCCAsWgAwIBAgIDAeJAMA0GCSqGSIb3DQEBDQUAMCgxDjAMBgNVBAoTBWFk
+bWluMRYwFAYDVQQDEw1jZXJ0LWJ1aWx0LWluMB4XDTI0MTEyNjIxMTgzOVoXDTQ0
+MTEyNjIxMTgzOVowKDEOMAwGA1UEChMFYWRtaW4xFjAUBgNVBAMTDWNlcnQtYnVp
+bHQtaW4wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDJ3WejBKioE7nH
+/zcf5qfMhXpiyOlkW3EceSgWnsMovOleRSypbSJISogC8RzyitYCqiCgPnL96Xov
+swhJQ3+HShcxL8UHDR5aegIh+mM36lXeGEen7Q1W9D0kGlanc4jgRuj2Ok+43c1t
+auoqZkMg+MdMgbyl39Bs16C/GV2Lmh4Pe31TRdIOAgLIX0CN+1BknVzvo4mjIF8O
+aYrJztO6pnnBGmQXJR96PC3tv7heyZwGZeomL6xuvhqjqjleVxFYFQk6JHY/7L+u
+1gSQnRfkJ2Q/ju+x8Oglc2/AaSuoICCfORoSRbrnKmXOXQIn9wEUlb2/WiENh796
+N1NXMw43PTKpOPpPoi/GORO7kgT2Zd4/cyIhNnV8HaoA10z2GwLMz/+FlupUUiEI
+CiDyn09q9PmT5rphqb60xy16+OGIsFHZIgZxlaWzBUV+ts+eZPQCbpqcxbU0QjqW
+NS50PQaRIK+jH1p5MSvNSPHUxTBYjuTfmyVBr8EBg+xJX9SVEjJW7LLYwR6ZZGD7
+xNeG4ew/i9icJRtDJ0jMgvrqeZPg7wnxmtabZZIHx+R+mea+PDAfJq7t8w7ftH7Q
+pQ7no40i6DI5ONsDCn5LkaPVxGzjgt0aOlw90ixtdPlOFhu0a5IJcBGQEZftdNrS
+aasV/G9P2WESM68MgcTDKH1v+XE2PwIDAQABoxAwDjAMBgNVHRMBAf8EAjAAMA0G
+CSqGSIb3DQEBDQUAA4ICAQBhYxoH/yiX8dPe/+q4AtssuIr9fAD9mrcV7uKkwyo6
+kK7FkQfFcviRJZVhbu5r3egH7AUn99KmnxeKTObQiwdml1xAFX65SALlY/fNWQ6K
+JA7AUYw0iaLcaRDkDriHw33ZZtC3nhyjuZql3e3MeDX09iqjBGnngOb+FT9NdWET
+OCW2A5I7gUSt2v6bNhbWRdzaYmUGCxboRFMjLeC9zEPQylejuwv7GKCJa+jXN2kp
+CmmQCHlAMf9LZx6lymJ5lYOaLjqXouPE/taSeuA9fwh11NXb0BEx2+Duo/c88qOg
+bbqR8/GmnHwb0fv9c2exCKDl7+11E72s/aF0z9VmV4LOwQYI0vhtPUqqGX4VOBmk
+YbzxIC8/Ck0N3NlmvFf7WQa8IMQTYC8FtBsvuDZcGIhKa1JBUYjf1E649l4UcGWV
+oKmYKLPex3xH+2WHuSZKvtS58bh71mUbAnwuBe19kBS+csWNkcck49reAe/H87d8
+0eMAWOaCmY7lfNfZ/Xy+1MOshuUTujd49dgBZjfXMWUBaAAQy5I3h7eMJioQth48
+3JhM4jendvx3xkgYZdesd6ThPB0Mmu7SvLO6Reb1PpnifQm6XpEfMPAjhI1M/cHW
+oPIZICyzDrDEHJ/wKPyQ3fLXbCm+XvmVlsk+t3n/GKJjX7b5BTB8yGO78Dg2sJ6W
+ug==
+-----END CERTIFICATE-----
+"###;
     let org_name = "Kubernetes";
     let app = CasdorConfig::new(env::var("CASDOOR_ENDPOINT").unwrap(), 
     client_id, 
@@ -55,9 +58,13 @@ lw==-----END CERTIFICATE-----"###;
 
 pub async fn kube_client() -> Result<Client, Error> {
 
-    let options = KubeConfigOptions::default();
+    // let options = KubeConfigOptions::default();
 
-    let config = Config::from_kubeconfig(&options).await.expect("error to load kubeconfig");
+    // let config = Config::from_kubeconfig(&options).await.expect("error to load kubeconfig");
+    // let client = Client::try_from(config);
+
+    let config = Config::infer().await.unwrap();
+
     let client = Client::try_from(config);
 
     client
@@ -111,9 +118,9 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
             .app_data(web::Data::new(auth_sdk))
             .wrap(auth)
             .wrap(cors_project())
-            .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/web/").index_file("index.html"))
+            // .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/web/").index_file("index.html"))
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(("0.0.0.0", 8080))?
     .run()
     .await
 }
