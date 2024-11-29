@@ -1,8 +1,8 @@
 use actix_web::{get, http::StatusCode, web, HttpResponse, Responder, Result};
 use kube::Client;
-use ns_api::{create_ns, get_all_namespaces};
+use ns_kube::{create_ns, get_all_namespaces};
 
-mod ns_api;
+mod ns_kube;
 
 #[get("/namespaces")]
 async fn get_all_ns(kube_state: web::Data<Client>) -> Result<impl Responder> {

@@ -1,10 +1,10 @@
 use actix_web::{get, web, HttpResponse, ResponseError};
-use deploy_api::get_all_deployments;
+use deploy_kube::get_all_deployments;
 use k8s_rs_pb::api::apps::v1::DeploymentList;
 use kube::Client;
 use protobuf::Message;
 
-mod deploy_api;
+mod deploy_kube;
 
 #[get("/deployments")]
 async fn get_all_deploys(kube_state: web::Data<Client>) -> HttpResponse {

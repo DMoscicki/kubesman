@@ -1,10 +1,10 @@
 use actix_web::{get, web::{self}, HttpResponse, Responder, ResponseError, Result};
 use k8s_rs_pb::api::core::v1::PodList;
 use kube::Client;
-use pod_api::{get_all_pods, get_pods_by_namespace};
+use pod_kube::{get_all_pods, get_pods_by_namespace};
 use protobuf::Message;
 
-mod pod_api;
+mod pod_kube;
 
 #[get("/pods")]
 async fn get_pods(kube_state: web::Data<Client>) -> HttpResponse {

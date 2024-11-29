@@ -1,10 +1,10 @@
 use actix_web::{get, web, HttpResponse, ResponseError};
-use configmaps::get_all_configmaps;
 use k8s_rs_pb::api::core::v1::ConfigMapList;
 use kube::Client;
+use kube_configmaps::get_all_configmaps;
 use protobuf::Message;
 
-mod configmaps;
+mod kube_configmaps;
 
 #[get("/configmaps")]
 pub async fn get_configmaps(kube_state: web::Data<Client>) -> HttpResponse {

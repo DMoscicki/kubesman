@@ -2,9 +2,9 @@ use actix_web::{get, web, HttpResponse, ResponseError};
 use k8s_rs_pb::api::core::v1::SecretList;
 use kube::Client;
 use protobuf::Message;
-use secrets::get_all_secrets;
+use secrets_kube::get_all_secrets;
 
-mod secrets;
+mod secrets_kube;
 
 #[get("/secrets")]
 pub async fn get_secrets(kube_state: web::Data<Client>) -> HttpResponse {
