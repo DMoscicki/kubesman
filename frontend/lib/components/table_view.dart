@@ -62,30 +62,34 @@ class PodsTableState extends State<PodsTable> {
               // // Need metrics support on backend
               // // DataColumn(label: Text("Memory")),
               // // DataColumn(label: Text("CPU")),
-              DataColumn(label: Text("Created Date"))
+              DataColumn(label: Text("Created Date")),
+              DataColumn(label: Text(""))
             ],
             rows: pdlist
-                .map((element) => DataRow(
-                        onLongPress: () => {
-                              _dialogBuilder(context, 'Pod', element.toString())
-                            },
-                        cells: [
-                          DataCell(
-                            Text(element.metadata.name),
-                          ),
-                          DataCell(Text(element.metadata.namespace)),
-                          DataCell(Text(element.status.phase)),
-                          DataCell(Text(element
-                              .status.containerStatuses.first.restartCount
-                              .toString())),
-                          // DataCell(Text(item.metadata.ownerReferences.first.name)),
-                          DataCell(Text(DateTime.fromMillisecondsSinceEpoch(
-                                  element.metadata.creationTimestamp.seconds
-                                          .toInt() *
-                                      1000,
-                                  isUtc: false)
-                              .toIso8601String()))
-                        ]))
+                .map((element) => DataRow(cells: [
+                      DataCell(
+                        Text(element.metadata.name),
+                      ),
+                      DataCell(Text(element.metadata.namespace)),
+                      DataCell(Text(element.status.phase)),
+                      DataCell(Text(element
+                          .status.containerStatuses.first.restartCount
+                          .toString())),
+                      // DataCell(Text(item.metadata.ownerReferences.first.name)),
+                      DataCell(Text(DateTime.fromMillisecondsSinceEpoch(
+                              element.metadata.creationTimestamp.seconds
+                                      .toInt() *
+                                  1000,
+                              isUtc: false)
+                          .toIso8601String())),
+                      DataCell(IconButton(
+                          onPressed: () => {
+                                _dialogBuilder(
+                                    context, 'Pod', element.toString())
+                              },
+                          icon: Icon(Icons.info,
+                              color: Theme.of(context).colorScheme.secondary)))
+                    ]))
                 .toList())
       ],
     );

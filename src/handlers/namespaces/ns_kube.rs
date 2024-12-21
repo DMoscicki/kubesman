@@ -6,9 +6,7 @@ use kube::{api::{ObjectList, PostParams}, Api, Client};
 pub async fn get_all_namespaces(client: &Client) -> ObjectList<Namespace> {
     let namespace_api: Api<Namespace> = Api::all(client.clone());
 
-    let ns_list = namespace_api.list(&Default::default()).await.unwrap();
-
-    ns_list
+    namespace_api.list(&Default::default()).await.unwrap()
 }
 
 pub async fn create_ns(client: &Client, ns: &String) -> bool {
@@ -25,8 +23,6 @@ pub async fn create_ns(client: &Client, ns: &String) -> bool {
     new_ns.metadata.labels = Some(label);
 
     let result = res.create(&pp, &new_ns).await;
-    match result {
-        Ok(_) => return true,
-        Err(_) => return false,
-    }
+
+    result.is_ok()
 }

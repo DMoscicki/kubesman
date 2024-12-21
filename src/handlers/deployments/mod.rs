@@ -16,10 +16,10 @@ async fn get_all_deploys(kube_state: web::Data<Client>) -> HttpResponse {
         Ok(dpl) => {
             match DeploymentList::write_to_bytes(&dpl) {
                 Ok(dplst) => {
-                    return HttpResponse::Ok().content_type("application/protobuf").body(dplst)
+                    HttpResponse::Ok().content_type("application/protobuf").body(dplst)
                 },
                 Err(err) => {
-                    return  HttpResponse::BadGateway().body(err.to_string());
+                    HttpResponse::BadGateway().body(err.to_string())
                 },
             }
         },

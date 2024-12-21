@@ -83,4 +83,5 @@ re_run_container:
 	podman restart "$(cat container_id.txt)"
 
 frontend-web:
+	cp -rf dev.env ./frontend
 	cd frontend; flutter run -d chrome --web-port 9000

@@ -17,8 +17,6 @@ WORKDIR /
 COPY --from=builder kubesman_server/target/release/kubesman_server /kubesman_server
 COPY --from=builder  /kubesman_server/dev.env /
 
-# RUN apt-get update -y && apt-get upgrade -y && apt install -y openssl ca-certificates
-
 ENV DEV=true
 
 EXPOSE 8080

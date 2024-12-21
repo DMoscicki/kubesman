@@ -3,9 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/model/menu.dart';
 import 'package:frontend/services/secure_storage.dart';
-import 'package:frontend/themes/themes.dart';
-import 'package:frontend/themes/themes.provider.dart';
-import 'package:provider/provider.dart';
 
 class MainDrawer extends StatefulWidget {
   final String userName;
@@ -46,8 +43,6 @@ class MainDrawerState extends State<MainDrawer> {
                   style:
                       TextStyle(color: Theme.of(context).colorScheme.surface)),
               currentAccountPicture: SvgPicture.network(widget.avatarLink)),
-          HomeMenu(),
-          OperatorsMenu(),
           Workloads(),
           Networking(),
           UserManagement(),
