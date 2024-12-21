@@ -1,5 +1,4 @@
 use std::{io::Result, process};
-use kubesman;
 
 // TODO: Mb add config?
 #[actix_web::main]

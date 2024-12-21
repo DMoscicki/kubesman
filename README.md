@@ -1,3 +1,5 @@
+![Alt text](img/img_rdm.png)
+
 ## It's not ready yet
 
 ### Build Dependencies
