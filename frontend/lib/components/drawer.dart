@@ -24,6 +24,7 @@ class MainDrawerState extends State<MainDrawer> {
     await data.casdoor
         .tokenLogout(data.token.accessToken, '', 'logout', clearCache: false);
     await secureStorage.deleteToken();
+    data.token.accessToken = "";
     setState(() {});
   }
 
@@ -48,7 +49,7 @@ class MainDrawerState extends State<MainDrawer> {
           UserManagement(),
           Divider(),
           IconButton(
-              onPressed: () {
+              onPressed: () async {
                 logout();
                 Navigator.of(context).pop();
                 setState(() {});

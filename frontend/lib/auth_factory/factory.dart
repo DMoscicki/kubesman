@@ -1,7 +1,7 @@
 import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
 
 class Token {
-  final String accessToken;
+  String accessToken;
   final String refreshToken;
 
   // final int expires_in;
