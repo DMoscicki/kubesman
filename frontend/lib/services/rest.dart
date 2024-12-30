@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/auth_factory/factory.dart';
+import 'package:frontend/auth_factory/fbs/access_access_generated.dart';
+import 'package:frontend/auth_factory/fbs/refresh_refresh_generated.dart';
 import 'package:frontend/services/secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -23,6 +27,64 @@ mixin RequestMixin {
 
     if (response.statusCode == 200 && response.body.isNotEmpty) {
       await secureStorage.saveToken(response.body);
+      await secureStorage.loadToken();
+      return true;
+    } else {
+      await secureStorage.deleteToken();
+      return false;
+    }
+  }
+
+  static Future<http.Response> getOauthToken(String code) async {
+    var response = await http.post(
+      Uri(
+        scheme: data.casdoor.parseScheme(),
+        host: data.casdoor.parseHost(),
+        port: 8080,
+        path: "api/get_oauth",
+        queryParameters: {'code': code},
+      ),
+    );
+
+    return response;
+
+    // if (response.statusCode == 200 && response.body.isNotEmpty) {
+    //   final tokenString = response.body;
+    //   await secureStorage.saveFlatToken(tokenString);
+    //   await secureStorage.loadTokenFlat();
+
+    //   return true;
+    // }
+
+    // return false;
+  }
+
+  static Future<bool> refreshTokenFlat() async {
+    var refreshBody = RefreshResponseObjectBuilder(
+        grantType: 'refresh_token',
+        refreshToken: data.token.refreshToken,
+        scope: 'read',
+        clientId: utf8.encode(dotenv.get('CASDOOR_CLIENT_ID')),
+        clientSecret: utf8.encode(dotenv.get('CASDOOR_CLIENT_SECRET')));
+
+    var refreshBuffer = refreshBody.toBytes();
+
+    final response = await http.post(
+        Uri(
+          scheme: data.casdoor.parseScheme(),
+          host: data.casdoor.parseHost(),
+          port: 8080,
+          path: "api/refresh_token",
+        ),
+        headers: {"Authorization": 'Bearer ${data.token.accessToken}'},
+        body: refreshBuffer);
+
+    if (response.statusCode == 200 && response.body.isNotEmpty) {
+      var auc = AccessResponse(response.bodyBytes);
+      var newTk =
+          TokenBearer(auc.accessToken!, auc.refreshToken!, auc.tokenType!);
+
+      await secureStorage.saveToken(json.encode(newTk));
       await secureStorage.loadToken();
       return true;
     } else {

@@ -1,0 +1,11 @@
+namespace Refresh;
+
+table RefreshResponse {
+    grant_type:string;
+    refresh_token:string;
+    scope:string;
+    client_id:[ubyte];
+    client_secret:[ubyte];
+}
+
+root_type RefreshResponse;

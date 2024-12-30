@@ -41,13 +41,14 @@ dependencies:
   flutter_svg: ^2.0.14
   protobuf: ^3.1.0
   http: ^1.2.2
-  casdoor_flutter_sdk: ^1.6.0
+  casdoor_flutter_sdk: ^1.7.0
   flutter_dotenv: ^5.2.1
   flutter_secure_storage: ^9.2.2
   jwt_decoder: ^2.0.1
   desktop_webview_window: ^0.2.3
-  flutter_inappwebview: ^6.1.5
   rive: ^0.13.20
+  flat_buffers: ^23.5.26
+  logger: ^2.5.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,4 @@
-#-------------------------Inspired by kube-rs/k8s-pb------------------------------
+#-------------------------Inspired by kube_handlers-rs/k8s-pb------------------------------
 
 default:
   @just --list
@@ -80,8 +80,12 @@ dev_casdoor:
 	docker run -p 8000:8000 -d casbin/casdoor-all-in-one:latest >> ./container_id.txt
 
 re_run_container:
-	podman restart "$(cat container_id.txt)"
+	docker restart "$(cat container_id.txt)"
 
 frontend-web:
 	cp -rf dev.env ./frontend
 	cd frontend; flutter run -d chrome --web-port 9000
+
+generate_token_models:
+	fd -e fbs fbs -x flatc --rust -o src/tokens {};
+	fd -e fbs fbs -x flatc --dart -o frontend/lib/auth_factory/fbs {};

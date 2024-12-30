@@ -1,22 +1,12 @@
-import 'dart:async';
-import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:frontend/auth_factory/factory.dart';
-import 'package:frontend/auth_factory/macos_auth.dart';
 import 'package:frontend/components/drawer.dart';
 import 'package:frontend/components/login_page.dart';
 import 'package:frontend/services/secure_storage.dart';
 import 'package:frontend/themes/themes.dart';
 import 'package:frontend/themes/themes.provider.dart';
 import 'package:provider/provider.dart';
-import 'package:rive/rive.dart';
-
-WebViewEnvironment? webViewEnvironment;
-
-const List<String> list = <String>['One', 'Two', 'Three', 'Logout'];
 
 class EntryPage extends StatefulWidget {
   const EntryPage({super.key});
@@ -68,11 +58,11 @@ class _EntryPageState extends State<EntryPage>
         extendBody: true,
         resizeToAvoidBottomInset: false,
         backgroundColor: Theme.of(context).colorScheme.surface,
-        drawer: FutureBuilder<Token>(
+        drawer: FutureBuilder<TokenBearer>(
             future: secureStorage.loadToken(),
             builder: (
               BuildContext context,
-              AsyncSnapshot<Token> snapshot,
+              AsyncSnapshot<TokenBearer> snapshot,
             ) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return SizedBox.shrink();
@@ -98,11 +88,11 @@ class _EntryPageState extends State<EntryPage>
                 return SizedBox.shrink();
               }
             }),
-        body: FutureBuilder<Token>(
+        body: FutureBuilder<TokenBearer>(
           future: secureStorage.loadToken(),
           builder: (
             BuildContext context,
-            AsyncSnapshot<Token> snapshot,
+            AsyncSnapshot<TokenBearer> snapshot,
           ) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const SizedBox.shrink();

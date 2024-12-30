@@ -8,7 +8,7 @@ import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -45,8 +45,7 @@ class _LoginPageState extends State<LoginPage> {
     final response = await data.casdoor.requestOauthAccessToken(code);
 
     if (response.statusCode == 200 && response.body.isNotEmpty) {
-      final tokenString = response.body;
-      await secureStorage.saveToken(tokenString);
+      await secureStorage.saveToken(response.body);
       await secureStorage.loadToken();
     }
 
@@ -97,12 +96,6 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 child: Text("Login")),
           )
-          // TextButton(
-          //     onPressed: () async {
-          //       authenticated(context);
-          //       setState(() {});
-          //     },
-          //     child: const Text("Login"))
         ],
       ),
     );

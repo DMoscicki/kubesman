@@ -1,8 +1,8 @@
 use std::env;
 use actix_web::{http, middleware::Logger, web::{self}, App, HttpServer};
 use actix_files as fs;
-use auth::validator;
-use handlers::{configmaps, deployments, pods, secrets, statefulsets};
+use middleware::validator;
+use handlers::kube_handlers::{configmaps, deployments, pods, secrets, statefulsets};
 use log::info;
 use kube::{Client, Config, Error};
 use actix_cors::Cors;
@@ -10,31 +10,8 @@ use casdoor_rs_sdk::{self, Config as CasdorConfig, AuthSdk};
 use actix_web_httpauth::middleware::HttpAuthentication;
 
 mod handlers;
-mod auth;
-
-fn init_casdoor() -> AuthSdk {
-    dotenvy::from_path("./dev.env").unwrap();
-
-    let app = CasdorConfig::from_toml("./casdoor.dev.toml").unwrap();
-    app.into_sdk().authn()
-}
-
-pub async fn kube_client() -> Result<Client, Error> {
-
-    let config = Config::infer().await.unwrap();
-
-    Client::try_from(config)
-}
-
-fn cors_project() -> Cors {
-    Cors::default()
-        .max_age(3600)
-        .allowed_methods(vec!["GET", "POST", "OPTIONS"])
-        .allowed_header(http::header::ACCESS_CONTROL_ALLOW_ORIGIN)
-        .allow_any_origin()
-        .supports_credentials()
-        .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
-}
+mod middleware;
+mod tokens;
 
 pub async fn run_backend(client: Client) -> std::io::Result<()> {
     env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
@@ -69,6 +46,7 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
             .service(statefulsets::get_all_deploys)
             .service(secrets::get_secrets)
             .service(configmaps::get_configmaps)
+            .service(handlers::casdoor::refresh_token)
             .app_data(web::Data::new(client.clone()))
             .app_data(web::Data::new(auth_sdk))
             .wrap(auth)
@@ -89,6 +67,7 @@ async fn serve_build(client: Client) -> std::io::Result<()> {
             .service(pods::get_pods)
             .service(pods::get_pods_by_ns)
             .service(deployments::get_all_deploys)
+            .service(handlers::casdoor::refresh_token)
             .app_data(web::Data::new(client.clone()))
             .app_data(auth_sdk)
             .wrap(auth)
@@ -114,6 +93,7 @@ async fn production_mod(client: Client) -> std::io::Result<()> {
             .service(pods::get_pods_by_ns)
             .service(pods::get_pods_by_ns)
             .service(deployments::get_all_deploys)
+            .service(handlers::casdoor::refresh_token)
             .app_data(web::Data::new(client.clone()))
             .app_data(web::Data::new(auth_sdk))
             .wrap(auth)
@@ -123,4 +103,28 @@ async fn production_mod(client: Client) -> std::io::Result<()> {
     .bind(("0.0.0.0", port))?
     .run()
     .await
+}
+
+fn init_casdoor() -> AuthSdk {
+    dotenvy::from_path("./dev.env").unwrap();
+
+    let app = CasdorConfig::from_toml("./casdoor.dev.toml").unwrap();
+    app.into_sdk().authn()
+}
+
+pub async fn kube_client() -> Result<Client, Error> {
+
+    let config = Config::infer().await.unwrap();
+
+    Client::try_from(config)
+}
+
+fn cors_project() -> Cors {
+    Cors::default()
+        .max_age(3600)
+        .allowed_methods(vec!["GET", "POST", "OPTIONS"])
+        .allowed_header(http::header::ACCESS_CONTROL_ALLOW_ORIGIN)
+        .allow_any_origin()
+        .supports_credentials()
+        .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
 }
