@@ -1,15 +1,15 @@
 import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
 
-class Token {
+class TokenBearer {
   String accessToken;
-  final String refreshToken;
+  String refreshToken;
 
   // final int expires_in;
-  final String tokenType;
+  String tokenType;
 
-  Token(this.accessToken, this.refreshToken, this.tokenType);
+  TokenBearer(this.accessToken, this.refreshToken, this.tokenType);
 
-  Token.fromJson(Map<String, dynamic> json)
+  TokenBearer.fromJson(Map<String, dynamic> json)
       : accessToken = json['access_token'],
         refreshToken = json['refresh_token'],
         // expires_in = json['expires_in'],
@@ -31,7 +31,7 @@ class Data {
 
   String versions = '';
   // String authToken = '';
-  Token token = Token('', '', '');
+  TokenBearer token = TokenBearer('', '', '');
 
   // String userUuid = "";
 

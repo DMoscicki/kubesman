@@ -12,8 +12,8 @@ pub async fn validator(
         Some(token) => {
             let auth_sdk = req.app_data::<web::Data<AuthSdk>>().unwrap();
 
-            let bearer_token = auth_sdk.parse_jwt_token_rs512(token.token());
-        
+            let bearer_token = auth_sdk.parse_jwt_token(token.token());
+            
             match bearer_token {
                 Ok(tk) => {
                     info!("request from: {}", tk.user.display_name);
@@ -23,11 +23,10 @@ pub async fn validator(
                     error!("catch error: {}", e);
                     Err((error::ErrorUnauthorized("bad bearer"), req))
                 },
-            }   
+            } 
         },
         None => {
-            info!("none");
-            Err((error::ErrorBadRequest("no bearer header"), req))
+            Err((error::ErrorBadRequest("request is not valid"), req))
         },
     }
 }

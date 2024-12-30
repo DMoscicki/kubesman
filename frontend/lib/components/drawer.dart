@@ -1,7 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/model/menu.dart';
+import 'package:frontend/services/logger.dart';
+import 'package:frontend/services/rest.dart';
 import 'package:frontend/services/secure_storage.dart';
 
 class MainDrawer extends StatefulWidget {
@@ -24,7 +27,7 @@ class MainDrawerState extends State<MainDrawer> {
     await data.casdoor
         .tokenLogout(data.token.accessToken, '', 'logout', clearCache: false);
     await secureStorage.deleteToken();
-    data.token.accessToken = "";
+    // data.token!.accessToken! = null;
     setState(() {});
   }
 
@@ -48,6 +51,13 @@ class MainDrawerState extends State<MainDrawer> {
           Networking(),
           UserManagement(),
           Divider(),
+          TextButton(
+              onPressed: () async {
+                var res = await RequestMixin.refreshTokenFlat();
+                logger.t(res);
+                setState(() {});
+              },
+              child: Text("refresh")),
           IconButton(
               onPressed: () async {
                 logout();
