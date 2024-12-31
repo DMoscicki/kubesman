@@ -1,7 +1,8 @@
 use actix_web::{post, HttpResponse};
 use actix_web::web::{Bytes, Data};
-use casdoor_rs_sdk::{AuthSdk, BasicTokenType, SdkError, TokenResponse};
+use casdoor_rs_sdk::{AuthSdk, SdkError, TokenResponse};
 use flatbuffers::FlatBufferBuilder;
+use log::info;
 use crate::tokens::refresh_generated::refresh::root_as_refresh_response;
 use crate::tokens::access_generated::access::{AccessResponse, AccessResponseArgs, finish_access_response_buffer};
 
@@ -17,6 +18,7 @@ pub async fn refresh_token(bytes: Bytes, csd: Data<AuthSdk>) -> HttpResponse {
 
     match new_token {
         Ok(token_result) => {
+            info!("{:#?}", token_result);
             let mut byter: Vec<u8> = Vec::new();
     
             make_access_token(builder, &mut byter, token_result).await;
@@ -65,7 +67,6 @@ async fn update_token(auth_sdk: &AuthSdk, tk: &[u8]) -> Result<impl TokenRespons
         Ok(result) => Ok(result),
         Err(err) => Err(err),
     }
-        // 
 }
 
 async fn make_access_token(
