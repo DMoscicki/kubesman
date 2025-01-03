@@ -36,9 +36,10 @@ impl<'a> flatbuffers::Follow<'a> for AccessResponse<'a> {
 impl<'a> AccessResponse<'a> {
   pub const VT_ACCESS_TOKEN: flatbuffers::VOffsetT = 4;
   pub const VT_EXPIRES_IN: flatbuffers::VOffsetT = 6;
-  pub const VT_REFRESH_TOKEN: flatbuffers::VOffsetT = 8;
-  pub const VT_SCOPE: flatbuffers::VOffsetT = 10;
-  pub const VT_TOKEN_TYPE: flatbuffers::VOffsetT = 12;
+  pub const VT_ID_TOKEN: flatbuffers::VOffsetT = 8;
+  pub const VT_REFRESH_TOKEN: flatbuffers::VOffsetT = 10;
+  pub const VT_SCOPE: flatbuffers::VOffsetT = 12;
+  pub const VT_TOKEN_TYPE: flatbuffers::VOffsetT = 14;
 
   #[inline]
   pub unsafe fn init_from_table(table: flatbuffers::Table<'a>) -> Self {
@@ -50,10 +51,11 @@ impl<'a> AccessResponse<'a> {
     args: &'args AccessResponseArgs<'args>
   ) -> flatbuffers::WIPOffset<AccessResponse<'bldr>> {
     let mut builder = AccessResponseBuilder::new(_fbb);
+    builder.add_expires_in(args.expires_in);
     if let Some(x) = args.token_type { builder.add_token_type(x); }
     if let Some(x) = args.scope { builder.add_scope(x); }
     if let Some(x) = args.refresh_token { builder.add_refresh_token(x); }
-    if let Some(x) = args.expires_in { builder.add_expires_in(x); }
+    if let Some(x) = args.id_token { builder.add_id_token(x); }
     if let Some(x) = args.access_token { builder.add_access_token(x); }
     builder.finish()
   }
@@ -67,11 +69,18 @@ impl<'a> AccessResponse<'a> {
     unsafe { self._tab.get::<flatbuffers::ForwardsUOffset<&str>>(AccessResponse::VT_ACCESS_TOKEN, None)}
   }
   #[inline]
-  pub fn expires_in(&self) -> Option<&'a str> {
+  pub fn expires_in(&self) -> u64 {
     // Safety:
     // Created from valid Table for this object
     // which contains a valid value in this slot
-    unsafe { self._tab.get::<flatbuffers::ForwardsUOffset<&str>>(AccessResponse::VT_EXPIRES_IN, None)}
+    unsafe { self._tab.get::<u64>(AccessResponse::VT_EXPIRES_IN, Some(0)).unwrap()}
+  }
+  #[inline]
+  pub fn id_token(&self) -> Option<&'a str> {
+    // Safety:
+    // Created from valid Table for this object
+    // which contains a valid value in this slot
+    unsafe { self._tab.get::<flatbuffers::ForwardsUOffset<&str>>(AccessResponse::VT_ID_TOKEN, None)}
   }
   #[inline]
   pub fn refresh_token(&self) -> Option<&'a str> {
@@ -104,7 +113,8 @@ impl flatbuffers::Verifiable for AccessResponse<'_> {
     use self::flatbuffers::Verifiable;
     v.visit_table(pos)?
      .visit_field::<flatbuffers::ForwardsUOffset<&str>>("access_token", Self::VT_ACCESS_TOKEN, false)?
-     .visit_field::<flatbuffers::ForwardsUOffset<&str>>("expires_in", Self::VT_EXPIRES_IN, false)?
+     .visit_field::<u64>("expires_in", Self::VT_EXPIRES_IN, false)?
+     .visit_field::<flatbuffers::ForwardsUOffset<&str>>("id_token", Self::VT_ID_TOKEN, false)?
      .visit_field::<flatbuffers::ForwardsUOffset<&str>>("refresh_token", Self::VT_REFRESH_TOKEN, false)?
      .visit_field::<flatbuffers::ForwardsUOffset<&str>>("scope", Self::VT_SCOPE, false)?
      .visit_field::<flatbuffers::ForwardsUOffset<&str>>("token_type", Self::VT_TOKEN_TYPE, false)?
@@ -114,7 +124,8 @@ impl flatbuffers::Verifiable for AccessResponse<'_> {
 }
 pub struct AccessResponseArgs<'a> {
     pub access_token: Option<flatbuffers::WIPOffset<&'a str>>,
-    pub expires_in: Option<flatbuffers::WIPOffset<&'a str>>,
+    pub expires_in: u64,
+    pub id_token: Option<flatbuffers::WIPOffset<&'a str>>,
     pub refresh_token: Option<flatbuffers::WIPOffset<&'a str>>,
     pub scope: Option<flatbuffers::WIPOffset<&'a str>>,
     pub token_type: Option<flatbuffers::WIPOffset<&'a str>>,
@@ -124,7 +135,8 @@ impl<'a> Default for AccessResponseArgs<'a> {
   fn default() -> Self {
     AccessResponseArgs {
       access_token: None,
-      expires_in: None,
+      expires_in: 0,
+      id_token: None,
       refresh_token: None,
       scope: None,
       token_type: None,
@@ -142,8 +154,12 @@ impl<'a: 'b, 'b, A: flatbuffers::Allocator + 'a> AccessResponseBuilder<'a, 'b, A
     self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(AccessResponse::VT_ACCESS_TOKEN, access_token);
   }
   #[inline]
-  pub fn add_expires_in(&mut self, expires_in: flatbuffers::WIPOffset<&'b  str>) {
-    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(AccessResponse::VT_EXPIRES_IN, expires_in);
+  pub fn add_expires_in(&mut self, expires_in: u64) {
+    self.fbb_.push_slot::<u64>(AccessResponse::VT_EXPIRES_IN, expires_in, 0);
+  }
+  #[inline]
+  pub fn add_id_token(&mut self, id_token: flatbuffers::WIPOffset<&'b  str>) {
+    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(AccessResponse::VT_ID_TOKEN, id_token);
   }
   #[inline]
   pub fn add_refresh_token(&mut self, refresh_token: flatbuffers::WIPOffset<&'b  str>) {
@@ -177,6 +193,7 @@ impl core::fmt::Debug for AccessResponse<'_> {
     let mut ds = f.debug_struct("AccessResponse");
       ds.field("access_token", &self.access_token());
       ds.field("expires_in", &self.expires_in());
+      ds.field("id_token", &self.id_token());
       ds.field("refresh_token", &self.refresh_token());
       ds.field("scope", &self.scope());
       ds.field("token_type", &self.token_type());

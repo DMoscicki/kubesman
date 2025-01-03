@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
 import 'package:flutter/foundation.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/auth_factory/macos_auth.dart';
+import 'package:frontend/services/logger.dart';
+import 'package:frontend/services/rest.dart';
 import 'package:frontend/services/secure_storage.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +22,9 @@ class _LoginPageState extends State<LoginPage> {
 
   Future authenticated(BuildContext ctx) async {
     String result = '';
+
+    var urler = await RequestMixin.request(
+        "get", Uri.parse("http://localhost:8080/api/get_signin_url"), {}, null);
 
     try {
       if (kIsWeb || kIsWasm) {
