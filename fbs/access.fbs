@@ -2,7 +2,8 @@ namespace Access;
 
 table AccessResponse {
     access_token:string;
-    expires_in:string;
+    expires_in:ulong;
+    id_token:string;
     refresh_token:string;
     scope:string;
     token_type:string;
