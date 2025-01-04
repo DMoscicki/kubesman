@@ -8,8 +8,6 @@ pub async fn validator(
     credentials: Option<BearerAuth>,
 ) -> Result<ServiceRequest, (Error, ServiceRequest)> {
 
-    info!("{}", req.path());
-
     match credentials {
         Some(token) => {
             let auth_sdk = req.app_data::<web::Data<AuthSdk>>().unwrap();
