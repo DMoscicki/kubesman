@@ -36,38 +36,38 @@ pub async fn refresh_token(bytes: Bytes, csd: Data<AuthSdk>) -> HttpResponse {
     }
 }
 
-#[get("/api/get_signin_url")]
-pub async fn get_signin_url(csd: Data<AuthSdk>) -> HttpResponse {
-    let signin_url = csd.get_signing_url();
-    HttpResponse::Ok().body(signin_url)
-}
+// #[get("/api/get_signin_url")]
+// pub async fn get_signin_url(csd: Data<AuthSdk>) -> HttpResponse {
+//     let signin_url = csd.get_signing_url("http://localhost:9000/callback.html".to_string());
+//     HttpResponse::Ok().body(signin_url)
+// }
 
-#[post("/api/get_oauth")]
-pub async fn get_oauth_token(code: web::Query<Code>, csd: Data<AuthSdk>) -> HttpResponse {
-    let builder = FlatBufferBuilder::new();
+// #[post("/api/get_oauth")]
+// pub async fn get_oauth_token(code: web::Query<Code>, csd: Data<AuthSdk>) -> HttpResponse {
+//     let builder = FlatBufferBuilder::new();
 
-    info!("{}", code.code);
+//     info!("{}", code.code);
 
-    let res = csd.get_oauth_token(code.code.as_str().to_string()).await;
+//     let res = csd.get_oauth_token(code.code.as_str().to_string()).await;
 
-    match res {
-        Ok(value) => {
-            let mut buf: Vec<u8> = Vec::new();
+//     match res {
+//         Ok(value) => {
+//             let mut buf: Vec<u8> = Vec::new();
 
-            make_access_token(builder, &mut buf, value).await;
+//             make_access_token(builder, &mut buf, value).await;
 
-            if !buf.is_empty() {
-                HttpResponse::Ok().body(buf)
-            } else {
-                HttpResponse::BadRequest().body(buf)
-            }
-        }
-        Err(e) => {
-            error!("{}", e.inner.to_string());
-            HttpResponse::BadRequest().body(e.inner.to_string())
-        }
-    }
-}
+//             if !buf.is_empty() {
+//                 HttpResponse::Ok().body(buf)
+//             } else {
+//                 HttpResponse::BadRequest().body(buf)
+//             }
+//         }
+//         Err(e) => {
+//             error!("{}", e.inner.to_string());
+//             HttpResponse::BadRequest().body(e.inner.to_string())
+//         }
+//     }
+// }
 
 async fn update_token(auth_sdk: &AuthSdk, tk: &[u8]) -> Result<CasdoorTokenResponse, SdkError> {
     let req = root_as_refresh_response(tk).unwrap();
