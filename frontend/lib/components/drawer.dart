@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/auth_factory/factory.dart';
@@ -24,11 +23,22 @@ class MainDrawer extends StatefulWidget {
 
 class MainDrawerState extends State<MainDrawer> {
   Future logout() async {
-    await data.casdoor
-        .tokenLogout(data.token.accessToken, '', 'logout', clearCache: false);
-    await secureStorage.deleteToken();
-    // data.token!.accessToken! = null;
-    setState(() {});
+    var response = await RequestMixin.request("post",
+        Uri.parse("http://localhost:8080/logout"), {}, data.token.idToken);
+
+    // await data.casdoor.tokenLogout();
+    // await data.casdoor
+    //     .tokenLogout(data.token.accessToken, '', 'logout', clearCache: false);
+    if (response.statusCode == 200) {
+      await secureStorage.deleteToken();
+      data.token.accessToken = "";
+      setState(() {});
+    } else {
+      await data.casdoor
+          .tokenLogout(data.token.idToken, "", "logout", clearCache: false);
+      await secureStorage.deleteToken();
+      setState(() {});
+    }
   }
 
   @override

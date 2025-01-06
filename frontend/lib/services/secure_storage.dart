@@ -26,6 +26,7 @@ class SecureStorageClass {
           "refresh_token": decoded["refresh_token"],
           // "expires_in": decoded["expires_in"],
           "token_type": decoded["token_type"],
+          "id_token": decoded["id_token"],
         });
 
         // final userInfo = JwtDecoder.decode(data.token.accessToken);
@@ -34,7 +35,7 @@ class SecureStorageClass {
     } catch (e) {
       // logger.e(e);
       logger.e("Load token", error: e);
-      return TokenBearer('', '', '');
+      return TokenBearer('', '', '', '');
     }
   }
 
@@ -48,6 +49,7 @@ class SecureStorageClass {
           'refresh_token': decoded['refresh_token'],
           // "expires_in": decoded["expires_in"],
           'token_type': decoded['token_type'],
+          'id_token': decoded['id_token'],
         });
 
         // final userInfo = JwtDecoder.decode(data.token.accessToken);
@@ -56,7 +58,7 @@ class SecureStorageClass {
     } catch (e) {
       // logger.e(e);
       logger.t("error loadToken", error: e);
-      return TokenBearer("", "", "");
+      return TokenBearer("", "", "", "");
     }
   }
 
@@ -70,7 +72,7 @@ class SecureStorageClass {
   }
 
   Future<void> deleteToken() async {
-    data.token = TokenBearer("", "", "");
+    data.token = TokenBearer("", "", "", "");
     // data.userUuid = "";
     await secureStorage.storage.deleteAll();
   }

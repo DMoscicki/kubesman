@@ -35,30 +35,6 @@ mixin RequestMixin {
     }
   }
 
-  static Future<http.Response> getOauthToken(String code) async {
-    var response = await http.post(
-      Uri(
-        scheme: data.casdoor.parseScheme(),
-        host: data.casdoor.parseHost(),
-        port: 8080,
-        path: "api/get_oauth",
-        queryParameters: {'code': code},
-      ),
-    );
-
-    return response;
-
-    // if (response.statusCode == 200 && response.body.isNotEmpty) {
-    //   final tokenString = response.body;
-    //   await secureStorage.saveFlatToken(tokenString);
-    //   await secureStorage.loadTokenFlat();
-
-    //   return true;
-    // }
-
-    // return false;
-  }
-
   static Future<bool> refreshTokenFlat() async {
     var refreshBody = RefreshResponseObjectBuilder(
         grantType: 'refresh_token',
@@ -81,8 +57,8 @@ mixin RequestMixin {
 
     if (response.statusCode == 200 && response.body.isNotEmpty) {
       var auc = AccessResponse(response.bodyBytes);
-      var newTk =
-          TokenBearer(auc.accessToken!, auc.refreshToken!, auc.tokenType!);
+      var newTk = TokenBearer(
+          auc.accessToken!, auc.refreshToken!, auc.tokenType!, auc.idToken!);
 
       await secureStorage.saveToken(json.encode(newTk));
       await secureStorage.loadToken();
