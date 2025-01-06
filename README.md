@@ -1,5 +1,7 @@
 ![Alt text](img/img_rdm.png)
 
+### This image generated with [Kandinsky](https://fusionbrain.ai/)
+
 ## It's not ready yet
 
 ### Build Dependencies
@@ -10,6 +12,7 @@
 - [sd](https://github.com/chmln/sd)
 - [dart protoc_plugin](https://pub.dev/packages/protoc_plugin)
 - [rust](https://www.rust-lang.org/)
+- [flatbuffers](https://flatbuffers.dev/)
 
 ## Build Process
 The code generation process just in 1 step;

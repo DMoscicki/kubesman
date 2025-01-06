@@ -2,17 +2,17 @@ use crate::tokens::access_generated::access::{
     finish_access_response_buffer, AccessResponse, AccessResponseArgs,
 };
 use crate::tokens::refresh_generated::refresh::root_as_refresh_response;
-use actix_web::web::{self, Bytes, Data};
-use actix_web::{get, post, HttpResponse};
+use actix_web::http::StatusCode;
+use actix_web::web::{Bytes, Data};
+use actix_web::{post, HttpResponse, HttpResponseBuilder};
 use casdoor_rs_sdk::{AuthSdk, CasdoorTokenResponse, SdkError, TokenResponse};
 use flatbuffers::FlatBufferBuilder;
-use log::{error, info};
-use serde::Deserialize;
+use log::info;
 
-#[derive(Debug, Deserialize)]
-struct Code {
-    code: String,
-}
+// #[derive(Debug, Deserialize)]
+// struct Code {
+//     code: String,
+// }
 
 #[post("/api/refresh_token")]
 pub async fn refresh_token(bytes: Bytes, csd: Data<AuthSdk>) -> HttpResponse {
@@ -33,6 +33,22 @@ pub async fn refresh_token(bytes: Bytes, csd: Data<AuthSdk>) -> HttpResponse {
             }
         }
         Err(e) => HttpResponse::BadRequest().body(e.inner.to_string()),
+    }
+}
+
+#[post("/logout")]
+pub async fn logout(csd: Data<AuthSdk>, bytes: Bytes) -> HttpResponse {
+    let b = String::from_utf8(bytes.to_vec()).unwrap();
+
+    let res = csd
+        .logout(b.as_str(), "", "logout")
+        .await;
+
+    match res {
+        Ok(msg) => HttpResponse::Ok().body(msg),
+        Err(e) => {
+            HttpResponseBuilder::new(StatusCode::from_u16(e.code.as_u16()).unwrap()).body(e.inner.to_string())
+        },
     }
 }
 

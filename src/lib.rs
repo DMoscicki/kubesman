@@ -1,13 +1,18 @@
-use std::env;
-use actix_web::{http, middleware::Logger, web::{self}, App, HttpServer};
-use actix_files as fs;
-use middleware::validator;
-use handlers::kube_handlers::{configmaps, deployments, pods, secrets, statefulsets};
-use log::info;
-use kube::{Client, Config, Error};
 use actix_cors::Cors;
-use casdoor_rs_sdk::{self, Config as CasdorConfig, AuthSdk};
+use actix_files as fs;
+use actix_web::{
+    http,
+    middleware::Logger,
+    web::{self},
+    App, HttpServer,
+};
 use actix_web_httpauth::middleware::HttpAuthentication;
+use casdoor_rs_sdk::{self, AuthSdk, Config as CasdorConfig};
+use handlers::kube_handlers::{configmaps, deployments, pods, secrets, statefulsets};
+use kube::{Client, Config, Error};
+use log::info;
+use middleware::validator;
+use std::env;
 
 mod handlers;
 mod middleware;
@@ -25,11 +30,11 @@ pub async fn run_backend(client: Client) -> std::io::Result<()> {
                 info!("Serve builed front");
                 serve_build(client).await
             }
-        },
+        }
         Err(_) => {
             info!("Production mode");
             production_mod(client).await
-        },
+        }
     }
 }
 
@@ -47,12 +52,13 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
             .service(secrets::get_secrets)
             .service(configmaps::get_configmaps)
             .service(handlers::casdoor::refresh_token)
-            .service(handlers::casdoor::get_signin_url)
+            .service(handlers::casdoor::logout)
+            // .service(handlers::casdoor::get_signin_url)
             .app_data(web::Data::new(client.clone()))
             .app_data(web::Data::new(auth_sdk))
             .wrap(auth)
             .wrap(cors_project())
-            // .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/web/").index_file("index.html"))
+        // .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/web/").index_file("index.html"))
     })
     .bind(("0.0.0.0", 8080))?
     .run()
@@ -69,12 +75,13 @@ async fn serve_build(client: Client) -> std::io::Result<()> {
             .service(pods::get_pods_by_ns)
             .service(deployments::get_all_deploys)
             .service(handlers::casdoor::refresh_token)
-            .service(handlers::casdoor::get_oauth_token)
+            .service(handlers::casdoor::logout)
             .app_data(web::Data::new(client.clone()))
             .app_data(auth_sdk)
             .wrap(auth)
             .wrap(cors_project())
-            .wrap(Logger::default()).service(fs::Files::new("/", "./frontend/build/web/").index_file("index.html"))
+            .wrap(Logger::default())
+            .service(fs::Files::new("/", "./frontend/build/web/").index_file("index.html"))
     })
     .bind(("127.0.0.1", 8080))?
     .run()
@@ -115,7 +122,6 @@ fn init_casdoor() -> AuthSdk {
 }
 
 pub async fn kube_client() -> Result<Client, Error> {
-
     let config = Config::infer().await.unwrap();
 
     Client::try_from(config)
