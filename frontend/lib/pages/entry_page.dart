@@ -72,7 +72,7 @@ class _EntryPageState extends State<EntryPage>
                 } else if (snapshot.hasData) {
                   if (data.token.accessToken.isNotEmpty) {
                     Map<String, dynamic> userInfo =
-                        data.casdoor.decodedToken(data.token.accessToken);
+                        data.casdoor!.decodedToken(data.token.accessToken);
 
                     return MainDrawer(
                         userName: userInfo["name"],

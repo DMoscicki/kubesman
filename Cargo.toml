@@ -2,6 +2,8 @@
 name = "kubesman"
 version = "0.1.0"
 edition = "2021"
+license = "Apache-2.0"
+readme = "README.md"
 authors = ["DMoscicki <dimulgator@outlook.com>"]
 
 [[bin]]
@@ -19,7 +21,7 @@ k8s-openapi = { version = "0.24.0", features = ["latest"] }
 protobuf = "3.7.1"
 actix-cors = "0.7.0"
 actix-web-httpauth = "0.8.2"
-casdoor-rs-sdk = { git = "https://github.com/DMoscicki/casdoor-rs-sdk.git", branch = "feature/improvements"}
+casdoor-sdk-rust = "1.0.2"
 dotenvy = "0.15.7"
 flatbuffers = "24.12.23"
 serde = "1.0.217"

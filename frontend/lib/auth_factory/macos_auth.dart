@@ -31,7 +31,7 @@ Future<String> MacOSAuthCasdoor(String url) async {
 
   browser.setOnShouldOverrideUrlLoadingCallback((returnUrl) async {
     if (returnUrl != null) {
-      if (returnUrl.scheme == data.casdoor.config.callbackUrlScheme) {
+      if (returnUrl.scheme == data.casdoor!.config.callbackUrlScheme) {
         isFinished.complete(returnUrl.toString());
         browser.close();
         return NavigationActionPolicy.CANCEL;

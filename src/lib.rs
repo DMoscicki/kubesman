@@ -7,7 +7,7 @@ use actix_web::{
     App, HttpServer,
 };
 use actix_web_httpauth::middleware::HttpAuthentication;
-use casdoor_rs_sdk::{self, AuthSdk, Config as CasdorConfig};
+use casdoor_sdk_rust::{self, AuthSdk, Config as CasdorConfig};
 use handlers::kube_handlers::{configmaps, deployments, pods, secrets, statefulsets};
 use kube::{Client, Config, Error};
 use log::info;
