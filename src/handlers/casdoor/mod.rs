@@ -5,9 +5,8 @@ use crate::tokens::refresh_generated::refresh::root_as_refresh_response;
 use actix_web::http::StatusCode;
 use actix_web::web::{Bytes, Data};
 use actix_web::{post, HttpResponse, HttpResponseBuilder};
-use casdoor_rs_sdk::{AuthSdk, CasdoorTokenResponse, SdkError, TokenResponse};
+use casdoor_sdk_rust::{AuthSdk, CasdoorTokenResponse, SdkError, TokenResponse};
 use flatbuffers::FlatBufferBuilder;
-use log::info;
 
 // #[derive(Debug, Deserialize)]
 // struct Code {
@@ -21,7 +20,6 @@ pub async fn refresh_token(bytes: Bytes, csd: Data<AuthSdk>) -> HttpResponse {
 
     match new_token {
         Ok(token_result) => {
-            info!("{:?}", token_result);
             let mut byter: Vec<u8> = Vec::new();
 
             make_access_token(builder, &mut byter, token_result).await;
@@ -40,15 +38,12 @@ pub async fn refresh_token(bytes: Bytes, csd: Data<AuthSdk>) -> HttpResponse {
 pub async fn logout(csd: Data<AuthSdk>, bytes: Bytes) -> HttpResponse {
     let b = String::from_utf8(bytes.to_vec()).unwrap();
 
-    let res = csd
-        .logout(b.as_str(), "", "logout")
-        .await;
+    let res = csd.logout(b.as_str(), "", "logout").await;
 
     match res {
         Ok(msg) => HttpResponse::Ok().body(msg),
-        Err(e) => {
-            HttpResponseBuilder::new(StatusCode::from_u16(e.code.as_u16()).unwrap()).body(e.inner.to_string())
-        },
+        Err(e) => HttpResponseBuilder::new(StatusCode::from_u16(e.code.as_u16()).unwrap())
+            .body(e.inner.to_string()),
     }
 }
 

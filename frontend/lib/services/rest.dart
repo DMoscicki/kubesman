@@ -12,9 +12,9 @@ mixin RequestMixin {
   static Future<bool> refreshToken() async {
     final response = await http.post(
         Uri(
-          scheme: data.casdoor.parseScheme(),
-          host: data.casdoor.parseHost(),
-          port: data.casdoor.parsePort(),
+          scheme: data.casdoor!.parseScheme(),
+          host: data.casdoor!.parseHost(),
+          port: data.casdoor!.parsePort(),
           path: "api/login/oauth/refresh_token",
         ),
         body: {
@@ -47,8 +47,8 @@ mixin RequestMixin {
 
     final response = await http.post(
         Uri(
-          scheme: data.casdoor.parseScheme(),
-          host: data.casdoor.parseHost(),
+          scheme: data.casdoor!.parseScheme(),
+          host: data.casdoor!.parseHost(),
           port: 8080,
           path: "api/refresh_token",
         ),
@@ -89,11 +89,16 @@ mixin RequestMixin {
   static Future<http.Response> request(String method, Uri path,
       Map<String, String> headers, dynamic body) async {
     http.Response resp = await sendRequest(method, path, headers, body);
-    if (resp.statusCode == HttpStatus.unauthorized) {
+    if (resp.statusCode == HttpStatus.unauthorized && resp.body == "need refresh_token") {
       if (data.token.refreshToken != "") {
-        bool refrehed = await refreshToken();
-        if (refrehed) {
-          return sendRequest(method, path, headers, body);
+        for (var i = 0; i < 3; i++) {
+          bool refrehed = await refreshTokenFlat();
+          if (refrehed) {
+            return sendRequest(method, path, headers, body);
+          }
+          if (i == 2) {
+            break;
+          }
         }
       }
     } else if (resp.statusCode == HttpStatus.ok ||

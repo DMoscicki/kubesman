@@ -22,17 +22,17 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       if (kIsWeb || kIsWasm) {
-        result = await data.casdoor.show();
+        result = await data.casdoor!.show();
       } else {
         if (Platform.isMacOS) {
           if (!ctx.mounted) return;
-          var urler = data.casdoor.getSigninUrl();
+          var urler = data.casdoor!.getSigninUrl();
           result = await MacOSAuthCasdoor(urler.toString());
           setState(() {});
         }
         if (Platform.isIOS || Platform.isAndroid || Platform.isLinux) {
           if (!ctx.mounted) return;
-          result = await data.casdoor.showFullscreen(ctx);
+          result = await data.casdoor!.showFullscreen(ctx);
         }
       }
     } catch (e) {
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
 
     final code = Uri.parse(result).queryParameters['code'] ?? "";
 
-    final response = await data.casdoor.requestOauthAccessToken(code);
+    final response = await data.casdoor!.requestOauthAccessToken(code);
 
     if (response.statusCode == 200 && response.body.isNotEmpty) {
       await secureStorage.saveToken(response.body);

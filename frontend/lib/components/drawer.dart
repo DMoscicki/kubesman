@@ -34,7 +34,7 @@ class MainDrawerState extends State<MainDrawer> {
       data.token.accessToken = "";
       setState(() {});
     } else {
-      await data.casdoor
+      await data.casdoor!
           .tokenLogout(data.token.idToken, "", "logout", clearCache: false);
       await secureStorage.deleteToken();
       setState(() {});

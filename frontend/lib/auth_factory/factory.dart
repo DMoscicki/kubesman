@@ -31,7 +31,7 @@ class Data {
   static final Data _appData = Data._internal();
 
   Data._internal();
-  late final Casdoor casdoor;
+  Casdoor? casdoor;
 
   String versions = '';
   // String authToken = '';
