@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/auth_factory/fbs/access_access_generated.dart';
 import 'package:frontend/auth_factory/fbs/refresh_refresh_generated.dart';
+import 'package:frontend/services/logger.dart';
 import 'package:frontend/services/secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -89,16 +90,11 @@ mixin RequestMixin {
   static Future<http.Response> request(String method, Uri path,
       Map<String, String> headers, dynamic body) async {
     http.Response resp = await sendRequest(method, path, headers, body);
-    if (resp.statusCode == HttpStatus.unauthorized && resp.body == "need refresh_token") {
+    if (resp.statusCode == HttpStatus.unauthorized) {
       if (data.token.refreshToken != "") {
-        for (var i = 0; i < 3; i++) {
-          bool refrehed = await refreshTokenFlat();
-          if (refrehed) {
-            return sendRequest(method, path, headers, body);
-          }
-          if (i == 2) {
-            break;
-          }
+        bool refrehed = await refreshTokenFlat();
+        if (refrehed) {
+          return sendRequest(method, path, headers, body);
         }
       }
     } else if (resp.statusCode == HttpStatus.ok ||

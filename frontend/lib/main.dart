@@ -158,13 +158,13 @@ Future<Casdoor?> fillConfig() async {
   //
   // String server = dotenv.get('CASDOOR_ENDPOINT');
 
-  String server = '';
+  // String server = '';
 
-  if (!kIsWasm && !kIsWeb) {
-    if (Platform.isAndroid) {
-      server = server.replaceAll("localhost", "10.0.2.2");
-    }
-  }
+  // if (!kIsWasm && !kIsWeb) {
+  //   if (Platform.isAndroid) {
+  //     server = server.replaceAll("localhost", "10.0.2.2");
+  //   }
+  // }
 
   if (platform == "web") {
     await dotenv.load(fileName: "dev.env");
