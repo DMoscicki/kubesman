@@ -7,6 +7,10 @@ pub async fn validator(
     req: ServiceRequest,
     credentials: Option<BearerAuth>,
 ) -> Result<ServiceRequest, (Error, ServiceRequest)> {
+    if parse_query(&req) {
+        return Ok(req);
+    }
+
     match credentials {
         Some(token) => {
             let auth_sdk = req.app_data::<web::Data<AuthSdk>>().unwrap();
@@ -17,11 +21,17 @@ pub async fn validator(
                 Ok(tk) => {
                     info!("request from: {}", tk.user.display_name);
 
+                    info!("{:#?}", tk);
+
+                    info!("{}", token.token().to_string());
+
                     let flag = auth_sdk
                         .introspect_access_token(token.token().to_string())
                         .await
                         .unwrap();
-                    
+
+                    info!("flag {}", flag.active());
+
                     parse_flag(flag.active(), req)
                 }
                 Err(e) => {
@@ -35,6 +45,16 @@ pub async fn validator(
 
             Err((error::ErrorBadRequest("request is not valid"), req))
         }
+    }
+}
+
+fn parse_query(req: &ServiceRequest) -> bool {
+    info!("{}", req.path());
+    
+    if req.path().eq("/api/refresh_token") || req.path().eq("/api/logout") {
+        true
+    } else {
+        false
     }
 }
 
