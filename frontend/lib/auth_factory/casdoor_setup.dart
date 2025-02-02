@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:casdoor_flutter_sdk/casdoor_flutter_sdk.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/main.dart';
 import 'package:frontend/services/logger.dart';
