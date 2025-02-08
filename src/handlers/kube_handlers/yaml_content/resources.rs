@@ -1,4 +1,10 @@
-use kube::{api::{DynamicObject, GroupVersionKind, Patch, PatchParams}, Api, Client, Discovery};
+use k8s_openapi::api::core::v1::Pod;
+use k8s_openapi::Resource;
+use kube::{
+    api::{ApiResource, DynamicObject, GroupVersionKind, Patch, PatchParams},
+    Api, Client, Discovery,
+};
+use log::info;
 
 pub struct KubeObjectType {
     pub client: Client,
@@ -13,18 +19,36 @@ impl KubeObjectType {
     }
 
     pub async fn apply(&self) -> Result<(), kube::Error> {
-        if let Some((ar, _)) = Discovery::new(self.client.clone()).resolve_gvk(&GroupVersionKind::try_from(&self.content.types.clone().unwrap()).unwrap()) {
-            let api_cl: Api<DynamicObject> = Api::namespaced_with(self.client.clone(), &self.content.metadata.namespace.clone().unwrap(), &ar);
+        let mut plural = String::from(&self.content.types.clone().unwrap().kind.to_lowercase());
+        plural.push('s');
 
-            let res = api_cl.patch(&self.content.metadata.name.clone().unwrap().as_ref(), &PatchParams::apply("kubesman"), &Patch::Apply(&self.content.clone())).await;
 
-            match res {
-                Ok(_) => Ok(()),
-                Err(e) => Err(e),
-            }
-        } else {
-            let e = kube::Error::Discovery(kube::error::DiscoveryError::MissingResource("ApiResource".to_string()));
-            Err(e)
+        // TODO: Add Cluster Scope and namespace checking
+        let api_cl: Api<DynamicObject> = Api::namespaced_with(
+            self.client.clone(),
+            &self.content.metadata.namespace.clone().unwrap(),
+            &ApiResource {
+                group: "".to_string(),
+                api_version: self.content.types.clone().unwrap().api_version,
+                kind: self.content.types.clone().unwrap().kind,
+                version: self.content.types.clone().unwrap().api_version,
+                plural,
+            },
+        );
+
+        let res = api_cl
+            .patch(
+                &self.content.metadata.name.clone().unwrap().as_ref(),
+                &PatchParams::apply("kubesman"),
+                &Patch::Apply(&self.content),
+            )
+            .await;
+
+        info!("{:#?}", res);
+
+        match res {
+            Ok(_) => Ok(()),
+            Err(e) => Err(e),
         }
     }
 
@@ -32,5 +56,4 @@ impl KubeObjectType {
     //     let cl: Api<DynamicObject> = Api::namespaced_with(client, namespace, &self.content_type);
     //     Ok(())
     // }
-
 }

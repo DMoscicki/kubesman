@@ -53,6 +53,7 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
             .service(configmaps::get_configmaps)
             .service(handlers::casdoor::refresh_token)
             .service(handlers::casdoor::logout)
+            .service(handlers::kube_handlers::yaml_content::put_files)
             // .service(handlers::casdoor::get_signin_url)
             .app_data(web::Data::new(client.clone()))
             .app_data(web::Data::new(auth_sdk))
