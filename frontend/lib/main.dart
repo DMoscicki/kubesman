@@ -19,6 +19,7 @@ Future main() async {
   //
   // String server = dotenv.get('CASDOOR_ENDPOINT');
   //
+
   // if (!kIsWasm && !kIsWeb) {
   //   if (Platform.isAndroid) {
   //     server = server.replaceAll("localhost", "10.0.2.2");

@@ -49,6 +49,9 @@ dependencies:
   rive: ^0.13.20
   flat_buffers: ^23.5.26
   logger: ^2.5.0
+  flutter_code_editor: ^0.3.2
+  highlight: ^0.7.0
+  flutter_highlight: ^0.7.0
 
 dev_dependencies:
   flutter_test:
