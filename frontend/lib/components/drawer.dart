@@ -60,6 +60,7 @@ class MainDrawerState extends State<MainDrawer> {
           Workloads(),
           Networking(),
           UserManagement(),
+          ServiceManagement(),
           Divider(),
           TextButton(
               onPressed: () async {
