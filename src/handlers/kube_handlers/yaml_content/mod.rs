@@ -1,63 +1,27 @@
-use kube::{Api, Client, Resource};
-use std::io::Error;
+use actix_web::{
+    post,
+    web::{self, Bytes},
+    HttpResponse,
+};
+use kube::Client;
+use resources::KubeObjectType;
 
 mod resources;
-use resources::KubesmanResources;
 
-pub enum KubeObjectType<T: KubesmanResources> {
-    None,
-    Some(T),
-}
+#[post("/yaml/apply")]
+pub async fn put_files(
+    bytes: Bytes,
+    kube_state: web::Data<Client>,
+) -> HttpResponse {
 
-impl<T: KubesmanResources> KubeObjectType<T> {
-    pub fn new(content: T) -> Self {
-        KubeObjectType::Some(content)
+    if bytes.is_empty() {
+        return HttpResponse::BadRequest().body("empty body");
     }
 
-    pub fn apply(&self, client: Client) -> Result<(), Error>
-    where
-        <T as Resource>::DynamicType: Default,
-    {
-        let cl: Api<T> = Api::default_namespaced(client.clone());
-        Ok(())
-    }
+    let obj_kube = KubeObjectType::new(kube_state.get_ref().clone(), bytes.to_vec());
 
-    pub fn update(&self, client: Client) -> Result<(), Error>
-    where
-        <T as Resource>::DynamicType: Default,
-    {
-        let cl: Api<T> = Api::default_namespaced(client.clone());
-        Ok(())
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use k8s_openapi::api::core::v1::{ConfigMap, Pod};
-
-    use crate::handlers::kube_handlers::yaml_content::KubeObjectType;
-
-    #[test]
-    fn success_get_pod() {
-        let xx = KubeObjectType::new(Pod::default());
-        match xx {
-            KubeObjectType::Some(v) => {
-                println!("{:#?}", v)
-            }
-            KubeObjectType::None => {
-                panic!("erasd")
-            }
-        }
-    }
-
-    #[test]
-    fn success_get_configmap() {
-        let xx = KubeObjectType::new(ConfigMap::default());
-        match xx {
-            KubeObjectType::Some(x) => {
-                println!("{:#?}", x)
-            }
-            KubeObjectType::None => panic!("err"),
-        }
+    match obj_kube.apply().await {
+        Ok(_) => HttpResponse::Ok().body("ok"),
+        Err(e) => HttpResponse::BadRequest().body(e.to_string()),
     }
 }

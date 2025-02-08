@@ -9,6 +9,10 @@ import 'package:frontend/pages/workloads/pods.dart';
 import 'package:frontend/pages/workloads/secrets.dart';
 import 'package:frontend/pages/workloads/statefulsets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_code_editor/flutter_code_editor.dart';
+import 'package:highlight/languages/yaml.dart';
+import 'package:flutter_highlight/themes/monokai-sublime.dart';
+
 
 class HomeMenu extends StatefulWidget {
   const HomeMenu({super.key});
@@ -345,6 +349,88 @@ class UserManagement extends StatelessWidget {
                   fontSize: 14.0)),
         ),
       ],
+    );
+  }
+}
+
+class ServiceManagement extends StatelessWidget {
+  const ServiceManagement({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      title: Text("Service Management".toUpperCase(),
+          style: GoogleFonts.robotoMono(
+              color: Theme.of(context).colorScheme.secondary,
+              fontWeight: FontWeight.bold)),
+      showTrailingIcon: false,
+      children: [
+        ListTile(
+          title: Text("Update Cluster object",
+              style: GoogleFonts.robotoMono(
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14.0)),
+          onTap: () => {
+            if (!kIsWasm && !kIsWeb)
+              {
+                if (Platform.isAndroid)
+                  {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return YamlEditorScreen();
+                    }))
+                  }
+                else
+                  {
+                    Navigator.of(context)
+                        .push(CupertinoPageRoute(builder: (context) {
+                      return YamlEditorScreen();
+                    }))
+                  }
+              }
+            else
+              {
+                Navigator.of(context)
+                    .push(CupertinoPageRoute(builder: (context) {
+                  return YamlEditorScreen();
+                }))
+              }
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class YamlEditorScreen extends StatelessWidget {
+  final controller = CodeController(
+    language: yaml,
+    text: '''apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+''',
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CodeTheme(
+          data: CodeThemeData(styles: monokaiSublimeTheme),
+          child: CodeField(
+              readOnly: false,
+              controller: controller,
+              textStyle: TextStyle(fontFamily: 'monospace', fontSize: 14),
+              onChanged: (value) {
+                print("Updated YAML content:\n$value");
+              }))
     );
   }
 }
