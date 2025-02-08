@@ -4,16 +4,13 @@ use actix_web::{
     HttpResponse,
 };
 use kube::Client;
+use log::info;
 use resources::KubeObjectType;
 
 mod resources;
 
 #[post("/yaml/apply")]
-pub async fn put_files(
-    bytes: Bytes,
-    kube_state: web::Data<Client>,
-) -> HttpResponse {
-
+pub async fn put_files(bytes: Bytes, kube_state: web::Data<Client>) -> HttpResponse {    
     if bytes.is_empty() {
         return HttpResponse::BadRequest().body("empty body");
     }

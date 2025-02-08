@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,8 @@ import 'package:frontend/pages/workloads/deployments.dart';
 import 'package:frontend/pages/workloads/pods.dart';
 import 'package:frontend/pages/workloads/secrets.dart';
 import 'package:frontend/pages/workloads/statefulsets.dart';
+import 'package:frontend/services/logger.dart';
+import 'package:frontend/services/rest.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_code_editor/flutter_code_editor.dart';
 import 'package:highlight/languages/yaml.dart';
@@ -419,18 +422,39 @@ spec:
 ''',
   );
 
+  Future<void> _sendYamlToServer() async {
+    final yamlContent = controller.text;
+
+    logger.d(yamlContent);
+
+    final response = await RequestMixin.request("post", Uri.parse("http://localhost:8080/yaml/apply"), {}, utf8.encode(yamlContent));
+
+    logger.d(response.body);
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CodeTheme(
-          data: CodeThemeData(styles: monokaiSublimeTheme),
-          child: CodeField(
-              readOnly: false,
-              controller: controller,
-              textStyle: TextStyle(fontFamily: 'monospace', fontSize: 14),
-              onChanged: (value) {
-                print("Updated YAML content:\n$value");
-              }))
+      body: ListView(
+        children: [
+          CodeTheme(
+              data: CodeThemeData(styles: monokaiSublimeTheme),
+              child: CodeField(
+                  readOnly: false,
+                  controller: controller,
+                  textStyle: TextStyle(fontFamily: 'monospace', fontSize: 14),
+                  onChanged: (value) {
+                    print("Updated YAML content:\n$value");
+                  })),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: _sendYamlToServer, // Call the function when the button is pressed
+              child: Text('Send YAML as Bytes'),
+            ),
+          ),
+        ],)
     );
   }
 }
