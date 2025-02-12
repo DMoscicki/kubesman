@@ -55,6 +55,8 @@ async fn serve_dev(client: Client) -> std::io::Result<()> {
             .service(handlers::casdoor::logout)
             .service(handlers::kube_handlers::yaml_content::apply_yaml)
             .service(handlers::kube_handlers::yaml_content::update_yaml)
+            .service(handlers::kube_handlers::metrics::get_metrics_pod)
+            .service(handlers::kube_handlers::metrics::get_metrics_nodes)
             // .service(handlers::casdoor::get_signin_url)
             .app_data(web::Data::new(client.clone()))
             .app_data(web::Data::new(auth_sdk))

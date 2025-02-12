@@ -5,3 +5,4 @@ pub mod pods;
 pub mod secrets;
 pub mod statefulsets;
 pub mod yaml_content;
+pub mod metrics;
