@@ -4,7 +4,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/auth_factory/fbs/access_access_generated.dart';
 import 'package:frontend/auth_factory/fbs/refresh_refresh_generated.dart';
-import 'package:frontend/services/logger.dart';
 import 'package:frontend/services/secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
