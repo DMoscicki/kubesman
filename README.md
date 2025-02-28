@@ -18,4 +18,7 @@
 The code generation process just in 1 step;
 1. `just protos` - download k8s `.proto` and generate it to dart and rust files;
 
-## It's not tested on Windows
+## On Windows
+1. Install Clang compiler with Visual Studio Installer;
+2. Install openssl using command  `vcpkg install openssl:x64-windows-static`;
+3. Set `OPENSSL_DIR` env to your system (by default vcpkg install packages to folder `C:\PATH\vcpkg\packages`);

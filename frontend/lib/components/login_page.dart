@@ -29,8 +29,7 @@ class _LoginPageState extends State<LoginPage> {
           var urler = data.casdoor!.getSigninUrl();
           result = await MacOSAuthCasdoor(urler.toString());
           setState(() {});
-        }
-        if (Platform.isIOS || Platform.isAndroid || Platform.isLinux) {
+        } else {
           if (!ctx.mounted) return;
           result = await data.casdoor!.showFullscreen(ctx);
         }
