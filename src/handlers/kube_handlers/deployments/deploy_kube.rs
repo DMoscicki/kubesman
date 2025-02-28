@@ -3,7 +3,7 @@ use std::io;
 use k8s_openapi::api::apps::v1::Deployment;
 use k8s_rs_pb::api::apps::v1::DeploymentList;
 use kube::{Api, Client};
-use log::error;
+use tracing::error;
 
 
 pub async fn get_all_deployments(client: Client) -> Result<DeploymentList, io::Error>{

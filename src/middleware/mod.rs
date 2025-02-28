@@ -1,7 +1,7 @@
 use actix_web::{dev::ServiceRequest, error, web, Error};
 use actix_web_httpauth::extractors::bearer::BearerAuth;
 use casdoor_sdk_rust::{AuthSdk, TokenIntrospectionResponse};
-use log::{error, info};
+use tracing::{error, info};
 
 pub async fn validator(
     req: ServiceRequest,
