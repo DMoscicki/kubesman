@@ -3,7 +3,7 @@ use std::io;
 use k8s_openapi::api::core::v1::ConfigMap;
 use k8s_rs_pb::api::core::v1::ConfigMapList;
 use kube::{Api, Client};
-use log::error;
+use tracing::error;
 
 
 pub async fn get_all_configmaps(client: &Client) -> Result<ConfigMapList, io::Error> {
