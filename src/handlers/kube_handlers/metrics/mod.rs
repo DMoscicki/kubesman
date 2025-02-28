@@ -1,5 +1,5 @@
 use actix_web::{get, web, HttpResponse};
-use k8s_rs_pb::metrics::pkg::apis::metrics::v1beta1::{NodeMetrics, NodeMetricsList, PodMetricsList};
+use k8s_rs_pb::metrics::pkg::apis::metrics::v1beta1::{NodeMetricsList, PodMetricsList};
 use kube::Client;
 use protobuf::Message;
 
@@ -11,14 +11,14 @@ mod custom_api;
 pub async fn get_metrics_pod(kube_state: web::Data<Client>) -> HttpResponse {
     let res = pods::get_metrics(&kube_state).await;
 
-    log::info!("{:#?}", res);
+    tracing::info!("{:#?}", res);
 
     match res {
         Ok(val) => {
             match PodMetricsList::write_to_bytes(&val) {
                 Ok(buf) => HttpResponse::Ok().content_type("application/protobuf").body(buf),
                 Err(e) => {
-                    log::error!("{}", e.to_string());
+                    tracing::error!("{}", e.to_string());
                     HttpResponse::BadGateway().body(e.to_string())
                 },
             }
