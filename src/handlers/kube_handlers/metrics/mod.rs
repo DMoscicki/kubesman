@@ -11,8 +11,6 @@ mod custom_api;
 pub async fn get_metrics_pod(kube_state: web::Data<Client>) -> HttpResponse {
     let res = pods::get_metrics(&kube_state).await;
 
-    tracing::info!("{:#?}", res);
-
     match res {
         Ok(val) => {
             match PodMetricsList::write_to_bytes(&val) {

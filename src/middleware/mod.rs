@@ -18,12 +18,8 @@ pub async fn validator(
             let bearer_token = auth_sdk.parse_jwt_token(token.token());
 
             match bearer_token {
-                Ok(_) => {
-                    // info!("request from: {}", tk.user.display_name);
-
-                    // info!("{:#?}", tk);
-
-                    // info!("{}", token.token().to_string());
+                Ok(tk) => {
+                    info!("request from: {}", tk.user.display_name);
 
                     let flag = auth_sdk
                         .introspect_access_token(token.token().to_string())
