@@ -1,24 +1,24 @@
-use k8s_openapi::apimachinery::pkg::api::resource::Quantity;
+use k8s_rs_pb::{apimachinery::pkg::api::resource::Quantity, metrics::pkg::apis::metrics::v1beta1::ContainerMetrics};
 use kube::api::ObjectMeta;
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
-pub struct PodMetricsContainer {
-    pub name: String,
-    pub usage: PodMetricsContainerUsage,
-}
+// #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
+// pub struct PodMetricsContainer {
+//     pub name: String,
+//     pub usage: PodMetricsContainerUsage,
+// }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
-pub struct PodMetricsContainerUsage {
-    pub cpu: Quantity,
-    pub memory: Quantity,
-}
+// #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
+// pub struct PodMetricsContainerUsage {
+//     pub cpu: Quantity,
+//     pub memory: Quantity,
+// }
 
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
 pub struct PodMetrics {
     pub metadata: ObjectMeta,
     pub timestamp: String,
     pub window: String,
-    pub containers: Vec<PodMetricsContainer>,
+    pub containers: Vec<ContainerMetrics>,
 }
 
 impl k8s_openapi::Resource for PodMetrics {
