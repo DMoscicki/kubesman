@@ -445,7 +445,7 @@ spec:
                   controller: controller,
                   textStyle: TextStyle(fontFamily: 'monospace', fontSize: 14),
                   onChanged: (value) {
-                    print("Updated YAML content:\n$value");
+                    logger.i("Updated YAML content:\n$value");
                   })),
           Padding(
             padding: const EdgeInsets.all(16.0),

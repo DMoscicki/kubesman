@@ -1,6 +1,6 @@
 ./frontend
 target
-Containerfile*
+Dockerfile*
 .dockerignore
 .git
 .gitignore

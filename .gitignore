@@ -31,5 +31,5 @@ rw
 k8s-protos/src/*/
 k8s-pb
 release
-casdoor.dev.toml
+config*.toml
 .idea
