@@ -1,18 +1,6 @@
 use k8s_rs_pb::{apimachinery::pkg::api::resource::Quantity, metrics::pkg::apis::metrics::v1beta1::ContainerMetrics};
 use kube::api::ObjectMeta;
 
-// #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
-// pub struct PodMetricsContainer {
-//     pub name: String,
-//     pub usage: PodMetricsContainerUsage,
-// }
-
-// #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
-// pub struct PodMetricsContainerUsage {
-//     pub cpu: Quantity,
-//     pub memory: Quantity,
-// }
-
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
 pub struct PodMetrics {
     pub metadata: ObjectMeta,
@@ -58,7 +46,7 @@ pub struct NodeMetrics {
     pub usage: NodeUsage,
 }
 
-impl k8s_openapi::Resource for  NodeMetrics {
+impl k8s_openapi::Resource for NodeMetrics {
     const GROUP: &'static str = "metrics.k8s.io";
     const KIND: &'static str = "NodeMetrics";
     const VERSION: &'static str = "v1beta1";

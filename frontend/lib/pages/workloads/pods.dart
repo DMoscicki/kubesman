@@ -100,10 +100,10 @@ class PodsPageState extends State<PodsPage>
         });
       } else {
         logger.e(response.body);
-        print('Failed to fetch metrics: ${response.statusCode}');
+        logger.e('Failed to fetch metrics: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching metrics: $e');
+      logger.e(e);
     }
   }
 
@@ -189,8 +189,8 @@ class PodsPageState extends State<PodsPage>
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('CPU: ${metrics.cpuUsage}'),
-                              Text('Memory: ${metrics.memoryUsage}'),
+                              Text('CPU: ${metrics.cpuUsage}', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+                              Text('Memory: ${metrics.memoryUsage}', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
                             ],
                           ),
                           trailing: IconButton(

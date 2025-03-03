@@ -11,7 +11,7 @@ name = "kubesman_server"
 path = "src/main.rs"
 
 [dependencies]
-k8s-rs-pb = "0.1.7"
+k8s-rs-pb = "0.1.8"
 actix-web = { version = "4.9.0" }
 actix-files = { version = "0.6.6" }
 env_logger = { version = "0.11.6" }

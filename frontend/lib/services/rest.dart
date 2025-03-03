@@ -1,29 +1,29 @@
 import 'dart:convert';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/auth_factory/fbs/access_access_generated.dart';
 import 'package:frontend/auth_factory/fbs/refresh_refresh_generated.dart';
 import 'package:frontend/services/secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
+import '../utils/config.dart';
 
 mixin RequestMixin {
   static Future<bool> refreshToken() async {
     final response = await http.post(
-        Uri(
-          scheme: data.casdoor!.parseScheme(),
-          host: data.casdoor!.parseHost(),
-          port: data.casdoor!.parsePort(),
-          path: "api/login/oauth/refresh_token",
-        ),
-        body: {
-          'grant_type': 'refresh_token',
-          'refresh_token': data.token.refreshToken,
-          'scope': 'read',
-          'client_id': dotenv.get('CASDOOR_CLIENT_ID'),
-          'client_secret': dotenv.get('CASDOOR_CLIENT_SECRET')
-        });
+      Uri(
+        scheme: data.casdoor!.parseScheme(),
+        host: data.casdoor!.parseHost(),
+        port: data.casdoor!.parsePort(),
+        path: "api/login/oauth/refresh_token",
+      ),
+      body: {
+        'grant_type': 'refresh_token',
+        'refresh_token': data.token.refreshToken,
+        'scope': 'read',
+        'client_id': configMap['CASDOOR_CLIENT_ID'] as String,
+        'client_secret': configMap['CASDOOR_CLIENT_SECRET'] as String,
+      },
+    );
 
     if (response.statusCode == 200 && response.body.isNotEmpty) {
       await secureStorage.saveToken(response.body);
@@ -37,28 +37,34 @@ mixin RequestMixin {
 
   static Future<bool> refreshTokenFlat() async {
     var refreshBody = RefreshResponseObjectBuilder(
-        grantType: 'refresh_token',
-        refreshToken: data.token.refreshToken,
-        scope: 'read',
-        clientId: utf8.encode(dotenv.get('CASDOOR_CLIENT_ID')),
-        clientSecret: utf8.encode(dotenv.get('CASDOOR_CLIENT_SECRET')));
+      grantType: 'refresh_token',
+      refreshToken: data.token.refreshToken,
+      scope: 'read',
+      clientId: utf8.encode(configMap['CASDOOR_CLIENT_ID'] as String),
+      clientSecret: utf8.encode(configMap['CASDOOR_CLIENT_SECRET'] as String),
+    );
 
     var refreshBuffer = refreshBody.toBytes();
 
     final response = await http.post(
-        Uri(
-          scheme: data.casdoor!.parseScheme(),
-          host: data.casdoor!.parseHost(),
-          port: 8080,
-          path: "api/refresh_token",
-        ),
-        headers: {"Authorization": 'Bearer ${data.token.accessToken}'},
-        body: refreshBuffer);
+      Uri(
+        scheme: data.casdoor!.parseScheme(),
+        host: data.casdoor!.parseHost(),
+        port: 8080,
+        path: "api/refresh_token",
+      ),
+      headers: {"Authorization": 'Bearer ${data.token.accessToken}'},
+      body: refreshBuffer,
+    );
 
     if (response.statusCode == 200 && response.body.isNotEmpty) {
       var auc = AccessResponse(response.bodyBytes);
       var newTk = TokenBearer(
-          auc.accessToken!, auc.refreshToken!, auc.tokenType!, auc.idToken!);
+        auc.accessToken!,
+        auc.refreshToken!,
+        auc.tokenType!,
+        auc.idToken!,
+      );
 
       await secureStorage.saveToken(json.encode(newTk));
       await secureStorage.loadToken();
@@ -69,8 +75,12 @@ mixin RequestMixin {
     }
   }
 
-  static Future<http.Response> sendRequest(String method, Uri path,
-      Map<String, String> headers, dynamic body) async {
+  static Future<http.Response> sendRequest(
+      String method,
+      Uri path,
+      Map<String, String> headers,
+      dynamic body,
+      ) async {
     late http.Response resp;
     headers["Authorization"] = 'Bearer ${data.token.accessToken}';
 
@@ -86,13 +96,18 @@ mixin RequestMixin {
     return resp;
   }
 
-  static Future<http.Response> request(String method, Uri path,
-      Map<String, String> headers, dynamic body) async {
+  static Future<http.Response> request(
+      String method,
+      Uri path,
+      Map<String, String> headers,
+      dynamic body,
+      ) async {
     http.Response resp = await sendRequest(method, path, headers, body);
+
     if (resp.statusCode == HttpStatus.unauthorized) {
       if (data.token.refreshToken != "") {
-        bool refrehed = await refreshTokenFlat();
-        if (refrehed) {
+        bool refreshed = await refreshTokenFlat();
+        if (refreshed) {
           return sendRequest(method, path, headers, body);
         }
       }
@@ -101,6 +116,7 @@ mixin RequestMixin {
         resp.statusCode == HttpStatus.notFound) {
       return resp;
     }
+
     return http.Response("", HttpStatus.internalServerError);
   }
 }
