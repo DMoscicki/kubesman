@@ -121,7 +121,7 @@ async fn production_mod(client: Client) -> std::io::Result<()> {
 fn init_casdoor() -> AuthSdk {
     dotenvy::from_path("./dev.env").unwrap();
 
-    let app = CasdorConfig::from_toml("./casdoor.dev.toml").unwrap();
+    let app = CasdorConfig::from_toml("./config.toml").unwrap();
     app.into_sdk().authn()
 }
 
