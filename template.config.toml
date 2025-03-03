@@ -1,0 +1,6 @@
+endpoint="casdoor_endpoint"
+client_id="casdoor_application_id"
+client_secret="casdoor_application_secret"
+org_name="Kubernetes"
+app_name="Cluster"
+certificate="""certificate"""
