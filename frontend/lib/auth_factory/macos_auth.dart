@@ -18,7 +18,7 @@ Future<String> MacOSAuthCasdoor(String url) async {
         javaScriptEnabled: true,
         isInspectable: false,
         userAgent:
-            "Mozilla/5.0 (Android 14; Mobile; rv:123.0) Gecko/123.0 Firefox/123.0",
+        "Mozilla/5.0 (Android 14; Mobile; rv:123.0) Gecko/123.0 Firefox/123.0",
         useShouldOverrideUrlLoading: true,
         useOnLoadResource: true,
       ));

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:frontend/auth_factory/factory.dart';
 import 'package:frontend/components/drawer.dart';
@@ -15,16 +14,10 @@ class EntryPage extends StatefulWidget {
   State<EntryPage> createState() => _EntryPageState();
 }
 
-class _EntryPageState extends State<EntryPage>
-    with SingleTickerProviderStateMixin {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  final WidgetStateProperty<Icon?> thumbIcon =
-      WidgetStateProperty.resolveWith<Icon?>(
-    (Set<WidgetState> states) {
+class _EntryPageState extends State<EntryPage> with SingleTickerProviderStateMixin {
+  static final WidgetStateProperty<Icon?> _thumbIcon =
+  WidgetStateProperty.resolveWith<Icon?>(
+        (Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
         return const Icon(Icons.sunny);
       }
@@ -34,84 +27,72 @@ class _EntryPageState extends State<EntryPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        primary: true,
-        appBar: AppBar(
-          elevation: 0,
+    return FutureBuilder<TokenBearer>(
+      future: secureStorage.loadToken(),
+      builder: (context, snapshot) {
+        return Scaffold(
           primary: true,
-          forceMaterialTransparency: true,
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          titleSpacing: 0.0,
-          centerTitle: false,
-          actions: [
-            Switch(
-                value: context.read<ThemeProvider>().themeData ==
-                    ThemeClass.lightTheme,
-                thumbIcon: thumbIcon,
+          appBar: AppBar(
+            elevation: 0,
+            primary: true,
+            forceMaterialTransparency: true,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
+            titleSpacing: 0.0,
+            centerTitle: false,
+            actions: [
+              Switch(
+                value: context.watch<ThemeProvider>().themeData == ThemeClass.lightTheme,
+                thumbIcon: _thumbIcon,
                 activeColor: Colors.amberAccent,
-                onChanged: (_) {
-                  Provider.of<ThemeProvider>(context, listen: false)
-                      .toggleTheme();
-                }),
-          ],
-        ),
-        extendBody: true,
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        drawer: FutureBuilder<TokenBearer>(
-            future: secureStorage.loadToken(),
-            builder: (
-              BuildContext context,
-              AsyncSnapshot<TokenBearer> snapshot,
-            ) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return SizedBox.shrink();
-              } else if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasError) {
-                  return Text("error");
-                } else if (snapshot.hasData) {
-                  if (data.token.accessToken.isNotEmpty) {
-                    Map<String, dynamic> userInfo =
-                        data.casdoor!.decodedToken(data.token.accessToken);
+                onChanged: (_) => context.read<ThemeProvider>().toggleTheme(),
+              ),
+            ],
+          ),
+          extendBody: true,
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          drawer: _buildDrawer(snapshot),
+          body: _buildBody(snapshot),
+        );
+      },
+    );
+  }
 
-                    return MainDrawer(
-                        userName: userInfo["name"],
-                        userEmail: userInfo["email"],
-                        avatarLink: userInfo["avatar"]);
-                  } else {
-                    return SizedBox.shrink();
-                  }
-                } else {
-                  return SizedBox.shrink();
-                }
-              } else {
-                return SizedBox.shrink();
-              }
-            }),
-        body: FutureBuilder<TokenBearer>(
-          future: secureStorage.loadToken(),
-          builder: (
-            BuildContext context,
-            AsyncSnapshot<TokenBearer> snapshot,
-          ) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const SizedBox.shrink();
-            } else if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasError) {
-                return const Text('Error');
-              } else if (snapshot.hasData) {
-                if (data.token.accessToken != "") {
-                  return SizedBox.shrink();
-                } else {
-                  return LoginPage();
-                }
-              } else {
-                return const Text('Empty');
-              }
-            } else {
-              return Text('State: ${snapshot.connectionState}');
-            }
-          },
-        ));
+  Widget _buildDrawer(AsyncSnapshot<TokenBearer> snapshot) {
+    if (snapshot.connectionState != ConnectionState.done) {
+      return const SizedBox.shrink();
+    }
+
+    if (snapshot.hasError || !snapshot.hasData) {
+      return const SizedBox.shrink();
+    }
+
+    final tokenData = snapshot.data!;
+    if (tokenData.accessToken.isEmpty) return const SizedBox.shrink();
+
+    // Проверяем инициализацию data и casdoor
+    if (data == null || data.casdoor == null) {
+      return const SizedBox.shrink();
+    }
+
+    final userInfo = data.casdoor!.decodedToken(tokenData.accessToken);
+    return MainDrawer(
+      userName: userInfo["name"] ?? "Unknown",
+      userEmail: userInfo["email"] ?? "No email",
+      avatarLink: userInfo["avatar"],
+    );
+  }
+
+  Widget _buildBody(AsyncSnapshot<TokenBearer> snapshot) {
+    if (snapshot.connectionState != ConnectionState.done) {
+      return const SizedBox.shrink();
+    }
+
+    if (snapshot.hasError) return const Text('Error');
+
+    final hasValidToken = snapshot.hasData &&
+        snapshot.data!.accessToken.isNotEmpty;
+
+    return hasValidToken ? const SizedBox.shrink() : const LoginPage();
   }
 }

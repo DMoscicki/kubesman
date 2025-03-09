@@ -31,17 +31,11 @@ class Data {
   static final Data _appData = Data._internal();
 
   Data._internal();
+
+  factory Data() => _appData;
+
   Casdoor? casdoor;
-
-  String versions = '';
-  // String authToken = '';
   TokenBearer token = TokenBearer('', '', '', '');
-
-  // String userUuid = "";
-
-  factory Data() {
-    return _appData;
-  }
 }
 
 Data data = Data();

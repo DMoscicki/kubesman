@@ -4,7 +4,7 @@ default:
   @just --list
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-KUBERNETES_VERSION := "1.30.1"
+KUBERNETES_VERSION := "1.32.0"
 
 protos-dl:
 	#!/usr/bin/env bash
